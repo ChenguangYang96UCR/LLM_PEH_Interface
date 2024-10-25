@@ -20,7 +20,160 @@ import random
 # pip install "trubrics[streamlit]" for feedback
 from trubrics.integrations.streamlit import FeedbackCollector
 from streamlit_feedback import streamlit_feedback
+import streamlit.components.v1 as components
+from folium.plugins import AntPath
+from urllib.request import urlopen
+import json
+import os
+from py2neo import Graph
+
+import torch
+import torch.nn as nn
+import torch.optim as optim
+from torch.utils.data import Dataset, DataLoader, Subset
+import math
+import matplotlib.pyplot as plt
+
 #from geopy.distance import geodesic
+
+_RELEASE = False
+
+if not _RELEASE:
+    _component_func = components.declare_component(
+        "my_component",
+        #url="http://localhost:3001",
+        url="http://localhost:8501/",
+    )
+else:
+    parent_dir = os.path.dirname(os.path.abspath(__file__))
+    build_dir = os.path.join(parent_dir, "frontend/build")
+    _component_func = components.declare_component("my_component", path=build_dir)
+
+
+class PassengerDataset(Dataset):
+    def __init__(self, data, sequence_length):
+        self.data = data
+        self.sequence_length = sequence_length
+
+    def __len__(self):
+        return len(self.data) - self.sequence_length
+
+    def __getitem__(self, idx):
+        x = self.data[idx: idx + self.sequence_length].astype(np.float32)
+        y = self.data[idx + self.sequence_length].astype(np.float32)
+        return x, y
+
+class RNN(nn.Module):
+
+    def __init__(self, input_size, hidden_size, output_size):
+        super(RNN, self).__init__()
+        self.hidden_size = hidden_size
+
+        self.i2h = nn.Linear(in_features=input_size + hidden_size, out_features=hidden_size)
+        self.i2o = nn.Linear(in_features=hidden_size, out_features=output_size)
+        self.relu = nn.ReLU()
+
+    def forward(self, input, hidden):
+        combined = torch.cat((input, hidden), 1)
+        hidden = self.i2h(combined)
+        hidden = self.relu(hidden)
+        output = self.i2o(hidden)
+        return output, hidden
+
+    def init_hidden(self, batch_size):
+        return torch.zeros(batch_size, self.hidden_size)
+
+def train(inputs, target):
+    hidden = rnn.init_hidden(batch_size)  # initialize hidden
+    output, hidden = rnn(inputs, hidden)  # forward pass
+    target = target.view(batch_size, output_size)  # resize target to match the output
+    loss = torch.sqrt(criterion(output, target))  # compute loss, user sqrt to take RMSE instead of MSE
+
+    # backward pass and optimization
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
+    return loss
+
+def predict(inputs, target, hidden):
+    rnn.eval()
+    with torch.no_grad():
+        output, hidden = rnn(inputs, hidden)  # forward pass
+        target = target.view(batch_size, output_size)  # resize target to match the output
+
+        return output, target
+
+def wild_search_by_keywords(key_word, relation=''):
+    work_path = os.path.abspath('.') + "\\"
+    triples = []
+    if key_word == '':
+        print('Error: search_node_by_keyword input \'key_word\' is nothing')
+        return triples
+    graph = Graph(
+            "bolt://localhost:7687", 
+            auth=("neo4j", "123456789")
+        )
+    if relation == '':
+        Query = 'MATCH (m:node)-[r]-(n:node) where m.name=~\".*(?i){0}.*\" or n.name=~\".*(?i){0}.*\" RETURN m.name,type(r),n.name'.format(key_word)
+        query_result = graph.run(Query)
+        for triple in query_result:
+            triples.append(str(triple).replace('\t', ','))
+    else:
+        Query = 'MATCH (m:node)-[r]-(n:node) where m.name=~\".*(?i){0}.*\" or n.name=~\".*(?i){0}.*\" RETURN m.name,type(r),n.name'.format(key_word, relation)
+        query_result = graph.run(Query)
+        for triple in query_result:
+            triples.append(str(triple).replace('\t', ','))
+    return triples
+
+def getQuestion_answer(Service_list, st):
+    all_triples = []    
+    all_information = []
+    for Service in Service_list:
+        triples = wild_search_by_keywords(Service[0])
+        slice_triples = [triples[i:i+100] for i in range(0, len(triples), 100)]
+        all_response = []
+        if not len(triples) == 0:
+            all_triples.extend(triples)
+            index = 1
+            for slice_triple in slice_triples:
+                if index > 2:
+                    break
+                answer_prompt = f"""
+You are a social science expert, and you need to perform the following two steps step by step -  
+Step1: Given the input knowledge graph triples (i.e., with the format (subject, relation, object)), 
+please output corresponding natural language sentences about introduction and suggestion based on all knowledge graph triples.
+input knowledge graph triples: {slice_triple}
+"""
+                response = openai.ChatCompletion.create(
+                    model="gpt-4",  # Updated to use the latest and more advanced model
+                    messages=[
+                        {"role": "user", "content": answer_prompt}
+                    ],
+                    temperature=0.2
+                )
+                all_response.append(response)
+                index = index + 1
+        combine_prompt = f"""
+Please combine these response, construct corresponding natural language sentences about introduction and suggestion.
+response: {all_response}
+"""
+        response = openai.ChatCompletion.create(
+                        model="gpt-4",  # Updated to use the latest and more advanced model
+                        messages=[
+                            {"role": "user", "content": combine_prompt}
+                        ],
+                        temperature=0.2
+                    )
+
+        st.write(f"**{Service[0]}**")
+        st.write(f"**Google Rating:{Service[1]}**", "\n")
+        st.write(response.choices[0].message['content'])
+        # st.write(f"###{Service[0]} Google Rating:{Service[1]}", "\n", response.choices[0].message['content'])
+    return all_information
+
+def my_component(key=None):
+    component_value = _component_func(key=key, default=0)
+    return component_value
 
 # Function to query OpenAI API for extracting the service and zipcode
 def ask_openai_for_service_extraction(question, api_key, conversation_history):
@@ -61,7 +214,7 @@ def classify_service_type(service_type, api_key):
         temperature=0.2
     )
     
-    st.write(response)
+    # st.write(response)
     raw_category = response['choices'][0]['message']['content'].strip() if response['choices'] else "Other"
     st.write("**Raw Model Response for Classification:**", raw_category) # make title as bold
     return raw_category
@@ -128,7 +281,7 @@ def read_data(df):
     # Get the current day and time
     now = datetime.now()
     current_day = now.strftime('%A')  # e.g., 'Monday'
-    
+    service_list = []
     data = []
     for index, row in df.iterrows():
         # Merge and clean services information
@@ -170,7 +323,9 @@ def read_data(df):
             'info': info
         })
 
-    return data
+        service_list.append([row['Service_Name'], row['Google_Rating']])
+
+    return data, service_list
 
 # read crime data
 @st.cache_data
@@ -239,13 +394,34 @@ def translated_read_data(df):
 # Streamlit UI
 img = Image.open('dream_kg_logo_v2.png')
 st.image(img)
-st.markdown("# User Input")
-st.markdown("### Ask me about available services:")
-user_query = st.text_input("Enter your query (e.g., 'I need mental health support near 19122')", key="user_query")
+#st.markdown("# **Start Here ↓**", icon="👇")
+st.info("**Welcome to DREAM-KG chatbot, start here ↓**", icon="👋") #edited: 10/24
+st.markdown("### 💬 Ask me about services")
+user_query = st.text_input("Enter your query: I need food right now and I am near the Franklin Square", key="user_query")
 # add picture option
 ###img_file_buffer = st.camera_input("Take a picture") # "Take a picture"
 # Submit button
-submit_button = st.button("Submit")
+submit_button = st.button("Submit", type="primary")
+#submit_button = st.form_submit_button("Submit", type="primary", use_container_width=True)
+
+
+replicate_text = "DREAM-KG: Develop Dynamic, REsponsive, Adaptive, and Multifaceted Knowledge Graphs to address homelessness with Explainable AI"
+replicate_link = "https://chenguangyang96ucr.github.io/dreamkg.github.io/"
+replicate_logo = "https://storage.googleapis.com/llama2_release/Screen%20Shot%202023-07-21%20at%2012.34.05%20PM.png"
+st.markdown(
+            ":orange[**Resources:**]  \n"
+            f"<img src='{replicate_logo}' style='height: 1em'> [{replicate_text}]({replicate_link})",
+            unsafe_allow_html=True
+)
+
+### 10/24 - edited
+st.markdown("""
+<style>
+    [data-testid=stSidebar] {
+        background-color: #fcb290;
+    }
+</style>
+""", unsafe_allow_html=True)
 
 # Add feedback option
 #feedback = streamlit_feedback(feedback_type="thumbs")
@@ -316,8 +492,12 @@ if submit_button:
             if service_type and zipcode:
                 try:
                     classified_service_type = classify_service_type(service_type, api_key)
-                    st.write("**Current Time in Eastern Standard Time:**", current_time)
-                    st.write("**Type of Service:**", classified_service_type)
+                    st.markdown("#### Current Time in Eastern Standard Time")
+                    st.write(current_time)
+
+                    st.markdown("#### Type of Service")
+                    st.write(classified_service_type)
+
                     if classified_service_type == 'Shelter':
                         st.write("**Specific Temporary Housing for Veteran:**", "If you are veteran, please consider Veterans Multi Service Center (Phone: 215-238-8067; Address: 213-217 N 4th St, Philadelphia, PA 19106)")
                         st.write("**Specific Temporary Housing for Single Woman/Women:**", "If you are single woman/women, please consider House of Passage (Phone: 267-713-7778; Address: 111 N 49th St, Philadelphia, PA 19139)")
@@ -325,21 +505,30 @@ if submit_button:
                         st.write("**Specific Temporary Housing for Families:**", "If you have families, please consider Salvation Army Red Shield Center (Phone: 215-787-2887; Address: 715 N Broad St, Philadelphia, PA 19123")
 
 
-                    st.write("**Zipcode:**", zipcode)
-                    st.write("**Total Crime Incidents, Number of Property Victimization, and Number of Personal Victimization:** In Year 2024, the Number of Crime Incidents in Zipcode " + zipcode + " is ",
+                    # st.subheader("Zipcode")
+                    st.markdown("#### Zipcode")
+                    st.write(zipcode)
+
+                    st.markdown("#### Total Crime Incidents, Number of Property Victimization, and Number of Personal Victimization")
+                    st.write("In Year 2024, the Number of Crime Incidents in Zipcode " + zipcode + " is ",
                              str(number_of_crimes), ",", " where there are ", str(number_of_property_crimes), "property victimization and there are ", str(number_of_personal_crimes), "personal victimization")
-                    st.write("**Frequencies of Different Crime Incidents**: In Year 2024, the Frequencies of Different Crime Incidents in Zipcode are as follows " + zipcode + ":",
-                        str(crime_frequency))
+                    
+                    st.markdown("#### Frequencies of Different Crime Incidents")
+                    st.write("In Year 2024, the Frequencies of Different Crime Incidents in Zipcode are as follows " + zipcode + ":")
+                    
+                    crime_category = []
+                    crime_data = []
+                    for crime in crime_frequency : 
+                        crime_category.append(crime)
+                        crime_data.append(crime_frequency[crime])
 
-                    # To read image file buffer as a PIL Image:
-                    #img = Image.open(img_file_buffer)
-                    #where_location = identify_image_geolocation(img, api_key)
-                    #st.write("where_location:", where_location)
+                    bar_data = pd.DataFrame({
+                        'Category': crime_category,
+                        'Values': crime_data
+                    }).set_index('Category')
 
-                    # To convert PIL Image to numpy array:
-                    #img_array = np.array(img)
-                    #print("img_array: ", img_array)
-                    #st.write("Img_array:", img_array)
+                    # make plot
+                    st.bar_chart(bar_data)
 
                     if classified_service_type != "Other":
                         service_files = {
@@ -349,31 +538,91 @@ if submit_button:
                         }
                         datafile = service_files[classified_service_type]
                         df = pd.read_csv(datafile)
-                        #print("df:", df)
-                        data = read_data(df)
-                        #print("data:", data)
+                        data, service_list = read_data(df)
 
                         # load crime data (till 07/2024) for visualization
                         crime_data_df = pd.read_csv('three_days_philly_incidents_2024.csv')
                         crime_data = read_crime_data(crime_data_df)
 
-                        df = pd.DataFrame(
-                            {
-                                "name": ["Personal", "Property"],
-                                "views_history": [[random.randint(0, 100) for _ in range(7)] for _ in range(2)],
-                            }
-                        )
-                        st.dataframe(
-                            df,
-                            column_config={
-                                "name": "Victimization",
-                                "views_history": st.column_config.LineChartColumn(
-                                    "Prediction (7-day)", y_min=0, y_max=100
-                                ),
-                            },
-                            hide_index=True,
-                        )
+                        crime_df = pd.read_csv('Final_Pandas_tensor_2023.csv')
+                        crime_df.columns = ["month", "zipcode", "Homicide Criminal", "Rape", "Robbery No Firearm",
+                                            "Aggravated Assault No Firearm", "Burglary Residential",
+                                            "Thefts", "Motor Vehicle Theft", "All Other Offenses", "Other Assaults",
+                                            "Forgery and Counterfeiting", "Fraud", "Embezzlement",
+                                            "Receiving Stolen Property",
+                                            "Vandalism/Criminal Mischief", "Weapon Violations",
+                                            "Prostitution and Commercialized Vice", "Other Sex Offenses",
+                                            "Narcotic/Drug Law Violations", "Gambling Violations",
+                                            "Offenses Against Family and Children", "DRIVING UNDER THE INFLUENCE",
+                                            "Liquor Law Violations", "Public Drunkenness", "Disorderly Conduct",
+                                            "Vagrancy/Loitering", "Theft from Vehicle",
+                                            "psa_1", "psa_2", "psa_3", "psa_4", "psa_A",
+                                            "total_hours"]  # change col name
 
+                        zipcode_num = int(zipcode)
+                        print("zipcode_num is:", zipcode_num)
+                        # top-3 crime incidents
+                        crime_type_list = sorted(crime_frequency, key=crime_frequency.get, reverse=True)[:3] #'All_Other_Offenses' # only focus on top three crime types
+                        final_pred_res = [] # number of prediction in weeks
+                        print(crime_type_list)
+                        for crime_type in crime_type_list:
+                            new_crime_df = crime_df.loc[crime_df['zipcode'] == zipcode_num, ['month', crime_type]]
+                            # print(crime_df.query('zipcode' = zipcode_num))
+                            passenger_counts = new_crime_df[crime_type].values
+                            sequence_length = 3  # we will use data of 12 months to predict the passenger in 13th month - need to change
+                            batch_size = 1
+                            dataset = PassengerDataset(passenger_counts, sequence_length)
+                            test_size = 3  # 12 months for test
+                            train_size = len(dataset) - test_size
+                            train_dataset = Subset(dataset, range(0, train_size))
+                            test_dataset = Subset(dataset, range(train_size, len(dataset)))
+                            assert len(train_dataset) + len(test_dataset) == len(dataset)
+                            train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=False)
+                            test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
+                            input_size = sequence_length
+                            output_size = 1  # predict 1 month
+                            hidden_size = 32
+                            rnn = RNN(input_size, hidden_size, output_size)
+                            num_epochs = 50
+                            learning_rate = 0.0002
+                            criterion = nn.MSELoss()
+                            optimizer = optim.Adam(rnn.parameters(), lr=learning_rate)
+                            print_step = 20
+                            all_losses = []
+                            for epoch in range(num_epochs):
+                                loss_this_epoch = []
+                                for inputs, target in train_loader:
+                                    loss = train(inputs, target)
+                                    loss_this_epoch.append(loss.item())
+                                loss_this_epoch = np.array(loss_this_epoch).mean()
+                                all_losses.append(loss_this_epoch)
+                                # if (epoch == 0) or ((epoch + 1) % print_step == 0):
+                                #    print(f"Epoch {epoch+1: <3}/{num_epochs} | loss = {loss_this_epoch}")
+
+                            y_true = []
+                            y_pred = []
+
+                            hidden = rnn.init_hidden(batch_size)
+                            for inputs, target in test_loader:
+                                output, target = predict(inputs, target, hidden)
+                                y_pred.append(output.item())
+                                y_true.append(target.item())
+
+                            y_true = (np.array(y_true))
+                            y_pred = (np.array(y_pred))
+                            print("y_pred:", y_pred)
+                            final_pred_res.append(np.floor(y_pred))
+
+                        chart_data = pd.DataFrame(np.array(final_pred_res).transpose(), columns=crime_type_list)
+                        chart_data['Day'] = ["Day 1", "Day 2", "Day 3"]
+                        print("chart_data:", chart_data)
+                        st.scatter_chart(
+                            chart_data,
+                            x="Day",
+                            y=crime_type_list,
+                            #size="col4",
+                            color=["#fd0", "#f0f", "#04f"],  # Optional
+                        )
 
                         # Use pgeocode for geocoding
                         nomi = pgeocode.Nominatim('us')
@@ -382,35 +631,20 @@ if submit_button:
                         if not location_info.empty:
                             latitude_user = location_info['latitude']
                             longitude_user = location_info['longitude']
+                            print("latitude_user, longitude_user:", latitude_user, longitude_user)
                             city_name = location_info['place_name']
                             client = Steamship(workspace="gpt-4-g4d")
 
-                            # Create an instance of this generator
-                            generator = client.use_plugin('gpt-4', config={"temperature": 0.7, "n": 5})
-                            geolocation_query = "Just list the their names with comma. Please find only five famous buildings or benchmarks close to the location: latitidue: " + str(
-                                latitude_user) + ", " + "longitude: " + str(longitude_user)
-                            task = generator.generate(text=geolocation_query)
-                            task.wait()
-                            message = task.output.blocks
-                            message = [i.text.strip() for i in message]
-                            st.write(f"**Coordinates for {zipcode} ({city_name})**: {latitude_user}, {longitude_user}")
-                            st.write(f"**Architectural Buildings Around**: {message[0]}")
-                            #translate_client = Steamship(workspace="gpt-4-g4d")
-                            #translate_generator = translate_client.use_plugin('gpt-4',config={"temperature": 0.7, "n": 5})
-                            #translate_task = translate_generator.generate(text="Translate the answer to Spanish: " + message[0])
-                            #translate_task.wait()
-                            #translate_message = translate_task.output.blocks
-                            #translate_message = [i.text.strip() for i in translate_message]
-                            #print("translate_message:", translate_message)
-
-
-
-
-
-
-
-
-
+                            extract_services = []
+                            top_services = ["KITHS Kitchen and Garden (KITHS)", "Social Services -Basic Needs Assistance (Helping Hands Ministry Inc)", "Emergency Housing for Veterans (Fresh Start Foundation)",\
+                                            "Adult Behavioral Health Inpatient Treatment (Friends Hospital)", "Adult Outpatient Services (Hispanic Community Counseling Services)", "Opioid Treatment Program (Achievement Through Counseling and Treatment)",\
+                                            "Various Community Events and Programs (Conquerors Community Development Corporation)", "Human Services (African Family Health Organization)", "Navigation Center (Horizon House)"]
+                            for service in service_list:
+                                if service[0] in top_services:
+                                    start_brasket = service[0].find('(')
+                                    end_brasket = service[0].find(')', start_brasket + 1)
+                                    service_name = service[0]
+                                    extract_services.append([service_name[start_brasket+1:end_brasket], service[1]])
 
 
                             map = folium.Map(location=[latitude_user, longitude_user], zoom_start=12)
@@ -423,22 +657,9 @@ if submit_button:
                                 fill_opacity=0.2
                             ).add_to(map)
 
-                            # reference from https://www.ostirion.net/post/mapping-geo-data-with-folium
-                            # using satellite map
-                            # 可加可不加
-                            #tile = folium.TileLayer(
-                            #    tiles='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-                            #    attr='Esri',
-                            #    name='Esri Satellite',
-                            #    overlay=False,
-                            #    control=True
-                            #).add_to(map)
-                            # done
 
                             marker_cluster = MarkerCluster().add_to(map)
 
-                            # add route - 1st try
-                            # https://stackoverflow.com/questions/73422439/is-there-a-feature-to-add-text-on-the-polyline-python-folium
                             route_points = []
                             for loc in data:
                                 # the place to add additional data
@@ -468,6 +689,10 @@ if submit_button:
 
                             st.header(f"{classified_service_type} Services near {zipcode}")
                             folium_static(map, width=800, height=600)  # Adjust width and height as needed
+                            st.header(f"Services Information")
+                            
+                            print('extract services list : {0}'.format(len(extract_services)))
+                            service_information = getQuestion_answer(extract_services, st)
 
                         else:
                             st.sidebar.error(f"Error: Unable to retrieve location information for ZIP code {zipcode}")
@@ -480,6 +705,8 @@ if submit_button:
                     st.error("Could not extract the type of service from your query. Please try rephrasing.")
                 if not zipcode:
                     st.error("Could not extract the ZIP code from your query. Please try rephrasing.")
+
+
     elif input_language == 'es':
         if response.choices:
             extracted_info = response.choices[0].message['content'].strip()
