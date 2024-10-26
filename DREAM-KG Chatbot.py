@@ -129,45 +129,46 @@ def getQuestion_answer(Service_list, st):
     all_triples = []    
     all_information = []
     for Service in Service_list:
-        triples = wild_search_by_keywords(Service[0])
-        slice_triples = [triples[i:i+100] for i in range(0, len(triples), 100)]
-        all_response = []
-        if not len(triples) == 0:
-            all_triples.extend(triples)
-            index = 1
-            for slice_triple in slice_triples:
-                if index > 2:
-                    break
-                answer_prompt = f"""
+        with st.spinner('Loading service information, please wait ...'):
+            triples = wild_search_by_keywords(Service[0])
+            slice_triples = [triples[i:i+100] for i in range(0, len(triples), 100)]
+            all_response = []
+            if not len(triples) == 0:
+                all_triples.extend(triples)
+                index = 1
+                for slice_triple in slice_triples:
+                    if index > 2:
+                        break
+                    answer_prompt = f"""
 You are a social science expert, and you need to perform the following two steps step by step -  
 Step1: Given the input knowledge graph triples (i.e., with the format (subject, relation, object)), 
 please output corresponding natural language sentences about introduction and suggestion based on all knowledge graph triples.
 input knowledge graph triples: {slice_triple}
 """
-                response = openai.ChatCompletion.create(
-                    model="gpt-4",  # Updated to use the latest and more advanced model
-                    messages=[
-                        {"role": "user", "content": answer_prompt}
-                    ],
-                    temperature=0.2
-                )
-                all_response.append(response)
-                index = index + 1
-        combine_prompt = f"""
-Please combine these response, construct corresponding natural language sentences about introduction and suggestion.
-response: {all_response}
-"""
-        response = openai.ChatCompletion.create(
+                    response = openai.ChatCompletion.create(
                         model="gpt-4",  # Updated to use the latest and more advanced model
                         messages=[
-                            {"role": "user", "content": combine_prompt}
+                            {"role": "user", "content": answer_prompt}
                         ],
                         temperature=0.2
                     )
+                    all_response.append(response)
+                    index = index + 1
+            combine_prompt = f"""
+Please combine these response, construct corresponding natural language sentences about introduction and suggestion.
+response: {all_response}
+"""
+            response = openai.ChatCompletion.create(
+                            model="gpt-4",  # Updated to use the latest and more advanced model
+                            messages=[
+                                {"role": "user", "content": combine_prompt}
+                            ],
+                            temperature=0.2
+                        )
 
-        st.write(f"**{Service[0]}**")
-        st.write(f"**Google Rating:{Service[1]}**", "\n")
-        st.write(response.choices[0].message['content'])
+            st.write(f"**{Service[0]}**")
+            st.write(f"**Google Rating:{Service[1]}**", "\n")
+            st.write(response.choices[0].message['content'])
         # st.write(f"###{Service[0]} Google Rating:{Service[1]}", "\n", response.choices[0].message['content'])
     return all_information
 
@@ -522,13 +523,25 @@ if submit_button:
                         crime_category.append(crime)
                         crime_data.append(crime_frequency[crime])
 
+                    abbreviation_list = []
+                    category_list = []
+                    for category in crime_category:
+                        if len(category) > 15 :
+                            split_category = category.replace('/', ' ').replace('-', ' ').split()
+                            abbreviation = ''.join(word[0].upper() for word in split_category if word.isalpha())
+                            abbreviation_list.append([abbreviation, category])
+                            category_list.append(abbreviation)
+                        else:
+                            category_list.append(category)
+
                     bar_data = pd.DataFrame({
-                        'Category': crime_category,
+                        'Category': category_list,
                         'Values': crime_data
                     }).set_index('Category')
 
                     # make plot
                     st.bar_chart(bar_data)
+                    st.write(str(abbreviation_list))
 
                     if classified_service_type != "Other":
                         service_files = {
@@ -638,7 +651,7 @@ if submit_button:
                             extract_services = []
                             top_services = ["KITHS Kitchen and Garden (KITHS)", "Social Services -Basic Needs Assistance (Helping Hands Ministry Inc)", "Emergency Housing for Veterans (Fresh Start Foundation)",\
                                             "Adult Behavioral Health Inpatient Treatment (Friends Hospital)", "Adult Outpatient Services (Hispanic Community Counseling Services)", "Opioid Treatment Program (Achievement Through Counseling and Treatment)",\
-                                            "Various Community Events and Programs (Conquerors Community Development Corporation)", "Human Services (African Family Health Organization)", "Navigation Center (Horizon House)"]
+                                            "Church-Based Shelters (Bethesda Project)", "RHD Fernwood Program (Resources for Human Development-Pennsylvania)", "Various Community Events and Programs (Conquerors Community Development Corporation)"]                            
                             for service in service_list:
                                 if service[0] in top_services:
                                     start_brasket = service[0].find('(')
