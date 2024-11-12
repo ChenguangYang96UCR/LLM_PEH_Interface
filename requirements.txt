@@ -1,0 +1,15 @@
+streamlit
+numpy
+torch
+py2neo
+matplotlib
+pandas
+openai==0.28
+folium
+streamlit_folium
+pgeocode
+steamship
+langdetect
+deep_translator
+trubrics
+streamlit_feedback
