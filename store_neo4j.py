@@ -16,7 +16,7 @@ def find_files(directory, filetype='docx'):
 
 
 def store_triples_mutipletimes_into_neo4j(text_file, first_flag):
-    work_path = os.path.abspath('.') + r'\\neo4j_store\\'
+    work_path = os.path.abspath('.') + '/neo4j_store/'
     if not os.path.exists(work_path + text_file):
         ValueError('Triples file {0} does not exist'.format(work_path + text_file))
     else:
@@ -91,7 +91,7 @@ def store_triples_mutipletimes_into_neo4j(text_file, first_flag):
                     line = file.readline()
 
 if __name__ == '__main__':
-    work_path = os.path.abspath('.') + r'\neo4j_store'
+    work_path = os.path.abspath('.') + '/neo4j_store'
     txt_files, sub_paths = find_files(work_path, filetype='txt')
     first_flag = True
     for txt_file in txt_files:

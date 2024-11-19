@@ -13,3 +13,4 @@ langdetect
 deep_translator
 trubrics
 streamlit_feedback
+psycopg2-binary

@@ -146,7 +146,7 @@ please output corresponding natural language sentences about introduction and su
 input knowledge graph triples: {slice_triple}
 """
                     response = openai.ChatCompletion.create(
-                        model="gpt-4",  # Updated to use the latest and more advanced model
+                        model="gpt-3.5-turbo",  # Updated to use the latest and more advanced model
                         messages=[
                             {"role": "user", "content": answer_prompt}
                         ],
@@ -159,7 +159,7 @@ Please combine these response, construct corresponding natural language sentence
 response: {all_response}
 """
             response = openai.ChatCompletion.create(
-                            model="gpt-4",  # Updated to use the latest and more advanced model
+                            model="gpt-3.5-turbo",  # Updated to use the latest and more advanced model
                             messages=[
                                 {"role": "user", "content": combine_prompt}
                             ],
@@ -186,7 +186,7 @@ def ask_openai_for_service_extraction(question, api_key, conversation_history):
                               "Only provide the service type and the zipcode.")
     combined_query = f"{extraction_instruction}\n{question}"
     full_conversation = conversation_history + [{"role": "user", "content": combined_query}]
-    response = openai.ChatCompletion.create(model="gpt-4", messages=full_conversation)
+    response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=full_conversation)
     
     if response.choices:
         conversation_history.append({"role": "user", "content": combined_query})
@@ -207,7 +207,7 @@ def classify_service_type(service_type, api_key):
     Based on the examples above, classify the following service type into the correct category (Food, Shelter, Mental Health):
     "{service_type}": """
     response = openai.ChatCompletion.create(
-        model="gpt-4",  # Updated to use the latest and more advanced model
+        model="gpt-3.5-turbo",  # Updated to use the latest and more advanced model
         messages=[
             {"role": "system", "content": "You are a classifier that categorizes service types."},
             {"role": "user", "content": prompt}
