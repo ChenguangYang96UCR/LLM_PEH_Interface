@@ -430,7 +430,7 @@ if __name__ == '__main__':
 
 
     replicate_text = "DREAM-KG: Develop Dynamic, REsponsive, Adaptive, and Multifaceted Knowledge Graphs to address homelessness with Explainable AI"
-    replicate_link = "https://chenguangyang96ucr.github.io/dreamkg.github.io/"
+    replicate_link = "https://dreamkg.com/"
     replicate_logo = "https://storage.googleapis.com/llama2_release/Screen%20Shot%202023-07-21%20at%2012.34.05%20PM.png"
     st.markdown(
                 ":orange[**Resources:**]  \n"
@@ -521,38 +521,38 @@ if __name__ == '__main__':
                         st.markdown("#### Zipcode")
                         st.write(zipcode)
 
-                        st.markdown("#### Total Crime Incidents, Number of Property Victimization, and Number of Personal Victimization")
-                        st.write("In Year 2024, the Number of Crime Incidents in Zipcode " + zipcode + " is ",
-                                str(number_of_crimes), ",", " where there are ", str(number_of_property_crimes), "property victimization and there are ", str(number_of_personal_crimes), "personal victimization")
+                        # st.markdown("#### Total Crime Incidents, Number of Property Victimization, and Number of Personal Victimization")
+                        # st.write("In Year 2024, the Number of Crime Incidents in Zipcode " + zipcode + " is ",
+                        #         str(number_of_crimes), ",", " where there are ", str(number_of_property_crimes), "property victimization and there are ", str(number_of_personal_crimes), "personal victimization")
                         
-                        st.markdown("#### Frequencies of Different Crime Incidents")
-                        st.write("In Year 2024, the Frequencies of Different Crime Incidents in Zipcode are as follows " + zipcode + ":")
+                        # st.markdown("#### Frequencies of Different Crime Incidents")
+                        # st.write("In Year 2024, the Frequencies of Different Crime Incidents in Zipcode are as follows " + zipcode + ":")
                         
-                        crime_category = []
-                        crime_data = []
-                        for crime in crime_frequency : 
-                            crime_category.append(crime)
-                            crime_data.append(crime_frequency[crime])
+                        # crime_category = []
+                        # crime_data = []
+                        # for crime in crime_frequency : 
+                        #     crime_category.append(crime)
+                        #     crime_data.append(crime_frequency[crime])
 
-                        abbreviation_list = []
-                        category_list = []
-                        for category in crime_category:
-                            if len(category) > 15 :
-                                split_category = category.replace('/', ' ').replace('-', ' ').split()
-                                abbreviation = ''.join(word[0].upper() for word in split_category if word.isalpha())
-                                abbreviation_list.append([abbreviation, category])
-                                category_list.append(abbreviation)
-                            else:
-                                category_list.append(category)
+                        # abbreviation_list = []
+                        # category_list = []
+                        # for category in crime_category:
+                        #     if len(category) > 15 :
+                        #         split_category = category.replace('/', ' ').replace('-', ' ').split()
+                        #         abbreviation = ''.join(word[0].upper() for word in split_category if word.isalpha())
+                        #         abbreviation_list.append([abbreviation, category])
+                        #         category_list.append(abbreviation)
+                        #     else:
+                        #         category_list.append(category)
 
-                        bar_data = pd.DataFrame({
-                            'Category': category_list,
-                            'Values': crime_data
-                        }).set_index('Category')
+                        # bar_data = pd.DataFrame({
+                        #     'Category': category_list,
+                        #     'Values': crime_data
+                        # }).set_index('Category')
 
-                        # make plot
-                        st.bar_chart(bar_data)
-                        st.write(str(abbreviation_list))
+                        # # make plot
+                        # st.bar_chart(bar_data)
+                        # st.write(str(abbreviation_list))
 
                         if classified_service_type != "Other":
                             service_files = {
@@ -657,7 +657,7 @@ if __name__ == '__main__':
                                 longitude_user = location_info['longitude']
                                 print("latitude_user, longitude_user:", latitude_user, longitude_user)
                                 city_name = location_info['place_name']
-                                client = Steamship(workspace="gpt-4-g4d")
+                                # client = Steamship(api_key="25FDC915-9156-4BFB-BA9B-1B213DF1E699")
 
                                 extract_services = []
                                 top_services = ["KITHS Kitchen and Garden (KITHS)", "Social Services -Basic Needs Assistance (Helping Hands Ministry Inc)", "Emergency Housing for Veterans (Fresh Start Foundation)",\
@@ -755,8 +755,8 @@ if __name__ == '__main__':
                         st.write("Código postal:", zipcode)
                         st.write("En el año 2023, el número de incidentes delictivos en el código postal " + zipcode + ":",
                                 str(number_of_crimes))
-                        translate_crime_frequency_client = Steamship(workspace="gpt-4-g4d")
-                        translate_crime_frequency_generator = translate_crime_frequency_client.use_plugin('gpt-4',
+                        translate_crime_frequency_client = Steamship(api_key="25FDC915-9156-4BFB-BA9B-1B213DF1E699")
+                        translate_crime_frequency_generator = translate_crime_frequency_client.use_plugin('gpt-3.5-turbo',
                                                                         config={"temperature": 0.7, "n": 5})
                         translate_crime_frequency_task = translate_crime_frequency_generator.generate(
                             text="Translate the answer to Spanish: " + str(crime_frequency))
@@ -785,10 +785,10 @@ if __name__ == '__main__':
                                 latitude_user = location_info['latitude']
                                 longitude_user = location_info['longitude']
                                 city_name = location_info['place_name']
-                                client = Steamship(workspace="gpt-4-g4d")
+                                client = Steamship(api_key="25FDC915-9156-4BFB-BA9B-1B213DF1E699")
 
                                 # Create an instance of this generator
-                                generator = client.use_plugin('gpt-4', config={"temperature": 0.7, "n": 5})
+                                generator = client.use_plugin('gpt-3.5-turbo', config={"temperature": 0.7, "n": 5})
                                 geolocation_query = "Just list the their names with comma. Please find only five famous buildings or benchmarks close to the location: latitidue: " + str(
                                     latitude_user) + ", " + "longitude: " + str(longitude_user)
                                 task = generator.generate(text=geolocation_query)
@@ -797,8 +797,8 @@ if __name__ == '__main__':
                                 message = [i.text.strip() for i in message]
                                 st.write(f"Coordenadas para {zipcode} ({city_name}): {latitude_user}, {longitude_user}")
                                 #st.write(f"Edificios arquitectónicos alrededor: {message[0]}")
-                                translate_client = Steamship(workspace="gpt-4-g4d")
-                                translate_generator = translate_client.use_plugin('gpt-4',
+                                translate_client = Steamship(api_key="25FDC915-9156-4BFB-BA9B-1B213DF1E699")
+                                translate_generator = translate_client.use_plugin('gpt-3.5-turbo',
                                                                                 config={"temperature": 0.7, "n": 5})
                                 translate_task = translate_generator.generate(
                                     text="Translate the answer to Spanish: " + message[0])
