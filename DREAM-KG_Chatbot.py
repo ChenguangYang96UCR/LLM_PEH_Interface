@@ -33,6 +33,8 @@ import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader, Subset
 import math
 import matplotlib.pyplot as plt
+import smtplib
+from email.mime.text import MIMEText
 
 #from geopy.distance import geodesic
 
@@ -125,51 +127,51 @@ def wild_search_by_keywords(key_word, relation=''):
             triples.append(str(triple).replace('\t', ','))
     return triples
 
+@st.cache_resource(show_spinner=False)
 def getQuestion_answer(Service_list, st):
     all_triples = []    
     all_information = []
     for Service in Service_list:
-        with st.spinner('Loading service information, please wait ...'):
-            triples = wild_search_by_keywords(Service[0])
-            slice_triples = [triples[i:i+100] for i in range(0, len(triples), 100)]
-            all_response = []
-            if not len(triples) == 0:
-                all_triples.extend(triples)
-                index = 1
-                for slice_triple in slice_triples:
-                    if index > 2:
-                        break
-                    answer_prompt = f"""
+        triples = wild_search_by_keywords(Service[0])
+        slice_triples = [triples[i:i+100] for i in range(0, len(triples), 100)]
+        all_response = []
+        if not len(triples) == 0:
+            all_triples.extend(triples)
+            index = 1
+            for slice_triple in slice_triples:
+                if index > 2:
+                    break
+                answer_prompt = f"""
 You are a social science expert, and you need to perform the following two steps step by step -  
 Step1: Given the input knowledge graph triples (i.e., with the format (subject, relation, object)), 
 please output corresponding natural language sentences about introduction and suggestion based on all knowledge graph triples.
 input knowledge graph triples: {slice_triple}
 """
-                    response = openai.ChatCompletion.create(
-                        model="gpt-3.5-turbo",  # Updated to use the latest and more advanced model
-                        messages=[
-                            {"role": "user", "content": answer_prompt}
-                        ],
-                        temperature=0.2
-                    )
-                    all_response.append(response)
-                    index = index + 1
-            combine_prompt = f"""
+                response = openai.ChatCompletion.create(
+                    model="gpt-3.5-turbo",  # Updated to use the latest and more advanced model
+                    messages=[
+                        {"role": "user", "content": answer_prompt}
+                    ],
+                    temperature=0.2
+                )
+                all_response.append(response)
+                index = index + 1
+        combine_prompt = f"""
 Please combine these response, construct corresponding natural language sentences about introduction and suggestion.
 response: {all_response}
 """
-            response = openai.ChatCompletion.create(
-                            model="gpt-3.5-turbo",  # Updated to use the latest and more advanced model
-                            messages=[
-                                {"role": "user", "content": combine_prompt}
-                            ],
-                            temperature=0.2
-                        )
+        response = openai.ChatCompletion.create(
+                        model="gpt-3.5-turbo",  # Updated to use the latest and more advanced model
+                        messages=[
+                            {"role": "user", "content": combine_prompt}
+                        ],
+                        temperature=0.2
+                    )
 
-            st.write(f"**{Service[0]}**")
-            st.write(f"**Google Rating:{Service[1]}**", "\n")
-            st.write(response.choices[0].message['content'])
-        # st.write(f"###{Service[0]} Google Rating:{Service[1]}", "\n", response.choices[0].message['content'])
+        st.write(f"**{Service[0]}**")
+        st.write(f"**Google Rating:{Service[1]}**", "\n")
+        st.write(response.choices[0].message['content'])
+    # st.write(f"###{Service[0]} Google Rating:{Service[1]}", "\n", response.choices[0].message['content'])
     return all_information
 
 def my_component(key=None):
@@ -403,6 +405,42 @@ def parse_extracted_info(extracted_info):
     return service_type, zipcode
 
 
+def send_email(select_option):
+    user_name = st.text_input("Enter your Name: ")
+    user_email = st.text_input("Enter your e-mail or phone number: ")
+    print("streamlit write")
+    st.write(user_name + "  " + user_email)
+    Body = "Appointment name: " + user_name + '\n' + "User contract: " + user_email
+    c1, c2, c3, c4 = st.columns([1, 1, 1, 1], gap="large")
+    print("before button")
+    with c4:
+        appointment = st.button("Make Appointment")
+    if appointment:
+        # Taking inputs
+        # email_sender = "chenguangyang56@gmail.com"
+        # email_receiver = "chenguangyang56@gmail.com"
+        # subject = st.text_input('Subject')
+        # body = st.text_area('Body')
+        # password = st.text_input('ycg19960426', type="password") 
+        with st.spinner('Sending e-mail, please wait ...'):
+            try:
+                msg = MIMEText(Body)
+                msg['From'] = "chenguangyang56@gmail.com"
+                msg['To'] = "chenguangyang56@gmail.com"
+                msg['Subject'] = 'Subject'
+                
+                server = smtplib.SMTP('smtp.gmail.com', 587)
+                server.starttls()
+                server.login("chenguangyang56@gmail.com", 'cwfr xget tdcm yoao')
+                server.sendmail("chenguangyang56@gmail.com", "chenguangyang56@gmail.com", msg.as_string())
+                server.quit()
+
+                st.success('Email sent successfully! 🚀')
+            except Exception as e:
+                st.error(f"Error: Can't send e-mail : {e}")
+
+
+
 if __name__ == '__main__':
     if not _RELEASE:
         _component_func = components.declare_component(
@@ -414,7 +452,9 @@ if __name__ == '__main__':
         parent_dir = os.path.dirname(os.path.abspath(__file__))
         build_dir = os.path.join(parent_dir, "frontend/build")
         _component_func = components.declare_component("my_component", path=build_dir)
-        
+
+    if 'mainpageId' not in st.session_state:
+        st.session_state.mainpageId = "False"
     # Streamlit UI
     img = Image.open('dream_kg_logo_v2.png')
     st.image(img)
@@ -422,10 +462,10 @@ if __name__ == '__main__':
     st.info("**Welcome to DREAM-KG chatbot, start here ↓**", icon="👋") #edited: 10/24
     st.markdown("### 💬 Ask me about services")
     user_query = st.text_input("Enter your query: I need food right now and I am near the Franklin Square", key="user_query")
-    # add picture option
-    ###img_file_buffer = st.camera_input("Take a picture") # "Take a picture"
     # Submit button
     submit_button = st.button("Submit", type="primary")
+    if submit_button:
+        st.session_state.mainpageId = "True"
     #submit_button = st.form_submit_button("Submit", type="primary", use_container_width=True)
 
 
@@ -448,7 +488,6 @@ if __name__ == '__main__':
     """, unsafe_allow_html=True)
 
     # Add feedback option
-    #feedback = streamlit_feedback(feedback_type="thumbs")
     feedback = streamlit_feedback(
         feedback_type="faces",
         optional_text_label="[Optional] Post Review",
@@ -456,12 +495,11 @@ if __name__ == '__main__':
     # done
 
     # Initialize global variables
+    #! Openai api key
     conversation_history = []
-    api_key = 'sk'
-    #'sk-proj-yu46NPL9HS19sGFQApnWT3BlbkFJNDYsqs3gsWPJFpvmGwsZ'
-    #'sk-proj-fTGwpbf19mQlPAx6iLRCT3BlbkFJMfQ8QAelwblEgiVmOl0p'  # Replace this with your actual OpenAI API key
+    api_key = ''
         
-    if submit_button:
+    if st.session_state.mainpageId == "True":
         #print("user_query:", user_query)
         response = ask_openai_for_service_extraction(user_query, api_key, conversation_history)
         print("user_query:", user_query)
@@ -516,8 +554,6 @@ if __name__ == '__main__':
                             st.write("**Specific Temporary Housing for Single Man/Men:**", "If you are single man/men, please consider Mark Hinson Resource Center (Phone: 215-923-2600; Address: 1701 W Lehigh Ave, Philadelphia, PA 19132")
                             st.write("**Specific Temporary Housing for Families:**", "If you have families, please consider Salvation Army Red Shield Center (Phone: 215-787-2887; Address: 715 N Broad St, Philadelphia, PA 19123")
 
-
-                        # st.subheader("Zipcode")
                         st.markdown("#### Zipcode")
                         st.write(zipcode)
 
@@ -670,7 +706,7 @@ if __name__ == '__main__':
                                         service_name = service[0]
                                         extract_services.append([service_name[start_brasket+1:end_brasket], service[1]])
 
-
+                                #! Making map 
                                 map = folium.Map(location=[latitude_user, longitude_user], zoom_start=12)
                                 folium.CircleMarker(
                                     location=[latitude_user, longitude_user],
@@ -713,10 +749,18 @@ if __name__ == '__main__':
 
                                 st.header(f"{classified_service_type} Services near {zipcode}")
                                 folium_static(map, width=800, height=600)  # Adjust width and height as needed
+
+                                # ! Service information
                                 st.header(f"Services Information")
-                                
                                 print('extract services list : {0}'.format(len(extract_services)))
-                                service_information = getQuestion_answer(extract_services, st)
+                                with st.spinner('Loading service information, please wait ...'):
+                                    service_information = getQuestion_answer(extract_services, st)
+                                Options = [None]
+                                for service in extract_services: 
+                                    Options.append(str(service))
+                                selected_option = st.selectbox('Select a recommendation', Options)
+                                if not selected_option is None:
+                                    send_email(selected_option)
 
                             else:
                                 st.sidebar.error(f"Error: Unable to retrieve location information for ZIP code {zipcode}")
