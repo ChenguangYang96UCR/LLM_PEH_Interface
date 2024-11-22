@@ -35,6 +35,7 @@ import math
 import matplotlib.pyplot as plt
 import smtplib
 from email.mime.text import MIMEText
+import fcntl
 
 #from geopy.distance import geodesic
 
@@ -506,7 +507,13 @@ if __name__ == '__main__':
         feedback_type="faces",
         optional_text_label="[Optional] Post Review",
     )
-    # done
+    if not feedback is None:
+        with open('./Customer_Review.txt', 'a', encoding='utf-8') as file:
+            fcntl.flock(file.fileno(), fcntl.LOCK_EX)
+            if 'score' in feedback:
+                file.write('User rate: ' + feedback['score'] + '\n')
+            if 'text' in feedback and feedback['text'] is not None:
+                file.write('User review: ' + feedback['text'] + '\n')
 
     # Initialize global variables
     #! Openai api key
