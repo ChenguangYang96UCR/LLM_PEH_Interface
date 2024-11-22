@@ -406,39 +406,54 @@ def parse_extracted_info(extracted_info):
 
 
 def send_email(select_option):
-    user_name = st.text_input("Enter your Name: ")
-    user_email = st.text_input("Enter your e-mail or phone number: ")
-    print("streamlit write")
-    st.write(user_name + "  " + user_email)
-    Body = "Appointment name: " + user_name + '\n' + "User contract: " + user_email
+
+    c1, c2 = st.columns([1, 1], gap="small")
+    with c1:
+        user_name = st.text_input("Name *")
+    with c2:
+        user_contract = st.text_input("Email/Phone *")
+  
+    Body = "Appointment name: " + user_name + '\n' + "User contract: " + user_contract + '\n'
+
+    c1, c2, c3= st.columns([1, 1, 1], gap="small")
+    with c1:
+        street_address = st.text_input("Street Address")
+    with c2:
+        city = st.text_input("City")
+    with c3:
+        zip = st.text_input("ZIP")
+
+    inquirys = ["Please Select", "General Inquiry", "Adult Service", "Elderly Service", "Youth Service", "Family Service"]
+    selected_option = st.selectbox('I am inquiring about...', inquirys)
+    message = st.text_input("Your Message")
+
     c1, c2, c3, c4 = st.columns([1, 1, 1, 1], gap="large")
-    print("before button")
     with c4:
         appointment = st.button("Make Appointment")
     if appointment:
-        # Taking inputs
-        # email_sender = "chenguangyang56@gmail.com"
-        # email_receiver = "chenguangyang56@gmail.com"
-        # subject = st.text_input('Subject')
-        # body = st.text_area('Body')
-        # password = st.text_input('ycg19960426', type="password") 
+        if not inquirys is "Please Select":
+            Body = Body + "Inquiry: " + selected_option + '\n' + 'Message: ' + message + '\n'
+        if not street_address is "":
+            Body = Body + "Street: " + street_address + '\n'
+        if not city is "":
+            Body = Body + "City: " + city + '\n'
+        if not zip is "":
+            Body = Body + "Zip: " + zip + '\n'
+
         with st.spinner('Sending e-mail, please wait ...'):
             try:
                 msg = MIMEText(Body)
                 msg['From'] = "chenguangyang56@gmail.com"
                 msg['To'] = "chenguangyang56@gmail.com"
-                msg['Subject'] = 'Subject'
-                
+                msg['Subject'] = 'Appointment'
                 server = smtplib.SMTP('smtp.gmail.com', 587)
                 server.starttls()
                 server.login("chenguangyang56@gmail.com", 'cwfr xget tdcm yoao')
                 server.sendmail("chenguangyang56@gmail.com", "chenguangyang56@gmail.com", msg.as_string())
                 server.quit()
-
                 st.success('Email sent successfully! 🚀')
             except Exception as e:
                 st.error(f"Error: Can't send e-mail : {e}")
-
 
 
 if __name__ == '__main__':
@@ -467,7 +482,6 @@ if __name__ == '__main__':
     if submit_button:
         st.session_state.mainpageId = "True"
     #submit_button = st.form_submit_button("Submit", type="primary", use_container_width=True)
-
 
     replicate_text = "DREAM-KG: Develop Dynamic, REsponsive, Adaptive, and Multifaceted Knowledge Graphs to address homelessness with Explainable AI"
     replicate_link = "https://dreamkg.com/"
@@ -758,7 +772,7 @@ if __name__ == '__main__':
                                 Options = [None]
                                 for service in extract_services: 
                                     Options.append(str(service))
-                                selected_option = st.selectbox('Select a recommendation', Options)
+                                selected_option = st.selectbox('Select a service', Options)
                                 if not selected_option is None:
                                     send_email(selected_option)
 
