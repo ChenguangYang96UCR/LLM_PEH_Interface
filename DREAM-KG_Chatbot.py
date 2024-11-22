@@ -36,22 +36,11 @@ import matplotlib.pyplot as plt
 import smtplib
 from email.mime.text import MIMEText
 import fcntl
+import streamlit_js_eval
 
 #from geopy.distance import geodesic
 
 _RELEASE = False
-
-# if not _RELEASE:
-#     _component_func = components.declare_component(
-#         "my_component",
-#         #url="http://localhost:3001",
-#         url="http://localhost:8501/",
-#     )
-# else:
-#     parent_dir = os.path.dirname(os.path.abspath(__file__))
-#     build_dir = os.path.join(parent_dir, "frontend/build")
-#     _component_func = components.declare_component("my_component", path=build_dir)
-
 
 class PassengerDataset(Dataset):
     def __init__(self, data, sequence_length):
@@ -296,17 +285,6 @@ def read_data(df):
         
         # Get the opening hours for the current day
         opening_hours_today = row[current_day] if pd.notna(row[current_day]) else 'Unavailable'
-        #current_time = now.strftime("%H:%M")
-        #print("opening_hours_today: ", opening_hours_today, opening_hours_today[:7])
-
-        # determine whether the service is open or closed
-        #timeStart = datetime.strptime(opening_hours_today[:7], "%I:%M%p")
-        ###timeEnd = datetime.strptime(timeEnd, "%I:%M%p")
-        #timeNow = datetime.strptime(current_time, "%I:%M%p")
-
-
-
-        # Format popup information to include today's hours
         info = f"""
             <strong>{row['Service_Name']}</strong><br>
             <strong>Today's Hours:</strong> {opening_hours_today}<br>
@@ -405,9 +383,8 @@ def parse_extracted_info(extracted_info):
     
     return service_type, zipcode
 
-
+# * Send email to services
 def send_email(select_option):
-
     c1, c2 = st.columns([1, 1], gap="small")
     with c1:
         user_name = st.text_input("Name *")
@@ -430,15 +407,15 @@ def send_email(select_option):
 
     c1, c2, c3, c4 = st.columns([1, 1, 1, 1], gap="large")
     with c4:
-        appointment = st.button("Make Appointment")
+        appointment = st.form_submit_button("Make Appointment")
     if appointment:
-        if not inquirys is "Please Select":
+        if inquirys != "Please Select":
             Body = Body + "Inquiry: " + selected_option + '\n' + 'Message: ' + message + '\n'
-        if not street_address is "":
+        if street_address !=  "":
             Body = Body + "Street: " + street_address + '\n'
-        if not city is "":
+        if city !=   "":
             Body = Body + "City: " + city + '\n'
-        if not zip is "":
+        if zip !=  "":
             Body = Body + "Zip: " + zip + '\n'
 
         with st.spinner('Sending e-mail, please wait ...'):
@@ -456,7 +433,7 @@ def send_email(select_option):
             except Exception as e:
                 st.error(f"Error: Can't send e-mail : {e}")
 
-
+#! main function of interface 
 if __name__ == '__main__':
     if not _RELEASE:
         _component_func = components.declare_component(
@@ -469,449 +446,459 @@ if __name__ == '__main__':
         build_dir = os.path.join(parent_dir, "frontend/build")
         _component_func = components.declare_component("my_component", path=build_dir)
 
-    if 'mainpageId' not in st.session_state:
-        st.session_state.mainpageId = "False"
-    # Streamlit UI
-    img = Image.open('dream_kg_logo_v2.png')
-    st.image(img)
-    #st.markdown("# **Start Here ↓**", icon="👇")
-    st.info("**Welcome to DREAM-KG chatbot, start here ↓**", icon="👋") #edited: 10/24
-    st.markdown("### 💬 Ask me about services")
-    user_query = st.text_input("Enter your query: I need food right now and I am near the Franklin Square", key="user_query")
-    # Submit button
-    submit_button = st.button("Submit", type="primary")
-    if submit_button:
-        st.session_state.mainpageId = "True"
-    #submit_button = st.form_submit_button("Submit", type="primary", use_container_width=True)
+    with st.form(key = "main_form", border=False): 
+        if 'mainpageId' not in st.session_state:
+            st.session_state.mainpageId = "False"
+        # Streamlit UI
+        img = Image.open('dream_kg_logo_v2.png')
+        st.image(img)
 
-    replicate_text = "DREAM-KG: Develop Dynamic, REsponsive, Adaptive, and Multifaceted Knowledge Graphs to address homelessness with Explainable AI"
-    replicate_link = "https://dreamkg.com/"
-    replicate_logo = "https://storage.googleapis.com/llama2_release/Screen%20Shot%202023-07-21%20at%2012.34.05%20PM.png"
-    st.markdown(
-                ":orange[**Resources:**]  \n"
-                f"<img src='{replicate_logo}' style='height: 1em'> [{replicate_text}]({replicate_link})",
-                unsafe_allow_html=True
-    )
+        # * Acquire the location of user
+        loc = streamlit_js_eval.get_geolocation()
+        # st.write(f"Your coordinates are {loc}")
+         
+        #st.markdown("# **Start Here ↓**", icon="👇")
+        st.info("**Welcome to DREAM-KG chatbot, start here ↓**", icon="👋") #edited: 10/24
+        st.markdown("### 💬 Ask me about services")
+        user_query = st.text_input("Enter your query: I need food right now and I am near the Franklin Square", key="user_query")
+        # Submit button
+        submit_button = st.form_submit_button("Submit", type="primary")
+        if submit_button:
+            st.session_state.mainpageId = "True"
+        #submit_button = st.form_submit_button("Submit", type="primary", use_container_width=True)
 
-    ### 10/24 - edited
-    st.markdown("""
-    <style>
-        [data-testid=stSidebar] {
-            background-color: #fcb290;
-        }
-    </style>
-    """, unsafe_allow_html=True)
+        replicate_text = "DREAM-KG: Develop Dynamic, REsponsive, Adaptive, and Multifaceted Knowledge Graphs to address homelessness with Explainable AI"
+        replicate_link = "https://dreamkg.com/"
+        replicate_logo = "https://storage.googleapis.com/llama2_release/Screen%20Shot%202023-07-21%20at%2012.34.05%20PM.png"
+        st.markdown(
+                    ":orange[**Resources:**]  \n"
+                    f"<img src='{replicate_logo}' style='height: 1em'> [{replicate_text}]({replicate_link})",
+                    unsafe_allow_html=True
+        )
 
-    # Add feedback option
-    feedback = streamlit_feedback(
-        feedback_type="faces",
-        optional_text_label="[Optional] Post Review",
-    )
-    if not feedback is None:
-        with open('./Customer_Review.txt', 'a', encoding='utf-8') as file:
-            fcntl.flock(file.fileno(), fcntl.LOCK_EX)
-            if 'score' in feedback:
-                file.write('User rate: ' + feedback['score'] + '\n')
-            if 'text' in feedback and feedback['text'] is not None:
-                file.write('User review: ' + feedback['text'] + '\n')
+        ### 10/24 - edited
+        st.markdown("""
+        <style>
+            [data-testid=stSidebar] {
+                background-color: #fcb290;
+            }
+        </style>
+        """, unsafe_allow_html=True)
 
-    # Initialize global variables
-    #! Openai api key
-    conversation_history = []
-    api_key = ''
-        
-    if st.session_state.mainpageId == "True":
-        #print("user_query:", user_query)
-        response = ask_openai_for_service_extraction(user_query, api_key, conversation_history)
-        print("user_query:", user_query)
-        input_language = detect(user_query)
-        if input_language == 'en':
-            if response.choices:
-                extracted_info = response.choices[0].message['content'].strip()
-                st.write("Extracted Information:", extracted_info)
+        # Add feedback option
+        feedback = streamlit_feedback(
+            feedback_type="faces",
+            optional_text_label="[Optional] Post Review",
+        )
+        if not feedback is None:
+            with open('./Customer_Review.txt', 'a', encoding='utf-8') as file:
+                fcntl.flock(file.fileno(), fcntl.LOCK_EX)
+                if 'score' in feedback:
+                    file.write('User rate: ' + feedback['score'] + '\n')
+                if 'text' in feedback and feedback['text'] is not None:
+                    file.write('User review: ' + feedback['text'] + '\n')
 
-                service_type, zipcode = parse_extracted_info(extracted_info)
-                #print("service_type:", service_type)
-                # crime incidents analysis
-                crime_data_df = pd.read_csv('Final_Philadelphia_Crime_Data_2023.csv')
-                crime_data = crime_data_df.values
-                number_of_crimes = np.where(int(zipcode) == crime_data[:, 18])[0].shape[0]
-                # category of crimes
-                number_of_crimes_index = np.where(int(zipcode) == crime_data[:, 18])[0]
-                sub_crime_data = crime_data[number_of_crimes_index,]
-                # property victimization
-                number_of_property_crimes_index = \
-                np.where(('Thefts' == sub_crime_data[:, 13]) | ('Vandalism/Criminal Mischief' == sub_crime_data[:, 13])
-                        | ('Arson' == sub_crime_data[:, 13]) | ('Burglary Residential' == sub_crime_data[:, 13])
-                        | ('Theft from Vehicle' == sub_crime_data[:, 13]) | (
-                                    'Motor Vehicle Theft' == sub_crime_data[:, 13]))[0]
-                number_of_property_crimes = number_of_property_crimes_index.shape[0]
-                # personal victimization
-                number_of_personal_crimes_index = \
-                np.where(('Other Assaults' == sub_crime_data[:, 13]) | ('Robbery No Firearm' == sub_crime_data[:, 13])
-                        | ('Robbery Firearm' == sub_crime_data[:, 13]) | (
-                                    'Offenses Against Family and Children' == sub_crime_data[:, 13])
-                        | ('Other Sex Offenses (Not Commercialized)' == sub_crime_data[:, 13]))[0]
-                number_of_personal_crimes = number_of_personal_crimes_index.shape[0]
-                crime_frequency = crime_data_df.loc[
-                    np.where(int(zipcode) == crime_data[:, 18])[0], 'text_general_code'].value_counts().to_dict()
+        # Initialize global variables
+        #! Openai api key
+        conversation_history = []
+        api_key = ''
+            
+        if st.session_state.mainpageId == "True":
+            #print("user_query:", user_query)
+            response = ask_openai_for_service_extraction(user_query, api_key, conversation_history)
+            print("user_query:", user_query)
+            input_language = detect(user_query)
+            if input_language == 'en':
+                if response.choices:
+                    extracted_info = response.choices[0].message['content'].strip()
+                    st.write("Extracted Information:", extracted_info)
 
-                now = datetime.now()
+                    service_type, zipcode = parse_extracted_info(extracted_info)
+                    #print("service_type:", service_type)
+                    # crime incidents analysis
+                    crime_data_df = pd.read_csv('Final_Philadelphia_Crime_Data_2023.csv')
+                    crime_data = crime_data_df.values
+                    number_of_crimes = np.where(int(zipcode) == crime_data[:, 18])[0].shape[0]
+                    # category of crimes
+                    number_of_crimes_index = np.where(int(zipcode) == crime_data[:, 18])[0]
+                    sub_crime_data = crime_data[number_of_crimes_index,]
+                    # property victimization
+                    number_of_property_crimes_index = \
+                    np.where(('Thefts' == sub_crime_data[:, 13]) | ('Vandalism/Criminal Mischief' == sub_crime_data[:, 13])
+                            | ('Arson' == sub_crime_data[:, 13]) | ('Burglary Residential' == sub_crime_data[:, 13])
+                            | ('Theft from Vehicle' == sub_crime_data[:, 13]) | (
+                                        'Motor Vehicle Theft' == sub_crime_data[:, 13]))[0]
+                    number_of_property_crimes = number_of_property_crimes_index.shape[0]
+                    # personal victimization
+                    number_of_personal_crimes_index = \
+                    np.where(('Other Assaults' == sub_crime_data[:, 13]) | ('Robbery No Firearm' == sub_crime_data[:, 13])
+                            | ('Robbery Firearm' == sub_crime_data[:, 13]) | (
+                                        'Offenses Against Family and Children' == sub_crime_data[:, 13])
+                            | ('Other Sex Offenses (Not Commercialized)' == sub_crime_data[:, 13]))[0]
+                    number_of_personal_crimes = number_of_personal_crimes_index.shape[0]
+                    crime_frequency = crime_data_df.loc[
+                        np.where(int(zipcode) == crime_data[:, 18])[0], 'text_general_code'].value_counts().to_dict()
 
-                current_time = now.strftime("%H:%M:%S")
+                    now = datetime.now()
 
-                if service_type and zipcode:
-                    try:
-                        classified_service_type = classify_service_type(service_type, api_key)
-                        st.markdown("#### Current Time in Eastern Standard Time")
-                        st.write(current_time)
+                    current_time = now.strftime("%H:%M:%S")
 
-                        st.markdown("#### Type of Service")
-                        st.write(classified_service_type)
+                    if service_type and zipcode:
+                        try:
+                            classified_service_type = classify_service_type(service_type, api_key)
+                            st.markdown("#### Current Time in Eastern Standard Time")
+                            st.write(current_time)
 
-                        if classified_service_type == 'Shelter':
-                            st.write("**Specific Temporary Housing for Veteran:**", "If you are veteran, please consider Veterans Multi Service Center (Phone: 215-238-8067; Address: 213-217 N 4th St, Philadelphia, PA 19106)")
-                            st.write("**Specific Temporary Housing for Single Woman/Women:**", "If you are single woman/women, please consider House of Passage (Phone: 267-713-7778; Address: 111 N 49th St, Philadelphia, PA 19139)")
-                            st.write("**Specific Temporary Housing for Single Man/Men:**", "If you are single man/men, please consider Mark Hinson Resource Center (Phone: 215-923-2600; Address: 1701 W Lehigh Ave, Philadelphia, PA 19132")
-                            st.write("**Specific Temporary Housing for Families:**", "If you have families, please consider Salvation Army Red Shield Center (Phone: 215-787-2887; Address: 715 N Broad St, Philadelphia, PA 19123")
+                            st.markdown("#### Type of Service")
+                            st.write(classified_service_type)
 
-                        st.markdown("#### Zipcode")
-                        st.write(zipcode)
+                            if classified_service_type == 'Shelter':
+                                st.write("**Specific Temporary Housing for Veteran:**", "If you are veteran, please consider Veterans Multi Service Center (Phone: 215-238-8067; Address: 213-217 N 4th St, Philadelphia, PA 19106)")
+                                st.write("**Specific Temporary Housing for Single Woman/Women:**", "If you are single woman/women, please consider House of Passage (Phone: 267-713-7778; Address: 111 N 49th St, Philadelphia, PA 19139)")
+                                st.write("**Specific Temporary Housing for Single Man/Men:**", "If you are single man/men, please consider Mark Hinson Resource Center (Phone: 215-923-2600; Address: 1701 W Lehigh Ave, Philadelphia, PA 19132")
+                                st.write("**Specific Temporary Housing for Families:**", "If you have families, please consider Salvation Army Red Shield Center (Phone: 215-787-2887; Address: 715 N Broad St, Philadelphia, PA 19123")
 
-                        # st.markdown("#### Total Crime Incidents, Number of Property Victimization, and Number of Personal Victimization")
-                        # st.write("In Year 2024, the Number of Crime Incidents in Zipcode " + zipcode + " is ",
-                        #         str(number_of_crimes), ",", " where there are ", str(number_of_property_crimes), "property victimization and there are ", str(number_of_personal_crimes), "personal victimization")
-                        
-                        # st.markdown("#### Frequencies of Different Crime Incidents")
-                        # st.write("In Year 2024, the Frequencies of Different Crime Incidents in Zipcode are as follows " + zipcode + ":")
-                        
-                        # crime_category = []
-                        # crime_data = []
-                        # for crime in crime_frequency : 
-                        #     crime_category.append(crime)
-                        #     crime_data.append(crime_frequency[crime])
+                            st.markdown("#### Zipcode")
+                            st.write(zipcode)
 
-                        # abbreviation_list = []
-                        # category_list = []
-                        # for category in crime_category:
-                        #     if len(category) > 15 :
-                        #         split_category = category.replace('/', ' ').replace('-', ' ').split()
-                        #         abbreviation = ''.join(word[0].upper() for word in split_category if word.isalpha())
-                        #         abbreviation_list.append([abbreviation, category])
-                        #         category_list.append(abbreviation)
-                        #     else:
-                        #         category_list.append(category)
+                            # st.markdown("#### Total Crime Incidents, Number of Property Victimization, and Number of Personal Victimization")
+                            # st.write("In Year 2024, the Number of Crime Incidents in Zipcode " + zipcode + " is ",
+                            #         str(number_of_crimes), ",", " where there are ", str(number_of_property_crimes), "property victimization and there are ", str(number_of_personal_crimes), "personal victimization")
+                            
+                            # st.markdown("#### Frequencies of Different Crime Incidents")
+                            # st.write("In Year 2024, the Frequencies of Different Crime Incidents in Zipcode are as follows " + zipcode + ":")
+                            
+                            # crime_category = []
+                            # crime_data = []
+                            # for crime in crime_frequency : 
+                            #     crime_category.append(crime)
+                            #     crime_data.append(crime_frequency[crime])
 
-                        # bar_data = pd.DataFrame({
-                        #     'Category': category_list,
-                        #     'Values': crime_data
-                        # }).set_index('Category')
+                            # abbreviation_list = []
+                            # category_list = []
+                            # for category in crime_category:
+                            #     if len(category) > 15 :
+                            #         split_category = category.replace('/', ' ').replace('-', ' ').split()
+                            #         abbreviation = ''.join(word[0].upper() for word in split_category if word.isalpha())
+                            #         abbreviation_list.append([abbreviation, category])
+                            #         category_list.append(abbreviation)
+                            #     else:
+                            #         category_list.append(category)
 
-                        # # make plot
-                        # st.bar_chart(bar_data)
-                        # st.write(str(abbreviation_list))
+                            # bar_data = pd.DataFrame({
+                            #     'Category': category_list,
+                            #     'Values': crime_data
+                            # }).set_index('Category')
 
-                        if classified_service_type != "Other":
-                            service_files = {
-                                "Shelter": "Final_Temporary_Shelter_20240723.csv",
-                                "Mental Health": "Final_Mental_Health_20240723.csv",
-                                "Food": "Final_Emergency_Food_20240723.csv"
-                            }
-                            datafile = service_files[classified_service_type]
-                            df = pd.read_csv(datafile)
-                            data, service_list = read_data(df)
+                            # # make plot
+                            # st.bar_chart(bar_data)
+                            # st.write(str(abbreviation_list))
 
-                            # load crime data (till 07/2024) for visualization
-                            crime_data_df = pd.read_csv('three_days_philly_incidents_2024.csv')
-                            crime_data = read_crime_data(crime_data_df)
+                            if classified_service_type != "Other":
+                                service_files = {
+                                    "Shelter": "Final_Temporary_Shelter_20240723.csv",
+                                    "Mental Health": "Final_Mental_Health_20240723.csv",
+                                    "Food": "Final_Emergency_Food_20240723.csv"
+                                }
+                                datafile = service_files[classified_service_type]
+                                df = pd.read_csv(datafile)
+                                data, service_list = read_data(df)
 
-                            crime_df = pd.read_csv('Final_Pandas_tensor_2023.csv')
-                            crime_df.columns = ["month", "zipcode", "Homicide Criminal", "Rape", "Robbery No Firearm",
-                                                "Aggravated Assault No Firearm", "Burglary Residential",
-                                                "Thefts", "Motor Vehicle Theft", "All Other Offenses", "Other Assaults",
-                                                "Forgery and Counterfeiting", "Fraud", "Embezzlement",
-                                                "Receiving Stolen Property",
-                                                "Vandalism/Criminal Mischief", "Weapon Violations",
-                                                "Prostitution and Commercialized Vice", "Other Sex Offenses",
-                                                "Narcotic/Drug Law Violations", "Gambling Violations",
-                                                "Offenses Against Family and Children", "DRIVING UNDER THE INFLUENCE",
-                                                "Liquor Law Violations", "Public Drunkenness", "Disorderly Conduct",
-                                                "Vagrancy/Loitering", "Theft from Vehicle",
-                                                "psa_1", "psa_2", "psa_3", "psa_4", "psa_A",
-                                                "total_hours"]  # change col name
+                                # load crime data (till 07/2024) for visualization
+                                crime_data_df = pd.read_csv('three_days_philly_incidents_2024.csv')
+                                crime_data = read_crime_data(crime_data_df)
 
-                            zipcode_num = int(zipcode)
-                            print("zipcode_num is:", zipcode_num)
-                            # top-3 crime incidents
-                            crime_type_list = sorted(crime_frequency, key=crime_frequency.get, reverse=True)[:3] #'All_Other_Offenses' # only focus on top three crime types
-                            final_pred_res = [] # number of prediction in weeks
-                            print(crime_type_list)
-                            for crime_type in crime_type_list:
-                                new_crime_df = crime_df.loc[crime_df['zipcode'] == zipcode_num, ['month', crime_type]]
-                                # print(crime_df.query('zipcode' = zipcode_num))
-                                passenger_counts = new_crime_df[crime_type].values
-                                sequence_length = 3  # we will use data of 12 months to predict the passenger in 13th month - need to change
-                                batch_size = 1
-                                dataset = PassengerDataset(passenger_counts, sequence_length)
-                                test_size = 3  # 12 months for test
-                                train_size = len(dataset) - test_size
-                                train_dataset = Subset(dataset, range(0, train_size))
-                                test_dataset = Subset(dataset, range(train_size, len(dataset)))
-                                assert len(train_dataset) + len(test_dataset) == len(dataset)
-                                train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=False)
-                                test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
-                                input_size = sequence_length
-                                output_size = 1  # predict 1 month
-                                hidden_size = 32
-                                rnn = RNN(input_size, hidden_size, output_size)
-                                num_epochs = 50
-                                learning_rate = 0.0002
-                                criterion = nn.MSELoss()
-                                optimizer = optim.Adam(rnn.parameters(), lr=learning_rate)
-                                print_step = 20
-                                all_losses = []
-                                for epoch in range(num_epochs):
-                                    loss_this_epoch = []
-                                    for inputs, target in train_loader:
-                                        loss = train(inputs, target)
-                                        loss_this_epoch.append(loss.item())
-                                    loss_this_epoch = np.array(loss_this_epoch).mean()
-                                    all_losses.append(loss_this_epoch)
-                                    # if (epoch == 0) or ((epoch + 1) % print_step == 0):
-                                    #    print(f"Epoch {epoch+1: <3}/{num_epochs} | loss = {loss_this_epoch}")
+                                crime_df = pd.read_csv('Final_Pandas_tensor_2023.csv')
+                                crime_df.columns = ["month", "zipcode", "Homicide Criminal", "Rape", "Robbery No Firearm",
+                                                    "Aggravated Assault No Firearm", "Burglary Residential",
+                                                    "Thefts", "Motor Vehicle Theft", "All Other Offenses", "Other Assaults",
+                                                    "Forgery and Counterfeiting", "Fraud", "Embezzlement",
+                                                    "Receiving Stolen Property",
+                                                    "Vandalism/Criminal Mischief", "Weapon Violations",
+                                                    "Prostitution and Commercialized Vice", "Other Sex Offenses",
+                                                    "Narcotic/Drug Law Violations", "Gambling Violations",
+                                                    "Offenses Against Family and Children", "DRIVING UNDER THE INFLUENCE",
+                                                    "Liquor Law Violations", "Public Drunkenness", "Disorderly Conduct",
+                                                    "Vagrancy/Loitering", "Theft from Vehicle",
+                                                    "psa_1", "psa_2", "psa_3", "psa_4", "psa_A",
+                                                    "total_hours"]  # change col name
 
-                                y_true = []
-                                y_pred = []
+                                zipcode_num = int(zipcode)
+                                print("zipcode_num is:", zipcode_num)
+                                # top-3 crime incidents
+                                crime_type_list = sorted(crime_frequency, key=crime_frequency.get, reverse=True)[:3] #'All_Other_Offenses' # only focus on top three crime types
+                                final_pred_res = [] # number of prediction in weeks
+                                print(crime_type_list)
+                                for crime_type in crime_type_list:
+                                    new_crime_df = crime_df.loc[crime_df['zipcode'] == zipcode_num, ['month', crime_type]]
+                                    # print(crime_df.query('zipcode' = zipcode_num))
+                                    passenger_counts = new_crime_df[crime_type].values
+                                    sequence_length = 3  # we will use data of 12 months to predict the passenger in 13th month - need to change
+                                    batch_size = 1
+                                    dataset = PassengerDataset(passenger_counts, sequence_length)
+                                    test_size = 3  # 12 months for test
+                                    train_size = len(dataset) - test_size
+                                    train_dataset = Subset(dataset, range(0, train_size))
+                                    test_dataset = Subset(dataset, range(train_size, len(dataset)))
+                                    assert len(train_dataset) + len(test_dataset) == len(dataset)
+                                    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=False)
+                                    test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
+                                    input_size = sequence_length
+                                    output_size = 1  # predict 1 month
+                                    hidden_size = 32
+                                    rnn = RNN(input_size, hidden_size, output_size)
+                                    num_epochs = 50
+                                    learning_rate = 0.0002
+                                    criterion = nn.MSELoss()
+                                    optimizer = optim.Adam(rnn.parameters(), lr=learning_rate)
+                                    print_step = 20
+                                    all_losses = []
+                                    for epoch in range(num_epochs):
+                                        loss_this_epoch = []
+                                        for inputs, target in train_loader:
+                                            loss = train(inputs, target)
+                                            loss_this_epoch.append(loss.item())
+                                        loss_this_epoch = np.array(loss_this_epoch).mean()
+                                        all_losses.append(loss_this_epoch)
+                                        # if (epoch == 0) or ((epoch + 1) % print_step == 0):
+                                        #    print(f"Epoch {epoch+1: <3}/{num_epochs} | loss = {loss_this_epoch}")
 
-                                hidden = rnn.init_hidden(batch_size)
-                                for inputs, target in test_loader:
-                                    output, target = predict(inputs, target, hidden)
-                                    y_pred.append(output.item())
-                                    y_true.append(target.item())
+                                    y_true = []
+                                    y_pred = []
 
-                                y_true = (np.array(y_true))
-                                y_pred = (np.array(y_pred))
-                                print("y_pred:", y_pred)
-                                final_pred_res.append(np.floor(y_pred))
+                                    hidden = rnn.init_hidden(batch_size)
+                                    for inputs, target in test_loader:
+                                        output, target = predict(inputs, target, hidden)
+                                        y_pred.append(output.item())
+                                        y_true.append(target.item())
 
-                            chart_data = pd.DataFrame(np.array(final_pred_res).transpose(), columns=crime_type_list)
-                            chart_data['Day'] = ["Day 1", "Day 2", "Day 3"]
-                            print("chart_data:", chart_data)
-                            st.scatter_chart(
-                                chart_data,
-                                x="Day",
-                                y=crime_type_list,
-                                #size="col4",
-                                color=["#fd0", "#f0f", "#04f"],  # Optional
-                            )
+                                    y_true = (np.array(y_true))
+                                    y_pred = (np.array(y_pred))
+                                    print("y_pred:", y_pred)
+                                    final_pred_res.append(np.floor(y_pred))
 
-                            # Use pgeocode for geocoding
-                            nomi = pgeocode.Nominatim('us')
-                            location_info = nomi.query_postal_code(zipcode)
+                                chart_data = pd.DataFrame(np.array(final_pred_res).transpose(), columns=crime_type_list)
+                                chart_data['Day'] = ["Day 1", "Day 2", "Day 3"]
+                                print("chart_data:", chart_data)
+                                st.scatter_chart(
+                                    chart_data,
+                                    x="Day",
+                                    y=crime_type_list,
+                                    #size="col4",
+                                    color=["#fd0", "#f0f", "#04f"],  # Optional
+                                )
 
-                            if not location_info.empty:
-                                latitude_user = location_info['latitude']
-                                longitude_user = location_info['longitude']
-                                print("latitude_user, longitude_user:", latitude_user, longitude_user)
-                                city_name = location_info['place_name']
-                                # client = Steamship(api_key="25FDC915-9156-4BFB-BA9B-1B213DF1E699")
+                                # Use pgeocode for geocoding
+                                nomi = pgeocode.Nominatim('us')
+                                location_info = nomi.query_postal_code(zipcode)
 
-                                extract_services = []
-                                top_services = ["KITHS Kitchen and Garden (KITHS)", "Social Services -Basic Needs Assistance (Helping Hands Ministry Inc)", "Emergency Housing for Veterans (Fresh Start Foundation)",\
-                                                "Adult Behavioral Health Inpatient Treatment (Friends Hospital)", "Adult Outpatient Services (Hispanic Community Counseling Services)", "Opioid Treatment Program (Achievement Through Counseling and Treatment)",\
-                                                "Church-Based Shelters (Bethesda Project)", "RHD Fernwood Program (Resources for Human Development-Pennsylvania)", "Various Community Events and Programs (Conquerors Community Development Corporation)"]                            
-                                for service in service_list:
-                                    if service[0] in top_services:
-                                        start_brasket = service[0].find('(')
-                                        end_brasket = service[0].find(')', start_brasket + 1)
-                                        service_name = service[0]
-                                        extract_services.append([service_name[start_brasket+1:end_brasket], service[1]])
+                                if not location_info.empty:
+                                    latitude_user = location_info['latitude']
+                                    longitude_user = location_info['longitude']
+                                    print("latitude_user, longitude_user:", latitude_user, longitude_user)
+                                    city_name = location_info['place_name']
+                                    # client = Steamship(api_key="25FDC915-9156-4BFB-BA9B-1B213DF1E699")
 
-                                #! Making map 
-                                map = folium.Map(location=[latitude_user, longitude_user], zoom_start=12)
-                                folium.CircleMarker(
-                                    location=[latitude_user, longitude_user],
-                                    radius=80,
-                                    color='blue',
-                                    fill=True,
-                                    fill_color='blue',
-                                    fill_opacity=0.2
-                                ).add_to(map)
+                                    extract_services = []
+                                    top_services = ["KITHS Kitchen and Garden (KITHS)", "Social Services -Basic Needs Assistance (Helping Hands Ministry Inc)", "Emergency Housing for Veterans (Fresh Start Foundation)",\
+                                                    "Adult Behavioral Health Inpatient Treatment (Friends Hospital)", "Adult Outpatient Services (Hispanic Community Counseling Services)", "Opioid Treatment Program (Achievement Through Counseling and Treatment)",\
+                                                    "Church-Based Shelters (Bethesda Project)", "RHD Fernwood Program (Resources for Human Development-Pennsylvania)", "Various Community Events and Programs (Conquerors Community Development Corporation)"]                            
+                                    for service in service_list:
+                                        if service[0] in top_services:
+                                            start_brasket = service[0].find('(')
+                                            end_brasket = service[0].find(')', start_brasket + 1)
+                                            service_name = service[0]
+                                            extract_services.append([service_name[start_brasket+1:end_brasket], service[1]])
+
+                                    #! Making map 
+                                    map = folium.Map(location=[latitude_user, longitude_user], zoom_start=12)
+                                    folium.CircleMarker(
+                                        location=[latitude_user, longitude_user],
+                                        radius=80,
+                                        color='blue',
+                                        fill=True,
+                                        fill_color='blue',
+                                        fill_opacity=0.2
+                                    ).add_to(map)
 
 
-                                marker_cluster = MarkerCluster().add_to(map)
+                                    marker_cluster = MarkerCluster().add_to(map)
 
-                                route_points = []
-                                for loc in data:
-                                    # the place to add additional data
-                                    ###print("loc:", loc)
-                                    route_points.append([loc['latitude'], loc['longitude']])
-                                    iframe = IFrame(loc['info'], width=300, height=200)
-                                    popup = folium.Popup(iframe, max_width=800)
-                                    folium.Marker(
-                                        location=[loc['latitude'], loc['longitude']],
-                                        popup=popup,
-                                        icon=folium.Icon(color='red')
-                                    ).add_to(marker_cluster)
+                                    route_points = []
+                                    for loc in data:
+                                        # the place to add additional data
+                                        ###print("loc:", loc)
+                                        route_points.append([loc['latitude'], loc['longitude']])
+                                        iframe = IFrame(loc['info'], width=300, height=200)
+                                        popup = folium.Popup(iframe, max_width=800)
+                                        folium.Marker(
+                                            location=[loc['latitude'], loc['longitude']],
+                                            popup=popup,
+                                            icon=folium.Icon(color='red')
+                                        ).add_to(marker_cluster)
 
-                                ###folium.PolyLine(route_points, color='blue', weight=5).add_to(map)
-                                # done
-                                # adding crime information into map will take a long time
-                                for loc in crime_data:
-                                    # the place to add additional data
-                                    ###print("loc:", loc)
-                                    iframe = IFrame(loc['info'], width=300, height=200)
-                                    popup = folium.Popup(iframe, max_width=800)
-                                    folium.Marker(
-                                        location=[loc['latitude'], loc['longitude']],
-                                        popup=popup,
-                                        icon=folium.Icon(color='green', icon="flag")
-                                    ).add_to(marker_cluster)
+                                    ###folium.PolyLine(route_points, color='blue', weight=5).add_to(map)
+                                    # done
+                                    # adding crime information into map will take a long time
+                                    for loc in crime_data:
+                                        # the place to add additional data
+                                        ###print("loc:", loc)
+                                        iframe = IFrame(loc['info'], width=300, height=200)
+                                        popup = folium.Popup(iframe, max_width=800)
+                                        folium.Marker(
+                                            location=[loc['latitude'], loc['longitude']],
+                                            popup=popup,
+                                            icon=folium.Icon(color='green', icon="flag")
+                                        ).add_to(marker_cluster)
 
-                                st.header(f"{classified_service_type} Services near {zipcode}")
-                                folium_static(map, width=800, height=600)  # Adjust width and height as needed
+                                    st.header(f"{classified_service_type} Services near {zipcode}")
+                                    folium_static(map, width=800, height=600)  # Adjust width and height as needed
 
-                                # ! Service information
-                                st.header(f"Services Information")
-                                print('extract services list : {0}'.format(len(extract_services)))
-                                with st.spinner('Loading service information, please wait ...'):
-                                    service_information = getQuestion_answer(extract_services, st)
-                                Options = [None]
-                                for service in extract_services: 
-                                    Options.append(str(service))
-                                selected_option = st.selectbox('Select a service', Options)
-                                if not selected_option is None:
-                                    send_email(selected_option)
+                                    # ! Service information
+                                    st.header(f"Services Information")
+                                    print('extract services list : {0}'.format(len(extract_services)))
+                                    with st.spinner('Loading service information, please wait ...'):
+                                        service_information = getQuestion_answer(extract_services, st)
+                                    Options = [None]
+                                    for service in extract_services: 
+                                        Options.append(str(service))
+                                    selected_option = st.selectbox('Select a service', Options)
+                                    c1, c2, c3, c4, c5, c6 = st.columns([1, 1, 1, 1, 1, 1], gap="large")
+                                    with c6:
+                                        next = st.form_submit_button("Next")
+                                    # if not selected_option is None:
+                                    if next:
+                                        send_email(selected_option)
 
+                                else:
+                                    st.sidebar.error(f"Error: Unable to retrieve location information for ZIP code {zipcode}")
                             else:
-                                st.sidebar.error(f"Error: Unable to retrieve location information for ZIP code {zipcode}")
-                        else:
-                            st.error("Service type is not recognized. Please try again with a different service type.")
-                    except Exception as e:
-                        st.error(f"Error during classification or file handling: {e}")
-                else:
-                    if not service_type:
-                        st.error("Could not extract the type of service from your query. Please try rephrasing.")
-                    if not zipcode:
-                        st.error("Could not extract the ZIP code from your query. Please try rephrasing.")
+                                st.error("Service type is not recognized. Please try again with a different service type.")
+                        except Exception as e:
+                            st.error(f"Error during classification or file handling: {e}")
+                    else:
+                        if not service_type:
+                            st.error("Could not extract the type of service from your query. Please try rephrasing.")
+                        if not zipcode:
+                            st.error("Could not extract the ZIP code from your query. Please try rephrasing.")
 
 
-        elif input_language == 'es':
-            if response.choices:
-                extracted_info = response.choices[0].message['content'].strip()
-                st.write("Información extraída:", extracted_info)
+            elif input_language == 'es':
+                if response.choices:
+                    extracted_info = response.choices[0].message['content'].strip()
+                    st.write("Información extraída:", extracted_info)
 
-                service_type, zipcode = parse_extracted_info(extracted_info)
-                crime_data_df = pd.read_csv('Final_Philadelphia_Crime_Data_2023.csv')
-                crime_data = crime_data_df.values
-                number_of_crimes = np.where(int(zipcode) == crime_data[:, 18])[0].shape[0]
-                crime_frequency = crime_data_df.loc[
-                    np.where(int(zipcode) == crime_data[:, 18])[0], 'text_general_code'].value_counts().to_dict()
+                    service_type, zipcode = parse_extracted_info(extracted_info)
+                    crime_data_df = pd.read_csv('Final_Philadelphia_Crime_Data_2023.csv')
+                    crime_data = crime_data_df.values
+                    number_of_crimes = np.where(int(zipcode) == crime_data[:, 18])[0].shape[0]
+                    crime_frequency = crime_data_df.loc[
+                        np.where(int(zipcode) == crime_data[:, 18])[0], 'text_general_code'].value_counts().to_dict()
 
-                now = datetime.now()
+                    now = datetime.now()
 
-                current_time = now.strftime("%H:%M:%S")
+                    current_time = now.strftime("%H:%M:%S")
 
-                if service_type and zipcode:
-                    try:
-                        classified_service_type = classify_service_type(service_type, api_key)
-                        st.write("Hora actual en hora estándar del este: ", current_time)
-                        st.write("Tipo de servicio:", classified_service_type)
-                        st.write("Código postal:", zipcode)
-                        st.write("En el año 2023, el número de incidentes delictivos en el código postal " + zipcode + ":",
-                                str(number_of_crimes))
-                        translate_crime_frequency_client = Steamship(api_key="25FDC915-9156-4BFB-BA9B-1B213DF1E699")
-                        translate_crime_frequency_generator = translate_crime_frequency_client.use_plugin('gpt-3.5-turbo',
-                                                                        config={"temperature": 0.7, "n": 5})
-                        translate_crime_frequency_task = translate_crime_frequency_generator.generate(
-                            text="Translate the answer to Spanish: " + str(crime_frequency))
-                        translate_crime_frequency_task.wait()
-                        translate_crime_frequency_message = translate_crime_frequency_task.output.blocks
-                        translate_crime_frequency_message = [i.text.strip() for i in translate_crime_frequency_message]
-                        st.write(
-                            "En el año 2023, las frecuencias de diferentes incidentes delictivos en el código postal son las siguientes " + zipcode + ":",
-                            translate_crime_frequency_message[1] + "}")
+                    if service_type and zipcode:
+                        try:
+                            classified_service_type = classify_service_type(service_type, api_key)
+                            st.write("Hora actual en hora estándar del este: ", current_time)
+                            st.write("Tipo de servicio:", classified_service_type)
+                            st.write("Código postal:", zipcode)
+                            st.write("En el año 2023, el número de incidentes delictivos en el código postal " + zipcode + ":",
+                                    str(number_of_crimes))
+                            translate_crime_frequency_client = Steamship(api_key="25FDC915-9156-4BFB-BA9B-1B213DF1E699")
+                            translate_crime_frequency_generator = translate_crime_frequency_client.use_plugin('gpt-3.5-turbo',
+                                                                            config={"temperature": 0.7, "n": 5})
+                            translate_crime_frequency_task = translate_crime_frequency_generator.generate(
+                                text="Translate the answer to Spanish: " + str(crime_frequency))
+                            translate_crime_frequency_task.wait()
+                            translate_crime_frequency_message = translate_crime_frequency_task.output.blocks
+                            translate_crime_frequency_message = [i.text.strip() for i in translate_crime_frequency_message]
+                            st.write(
+                                "En el año 2023, las frecuencias de diferentes incidentes delictivos en el código postal son las siguientes " + zipcode + ":",
+                                translate_crime_frequency_message[1] + "}")
 
-                        if classified_service_type != "Other":
-                            service_files = {
-                                "Shelter": "Final_Temporary_Shelter_20240423.csv",
-                                "Mental Health": "Final_Mental_Health_20240423.csv",
-                                "Food": "Final_Emergency_Food_20240423.csv"
-                            }
-                            datafile = service_files[classified_service_type]
-                            df = pd.read_csv(datafile)
-                            data = translated_read_data(df)
+                            if classified_service_type != "Other":
+                                service_files = {
+                                    "Shelter": "Final_Temporary_Shelter_20240423.csv",
+                                    "Mental Health": "Final_Mental_Health_20240423.csv",
+                                    "Food": "Final_Emergency_Food_20240423.csv"
+                                }
+                                datafile = service_files[classified_service_type]
+                                df = pd.read_csv(datafile)
+                                data = translated_read_data(df)
 
-                            # Use pgeocode for geocoding
-                            nomi = pgeocode.Nominatim('us')
-                            location_info = nomi.query_postal_code(zipcode)
+                                # Use pgeocode for geocoding
+                                nomi = pgeocode.Nominatim('us')
+                                location_info = nomi.query_postal_code(zipcode)
 
-                            if not location_info.empty:
-                                latitude_user = location_info['latitude']
-                                longitude_user = location_info['longitude']
-                                city_name = location_info['place_name']
-                                client = Steamship(api_key="25FDC915-9156-4BFB-BA9B-1B213DF1E699")
+                                if not location_info.empty:
+                                    latitude_user = location_info['latitude']
+                                    longitude_user = location_info['longitude']
+                                    city_name = location_info['place_name']
+                                    client = Steamship(api_key="25FDC915-9156-4BFB-BA9B-1B213DF1E699")
 
-                                # Create an instance of this generator
-                                generator = client.use_plugin('gpt-3.5-turbo', config={"temperature": 0.7, "n": 5})
-                                geolocation_query = "Just list the their names with comma. Please find only five famous buildings or benchmarks close to the location: latitidue: " + str(
-                                    latitude_user) + ", " + "longitude: " + str(longitude_user)
-                                task = generator.generate(text=geolocation_query)
-                                task.wait()
-                                message = task.output.blocks
-                                message = [i.text.strip() for i in message]
-                                st.write(f"Coordenadas para {zipcode} ({city_name}): {latitude_user}, {longitude_user}")
-                                #st.write(f"Edificios arquitectónicos alrededor: {message[0]}")
-                                translate_client = Steamship(api_key="25FDC915-9156-4BFB-BA9B-1B213DF1E699")
-                                translate_generator = translate_client.use_plugin('gpt-3.5-turbo',
-                                                                                config={"temperature": 0.7, "n": 5})
-                                translate_task = translate_generator.generate(
-                                    text="Translate the answer to Spanish: " + message[0])
-                                translate_task.wait()
-                                translate_message = translate_task.output.blocks
-                                translate_message = [i.text.strip() for i in translate_message]
-                                #print("translate_message:", translate_message)
-                                st.write(
-                                    "Edificios arquitectónicos alrededor:",
-                                    translate_message[0])
-                                #st.write(
-                                #    "En el año 2023, las frecuencias de diferentes incidentes delictivos en el código postal son las siguientes " + zipcode + ":",
-                                #    translate_message[0])
+                                    # Create an instance of this generator
+                                    generator = client.use_plugin('gpt-3.5-turbo', config={"temperature": 0.7, "n": 5})
+                                    geolocation_query = "Just list the their names with comma. Please find only five famous buildings or benchmarks close to the location: latitidue: " + str(
+                                        latitude_user) + ", " + "longitude: " + str(longitude_user)
+                                    task = generator.generate(text=geolocation_query)
+                                    task.wait()
+                                    message = task.output.blocks
+                                    message = [i.text.strip() for i in message]
+                                    st.write(f"Coordenadas para {zipcode} ({city_name}): {latitude_user}, {longitude_user}")
+                                    #st.write(f"Edificios arquitectónicos alrededor: {message[0]}")
+                                    translate_client = Steamship(api_key="25FDC915-9156-4BFB-BA9B-1B213DF1E699")
+                                    translate_generator = translate_client.use_plugin('gpt-3.5-turbo',
+                                                                                    config={"temperature": 0.7, "n": 5})
+                                    translate_task = translate_generator.generate(
+                                        text="Translate the answer to Spanish: " + message[0])
+                                    translate_task.wait()
+                                    translate_message = translate_task.output.blocks
+                                    translate_message = [i.text.strip() for i in translate_message]
+                                    #print("translate_message:", translate_message)
+                                    st.write(
+                                        "Edificios arquitectónicos alrededor:",
+                                        translate_message[0])
+                                    #st.write(
+                                    #    "En el año 2023, las frecuencias de diferentes incidentes delictivos en el código postal son las siguientes " + zipcode + ":",
+                                    #    translate_message[0])
 
-                                map = folium.Map(location=[latitude_user, longitude_user], zoom_start=12)
-                                folium.CircleMarker(
-                                    location=[latitude_user, longitude_user],
-                                    radius=80,
-                                    color='blue',
-                                    fill=True,
-                                    fill_color='blue',
-                                    fill_opacity=0.2
-                                ).add_to(map)
+                                    map = folium.Map(location=[latitude_user, longitude_user], zoom_start=12)
+                                    folium.CircleMarker(
+                                        location=[latitude_user, longitude_user],
+                                        radius=80,
+                                        color='blue',
+                                        fill=True,
+                                        fill_color='blue',
+                                        fill_opacity=0.2
+                                    ).add_to(map)
 
-                                marker_cluster = MarkerCluster().add_to(map)
+                                    marker_cluster = MarkerCluster().add_to(map)
 
-                                for loc in data:
-                                    iframe = IFrame(loc['info'], width=300, height=200)
-                                    popup = folium.Popup(iframe, max_width=800)
-                                    folium.Marker(
-                                        location=[loc['latitude'], loc['longitude']],
-                                        popup=popup,
-                                        icon=folium.Icon(color='red')
-                                    ).add_to(marker_cluster)
+                                    for loc in data:
+                                        iframe = IFrame(loc['info'], width=300, height=200)
+                                        popup = folium.Popup(iframe, max_width=800)
+                                        folium.Marker(
+                                            location=[loc['latitude'], loc['longitude']],
+                                            popup=popup,
+                                            icon=folium.Icon(color='red')
+                                        ).add_to(marker_cluster)
 
-                                st.header(f"{classified_service_type} Services near {zipcode}")
-                                folium_static(map, width=800, height=600)  # Adjust width and height as needed
+                                    st.header(f"{classified_service_type} Services near {zipcode}")
+                                    folium_static(map, width=800, height=600)  # Adjust width and height as needed
 
+                                else:
+                                    st.sidebar.error(f"Error: Unable to retrieve location information for ZIP code {zipcode}")
                             else:
-                                st.sidebar.error(f"Error: Unable to retrieve location information for ZIP code {zipcode}")
-                        else:
-                            st.error("Service type is not recognized. Please try again with a different service type.")
-                    except Exception as e:
-                        st.error(f"Error during classification or file handling: {e}")
-                else:
-                    if not service_type:
-                        st.error("Could not extract the type of service from your query. Please try rephrasing.")
-                    if not zipcode:
-                        st.error("Could not extract the ZIP code from your query. Please try rephrasing.")
+                                st.error("Service type is not recognized. Please try again with a different service type.")
+                        except Exception as e:
+                            st.error(f"Error during classification or file handling: {e}")
+                    else:
+                        if not service_type:
+                            st.error("Could not extract the type of service from your query. Please try rephrasing.")
+                        if not zipcode:
+                            st.error("Could not extract the ZIP code from your query. Please try rephrasing.")
 
 

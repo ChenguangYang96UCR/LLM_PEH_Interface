@@ -14,3 +14,5 @@ deep_translator
 trubrics
 streamlit_feedback
 psycopg2-binary
+smtplib
+streamlit-geolocation
