@@ -421,13 +421,13 @@ def send_email(select_option):
         with st.spinner('Sending e-mail, please wait ...'):
             try:
                 msg = MIMEText(Body)
-                msg['From'] = "chenguangyang56@gmail.com"
-                msg['To'] = "chenguangyang56@gmail.com"
+                msg['From'] = "ucr.dreamkg@gmail.com"
+                msg['To'] = "ucr.dreamkg@gmail.com"
                 msg['Subject'] = 'Appointment'
                 server = smtplib.SMTP('smtp.gmail.com', 587)
                 server.starttls()
-                server.login("chenguangyang56@gmail.com", 'cwfr xget tdcm yoao')
-                server.sendmail("chenguangyang56@gmail.com", "chenguangyang56@gmail.com", msg.as_string())
+                server.login("ucr.dreamkg@gmail.com", 'vdvo hgpq tdba fiai')
+                server.sendmail("ucr.dreamkg@gmail.com", "ucr.dreamkg@gmail.com", msg.as_string())
                 server.quit()
                 st.success('Email sent successfully! 🚀')
             except Exception as e:
