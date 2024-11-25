@@ -16,3 +16,4 @@ streamlit_feedback
 psycopg2-binary
 smtplib
 streamlit-geolocation
+transformers
