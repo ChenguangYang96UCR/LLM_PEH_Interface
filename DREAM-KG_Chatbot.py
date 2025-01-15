@@ -37,7 +37,9 @@ import smtplib
 from email.mime.text import MIMEText
 import fcntl
 import streamlit_js_eval
-import transformers 
+import time
+import utils
+import pytz
 
 #from geopy.distance import geodesic
 
@@ -98,87 +100,21 @@ def predict(inputs, target, hidden):
 
         return output, target
 
-def wild_search_by_keywords(key_word, relation=''):
-    work_path = os.path.abspath('.') + "\\"
-    triples = []
-    if key_word == '':
-        print('Error: search_node_by_keyword input \'key_word\' is nothing')
-        return triples
-    graph = Graph(
-            "bolt://localhost:7687", 
-            auth=("neo4j", "123456789")
-        )
-    if relation == '':
-        Query = 'MATCH (m:node)-[r]-(n:node) where m.name=~\".*(?i){0}.*\" or n.name=~\".*(?i){0}.*\" RETURN m.name,type(r),n.name'.format(key_word)
-        query_result = graph.run(Query)
-        for triple in query_result:
-            triples.append(str(triple).replace('\t', ','))
-    else:
-        Query = 'MATCH (m:node)-[r]-(n:node) where m.name=~\".*(?i){0}.*\" or n.name=~\".*(?i){0}.*\" RETURN m.name,type(r),n.name'.format(key_word, relation)
-        query_result = graph.run(Query)
-        for triple in query_result:
-            triples.append(str(triple).replace('\t', ','))
-    return triples
-
-@st.cache_resource(show_spinner=False)
-def getQuestion_answer(Service_list, st):
-    all_triples = []    
-    all_information = []
-    for Service in Service_list:
-        triples = wild_search_by_keywords(Service[0])
-        slice_triples = [triples[i:i+100] for i in range(0, len(triples), 100)]
-        all_response = []
-        if not len(triples) == 0:
-            all_triples.extend(triples)
-            index = 1
-            for slice_triple in slice_triples:
-                if index > 2:
-                    break
-                answer_prompt = f"""
-You are a social science expert, and you need to perform the following two steps step by step -  
-Step1: Given the input knowledge graph triples (i.e., with the format (subject, relation, object)), 
-please output corresponding natural language sentences about introduction and suggestion based on all knowledge graph triples.
-input knowledge graph triples: {slice_triple}
-"""
-                response = openai.ChatCompletion.create(
-                    model="gpt-3.5-turbo",  # Updated to use the latest and more advanced model
-                    messages=[
-                        {"role": "user", "content": answer_prompt}
-                    ],
-                    temperature=0.2
-                )
-                all_response.append(response)
-                index = index + 1
-        combine_prompt = f"""
-Please combine these response, construct corresponding natural language sentences about introduction and suggestion.
-response: {all_response}
-"""
-        response = openai.ChatCompletion.create(
-                        model="gpt-3.5-turbo",  # Updated to use the latest and more advanced model
-                        messages=[
-                            {"role": "user", "content": combine_prompt}
-                        ],
-                        temperature=0.2
-                    )
-
-        st.write(f"**{Service[0]}**")
-        st.write(f"**Google Rating:{Service[1]}**", "\n")
-        st.write(response.choices[0].message['content'])
-    # st.write(f"###{Service[0]} Google Rating:{Service[1]}", "\n", response.choices[0].message['content'])
-    return all_information
-
 def my_component(key=None):
     component_value = _component_func(key=key, default=0)
     return component_value
 
+
 # Function to query OpenAI API for extracting the service and zipcode
 def ask_openai_for_service_extraction(question, api_key, conversation_history):
     openai.api_key = api_key
-    extraction_instruction = ("Extract the type of service and zipcode from the following user query. "
+    extraction_instruction = ("Extract the type of service, zipcode and time(include day of the week) from the following user query. "
                               "If the user doesn't provide a zipcode and only provides a general landmark, "
                               "please try to provide the corresponding zipcode for that landmark. "
+                              "If user provide date is today, please check what day of the week today is. "
+                              "If user doesn't provide date, please return None. "
                               "Please ensure that if the input is in Spanish, translate the input to English first, the responses are provided in English."
-                              "Only provide the service type and the zipcode.")
+                              "Only provide the service type, the zipcode and the time period.")
     combined_query = f"{extraction_instruction}\n{question}"
     full_conversation = conversation_history + [{"role": "user", "content": combined_query}]
     response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=full_conversation)
@@ -380,11 +316,20 @@ def parse_extracted_info(extracted_info):
     # Using regular expressions to find service type and zipcode robustly
     service_match = re.search(r"service(?: type)?:\s*(.+)", extracted_info, re.I)
     zipcode_match = re.search(r"zipcode:\s*(\d+)", extracted_info, re.I)
-    
+    weekday_match = utils.extract_weekday(extracted_info)
+    # time_match = re.findall(r"\b(\d{2}):\d{2}\b", extracted_info)
+    time_match = [int(hour) for hour in re.findall(r"\b(\d{2}):\d{2}\b", extracted_info)]
+
     service_type = service_match.group(1).title() if service_match else ""
     zipcode = zipcode_match.group(1) if zipcode_match else ""
+    weekday = weekday_match if weekday_match else ""
+    # Due to zipcode is number too
+    if len(time_match) <= 1:
+        service_time = 99
+    else:
+        service_time = time_match[1] if time_match else 99
     
-    return service_type, zipcode
+    return service_type, zipcode, weekday, service_time
 
 # * Send email to services
 def send_email(select_option):
@@ -458,11 +403,34 @@ if __name__ == '__main__':
     # * Acquire the location of user
     loc = streamlit_js_eval.get_geolocation()
     # st.write(f"Your coordinates are {loc}")
-        
+
     #st.markdown("# **Start Here ↓**", icon="👇")
     st.info("**Welcome to DREAM-KG chatbot, start here ↓**", icon="👋") #edited: 10/24
     st.markdown("### 💬 Ask me about services")
     user_query = st.text_input("Enter your query: I need food right now and I am near the Franklin Square", key="user_query")
+
+    # Service audience checkbox
+    c1, c2, c3, c4, c5= st.columns([1, 1, 1, 1, 1], gap="small")
+    with c1:
+        adult_check = st.checkbox('adults 18+', value=False, key='adults 18+')
+    with c2:
+        families_check = st.checkbox('families', value=False, key='families')
+    with c3: 
+        AllAges_check = st.checkbox('all ages', value=False, key='all ages')
+    with c4: 
+        ptsd_check = st.checkbox('ptsd', value=False, key='ptsd')
+    with c5:
+        veterans_check = st.checkbox('veterans', value=False, key='veterans')
+    
+    c1, c2, c3, c4, c5 = st.columns([1, 1, 1, 1, 1], gap="small")
+    with c1:
+        emergency_check = st.checkbox('emergency', value=False, key='emergency')
+    with c2:
+        individuals_check = st.checkbox('individuals', value=False, key='individuals')
+
+    if adult_check or families_check or AllAges_check or ptsd_check or veterans_check or emergency_check or individuals_check:
+        audience_select = True
+    
     # Submit button
     submit_button = st.button("Submit", type="primary")
     if submit_button:
@@ -487,19 +455,6 @@ if __name__ == '__main__':
     </style>
     """, unsafe_allow_html=True)
 
-    # Add feedback option
-    feedback = streamlit_feedback(
-        feedback_type="faces",
-        optional_text_label="[Optional] Post Review",
-    )
-    if not feedback is None:
-        with open('./Customer_Review.txt', 'a', encoding='utf-8') as file:
-            fcntl.flock(file.fileno(), fcntl.LOCK_EX)
-            if 'score' in feedback:
-                file.write('User rate: ' + feedback['score'] + '\n')
-            if 'text' in feedback and feedback['text'] is not None:
-                file.write('User review: ' + feedback['text'] + '\n')
-
     # Initialize global variables
     #! Openai api key
     conversation_history = []
@@ -513,9 +468,8 @@ if __name__ == '__main__':
         if input_language == 'en':
             if response.choices:
                 extracted_info = response.choices[0].message['content'].strip()
-                st.write("Extracted Information:", extracted_info)
-
-                service_type, zipcode = parse_extracted_info(extracted_info)
+                # st.write("Extracted Information:", extracted_info)
+                service_type, zipcode, weekday, service_time = parse_extracted_info(extracted_info)
                 #print("service_type:", service_type)
                 # crime incidents analysis
                 crime_data_df = pd.read_csv('Final_Philadelphia_Crime_Data_2023.csv')
@@ -541,15 +495,19 @@ if __name__ == '__main__':
                 crime_frequency = crime_data_df.loc[
                     np.where(int(zipcode) == crime_data[:, 18])[0], 'text_general_code'].value_counts().to_dict()
 
-                now = datetime.now()
-
+                # Get the eastern current time 
+                eastern = pytz.timezone('US/Eastern')
+                now = datetime.now(tz=eastern)
                 current_time = now.strftime("%H:%M:%S")
+                weekday_name = now.strftime('%A')
+                current_hour = now.hour
 
                 if service_type and zipcode:
                     try:
                         classified_service_type = classify_service_type(service_type, api_key)
                         st.markdown("#### Current Time in Eastern Standard Time")
-                        st.write(current_time)
+                        st.write(weekday_name + ' ' + current_time)
+                        
 
                         st.markdown("#### Type of Service")
                         st.write(classified_service_type)
@@ -563,52 +521,27 @@ if __name__ == '__main__':
                         st.markdown("#### Zipcode")
                         st.write(zipcode)
 
-                        # st.markdown("#### Total Crime Incidents, Number of Property Victimization, and Number of Personal Victimization")
-                        # st.write("In Year 2024, the Number of Crime Incidents in Zipcode " + zipcode + " is ",
-                        #         str(number_of_crimes), ",", " where there are ", str(number_of_property_crimes), "property victimization and there are ", str(number_of_personal_crimes), "personal victimization")
-                        
-                        # st.markdown("#### Frequencies of Different Crime Incidents")
-                        # st.write("In Year 2024, the Frequencies of Different Crime Incidents in Zipcode are as follows " + zipcode + ":")
-                        
-                        # crime_category = []
-                        # crime_data = []
-                        # for crime in crime_frequency : 
-                        #     crime_category.append(crime)
-                        #     crime_data.append(crime_frequency[crime])
-
-                        # abbreviation_list = []
-                        # category_list = []
-                        # for category in crime_category:
-                        #     if len(category) > 15 :
-                        #         split_category = category.replace('/', ' ').replace('-', ' ').split()
-                        #         abbreviation = ''.join(word[0].upper() for word in split_category if word.isalpha())
-                        #         abbreviation_list.append([abbreviation, category])
-                        #         category_list.append(abbreviation)
-                        #     else:
-                        #         category_list.append(category)
-
-                        # bar_data = pd.DataFrame({
-                        #     'Category': category_list,
-                        #     'Values': crime_data
-                        # }).set_index('Category')
-
-                        # # make plot
-                        # st.bar_chart(bar_data)
-                        # st.write(str(abbreviation_list))
-
                         if classified_service_type != "Other":
                             service_files = {
-                                "Shelter": "Final_Temporary_Shelter_20240723.csv",
-                                "Mental Health": "Final_Mental_Health_20240723.csv",
-                                "Food": "Final_Emergency_Food_20240723.csv"
+                                "Shelter": "Final_Temporary_Shelter_20250111.csv",
+                                "Mental Health": "Final_Mental_Health_20250111.csv",
+                                "Food": "Final_Emergency_Food_20250111.csv"
                             }
                             datafile = service_files[classified_service_type]
                             df = pd.read_csv(datafile)
                             data, service_list = read_data(df)
-
                             # load crime data (till 07/2024) for visualization
-                            crime_data_df = pd.read_csv('three_days_philly_incidents_2024.csv')
+                            crime_data_df = pd.read_csv('three_days_philly_incidents_2025.csv')
                             crime_data = read_crime_data(crime_data_df)
+
+                            morning_crime_data_df = pd.read_csv("three_days_philly_incidents_2025_morning.csv")
+                            morning_crime_data = read_crime_data(morning_crime_data_df)
+
+                            afternoon_crime_data_df = pd.read_csv("three_days_philly_incidents_2025_afternoon.csv")
+                            afternoon_crime_data = read_crime_data(afternoon_crime_data_df)
+
+                            evening_crime_data_df = pd.read_csv("three_days_philly_incidents_2025_evening.csv")
+                            evening_crime_data = read_crime_data(evening_crime_data_df)
 
                             crime_df = pd.read_csv('Final_Pandas_tensor_2023.csv')
                             crime_df.columns = ["month", "zipcode", "Homicide Criminal", "Rape", "Robbery No Firearm",
@@ -662,8 +595,6 @@ if __name__ == '__main__':
                                         loss_this_epoch.append(loss.item())
                                     loss_this_epoch = np.array(loss_this_epoch).mean()
                                     all_losses.append(loss_this_epoch)
-                                    # if (epoch == 0) or ((epoch + 1) % print_step == 0):
-                                    #    print(f"Epoch {epoch+1: <3}/{num_epochs} | loss = {loss_this_epoch}")
 
                                 y_true = []
                                 y_pred = []
@@ -712,6 +643,100 @@ if __name__ == '__main__':
                                         service_name = service[0]
                                         extract_services.append([service_name[start_brasket+1:end_brasket], service[1]])
 
+                                # ! Service information
+                                st.header(f"Services Information")
+                                option_services = []
+                                print('extract services list : {0}'.format(len(extract_services)))
+                            
+                                if audience_select:
+                                    time_services = []
+                                    select_audience = []
+                                    if adult_check:
+                                        select_audience.append('adult')
+                                    if families_check:
+                                        select_audience.append('families')
+                                    if ptsd_check:
+                                        select_audience.append('ptsd')
+                                    if AllAges_check:
+                                        select_audience.append('all ages')
+                                    if emergency_check:
+                                        select_audience.append('emergency')
+                                    if individuals_check:
+                                        select_audience.append('individuals')
+                                    if veterans_check:
+                                        select_audience.append('veterans')
+                                    audience_services = utils.get_serving_from_list(select_audience)
+                                    if not weekday == "":
+                                        # * Can get weekday from user's question
+                                        if service_time == 99:
+                                            time_services = utils.get_services_time(weekday, current_hour)
+                                        else:
+                                            time_services = utils.get_services_time(weekday, service_time)
+                                    else:
+                                        # * Can not get weekday from user's question
+                                        if service_time == 99:
+                                            time_services = utils.get_services_time(weekday_name, current_hour)
+                                        else:
+                                            time_services = utils.get_services_time(weekday_name, service_time)
+                                    audience_services.extend(time_services)
+                                    duplicate_services = utils.get_duplicate_service_name(audience_services)
+                                    
+                                    extract_duplicate_services = []
+                                    for service in service_list:
+                                        if service[0] in duplicate_services:
+                                            start_brasket = service[0].find('(')
+                                            end_brasket = service[0].find(')', start_brasket + 1)
+                                            service_name = service[0]
+                                            extract_duplicate_services.append([service_name[start_brasket+1:end_brasket], service[1]])
+                                    with st.spinner('Loading service information, please wait ...'):
+                                        if len(extract_duplicate_services) == 0:
+                                            option_services = extract_services
+                                            service_information = utils.getQuestion_answer(extract_services, st)
+                                        else:
+                                            option_services = extract_duplicate_services
+                                            service_information = utils.getQuestion_answer(extract_duplicate_services, st)
+                                    
+                                else:
+                                    time_services = []
+                                    if not weekday == "":
+                                        # * Can get weekday from user's question
+                                        if service_time == 99:
+                                            time_services = utils.get_services_time(weekday, current_hour)
+                                        else:
+                                            time_services = utils.get_services_time(weekday, service_time)
+                                    else:
+                                        # * Can not get weekday from user's question
+                                        if service_time == 99:
+                                            time_services = utils.get_services_time(weekday_name, current_hour)
+                                        else:
+                                            time_services = utils.get_services_time(weekday_name, service_time)
+                                        
+                                        extract_time_services = []
+                                        for service in service_list:
+                                            if service[0] in time_services:
+                                                start_brasket = service[0].find('(')
+                                                end_brasket = service[0].find(')', start_brasket + 1)
+                                                service_name = service[0]
+                                                extract_time_services.append([service_name[start_brasket+1:end_brasket], service[1]])
+                                        # print(extract_time_services)
+                                        with st.spinner('Loading service information, please wait ...'):
+                                            if len(extract_time_services) == 0:
+                                                option_services = extract_services
+                                                service_information = utils.getQuestion_answer(extract_services, st)
+                                            else:
+                                                option_services = extract_time_services
+                                                service_information = utils.getQuestion_answer(extract_time_services, st)
+                                print("Before map filter.")
+                                st.markdown('''##### :red[Select which time you prefer, then we will give you a crime map at that time.]''')
+                                # st.write("Select which time you prefer, then we will give you a crime map at that time.")
+                                c1, c2, c3= st.columns([1, 1, 1], gap="small")
+                                with c1:
+                                    Morning = st.checkbox('Morning', value=False, key='Morning')
+                                with c2:
+                                    Afternoon = st.checkbox('Afternoon', value=False, key='Afternoon')
+                                with c3:
+                                    Evening = st.checkbox('Evening', value=False, key='Evening')
+                                print("After map filter.")
                                 #! Making map 
                                 map = folium.Map(location=[latitude_user, longitude_user], zoom_start=12)
                                 folium.CircleMarker(
@@ -723,13 +748,10 @@ if __name__ == '__main__':
                                     fill_opacity=0.2
                                 ).add_to(map)
 
-
                                 marker_cluster = MarkerCluster().add_to(map)
 
                                 route_points = []
                                 for loc in data:
-                                    # the place to add additional data
-                                    ###print("loc:", loc)
                                     route_points.append([loc['latitude'], loc['longitude']])
                                     iframe = IFrame(loc['info'], width=300, height=200)
                                     popup = folium.Popup(iframe, max_width=800)
@@ -739,30 +761,54 @@ if __name__ == '__main__':
                                         icon=folium.Icon(color='red')
                                     ).add_to(marker_cluster)
 
-                                ###folium.PolyLine(route_points, color='blue', weight=5).add_to(map)
-                                # done
-                                # adding crime information into map will take a long time
-                                for loc in crime_data:
-                                    # the place to add additional data
-                                    ###print("loc:", loc)
-                                    iframe = IFrame(loc['info'], width=300, height=200)
-                                    popup = folium.Popup(iframe, max_width=800)
-                                    folium.Marker(
-                                        location=[loc['latitude'], loc['longitude']],
-                                        popup=popup,
-                                        icon=folium.Icon(color='green', icon="flag")
-                                    ).add_to(marker_cluster)
+                                if Morning:
+                                    for loc in morning_crime_data:
+                                        iframe = IFrame(loc['info'], width=300, height=200)
+                                        popup = folium.Popup(iframe, max_width=800)
+                                        folium.Marker(
+                                            location=[loc['latitude'], loc['longitude']],
+                                            popup=popup,
+                                            icon=folium.Icon(color='green', icon="flag")
+                                        ).add_to(marker_cluster)
 
-                                st.header(f"{classified_service_type} Services near {zipcode}")
+                                if Afternoon:
+                                    for loc in afternoon_crime_data:
+                                        iframe = IFrame(loc['info'], width=300, height=200)
+                                        popup = folium.Popup(iframe, max_width=800)
+                                        folium.Marker(
+                                            location=[loc['latitude'], loc['longitude']],
+                                            popup=popup,
+                                            icon=folium.Icon(color='green', icon="flag")
+                                        ).add_to(marker_cluster)
+
+                                if Evening:
+                                    for loc in evening_crime_data:
+                                        iframe = IFrame(loc['info'], width=300, height=200)
+                                        popup = folium.Popup(iframe, max_width=800)
+                                        folium.Marker(
+                                            location=[loc['latitude'], loc['longitude']],
+                                            popup=popup,
+                                            icon=folium.Icon(color='green', icon="flag")
+                                        ).add_to(marker_cluster)
+
+                                # if not Morning and not Afternoon and not Evening:
+                                #     for loc in crime_data:
+                                #     # the place to add additional data
+                                #     ###print("loc:", loc)
+                                #         iframe = IFrame(loc['info'], width=300, height=200)
+                                #         popup = folium.Popup(iframe, max_width=800)
+                                #         folium.Marker(
+                                #             location=[loc['latitude'], loc['longitude']],
+                                #             popup=popup,
+                                #             icon=folium.Icon(color='green', icon="flag")
+                                #         ).add_to(marker_cluster)
+
+                                st.header(f"{classified_service_type} Services & Crime near {zipcode}")
                                 folium_static(map, width=800, height=600)  # Adjust width and height as needed
 
-                                # ! Service information
-                                st.header(f"Services Information")
-                                print('extract services list : {0}'.format(len(extract_services)))
-                                with st.spinner('Loading service information, please wait ...'):
-                                    service_information = getQuestion_answer(extract_services, st)
+
                                 Options = [None]
-                                for service in extract_services: 
+                                for service in option_services: 
                                     Options.append(str(service[0]))
                                 selected_option = st.selectbox('Select a service', Options)
                                 if not selected_option is None:

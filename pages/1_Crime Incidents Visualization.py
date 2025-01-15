@@ -91,10 +91,10 @@ map = folium.Map(location=[39.949610, -75.150282], zoom_start=12)
 
 if page == "Crime Incidents Visualization":
     """
-    # 🚔 Crime Incidents October 21, 2024 - Present
+    # 🚔 Crime Incidents January 9, 2025 - Present
     """
     marker_cluster = MarkerCluster().add_to(map)
-    p = Path(__file__).parent / "philly_crime_incident_util_10242024.csv"
+    p = Path(__file__).parent / "philly_crime_incident_util_01112025.csv"
     crime_data_df = pd.read_csv(p)
     crime_data = read_crime_data(crime_data_df)
 

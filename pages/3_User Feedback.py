@@ -2,6 +2,7 @@ import openai
 import streamlit as st
 from streamlit_feedback import streamlit_feedback
 import trubrics
+import fcntl
 #from langchain.agents import AgentType
 #from langchain_experimental.agents import create_pandas_dataframe_agent
 #from langchain.callbacks import StreamlitCallbackHandler
@@ -17,7 +18,7 @@ import trubrics
 #    "[View the source code](https://github.com/streamlit/llm-examples/blob/main/pages/5_Chat_with_user_feedback.py)"
 #    "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
 
-st.title("📝 Chat with Feedback")
+st.title("📝 User Feedback")
 
 ### 10/24 - edited
 st.markdown("""
@@ -28,60 +29,82 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+st.session_state.mainpageId = "True"
+
+feedback_rate = streamlit_feedback(
+        feedback_type="faces",
+        align = "flex-start"
+    )
+
+user_query = st.text_input("User Feedback", key="user feedback")
+st.session_state.data = []
+# if not feedback_rate is None:
+#     st.session_state.data.append(feedback_rate)
+submit_button = st.button("Submit", type="primary")
+if submit_button:
+    st.session_state.data.append(feedback_rate['score'])
+    with open('./Customer_Review.txt', 'a', encoding='utf-8') as file:
+        fcntl.flock(file.fileno(), fcntl.LOCK_EX)
+        # if not feedback_rate is None:
+        # st.write(st.session_state.data)
+        # file.write('User rate: ' + st.session_state.data[0] + '\n')
+        # print(feedback_rate)
+        if not user_query is None:
+            file.write('User review: ' + user_query + '\n')
 
 #"""
 #In this example, we're using [streamlit-feedback](https://github.com/trubrics/streamlit-feedback) and Trubrics to collect and store feedback
 #from the user about the LLM responses.
 #"""
 
-if "messages" not in st.session_state:
-    st.session_state.messages = [
-        {"role": "assistant", "content": "How can I help you? Leave feedback to help DREAM-KG chatbot improve!"}
-    ]
-if "response" not in st.session_state:
-    st.session_state["response"] = None
+# if "messages" not in st.session_state:
+#     st.session_state.messages = [
+#         {"role": "assistant", "content": "How can I help you? Leave feedback to help DREAM-KG chatbot improve!"}
+#     ]
+# if "response" not in st.session_state:
+#     st.session_state["response"] = None
 
-messages = st.session_state.messages
-for msg in messages:
-    st.chat_message(msg["role"]).write(msg["content"])
+# messages = st.session_state.messages
+# for msg in messages:
+#     st.chat_message(msg["role"]).write(msg["content"])
 
-if prompt := st.chat_input():
-    #prompt = "You are an expert on social science and homeless population analysis in Philadelphia and your job is answer end-users' questions."
-    messages.append({"role": "user", "content": prompt})
-    st.chat_message("user").write(prompt)
+# if prompt := st.chat_input():
+#     #prompt = "You are an expert on social science and homeless population analysis in Philadelphia and your job is answer end-users' questions."
+#     messages.append({"role": "user", "content": prompt})
+#     st.chat_message("user").write(prompt)
 
-    #if not openai_api_key:
-    #    st.info("Please add your OpenAI API key to continue.")
-    #    st.stop()
-    #client = OpenAI(api_key=openai_api_key)
-    api_key = 'sk-tmybDmPl6ensfuOzjDwcEDDYg9AFVlUyg4pfUasyKrT3BlbkFJu_s1RvLGnpg-p34GjicHzYLhfmQVDud0XJuPsOyKsA'
-    openai.api_key = api_key
-    response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=messages)
-    #response = client.chat.completions.create(model="gpt-3.5-turbo", messages=messages)
-    st.session_state["response"] = response.choices[0].message.content
-    with st.chat_message("assistant"):
-        messages.append({"role": "assistant", "content": st.session_state["response"]})
-        st.write(st.session_state["response"])
+#     #if not openai_api_key:
+#     #    st.info("Please add your OpenAI API key to continue.")
+#     #    st.stop()
+#     #client = OpenAI(api_key=openai_api_key)
+#     api_key = 'sk-tmybDmPl6ensfuOzjDwcEDDYg9AFVlUyg4pfUasyKrT3BlbkFJu_s1RvLGnpg-p34GjicHzYLhfmQVDud0XJuPsOyKsA'
+#     openai.api_key = api_key
+#     response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=messages)
+#     #response = client.chat.completions.create(model="gpt-3.5-turbo", messages=messages)
+#     st.session_state["response"] = response.choices[0].message.content
+#     with st.chat_message("assistant"):
+#         messages.append({"role": "assistant", "content": st.session_state["response"]})
+#         st.write(st.session_state["response"])
 
-if st.session_state["response"]:
-    feedback = streamlit_feedback(
-        feedback_type="thumbs",
-        optional_text_label="[Optional] Please provide an explanation",
-        key=f"feedback_{len(messages)}",
-    )
-    # This app is logging feedback to Trubrics backend, but you can send it anywhere.
-    # The return value of streamlit_feedback() is just a dict.
-    # Configure your own account at https://trubrics.streamlit.app/
-    if feedback and "TRUBRICS_EMAIL" in st.secrets:
-        config = trubrics.init(
-            email=st.secrets.TRUBRICS_EMAIL,
-            password=st.secrets.TRUBRICS_PASSWORD,
-        )
-        collection = trubrics.collect(
-            component_name="default",
-            model="gpt",
-            response=feedback,
-            metadata={"chat": messages},
-        )
-        trubrics.save(config, collection)
-        st.toast("Feedback recorded!", icon="📝")
+# if st.session_state["response"]:
+#     feedback = streamlit_feedback(
+#         feedback_type="thumbs",
+#         optional_text_label="[Optional] Please provide an explanation",
+#         key=f"feedback_{len(messages)}",
+#     )
+#     # This app is logging feedback to Trubrics backend, but you can send it anywhere.
+#     # The return value of streamlit_feedback() is just a dict.
+#     # Configure your own account at https://trubrics.streamlit.app/
+#     if feedback and "TRUBRICS_EMAIL" in st.secrets:
+#         config = trubrics.init(
+#             email=st.secrets.TRUBRICS_EMAIL,
+#             password=st.secrets.TRUBRICS_PASSWORD,
+#         )
+#         collection = trubrics.collect(
+#             component_name="default",
+#             model="gpt",
+#             response=feedback,
+#             metadata={"chat": messages},
+#         )
+#         trubrics.save(config, collection)
+#         st.toast("Feedback recorded!", icon="📝")
