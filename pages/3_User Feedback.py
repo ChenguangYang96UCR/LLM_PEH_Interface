@@ -77,7 +77,6 @@ if submit_button:
 #     #    st.info("Please add your OpenAI API key to continue.")
 #     #    st.stop()
 #     #client = OpenAI(api_key=openai_api_key)
-#     api_key = 'sk-tmybDmPl6ensfuOzjDwcEDDYg9AFVlUyg4pfUasyKrT3BlbkFJu_s1RvLGnpg-p34GjicHzYLhfmQVDud0XJuPsOyKsA'
 #     openai.api_key = api_key
 #     response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=messages)
 #     #response = client.chat.completions.create(model="gpt-3.5-turbo", messages=messages)
