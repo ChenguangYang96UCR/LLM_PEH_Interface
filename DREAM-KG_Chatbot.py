@@ -413,8 +413,8 @@ if __name__ == '__main__':
     #st.markdown("# **Start Here ↓**", icon="👇")
     st.info("**Welcome to DREAM-KG chatbot, start here ↓**", icon="👋") #edited: 10/24
     st.markdown("### 💬 Ask me about services")
-    query_tip = "Enter your query: Find me a food pantry near market east && families in Philadelphia."
-    user_query = st.text_input(query_tip, key="user_query")
+    query_txt = "Enter your query: Find me a food pantry near market east && families in Philadelphia.\n(Ingrese su consulta: Búsqueme una despensa de alimentos cerca de Market East && Family en Filadelfia.)"
+    user_query = st.text_input(query_txt, key="user_query")
 
     # Service audience checkbox
     c1, c2, c3, c4, c5= st.columns([1, 1, 1, 1, 1], gap="small")
