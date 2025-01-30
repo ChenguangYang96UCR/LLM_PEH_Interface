@@ -335,32 +335,48 @@ def parse_extracted_info(extracted_info):
     return service_type, zipcode, weekday, service_time
 
 # * Send email to services
-def send_email(select_option):
+def send_email(language = 'en'):
     c1, c2 = st.columns([1, 1], gap="small")
     with c1:
-        user_name = st.text_input("Name *")
+        name_title = GoogleTranslator(source='auto', target=language).translate(str("Name *"))
+        user_name = st.text_input(name_title)
     with c2:
-        user_contract = st.text_input("Email/Phone *")
+        contract_title = GoogleTranslator(source='auto', target=language).translate(str("Email/Phone *"))
+        user_contract = st.text_input(contract_title)
   
     Body = "Appointment name: " + user_name + '\n' + "User contract: " + user_contract + '\n'
 
     c1, c2, c3= st.columns([1, 1, 1], gap="small")
     with c1:
-        street_address = st.text_input("Street Address")
+        address_title = GoogleTranslator(source='auto', target=language).translate(str("Street Address"))
+        street_address = st.text_input(address_title)
     with c2:
-        city = st.text_input("City")
+        city_title = GoogleTranslator(source='auto', target=language).translate(str("City"))
+        city = st.text_input(city_title)
     with c3:
-        zip = st.text_input("ZIP")
+        zip_title = GoogleTranslator(source='auto', target=language).translate(str("ZIP"))
+        zip = st.text_input(zip_title)
 
-    inquirys = ["Please Select", "General Inquiry", "Adult Service", "Elderly Service", "Youth Service", "Family Service"]
-    selected_option = st.selectbox('I am inquiring about...', inquirys)
-    message = st.text_input("Your Message")
+    inqury_0 = GoogleTranslator(source='auto', target=language).translate(str("Please Select"))
+    inqury_1 = GoogleTranslator(source='auto', target=language).translate(str("General Inquiry"))
+    inqury_2 = GoogleTranslator(source='auto', target=language).translate(str("Adult Service"))
+    inqury_3 = GoogleTranslator(source='auto', target=language).translate(str("Elderly Service"))
+    inqury_4 = GoogleTranslator(source='auto', target=language).translate(str("Youth Service"))
+    inqury_5 = GoogleTranslator(source='auto', target=language).translate(str("Family Service"))
+
+    inquirys = [inqury_0, inqury_1, inqury_2, inqury_3, inqury_4, inqury_5]
+    select_title = GoogleTranslator(source='auto', target=language).translate(str('I am inquiring about...'))
+    selected_option = st.selectbox(select_title, inquirys)
+
+    message_title = GoogleTranslator(source='auto', target=language).translate(str('Your Message'))
+    message = st.text_input(message_title)
 
     c1, c2, c3, c4 = st.columns([1, 1, 1, 1], gap="large")
     with c4:
-        appointment = st.button("Make Appointment")
+        appointment_title = GoogleTranslator(source='auto', target=language).translate(str("Make Appointment"))
+        appointment = st.button(appointment_title)
     if appointment:
-        if inquirys != "Please Select":
+        if inquirys != inqury_0:
             Body = Body + "Inquiry: " + selected_option + '\n' + 'Message: ' + message + '\n'
         if street_address !=  "":
             Body = Body + "Street: " + street_address + '\n'
@@ -369,7 +385,8 @@ def send_email(select_option):
         if zip !=  "":
             Body = Body + "Zip: " + zip + '\n'
 
-        with st.spinner('Sending e-mail, please wait ...'):
+        send_email_spinner = GoogleTranslator(source='auto', target=language).translate(str("Sending e-mail, please wait ..."))
+        with st.spinner(send_email_spinner):
             try:
                 msg = MIMEText(Body)
                 msg['From'] = "ucr.dreamkg@gmail.com"
@@ -861,9 +878,10 @@ if __name__ == '__main__':
                             Options = [None]
                             for service in option_services: 
                                 Options.append(str(service[0]))
-                            selected_option = st.selectbox('Select a service', Options)
+                            select_service_title = GoogleTranslator(source='auto', target=input_language).translate(str('Select a service'))
+                            selected_option = st.selectbox(select_service_title, Options)
                             if not selected_option is None:
-                                send_email(selected_option)
+                                send_email(input_language)
 
                         else:
                             st.sidebar.error(f"Error: Unable to retrieve location information for ZIP code {zipcode}")
