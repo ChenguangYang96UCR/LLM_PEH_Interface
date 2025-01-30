@@ -240,12 +240,15 @@ def filter_crime_based_zipcode(crime_array, zipcode):
     filter_crime = []
     index = 0
     for crime in crime_array:
-        if crime['zipcode'] == zipcode:
+        if crime['zipcode'] == int(zipcode):
             filter_crime.append(crime['info'])
         index = index + 1
     return filter_crime
 
 def get_crimes_summary(crimes_list, st, language = 'en'):
+    if len(crimes_list) == 0:
+        st.write('There is no crime record in this area.')
+        return
     summary_prompt = f"""
 Please combine these crime informations, construct corresponding natural language sentences about most common crime type and crime rate per day.
 response: {crimes_list}
