@@ -9,7 +9,6 @@ import openai
 import re
 import requests
 from PIL import Image
-from steamship import Steamship
 from datetime import datetime
 import numpy as np
 from langdetect import detect, DetectorFactory
@@ -41,6 +40,8 @@ import time
 import utils
 import pytz
 import geopy
+
+import ollama
 
 #from geopy.distance import geodesic
 
@@ -107,8 +108,8 @@ def my_component(key=None):
 
 
 # Function to query OpenAI API for extracting the service and zipcode
-def ask_openai_for_service_extraction(question, api_key, conversation_history):
-    openai.api_key = api_key
+def ask_deepseek_for_service_extraction(question, model_name, conversation_history):
+
     extraction_instruction = ("Extract the type of service, zipcode and time(include day of the week) from the following user query. "
                               "If the user doesn't provide a zipcode and only provides a general landmark, "
                               "please try to provide the corresponding zipcode for that landmark. "
@@ -118,16 +119,15 @@ def ask_openai_for_service_extraction(question, api_key, conversation_history):
                               "Only provide the service type, the zipcode and the time period.")
     combined_query = f"{extraction_instruction}\n{question}"
     full_conversation = conversation_history + [{"role": "user", "content": combined_query}]
-    response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=full_conversation)
-    
-    if response.choices:
+
+    response = ollama.chat(model=model_name, messages=full_conversation)
+    if response.message:
         conversation_history.append({"role": "user", "content": combined_query})
-        conversation_history.append({"role": "assistant", "content": response.choices[0].message['content']})
+        conversation_history.append({"role": "assistant", "content": response.message['content']})
     return response
 
 # Function to classify service type
-def classify_service_type(service_type, api_key):
-    openai.api_key = api_key
+def classify_service_type(service_type, model_name):
     prompt = f"""
     Below are examples of service types with their categories:
     "Meal services": Food
@@ -137,55 +137,28 @@ def classify_service_type(service_type, api_key):
     "Mental health counseling": Mental Health 
 
     Based on the examples above, classify the following service type into the correct category (Food, Shelter, Mental Health):
-    "{service_type}": """
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",  # Updated to use the latest and more advanced model
-        messages=[
-            {"role": "system", "content": "You are a classifier that categorizes service types."},
-            {"role": "user", "content": prompt}
-        ],
-        temperature=0.2
-    )
+    "{service_type}".
+    Please only reply the category in your response. """
     
+    response = ollama.chat(model=model_name, messages=[
+        {
+            "role": "system", 
+            "content": "You are a classifier that categorizes service types."
+        },
+        {
+            'role': 'user',
+            'content': prompt,
+        },
+    ])
     # st.write(response)
-    raw_category = response['choices'][0]['message']['content'].strip() if response['choices'] else "Other"
+    raw_category = response['message']['content'].strip() if response['message'] else "Other"
+    words = raw_category.split()
+    last_think_index = len(words) - 1 - words[::-1].index("</think>")
+    category = words[last_think_index + 1]
     # st.write("**Raw Model Response for Classification:**", raw_category) # make title as bold
-    return raw_category
-
-
-# Function for image analysis
-def identify_image_geolocation(input_img, api_key):
-    headers = {
-        "Content-Type": "application/json",
-        "Authorization": f"Bearer {api_key}"
-    }
-
-    payload = {
-        "model": "gpt-4-vision-preview",
-        "messages": [
-            {
-                "role": "user",
-                "content": [
-                    {
-                        "type": "text",
-                        "text": "Where is my location?"
-                    },
-                    {
-                        "type": "image_url",
-                        "image_url": {
-                            "url": f"data:image/jpeg;base64,{input_img}"
-                        }
-                    }
-                ]
-            }
-        ],
-        "max_tokens": 300
-    }
-
-    response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload)
-    r = response.json()
-    print(r["choices"][0]["message"]["content"])
-    return r
+    logger.debug('extract raw category of service: ' + raw_category)
+    logger.debug('extract category of service: ' + category)
+    return category
 
 # Function to determine if current time is within a specified range
 def isNowInTimePeriod(startTime, endTime, nowTime):
@@ -482,7 +455,7 @@ if __name__ == '__main__':
     # Initialize global variables
     #! Openai api key
     conversation_history = []
-    api_key = ''
+    deep_seek_model_name = "deepseek-r1:14b"
         
     if st.session_state.mainpageId == "True":
         if user_query is '':
@@ -493,13 +466,17 @@ if __name__ == '__main__':
         logger.debug("user_query:" + user_query)
         translated_user_query = GoogleTranslator(source='auto', target='en').translate(str(user_query))
 
-        response = ask_openai_for_service_extraction(translated_user_query, api_key, conversation_history)
+        response = ask_deepseek_for_service_extraction(translated_user_query, deep_seek_model_name, conversation_history)
         logger.debug("translated_user_query:" + translated_user_query)
        
-        if response.choices:
-            extracted_info = response.choices[0].message['content'].strip()
+        if response.message:
+            extracted_info = response.message['content'].strip()
             # st.write("Extracted Information:", extracted_info)
             service_type, zipcode, weekday, service_time = parse_extracted_info(extracted_info)
+            print('service_type: ' + str(service_type))
+            print('zipcode: ' + str(zipcode))
+            print('weekday: ' + str(weekday))
+            print('service_time: ' + str(service_time))
             #print("service_type:", service_type)
             # crime incidents analysis
             crime_data_df = pd.read_csv('Final_Philadelphia_Crime_Data_2023.csv')
@@ -534,7 +511,7 @@ if __name__ == '__main__':
 
             if service_type and zipcode:
                 try:
-                    classified_service_type = classify_service_type(service_type, api_key)
+                    classified_service_type = classify_service_type(service_type, deep_seek_model_name)
                     time_title = "#### Current Time in Eastern Standard Time"
                     time_markdown = GoogleTranslator(source='auto', target=input_language).translate(str(time_title))
                     st.markdown(time_markdown)
@@ -581,7 +558,7 @@ if __name__ == '__main__':
                         crime_information_markdown = GoogleTranslator(source='auto', target=input_language).translate(str(crime_information_title))
                         st.markdown(crime_information_markdown)
                         filter_crimes = utils.filter_crime_based_zipcode(crime_data, zipcode)
-                        utils.get_crimes_summary(filter_crimes, st, input_language)
+                        utils.get_crimes_summary(filter_crimes, st, deep_seek_model_name, input_language)
 
                         morning_crime_data_df = pd.read_csv("three_days_philly_incidents_2025_morning.csv")
                         morning_crime_data = read_crime_data(morning_crime_data_df)
@@ -723,6 +700,7 @@ if __name__ == '__main__':
                                 if veterans_check:
                                     select_audience.append('veterans')
                                 audience_services = utils.get_serving_from_list(select_audience, logger)
+
                                 if not weekday == "":
                                     # * Can get weekday from user's question
                                     if service_time == 99:
@@ -750,10 +728,10 @@ if __name__ == '__main__':
                                 with st.spinner(service_info_spinner_trans):
                                     if len(extract_duplicate_services) == 0:
                                         option_services = extract_services
-                                        service_information = utils.getQuestion_answer(extract_services, st, input_language)
+                                        service_information = utils.getQuestion_answer(extract_services, st, deep_seek_model_name,input_language)
                                     else:
                                         option_services = extract_duplicate_services
-                                        service_information = utils.getQuestion_answer(extract_duplicate_services, st, input_language)
+                                        service_information = utils.getQuestion_answer(extract_duplicate_services, st, deep_seek_model_name, input_language)
                                 
                             else:
                                 time_services = []
@@ -783,10 +761,10 @@ if __name__ == '__main__':
                                     with st.spinner(service_info_spinner_trans):
                                         if len(extract_time_services) == 0:
                                             option_services = extract_services
-                                            service_information = utils.getQuestion_answer(extract_services, st, input_language)
+                                            service_information = utils.getQuestion_answer(extract_services, st, deep_seek_model_name, input_language)
                                         else:
                                             option_services = extract_time_services
-                                            service_information = utils.getQuestion_answer(extract_time_services, st, input_language)
+                                            service_information = utils.getQuestion_answer(extract_time_services, st, deep_seek_model_name, input_language)
                             print("Before map filter.")
                             time_zone_select = 'Select which time you prefer, then we will give you a crime map at that time.'
                             time_zone_select_markdown = GoogleTranslator(source='auto', target=input_language).translate(str(time_zone_select))

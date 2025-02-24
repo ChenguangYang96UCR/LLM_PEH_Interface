@@ -4,6 +4,7 @@ import openai
 from py2neo import Graph
 from deep_translator import GoogleTranslator
 import logging
+import ollama
 
 google_translator_max_char = 5000
 
@@ -50,7 +51,7 @@ def wild_search_by_keywords(key_word, relation=''):
 
 # * Get and combine services' information 
 @st.cache_resource(show_spinner=False)
-def getQuestion_answer(Service_list, st, language = 'en'):
+def getQuestion_answer(Service_list, st, model_name, language = 'en'):
     print("getQuestion_answer")
     all_triples = []    
     all_information = []
@@ -70,32 +71,45 @@ Step1: Given the input knowledge graph triples (i.e., with the format (subject, 
 please output corresponding natural language sentences about introduction and suggestion based on all knowledge graph triples.
 input knowledge graph triples: {slice_triple}
 """
-                response = openai.ChatCompletion.create(
-                    model="gpt-3.5-turbo",  # Updated to use the latest and more advanced model
-                    messages=[
-                        {"role": "user", "content": answer_prompt}
-                    ],
-                    temperature=0.2
-                )
-                all_response.append(response)
+                response = ollama.chat(model=model_name, messages=[
+                    {
+                        'role': 'user',
+                        'content': answer_prompt,
+                    }
+                ])
+                last_think_index = response.message.content.rfind('</think>')
+                # find last think
+                if last_think_index != -1:
+                    # Get information under think tag
+                    content_after_think = response.message.content[last_think_index + len('</think>'):]
+                    # print(content_after_think)
+                else:
+                    print("Can't find <think> tag")
+                all_response.append(content_after_think)
                 index = index + 1
         combine_prompt = f"""
 Please combine these response, construct corresponding natural language sentences about introduction and suggestion.
 response: {all_response}
 """
-        response = openai.ChatCompletion.create(
-                        model="gpt-3.5-turbo",  # Updated to use the latest and more advanced model
-                        messages=[
-                            {"role": "user", "content": combine_prompt}
-                        ],
-                        temperature=0.2
-                    )
-
+        response = ollama.chat(model=model_name, messages=[
+                        {
+                            'role': 'user',
+                            'content': combine_prompt,
+                        }
+                    ])
         st.write(f"**{Service[0]}**")
         google_rating = f"**Google Rating:{Service[1]}**"
         google_rating_trans = GoogleTranslator(source='auto', target=language).translate(str(google_rating))
         st.write(google_rating_trans, "\n")
-        service_information = response.choices[0].message['content']
+        last_think_index = response.message.content.rfind('</think>')
+        # find last think
+        if last_think_index != -1:
+            # Get information under think tag
+            content_after_think = response.message.content[last_think_index + len('</think>'):]
+            # print(content_after_think)
+        else:
+            print("Can't find <think> tag")
+        service_information = content_after_think
         if len(service_information) > google_translator_max_char:
             service_information = service_information[:google_translator_max_char]
         service_information_trans = GoogleTranslator(source='auto', target=language).translate(str(service_information))
@@ -245,7 +259,7 @@ def filter_crime_based_zipcode(crime_array, zipcode):
         index = index + 1
     return filter_crime
 
-def get_crimes_summary(crimes_list, st, language = 'en'):
+def get_crimes_summary(crimes_list, st, model_name, language = 'en'):
     if len(crimes_list) == 0:
         st.write('There is no crime record in this area.')
         return
@@ -253,15 +267,15 @@ def get_crimes_summary(crimes_list, st, language = 'en'):
 Please combine these crime informations, construct corresponding natural language sentences about most common crime type and crime rate per day.
 response: {crimes_list}
 """
-    response = openai.ChatCompletion.create(
-                    model="gpt-3.5-turbo",  # Updated to use the latest and more advanced model
-                    messages=[
-                        {"role": "user", "content": summary_prompt}
-                    ],
-                    temperature=0.2
-                )
+    
+    response = ollama.chat(model=model_name, messages=[
+                        {
+                            'role': 'user',
+                            'content': summary_prompt,
+                        }
+                    ])
 
-    crimes_information = response.choices[0].message['content']
+    crimes_information = response.message['content']
     if len(crimes_information) > google_translator_max_char:
         crimes_information = crimes_information[:google_translator_max_char]
     crimes_information_trans = GoogleTranslator(source='auto', target=language).translate(str(crimes_information))
