@@ -235,7 +235,6 @@ def read_data(df):
             <strong>Languages:</strong> {row['Languages']}<br>
             <strong>Cost:</strong> {row['Cost']}<br>
             <strong>Google Rating:</strong> {row['Google_Rating']}<br>
-            <strong>Last Review:</strong> {row['Last_Review']}
         """
 
         # Append this information along with latitude and longitude
@@ -544,6 +543,7 @@ if __name__ == '__main__':
                     service_markdown = GoogleTranslator(source='auto', target=input_language).translate(str(service_title))
                     st.markdown(service_markdown)
                     st.write(classified_service_type)
+                    logger.debug("classified service type: " + classified_service_type)
 
                     if classified_service_type == 'Shelter':
                         st.write("**Specific Temporary Housing for Veteran:**", "If you are veteran, please consider Veterans Multi Service Center (Phone: 215-238-8067; Address: 213-217 N 4th St, Philadelphia, PA 19106)")
@@ -555,21 +555,32 @@ if __name__ == '__main__':
                     service_markdown = GoogleTranslator(source='auto', target=input_language).translate(str(zipcode_title))
                     st.markdown(service_markdown)
                     st.write(zipcode)
+                    logger.debug("classified service zipcode: " + zipcode)
+                    if weekday == "":
+                        logger.debug("classified service weekday: " + weekday_name)
+                    else:
+                        logger.debug("classified service weekday: " + weekday)
 
+                    if service_time == 99:
+                        print("in current time ")
+                        logger.debug(f"Current hour: {now.hour}")
+                    else:
+                        print("in service time ")
+                        logger.debug("classified service time: " + service_time)
+                        
                     if classified_service_type != "Other":
                         service_files = {
-                            "Shelter": "Final_Temporary_Shelter_20250111.csv",
-                            "Mental Health": "Final_Mental_Health_20250111.csv",
-                            "Food": "Final_Emergency_Food_20250111.csv"
+                            "Shelter": "Final_Temporary_Shelter_20240723.csv",
+                            "Mental Health": "Final_Mental_Health_20240723.csv",
+                            "Food": "Final_Emergency_Food_2025_0322.csv"
                         }
-                        print('before service files')
                         if classified_service_type != "Shelter" and classified_service_type != "Mental Health" and classified_service_type != "Food":
-                            print('in service files')
                             service_type_warning = 'Service type is not recognized. Please try again with a different service type. Such that: "Shelter", "Mental Health", "Food". And there is the example for query: Find me a food pantry near market east && families in Philadelphia.'
                             service_type_waring_trans = GoogleTranslator(source='auto', target=input_language).translate(str(service_type_warning))
                             st.markdown('''##### :red['''+ service_type_waring_trans + ''']''')
                             st.stop()
-                        print('before read csv')
+
+                        type_service_list =  utils.get_services_type(classified_service_type, logger)
                         datafile = service_files[classified_service_type]
                         df = pd.read_csv(datafile)
                         data, service_list = read_data(df)
@@ -606,13 +617,10 @@ if __name__ == '__main__':
                                             "Vagrancy/Loitering", "Theft from Vehicle",
                                             "psa_1", "psa_2", "psa_3", "psa_4", "psa_A",
                                             "total_hours"]  # change col name
-                        print('transfer zipcode')
                         zipcode_num = int(zipcode)
-                        logger.debug("zipcode_num is:" + zipcode)
                         # top-3 crime incidents
                         crime_type_list = sorted(crime_frequency, key=crime_frequency.get, reverse=True)[:3] #'All_Other_Offenses' # only focus on top three crime types
                         final_pred_res = [] # number of prediction in weeks
-                        print(crime_type_list)
                         for crime_type in crime_type_list:
                             new_crime_df = crime_df.loc[crime_df['zipcode'] == zipcode_num, ['month', crime_type]]
                             # print(crime_df.query('zipcode' = zipcode_num))
@@ -736,6 +744,7 @@ if __name__ == '__main__':
                                     else:
                                         time_services = utils.get_services_time(weekday_name, service_time, logger)
                                 audience_services.extend(time_services)
+                                audience_services.extend(type_service_list)
                                 duplicate_services = utils.get_duplicate_service_name(audience_services)
                                 
                                 extract_duplicate_services = []
@@ -745,14 +754,22 @@ if __name__ == '__main__':
                                         end_brasket = service[0].find(')', start_brasket + 1)
                                         service_name = service[0]
                                         extract_duplicate_services.append([service_name[start_brasket+1:end_brasket], service[1]])
+
+                                logger.debug("Final services: \n")
+                                logger.debug(extract_duplicate_services)
+                                
                                 service_info_spinner = 'Loading service information, please wait ...'
                                 service_info_spinner_trans = GoogleTranslator(source='auto', target=input_language).translate(str(service_info_spinner))
                                 with st.spinner(service_info_spinner_trans):
                                     if len(extract_duplicate_services) == 0:
                                         option_services = extract_services
+                                        logger.debug("knowledge graph query service list: \n")
+                                        logger.debug(extract_services)
                                         service_information = utils.getQuestion_answer(extract_services, st, input_language)
                                     else:
                                         option_services = extract_duplicate_services
+                                        logger.debug("knowledge graph query service list: \n")
+                                        logger.debug(extract_duplicate_services)
                                         service_information = utils.getQuestion_answer(extract_duplicate_services, st, input_language)
                                 
                             else:
@@ -770,9 +787,11 @@ if __name__ == '__main__':
                                     else:
                                         time_services = utils.get_services_time(weekday_name, service_time, logger)
                                     
+                                    time_services.append(type_service_list)
+                                    duplicate_services = utils.get_duplicate_service_name(time_services)
                                     extract_time_services = []
                                     for service in service_list:
-                                        if service[0] in time_services:
+                                        if service[0] in duplicate_services:
                                             start_brasket = service[0].find('(')
                                             end_brasket = service[0].find(')', start_brasket + 1)
                                             service_name = service[0]
@@ -783,9 +802,13 @@ if __name__ == '__main__':
                                     with st.spinner(service_info_spinner_trans):
                                         if len(extract_time_services) == 0:
                                             option_services = extract_services
+                                            logger.debug("knowledge graph query service list: \n")
+                                            logger.debug(extract_services)
                                             service_information = utils.getQuestion_answer(extract_services, st, input_language)
                                         else:
                                             option_services = extract_time_services
+                                            logger.debug("knowledge graph query service list: \n")
+                                            logger.debug(extract_time_services)
                                             service_information = utils.getQuestion_answer(extract_time_services, st, input_language)
                             print("Before map filter.")
                             time_zone_select = 'Select which time you prefer, then we will give you a crime map at that time.'

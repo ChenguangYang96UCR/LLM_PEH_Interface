@@ -50,8 +50,7 @@ def wild_search_by_keywords(key_word, relation=''):
 
 # * Get and combine services' information 
 @st.cache_resource(show_spinner=False)
-def getQuestion_answer(Service_list, st, language = 'en'):
-    print("getQuestion_answer")
+def getQuestion_answer(Service_list, st,language = 'en'):
     all_triples = []    
     all_information = []
     for Service in Service_list:
@@ -105,9 +104,21 @@ response: {all_response}
     print("Finished GetQuestion_Answer!")
     return all_information
 
-def extract_service_name_from_triple(triple):
+def extract_service_serving_name_from_triple(triple):
     # start_quotation = triple.find('"')
     target_index = triple.find('\'audience\'', 1)
+    extract_service_name = triple[0:target_index - 1]
+    if extract_service_name[0] == '\'':
+        extract_service_name = extract_service_name.rstrip('\'')
+        extract_service_name = extract_service_name.lstrip('\'')
+    else:
+        extract_service_name = extract_service_name.rstrip('\"')
+        extract_service_name = extract_service_name.lstrip('\"')
+    return extract_service_name   
+
+def extract_type_service_name_from_triple(triple):
+    # start_quotation = triple.find('"')
+    target_index = triple.find('\'service type\'', 1)
     extract_service_name = triple[0:target_index - 1]
     if extract_service_name[0] == '\'':
         extract_service_name = extract_service_name.rstrip('\'')
@@ -158,6 +169,8 @@ def get_services_time(day_of_week, service_time, logger, relation='xmlschema11-2
                 services_name.append(extract_service_name)
         else:
             continue
+    logger.debug("service list based on time search: \n")
+    logger.debug(services_name)
     return services_name
 
 # * receive four kinds of serving type
@@ -183,10 +196,30 @@ def get_service_serving(*args, logger, relation='audience'):
     query_result = graph.run(Query)
     for triple in query_result:
         raw_triple = str(triple).replace('\t', ',')
-        extract_service_name =  extract_service_name_from_triple(raw_triple)
+        extract_service_name =  extract_service_serving_name_from_triple(raw_triple)
         services_name.append(extract_service_name)
     unique_service = list(set(services_name))
+    logger.debug("service list based on serving search: \n")
+    logger.debug(unique_service)
     return unique_service
+
+def get_services_type(service_type, logger, relation='service type'):
+    print('get_services_type')
+    services_name = []
+    graph = Graph(
+            "bolt://localhost:7687", 
+            auth=("neo4j", "123456789")
+        )
+    Query = 'MATCH (m:node)-[r]->(n:node) where type(r)=~\".*(?i){0}.*\" and n.name=~\".*(?i){1}.*\" RETURN m.name,type(r),n.name'.format(relation, service_type)
+    # MATCH (m:node)-[r]-(n:node) where type(r)=~".*(?i)service type.*" and n.name=~".*(?i)Food.*" RETURN m.name,type(r),n.name
+    query_result = graph.run(Query)
+    for triple in query_result:
+        raw_triple = str(triple).replace('\t', ',')
+        extract_service_name =  extract_type_service_name_from_triple(raw_triple)
+        services_name.append(extract_service_name)
+    logger.debug("Services list based type: \n")
+    logger.debug(services_name)
+    return services_name
 
 # * Get duplicate service name from list 
 def get_duplicate_service_name(services_name):
