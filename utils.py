@@ -158,7 +158,6 @@ def get_services_time(day_of_week, service_time, logger, relation='xmlschema11-2
             auth=("neo4j", "123456789")
         )
     Query = 'MATCH (m:node)-[r]-(n:node) where type(r)=~\".*(?i){0}.*\" and n.name=~\".*(?i){1}.*\" RETURN m.name,type(r),n.name'.format(relation, day_of_week)
-    logger.debug(Query)
     query_result = graph.run(Query)
     for triple in query_result:
         raw_triple = str(triple).replace('\t', ',')
@@ -182,16 +181,12 @@ def get_service_serving(*args, logger, relation='audience'):
         )
     if len(args) == 1:
         Query = 'MATCH (m:node)-[r]->(n:node) where type(r)=~\".*(?i){0}.*\" and n.name=~\".*(?i){1}.*\" RETURN m.name,type(r),n.name'.format(relation, args[0])
-        logger.debug(Query)
     if len(args) == 2:
         Query = 'MATCH (m:node)-[r]->(n:node) where type(r)=~\".*(?i){0}.*\" and (n.name=~\".*(?i){1}.*\" or n.name=~\".*(?i){2}.*\") RETURN m.name,type(r),n.name'.format(relation, args[0], args[1])
-        logger.debug(Query)
     if len(args) == 3:
         Query = 'MATCH (m:node)-[r]->(n:node) where type(r)=~\".*(?i){0}.*\" and (n.name=~\".*(?i){1}.*\" or n.name=~\".*(?i){2}.*\" or n.name=~\".*(?i){3}.*\") RETURN m.name,type(r),n.name'.format(relation, args[0], args[1], args[2])
-        logger.debug(Query)
     if len(args) == 4:
         Query = 'MATCH (m:node)-[r]->(n:node) where type(r)=~\".*(?i){0}.*\" and (n.name=~\".*(?i){1}.*\" or n.name=~\".*(?i){2}.*\" or n.name=~\".*(?i){3}.*\" or n.name=~\".*(?i){4}.*\") RETURN m.name,type(r),n.name'.format(relation, args[0], args[1], args[2], args[3])
-        logger.debug(Query)
 
     query_result = graph.run(Query)
     for triple in query_result:

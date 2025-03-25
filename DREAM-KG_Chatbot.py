@@ -184,7 +184,6 @@ def identify_image_geolocation(input_img, api_key):
 
     response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload)
     r = response.json()
-    print(r["choices"][0]["message"]["content"])
     return r
 
 # Function to determine if current time is within a specified range
@@ -512,7 +511,6 @@ if __name__ == '__main__':
             extracted_info = response.choices[0].message['content'].strip()
             # st.write("Extracted Information:", extracted_info)
             service_type, zipcode, weekday, service_time = parse_extracted_info(extracted_info)
-            #print("service_type:", service_type)
             # crime incidents analysis
             crime_data_df = pd.read_csv('Final_Philadelphia_Crime_Data_2023.csv')
             crime_data = crime_data_df.values
@@ -575,10 +573,8 @@ if __name__ == '__main__':
                         logger.debug("classified service weekday: " + weekday)
 
                     if service_time == 99:
-                        print("in current time ")
                         logger.debug(f"Current hour: {now.hour}")
                     else:
-                        print("in service time ")
                         logger.debug("classified service time: " + service_time)
                         
                     if classified_service_type != "Other":
@@ -636,7 +632,6 @@ if __name__ == '__main__':
                         final_pred_res = [] # number of prediction in weeks
                         for crime_type in crime_type_list:
                             new_crime_df = crime_df.loc[crime_df['zipcode'] == zipcode_num, ['month', crime_type]]
-                            # print(crime_df.query('zipcode' = zipcode_num))
                             passenger_counts = new_crime_df[crime_type].values
                             sequence_length = 3  # we will use data of 12 months to predict the passenger in 13th month - need to change
                             batch_size = 1
@@ -677,7 +672,6 @@ if __name__ == '__main__':
 
                             y_true = (np.array(y_true))
                             y_pred = (np.array(y_pred))
-                            print("y_pred:", y_pred)
                             final_pred_res.append(np.floor(y_pred))
 
                         chart_data = pd.DataFrame(np.array(final_pred_res).transpose(), columns=crime_type_list)
@@ -704,7 +698,6 @@ if __name__ == '__main__':
                         if not location_info.empty:
                             latitude_user = location_info['latitude']
                             longitude_user = location_info['longitude']
-                            print("latitude_user, longitude_user:", latitude_user, longitude_user)
                             city_name = location_info['place_name']
                             # client = Steamship(api_key="25FDC915-9156-4BFB-BA9B-1B213DF1E699")
 
@@ -724,7 +717,6 @@ if __name__ == '__main__':
                             serviceheader_markdown = GoogleTranslator(source='auto', target=input_language).translate(str(service_header))
                             st.header(serviceheader_markdown)
                             option_services = []
-                            print('extract services list : {0}'.format(len(extract_services)))
                         
                             if audience_select:
                                 time_services = []
@@ -809,7 +801,6 @@ if __name__ == '__main__':
                                             end_brasket = service[0].find(')', start_brasket + 1)
                                             service_name = service[0]
                                             extract_time_services.append([service_name[start_brasket+1:end_brasket], service[1]])
-                                    # print(extract_time_services)
                                     service_info_spinner = 'Loading service information, please wait ...'
                                     service_info_spinner_trans = GoogleTranslator(source='auto', target=input_language).translate(str(service_info_spinner))
                                     with st.spinner(service_info_spinner_trans):
@@ -895,7 +886,6 @@ if __name__ == '__main__':
                             # if not Morning and not Afternoon and not Evening:
                             #     for loc in crime_data:
                             #     # the place to add additional data
-                            #     ###print("loc:", loc)
                             #         iframe = IFrame(loc['info'], width=300, height=200)
                             #         popup = folium.Popup(iframe, max_width=800)
                             #         folium.Marker(
