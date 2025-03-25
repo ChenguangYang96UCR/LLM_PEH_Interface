@@ -414,7 +414,8 @@ if __name__ == '__main__':
         _component_func = components.declare_component("my_component", path=build_dir)
 
     # Set logger to record log 
-    logger =  utils.set_logger()
+    log_path = './streamlit.log'
+    logger =  utils.set_logger(log_file = log_path)
 
     if 'mainpageId' not in st.session_state:
         st.session_state.mainpageId = "False"
@@ -468,6 +469,18 @@ if __name__ == '__main__':
                 f"<img src='{replicate_logo}' style='height: 1em'> [{replicate_text}]({replicate_link})",
                 unsafe_allow_html=True
     )
+    try:
+        c1, c2, c3, c4 = st.columns([1, 1, 1, 1], gap="large")
+        with c4:
+            with open(log_path, "rb") as file:
+                st.download_button(
+                    label="download log file",
+                    data=file,
+                    file_name="streamlit.log",
+                    mime="text/plain"
+                )
+    except FileNotFoundError:
+        st.error("Can not find log file, please check file path or try to search service once to create log file.")
 
     ### 10/24 - edited
     st.markdown("""
@@ -810,7 +823,7 @@ if __name__ == '__main__':
                                             logger.debug("knowledge graph query service list: \n")
                                             logger.debug(extract_time_services)
                                             service_information = utils.getQuestion_answer(extract_time_services, st, input_language)
-                            print("Before map filter.")
+
                             time_zone_select = 'Select which time you prefer, then we will give you a crime map at that time.'
                             time_zone_select_markdown = GoogleTranslator(source='auto', target=input_language).translate(str(time_zone_select))
                             st.markdown('''##### :red['''+ time_zone_select_markdown + ''']''')
@@ -825,7 +838,6 @@ if __name__ == '__main__':
                             with c3:
                                 evening_trans = GoogleTranslator(source='auto', target=input_language).translate(str('Evening'))
                                 Evening = st.checkbox(evening_trans, value=False, key='Evening')
-                            print("After map filter.")
                             #! Making map 
                             map = folium.Map(location=[latitude_user, longitude_user], zoom_start=12)
                             folium.CircleMarker(
