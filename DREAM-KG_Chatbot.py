@@ -579,8 +579,8 @@ if __name__ == '__main__':
                         
                     if classified_service_type != "Other":
                         service_files = {
-                            "Shelter": "Final_Temporary_Shelter_20240723.csv",
-                            "Mental Health": "Final_Mental_Health_20240723.csv",
+                            "Shelter": "Final_FindHelp_extracted_data_philadelphia_temporary_shelter_2025_0402.csv",
+                            "Mental Health": "Final_FindHelp_extracted_data_philadelphia_mental_health_2025_0402.csv",
                             "Food": "Final_Emergency_Food_2025_0322.csv"
                         }
                         if classified_service_type != "Shelter" and classified_service_type != "Mental Health" and classified_service_type != "Food":
@@ -589,7 +589,6 @@ if __name__ == '__main__':
                             st.markdown('''##### :red['''+ service_type_waring_trans + ''']''')
                             st.stop()
 
-                        type_service_list =  utils.get_services_type(classified_service_type, logger)
                         datafile = service_files[classified_service_type]
                         df = pd.read_csv(datafile)
                         data, service_list = read_data(df)
@@ -716,10 +715,31 @@ if __name__ == '__main__':
                             service_header = "Services Information"
                             serviceheader_markdown = GoogleTranslator(source='auto', target=input_language).translate(str(service_header))
                             st.header(serviceheader_markdown)
+
                             option_services = []
-                        
+                            final_service = []
+                            type_service_list = []
+                            time_services = []
+                            audience_services = []
+                            # 1. First Layer (service type)
+                            type_service_list =  utils.get_services_type(classified_service_type, logger)
+
+                            # 2. Second Layer(service time)
+                            if not weekday == "":
+                                # * Can get weekday from user's question
+                                if service_time == 99:
+                                    time_services = utils.get_services_time(weekday, current_hour, logger)
+                                else:
+                                    time_services = utils.get_services_time(weekday, service_time, logger)
+                            else:
+                                # * Can not get weekday from user's question
+                                if service_time == 99:
+                                    time_services = utils.get_services_time(weekday_name, current_hour, logger)
+                                else:
+                                    time_services = utils.get_services_time(weekday_name, service_time, logger)
+
+                            # 3. Third Layer(audience)
                             if audience_select:
-                                time_services = []
                                 select_audience = []
                                 if adult_check:
                                     select_audience.append('adult')
@@ -736,85 +756,37 @@ if __name__ == '__main__':
                                 if veterans_check:
                                     select_audience.append('veterans')
                                 audience_services = utils.get_serving_from_list(select_audience, logger)
-                                if not weekday == "":
-                                    # * Can get weekday from user's question
-                                    if service_time == 99:
-                                        time_services = utils.get_services_time(weekday, current_hour, logger)
-                                    else:
-                                        time_services = utils.get_services_time(weekday, service_time, logger)
-                                else:
-                                    # * Can not get weekday from user's question
-                                    if service_time == 99:
-                                        time_services = utils.get_services_time(weekday_name, current_hour, logger)
-                                    else:
-                                        time_services = utils.get_services_time(weekday_name, service_time, logger)
-                                audience_services.extend(time_services)
-                                audience_services.extend(type_service_list)
-                                duplicate_services = utils.get_duplicate_service_name(audience_services)
-                                
-                                extract_duplicate_services = []
-                                for service in service_list:
-                                    if service[0] in duplicate_services:
-                                        start_brasket = service[0].find('(')
-                                        end_brasket = service[0].find(')', start_brasket + 1)
-                                        service_name = service[0]
-                                        extract_duplicate_services.append([service_name[start_brasket+1:end_brasket], service[1]])
 
-                                logger.debug("Final services: \n")
-                                logger.debug(extract_duplicate_services)
-                                
-                                service_info_spinner = 'Loading service information, please wait ...'
-                                service_info_spinner_trans = GoogleTranslator(source='auto', target=input_language).translate(str(service_info_spinner))
-                                with st.spinner(service_info_spinner_trans):
-                                    if len(extract_duplicate_services) == 0:
-                                        option_services = extract_services
-                                        logger.debug("knowledge graph query service list: \n")
-                                        logger.debug(extract_services)
-                                        service_information = utils.getQuestion_answer(extract_services, st, input_language)
-                                    else:
-                                        option_services = extract_duplicate_services
-                                        logger.debug("knowledge graph query service list: \n")
-                                        logger.debug(extract_duplicate_services)
-                                        service_information = utils.getQuestion_answer(extract_duplicate_services, st, input_language)
-                                
-                            else:
-                                time_services = []
-                                if not weekday == "":
-                                    # * Can get weekday from user's question
-                                    if service_time == 99:
-                                        time_services = utils.get_services_time(weekday, current_hour, logger)
-                                    else:
-                                        time_services = utils.get_services_time(weekday, service_time, logger)
-                                else:
-                                    # * Can not get weekday from user's question
-                                    if service_time == 99:
-                                        time_services = utils.get_services_time(weekday_name, current_hour, logger)
-                                    else:
-                                        time_services = utils.get_services_time(weekday_name, service_time, logger)
-                                    
-                                    time_services.append(type_service_list)
-                                    duplicate_services = utils.get_duplicate_service_name(time_services)
-                                    extract_time_services = []
-                                    for service in service_list:
-                                        if service[0] in duplicate_services:
-                                            start_brasket = service[0].find('(')
-                                            end_brasket = service[0].find(')', start_brasket + 1)
-                                            service_name = service[0]
-                                            extract_time_services.append([service_name[start_brasket+1:end_brasket], service[1]])
-                                    service_info_spinner = 'Loading service information, please wait ...'
-                                    service_info_spinner_trans = GoogleTranslator(source='auto', target=input_language).translate(str(service_info_spinner))
-                                    with st.spinner(service_info_spinner_trans):
-                                        if len(extract_time_services) == 0:
-                                            option_services = extract_services
-                                            logger.debug("knowledge graph query service list: \n")
-                                            logger.debug(extract_services)
-                                            service_information = utils.getQuestion_answer(extract_services, st, input_language)
-                                        else:
-                                            option_services = extract_time_services
-                                            logger.debug("knowledge graph query service list: \n")
-                                            logger.debug(extract_time_services)
-                                            service_information = utils.getQuestion_answer(extract_time_services, st, input_language)
+                            # 4. combine all search service and extract duplicate service
+                            final_service.extend(type_service_list)
+                            final_service.extend(time_services)
+                            final_service.extend(audience_services)
+                            duplicate_services = utils.get_duplicate_service_name(final_service)
+                            extract_duplicate_services = []
+                            for service in service_list:
+                                if service[0] in duplicate_services:
+                                    start_brasket = service[0].find('(')
+                                    end_brasket = service[0].find(')', start_brasket + 1)
+                                    service_name = service[0]
+                                    extract_duplicate_services.append([service_name[start_brasket+1:end_brasket], service[1]])
 
+                            logger.debug("Final services: \n")
+                            logger.debug(extract_duplicate_services)
+                            
+                            service_info_spinner = 'Loading service information, please wait ...'
+                            service_info_spinner_trans = GoogleTranslator(source='auto', target=input_language).translate(str(service_info_spinner))
+                            with st.spinner(service_info_spinner_trans):
+                                if len(extract_duplicate_services) == 0:
+                                    option_services = type_service_list
+                                    logger.debug("knowledge graph query service list: \n")
+                                    logger.debug(type_service_list)
+                                    service_information = utils.getQuestion_answer(type_service_list, st, input_language)
+                                else:
+                                    option_services = extract_duplicate_services
+                                    logger.debug("knowledge graph query service list: \n")
+                                    logger.debug(extract_duplicate_services)
+                                    service_information = utils.getQuestion_answer(extract_duplicate_services, st, input_language)
+                           
                             time_zone_select = 'Select which time you prefer, then we will give you a crime map at that time.'
                             time_zone_select_markdown = GoogleTranslator(source='auto', target=input_language).translate(str(time_zone_select))
                             st.markdown('''##### :red['''+ time_zone_select_markdown + ''']''')
@@ -829,6 +801,7 @@ if __name__ == '__main__':
                             with c3:
                                 evening_trans = GoogleTranslator(source='auto', target=input_language).translate(str('Evening'))
                                 Evening = st.checkbox(evening_trans, value=False, key='Evening')
+
                             #! Making map 
                             map = folium.Map(location=[latitude_user, longitude_user], zoom_start=12)
                             folium.CircleMarker(
@@ -841,7 +814,6 @@ if __name__ == '__main__':
                             ).add_to(map)
 
                             marker_cluster = MarkerCluster().add_to(map)
-
                             route_points = []
                             for loc in data:
                                 route_points.append([loc['latitude'], loc['longitude']])
@@ -882,17 +854,6 @@ if __name__ == '__main__':
                                         popup=popup,
                                         icon=folium.Icon(color='green', icon="flag")
                                     ).add_to(marker_cluster)
-
-                            # if not Morning and not Afternoon and not Evening:
-                            #     for loc in crime_data:
-                            #     # the place to add additional data
-                            #         iframe = IFrame(loc['info'], width=300, height=200)
-                            #         popup = folium.Popup(iframe, max_width=800)
-                            #         folium.Marker(
-                            #             location=[loc['latitude'], loc['longitude']],
-                            #             popup=popup,
-                            #             icon=folium.Icon(color='green', icon="flag")
-                            #         ).add_to(marker_cluster)
 
                             service_crime_map_title = f"{classified_service_type} Services & Crime near {zipcode}"
                             service_crime_map_header = GoogleTranslator(source='auto', target=input_language).translate(str(service_crime_map_title))
