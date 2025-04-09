@@ -432,30 +432,52 @@ if __name__ == '__main__':
     query_txt = "Enter your query: Find me a food pantry near market east && families in Philadelphia.\n(Ingrese su consulta: Búsqueme una despensa de alimentos cerca de Market East && Family en Filadelfia.)"
     user_query = st.text_input(query_txt, key="user_query")
 
-    # Service audience checkbox
-    c1, c2, c3, c4, c5= st.columns([1, 1, 1, 1, 1], gap="small")
-    with c1:
-        adult_check = st.checkbox('adults 18+', value=False, key='adults 18+')
-    with c2:
-        families_check = st.checkbox('families', value=False, key='families')
-    with c3: 
-        AllAges_check = st.checkbox('all ages', value=False, key='all ages')
-    with c4: 
-        ptsd_check = st.checkbox('ptsd', value=False, key='ptsd')
-    with c5:
-        veterans_check = st.checkbox('veterans', value=False, key='veterans')
-    
-    c1, c2, c3, c4, c5 = st.columns([1, 1, 1, 1, 1], gap="small")
-    with c1:
-        emergency_check = st.checkbox('emergency', value=False, key='emergency')
-    with c2:
-        individuals_check = st.checkbox('individuals', value=False, key='individuals')
+    st.markdown("""
+    <style>
+    [role=radiogroup]{
+        gap: 2rem;
+    }
+    </style>
+    """,unsafe_allow_html=True)
 
-    if adult_check or families_check or AllAges_check or ptsd_check or veterans_check or emergency_check or individuals_check:
+    c1, c2 = st.columns([1,5], gap='small')
+    with c1:
+        st.markdown("**Age Group:**")
+    with c2:
+        age_option = st.radio(label='' , options= ["Not Select", "Children", "Young", "Adults"], horizontal=True, label_visibility="collapsed")
+
+    c1, c2 = st.columns([1,5], gap='small')
+    with c1:
+        st.markdown("**Care Services:**")
+    with c2:
+        careservice_option = st.radio(label='' , options= ["Not Select", "Mental Health", "Emergency", "Other"], horizontal=True, label_visibility="collapsed")
+
+    c1, c2 = st.columns([1,5], gap='small')
+    with c1:
+        st.markdown("**Population Type:**")
+    with c2:
+        population_option = st.radio(label='' , options= ["Not Select", "Families", "Individual"], horizontal=True, label_visibility="collapsed")
+
+    c1, c2 = st.columns([1,5], gap='small')
+    with c1:
+        st.markdown("**Pet-Friendly:**")
+    with c2:
+        pet_option = st.radio(label='' , options= ["Not Select", "Allowed", "Not Allowed"], horizontal=True, label_visibility="collapsed")
+
+    c1, c2 = st.columns([1,5], gap='small')
+    with c1:
+        st.markdown("**Veteran Status:**")
+    with c2:
+        veteran_option = st.radio(label='' , options= ["Not Select", "Yes", "No"], horizontal=True, label_visibility="collapsed")
+
+    audience_select = False
+    if age_option != 'Not Select' or careservice_option != 'Not Select' or population_option != 'Not Select' or pet_option != 'Not Select' or veteran_option != 'Not Select':
         audience_select = True
-    
+
     # Submit button
-    submit_button = st.button("Submit", type="primary")
+    c1, c2, c3, c4 = st.columns([1, 1, 1, 1], gap="large")
+    with c4:
+        submit_button = st.button("Submit", type="primary")
     if submit_button:
         st.session_state.mainpageId = "True"
     #submit_button = st.form_submit_button("Submit", type="primary", use_container_width=True)
@@ -469,13 +491,14 @@ if __name__ == '__main__':
                 unsafe_allow_html=True
     )
     try:
-        c1, c2, c3, c4 = st.columns([1, 1, 1, 1], gap="large")
+        c1, c2, c3, c4 = st.columns([2, 2, 2, 3], gap="large")
         with c4:
             with open(log_path, "rb") as file:
                 st.download_button(
-                    label="download log file",
+                    label="Download Log",
                     data=file,
                     file_name="streamlit.log",
+                    icon='📄',
                     mime="text/plain"
                 )
     except FileNotFoundError:
@@ -739,22 +762,20 @@ if __name__ == '__main__':
                                     time_services = utils.get_services_time(weekday_name, service_time, logger)
 
                             # 3. Third Layer(audience)
+                            print('audience select: ' + str(audience_select))
                             if audience_select:
                                 select_audience = []
-                                if adult_check:
-                                    select_audience.append('adult')
-                                if families_check:
-                                    select_audience.append('families')
-                                if ptsd_check:
-                                    select_audience.append('ptsd')
-                                if AllAges_check:
-                                    select_audience.append('all ages')
-                                if emergency_check:
-                                    select_audience.append('emergency')
-                                if individuals_check:
-                                    select_audience.append('individuals')
-                                if veterans_check:
-                                    select_audience.append('veterans')
+                                if age_option != 'Not Select':
+                                    select_audience.append(age_option)
+                                if careservice_option != 'Not Select':
+                                    select_audience.append(careservice_option)
+                                if population_option != 'Not Select':
+                                    select_audience.append(population_option)
+                                if pet_option == 'Allowed':
+                                    select_audience.append('pet')
+                                if veteran_option == 'Yes':
+                                    select_audience.append('veteran')
+    
                                 audience_services = utils.get_serving_from_list(select_audience, logger)
 
                             # 4. combine all search service and extract duplicate service
@@ -777,14 +798,18 @@ if __name__ == '__main__':
                             service_info_spinner_trans = GoogleTranslator(source='auto', target=input_language).translate(str(service_info_spinner))
                             with st.spinner(service_info_spinner_trans):
                                 if len(extract_duplicate_services) == 0:
-                                    option_services = type_service_list
                                     logger.debug("knowledge graph query service list: \n")
                                     logger.debug(type_service_list)
+                                    if len(type_service_list) > 5:
+                                        type_service_list = type_service_list[0:5]
+                                    option_services = type_service_list
                                     service_information = utils.getQuestion_answer(type_service_list, st, input_language)
                                 else:
-                                    option_services = extract_duplicate_services
                                     logger.debug("knowledge graph query service list: \n")
                                     logger.debug(extract_duplicate_services)
+                                    if len(extract_duplicate_services) > 5:
+                                        extract_duplicate_services = extract_duplicate_services[0:5]
+                                    option_services = extract_duplicate_services
                                     service_information = utils.getQuestion_answer(extract_duplicate_services, st, input_language)
                            
                             time_zone_select = 'Select which time you prefer, then we will give you a crime map at that time.'

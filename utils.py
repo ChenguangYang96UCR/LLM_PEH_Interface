@@ -221,7 +221,7 @@ def get_duplicate_service_name(services_name):
     print("get_duplicate_service_name")
     duplicates = [item for item in set(services_name) if services_name.count(item) > 1]
     if len(duplicates) == 0:
-        duplicates = services_name
+        duplicates = services_name[0:5]
     return duplicates
 
 def get_serving_from_list(audience_list, logger):
