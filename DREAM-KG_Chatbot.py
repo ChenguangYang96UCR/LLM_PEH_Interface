@@ -369,10 +369,10 @@ def send_email(language = 'en'):
     message_title = GoogleTranslator(source='auto', target=language).translate(str('Your Message'))
     message = st.text_input(message_title)
 
-    c1, c2, c3, c4 = st.columns([1, 1, 1, 1], gap="large")
+    c1, c2, c3, c4 = st.columns([2, 2, 2, 3], gap="large")
     with c4:
         appointment_title = GoogleTranslator(source='auto', target=language).translate(str("Make Appointment"))
-        appointment = st.button(appointment_title)
+        appointment = st.button(appointment_title, icon='🗓️')
     if appointment:
         if inquirys != inqury_0:
             Body = Body + "Inquiry: " + selected_option + '\n' + 'Message: ' + message + '\n'
