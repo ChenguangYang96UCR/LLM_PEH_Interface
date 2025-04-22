@@ -432,6 +432,7 @@ if __name__ == '__main__':
     query_txt = "Enter your query: Find me a food pantry near market east && families in Philadelphia.\n(Ingrese su consulta: Búsqueme una despensa de alimentos cerca de Market East && Family en Filadelfia.)"
     user_query = st.text_input(query_txt, key="user_query")
 
+    #! Service query options
     st.markdown("""
     <style>
     [role=radiogroup]{
@@ -490,6 +491,8 @@ if __name__ == '__main__':
                 f"<img src='{replicate_logo}' style='height: 1em'> [{replicate_text}]({replicate_link})",
                 unsafe_allow_html=True
     )
+
+    #! Log file download
     try:
         c1, c2, c3, c4 = st.columns([2, 2, 2, 3], gap="large")
         with c4:
@@ -519,6 +522,8 @@ if __name__ == '__main__':
     api_key = ''
         
     if st.session_state.mainpageId == "True":
+
+        #! User query information extract
         if user_query is '':
             st.write('Your input is empty, please check your query!')
             st.stop()
@@ -619,12 +624,6 @@ if __name__ == '__main__':
                         crime_data_df = pd.read_csv('three_days_philly_incidents_with_zipcode_2025.csv')
                         crime_data = read_crime_data(crime_data_df)
 
-                        crime_information_title = "#### Crimes Information near " + str(zipcode)
-                        crime_information_markdown = GoogleTranslator(source='auto', target=input_language).translate(str(crime_information_title))
-                        st.markdown(crime_information_markdown)
-                        filter_crimes = utils.filter_crime_based_zipcode(crime_data, zipcode)
-                        utils.get_crimes_summary(filter_crimes, st, input_language)
-
                         morning_crime_data_df = pd.read_csv("three_days_philly_incidents_2025_morning.csv")
                         morning_crime_data = read_crime_data(morning_crime_data_df)
 
@@ -633,85 +632,6 @@ if __name__ == '__main__':
 
                         evening_crime_data_df = pd.read_csv("three_days_philly_incidents_2025_evening.csv")
                         evening_crime_data = read_crime_data(evening_crime_data_df)
-
-                        crime_df = pd.read_csv('Final_Pandas_tensor_2023.csv')
-                        crime_df.columns = ["month", "zipcode", "Homicide Criminal", "Rape", "Robbery No Firearm",
-                                            "Aggravated Assault No Firearm", "Burglary Residential",
-                                            "Thefts", "Motor Vehicle Theft", "All Other Offenses", "Other Assaults",
-                                            "Forgery and Counterfeiting", "Fraud", "Embezzlement",
-                                            "Receiving Stolen Property",
-                                            "Vandalism/Criminal Mischief", "Weapon Violations",
-                                            "Prostitution and Commercialized Vice", "Other Sex Offenses",
-                                            "Narcotic/Drug Law Violations", "Gambling Violations",
-                                            "Offenses Against Family and Children", "DRIVING UNDER THE INFLUENCE",
-                                            "Liquor Law Violations", "Public Drunkenness", "Disorderly Conduct",
-                                            "Vagrancy/Loitering", "Theft from Vehicle",
-                                            "psa_1", "psa_2", "psa_3", "psa_4", "psa_A",
-                                            "total_hours"]  # change col name
-                        zipcode_num = int(zipcode)
-                        # top-3 crime incidents
-                        crime_type_list = sorted(crime_frequency, key=crime_frequency.get, reverse=True)[:3] #'All_Other_Offenses' # only focus on top three crime types
-                        final_pred_res = [] # number of prediction in weeks
-                        for crime_type in crime_type_list:
-                            new_crime_df = crime_df.loc[crime_df['zipcode'] == zipcode_num, ['month', crime_type]]
-                            passenger_counts = new_crime_df[crime_type].values
-                            sequence_length = 3  # we will use data of 12 months to predict the passenger in 13th month - need to change
-                            batch_size = 1
-                            dataset = PassengerDataset(passenger_counts, sequence_length)
-                            test_size = 3  # 12 months for test
-                            train_size = len(dataset) - test_size
-                            train_dataset = Subset(dataset, range(0, train_size))
-                            test_dataset = Subset(dataset, range(train_size, len(dataset)))
-                            assert len(train_dataset) + len(test_dataset) == len(dataset)
-                            train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=False)
-                            test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
-                            input_size = sequence_length
-                            output_size = 1  # predict 1 month
-                            hidden_size = 32
-                            rnn = RNN(input_size, hidden_size, output_size)
-                            num_epochs = 50
-                            learning_rate = 0.0002
-                            criterion = nn.MSELoss()
-                            optimizer = optim.Adam(rnn.parameters(), lr=learning_rate)
-                            print_step = 20
-                            all_losses = []
-                            for epoch in range(num_epochs):
-                                loss_this_epoch = []
-                                for inputs, target in train_loader:
-                                    loss = train(inputs, target)
-                                    loss_this_epoch.append(loss.item())
-                                loss_this_epoch = np.array(loss_this_epoch).mean()
-                                all_losses.append(loss_this_epoch)
-
-                            y_true = []
-                            y_pred = []
-
-                            hidden = rnn.init_hidden(batch_size)
-                            for inputs, target in test_loader:
-                                output, target = predict(inputs, target, hidden)
-                                y_pred.append(output.item())
-                                y_true.append(target.item())
-
-                            y_true = (np.array(y_true))
-                            y_pred = (np.array(y_pred))
-                            final_pred_res.append(np.floor(y_pred))
-
-                        chart_data = pd.DataFrame(np.array(final_pred_res).transpose(), columns=crime_type_list)
-                        chart_data['Day'] = [GoogleTranslator(source='auto', target=input_language).translate(str("Day 1")), 
-                                             GoogleTranslator(source='auto', target=input_language).translate(str("Day 2")), 
-                                             GoogleTranslator(source='auto', target=input_language).translate(str("Day 3"))]
-                        # chart_data['Day'] = ["Day 1", "Day 2", "Day 3"]
-                        translate_crime_type = [""]*len(crime_type_list)
-                        for index in range(len(crime_type_list)):
-                            translate_crime_type[index] = GoogleTranslator(source='auto', target=input_language).translate(crime_type_list[index])
-                            
-                        st.scatter_chart(
-                            chart_data,
-                            x="Day",
-                            y=crime_type_list,
-                            #size="col4",
-                            color=["#fd0", "#f0f", "#04f"],  # Optional
-                        )
 
                         # Use pgeocode for geocoding
                         nomi = pgeocode.Nominatim('us')
@@ -811,7 +731,94 @@ if __name__ == '__main__':
                                         extract_duplicate_services = extract_duplicate_services[0:5]
                                     option_services = extract_duplicate_services
                                     service_information = utils.getQuestion_answer(extract_duplicate_services, st, input_language)
-                           
+
+                            #! Crime prediction
+                            crime_information_title = "#### Crimes Information near " + str(zipcode)
+                            crime_information_markdown = GoogleTranslator(source='auto', target=input_language).translate(str(crime_information_title))
+                            st.markdown(crime_information_markdown)
+                            filter_crimes = utils.filter_crime_based_zipcode(crime_data, zipcode)
+                            utils.get_crimes_summary(filter_crimes, st, input_language)
+
+                            crime_df = pd.read_csv('Final_Pandas_tensor_2023.csv')
+                            crime_df.columns = ["month", "zipcode", "Homicide Criminal", "Rape", "Robbery No Firearm",
+                                                "Aggravated Assault No Firearm", "Burglary Residential",
+                                                "Thefts", "Motor Vehicle Theft", "All Other Offenses", "Other Assaults",
+                                                "Forgery and Counterfeiting", "Fraud", "Embezzlement",
+                                                "Receiving Stolen Property",
+                                                "Vandalism/Criminal Mischief", "Weapon Violations",
+                                                "Prostitution and Commercialized Vice", "Other Sex Offenses",
+                                                "Narcotic/Drug Law Violations", "Gambling Violations",
+                                                "Offenses Against Family and Children", "DRIVING UNDER THE INFLUENCE",
+                                                "Liquor Law Violations", "Public Drunkenness", "Disorderly Conduct",
+                                                "Vagrancy/Loitering", "Theft from Vehicle",
+                                                "psa_1", "psa_2", "psa_3", "psa_4", "psa_A",
+                                                "total_hours"]  # change col name
+                            zipcode_num = int(zipcode)
+                            # top-3 crime incidents
+                            crime_type_list = sorted(crime_frequency, key=crime_frequency.get, reverse=True)[:3] #'All_Other_Offenses' # only focus on top three crime types
+                            final_pred_res = [] # number of prediction in weeks
+                            for crime_type in crime_type_list:
+                                new_crime_df = crime_df.loc[crime_df['zipcode'] == zipcode_num, ['month', crime_type]]
+                                passenger_counts = new_crime_df[crime_type].values
+                                sequence_length = 3  # we will use data of 12 months to predict the passenger in 13th month - need to change
+                                batch_size = 1
+                                dataset = PassengerDataset(passenger_counts, sequence_length)
+                                test_size = 3  # 12 months for test
+                                train_size = len(dataset) - test_size
+                                train_dataset = Subset(dataset, range(0, train_size))
+                                test_dataset = Subset(dataset, range(train_size, len(dataset)))
+                                assert len(train_dataset) + len(test_dataset) == len(dataset)
+                                train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=False)
+                                test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
+                                input_size = sequence_length
+                                output_size = 1  # predict 1 month
+                                hidden_size = 32
+                                rnn = RNN(input_size, hidden_size, output_size)
+                                num_epochs = 50
+                                learning_rate = 0.0002
+                                criterion = nn.MSELoss()
+                                optimizer = optim.Adam(rnn.parameters(), lr=learning_rate)
+                                print_step = 20
+                                all_losses = []
+                                for epoch in range(num_epochs):
+                                    loss_this_epoch = []
+                                    for inputs, target in train_loader:
+                                        loss = train(inputs, target)
+                                        loss_this_epoch.append(loss.item())
+                                    loss_this_epoch = np.array(loss_this_epoch).mean()
+                                    all_losses.append(loss_this_epoch)
+
+                                y_true = []
+                                y_pred = []
+
+                                hidden = rnn.init_hidden(batch_size)
+                                for inputs, target in test_loader:
+                                    output, target = predict(inputs, target, hidden)
+                                    y_pred.append(output.item())
+                                    y_true.append(target.item())
+
+                                y_true = (np.array(y_true))
+                                y_pred = (np.array(y_pred))
+                                final_pred_res.append(np.floor(y_pred))
+
+                            chart_data = pd.DataFrame(np.array(final_pred_res).transpose(), columns=crime_type_list)
+                            chart_data['Day'] = [GoogleTranslator(source='auto', target=input_language).translate(str("Day 1")), 
+                                                GoogleTranslator(source='auto', target=input_language).translate(str("Day 2")), 
+                                                GoogleTranslator(source='auto', target=input_language).translate(str("Day 3"))]
+                            # chart_data['Day'] = ["Day 1", "Day 2", "Day 3"]
+                            translate_crime_type = [""]*len(crime_type_list)
+                            for index in range(len(crime_type_list)):
+                                translate_crime_type[index] = GoogleTranslator(source='auto', target=input_language).translate(crime_type_list[index])
+                                
+                            st.scatter_chart(
+                                chart_data,
+                                x="Day",
+                                y=crime_type_list,
+                                #size="col4",
+                                color=["#fd0", "#f0f", "#04f"],  # Optional
+                            )
+
+                            #! Making map （Crime map）
                             time_zone_select = 'Select which time you prefer, then we will give you a crime map at that time.'
                             time_zone_select_markdown = GoogleTranslator(source='auto', target=input_language).translate(str(time_zone_select))
                             st.markdown('''##### :red['''+ time_zone_select_markdown + ''']''')
@@ -827,7 +834,6 @@ if __name__ == '__main__':
                                 evening_trans = GoogleTranslator(source='auto', target=input_language).translate(str('Evening'))
                                 Evening = st.checkbox(evening_trans, value=False, key='Evening')
 
-                            #! Making map 
                             map = folium.Map(location=[latitude_user, longitude_user], zoom_start=12)
                             folium.CircleMarker(
                                 location=[latitude_user, longitude_user],
@@ -885,7 +891,7 @@ if __name__ == '__main__':
                             st.header(service_crime_map_header)
                             folium_static(map, width=800, height=600)  # Adjust width and height as needed
 
-
+                            #! Services contract
                             Options = [None]
                             for service in option_services: 
                                 Options.append(str(service[0]))

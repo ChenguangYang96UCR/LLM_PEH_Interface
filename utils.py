@@ -91,9 +91,9 @@ response: {all_response}
                     )
 
         st.write(f"**{Service[0]}**")
-        google_rating = f"**Google Rating:{Service[1]}**"
-        google_rating_trans = GoogleTranslator(source='auto', target=language).translate(str(google_rating))
-        st.write(google_rating_trans, "\n")
+        # google_rating = f"**Google Rating:{Service[1]}**"
+        # google_rating_trans = GoogleTranslator(source='auto', target=language).translate(str(google_rating))
+        # st.write(google_rating_trans, "\n")
         service_information = response.choices[0].message['content']
         if len(service_information) > google_translator_max_char:
             service_information = service_information[:google_translator_max_char]
