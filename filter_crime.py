@@ -34,12 +34,12 @@ def sperate_crime_according_time(csv_path):
                 evening_filtered_df.loc[len(evening_filtered_df)] = df.loc[Index]
             Index = Index + 1
 
-        morning_filtered_df.to_csv("three_days_philly_incidents_2025_morning.csv", index=False)
-        afternoon_filtered_df.to_csv("three_days_philly_incidents_2025_afternoon.csv", index=False)
-        evening_filtered_df.to_csv("three_days_philly_incidents_2025_evening.csv", index=False)
+        morning_filtered_df.to_csv("./files/three_days_philly_incidents_2025_morning.csv", index=False)
+        afternoon_filtered_df.to_csv("./files/three_days_philly_incidents_2025_afternoon.csv", index=False)
+        evening_filtered_df.to_csv("./files/three_days_philly_incidents_2025_evening.csv", index=False)
 
 if __name__ == '__main__':
-    cvs_path = './incidents_part1_part2-2.csv'
+    cvs_path = './files/incidents_part1_part2-2.csv'
     df = pd.read_csv(cvs_path)
     filtered_df = df.iloc[0:0].copy()
     Index = 0
@@ -51,13 +51,13 @@ if __name__ == '__main__':
             # filtered_df = pd.concat([filtered_df, df.loc[Index]], ignore_index=True)
         Index = Index + 1
 
-    filtered_df.to_csv("three_days_philly_incidents_2025.csv", index=False)
+    filtered_df.to_csv("./files/three_days_philly_incidents_2025.csv", index=False)
 
     geolocator = geopy.Nominatim(user_agent='1234')
     lat_array = []
     lon_array = []
 
-    cvs_path = './three_days_philly_incidents_2025.csv'
+    cvs_path = './files/three_days_philly_incidents_2025.csv'
     df = pd.read_csv(cvs_path)
 
     for crime in df['lat']:
@@ -74,6 +74,6 @@ if __name__ == '__main__':
     zipcodes = geo_df.apply(get_zipcode, axis=1, geolocator=geolocator, lat_field='Lat', lon_field='Lon')
     print(zipcodes)
     df['zipcode'] = zipcodes
-    df.to_csv('three_days_philly_incidents_with_zipcode_2025.csv', index=False)
+    df.to_csv('./files/three_days_philly_incidents_with_zipcode_2025.csv', index=False)
 
-    sperate_crime_according_time("three_days_philly_incidents_with_zipcode_2025.csv")
+    sperate_crime_according_time("./files/three_days_philly_incidents_with_zipcode_2025.csv")

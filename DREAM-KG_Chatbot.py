@@ -46,7 +46,6 @@ import geopy
 
 # ! Environment Variable
 _RELEASE = False
-huggingface_token = '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'
 
 class PassengerDataset(Dataset):
     def __init__(self, data, sequence_length):
@@ -418,12 +417,25 @@ if __name__ == '__main__':
 
     if 'mainpageId' not in st.session_state:
         st.session_state.mainpageId = "False"
+
+    # Init llm model
+    # llm_model, tokenizer =  utils.init_llm_model()
+
     # Streamlit UI
     img = Image.open('dream_kg_logo_v2.png')
     st.image(img)
 
+    if "page" not in st.session_state:
+        st.session_state.page = "cypher"
+    
+    st.button("Switch Search Method", on_click=utils.switch_page)
+    if st.session_state.page == "cypher" :
+        st.markdown("##### 🧾 Search Method : Cypher")
+    if st.session_state.page == "g_retriever" :
+        st.markdown("##### 🧾 Search Method : G-Retriever")
+
     # * Acquire the location of user
-    loc = streamlit_js_eval.get_geolocation()
+    # loc = streamlit_js_eval.get_geolocation()
     # st.write(f"Your coordinates are {loc}")
 
     #st.markdown("# **Start Here ↓**", icon="👇")
@@ -540,7 +552,7 @@ if __name__ == '__main__':
             # st.write("Extracted Information:", extracted_info)
             service_type, zipcode, weekday, service_time = parse_extracted_info(extracted_info)
             # crime incidents analysis
-            crime_data_df = pd.read_csv('Final_Philadelphia_Crime_Data_2023.csv')
+            crime_data_df = pd.read_csv('./files/Final_Philadelphia_Crime_Data_2023.csv')
             crime_data = crime_data_df.values
             number_of_crimes = np.where(int(zipcode) == crime_data[:, 18])[0].shape[0]
             # category of crimes
@@ -607,9 +619,9 @@ if __name__ == '__main__':
                         
                     if classified_service_type != "Other":
                         service_files = {
-                            "Shelter": "Final_FindHelp_extracted_data_philadelphia_temporary_shelter_2025_0402.csv",
-                            "Mental Health": "Final_FindHelp_extracted_data_philadelphia_mental_health_2025_0402.csv",
-                            "Food": "Final_Emergency_Food_2025_0322.csv"
+                            "Shelter": "./files/Final_FindHelp_extracted_data_philadelphia_temporary_shelter_2025_0402.csv",
+                            "Mental Health": "./files/Final_FindHelp_extracted_data_philadelphia_mental_health_2025_0402.csv",
+                            "Food": "./files/Final_Philadelphia_Emergency_Food_2025_0325.csv"
                         }
                         if classified_service_type != "Shelter" and classified_service_type != "Mental Health" and classified_service_type != "Food":
                             service_type_warning = 'Service type is not recognized. Please try again with a different service type. Such that: "Shelter", "Mental Health", "Food". And there is the example for query: Find me a food pantry near market east && families in Philadelphia.'
@@ -621,16 +633,16 @@ if __name__ == '__main__':
                         df = pd.read_csv(datafile)
                         data, service_list = read_data(df)
                         # load crime data (till 07/2024) for visualization
-                        crime_data_df = pd.read_csv('three_days_philly_incidents_with_zipcode_2025.csv')
+                        crime_data_df = pd.read_csv('./files/three_days_philly_incidents_with_zipcode_2025.csv')
                         crime_data = read_crime_data(crime_data_df)
 
-                        morning_crime_data_df = pd.read_csv("three_days_philly_incidents_2025_morning.csv")
+                        morning_crime_data_df = pd.read_csv("./files/three_days_philly_incidents_2025_morning.csv")
                         morning_crime_data = read_crime_data(morning_crime_data_df)
 
-                        afternoon_crime_data_df = pd.read_csv("three_days_philly_incidents_2025_afternoon.csv")
+                        afternoon_crime_data_df = pd.read_csv("./files/three_days_philly_incidents_2025_afternoon.csv")
                         afternoon_crime_data = read_crime_data(afternoon_crime_data_df)
 
-                        evening_crime_data_df = pd.read_csv("three_days_philly_incidents_2025_evening.csv")
+                        evening_crime_data_df = pd.read_csv("./files/three_days_philly_incidents_2025_evening.csv")
                         evening_crime_data = read_crime_data(evening_crime_data_df)
 
                         # Use pgeocode for geocoding
@@ -655,82 +667,177 @@ if __name__ == '__main__':
                                     extract_services.append([service_name[start_brasket+1:end_brasket], service[1]])
 
                             # ! Service information
-                            service_header = "Services Information"
-                            serviceheader_markdown = GoogleTranslator(source='auto', target=input_language).translate(str(service_header))
-                            st.header(serviceheader_markdown)
+                            # * (1) Cypher search method
+                            if st.session_state.page == "cypher" :
+                                service_header = "Services Information"
+                                serviceheader_markdown = GoogleTranslator(source='auto', target=input_language).translate(str(service_header))
+                                st.header(serviceheader_markdown)
 
-                            option_services = []
-                            final_service = []
-                            type_service_list = []
-                            time_services = []
-                            audience_services = []
-                            # 1. First Layer (service type)
-                            type_service_list =  utils.get_services_type(classified_service_type, logger)
+                                option_services = []
+                                final_service = []
+                                type_service_list = []
+                                time_services = []
+                                audience_services = []
+                                # 1. First Layer (service type)
+                                type_service_list =  utils.get_services_type(classified_service_type, logger)
 
-                            # 2. Second Layer(service time)
-                            if not weekday == "":
-                                # * Can get weekday from user's question
-                                if service_time == 99:
-                                    time_services = utils.get_services_time(weekday, current_hour, logger)
+                                # 2. Second Layer(service time)
+                                if not weekday == "":
+                                    # * Can get weekday from user's question
+                                    if service_time == 99:
+                                        time_services = utils.get_services_time(weekday, current_hour, logger)
+                                    else:
+                                        time_services = utils.get_services_time(weekday, service_time, logger)
                                 else:
-                                    time_services = utils.get_services_time(weekday, service_time, logger)
-                            else:
-                                # * Can not get weekday from user's question
-                                if service_time == 99:
-                                    time_services = utils.get_services_time(weekday_name, current_hour, logger)
-                                else:
-                                    time_services = utils.get_services_time(weekday_name, service_time, logger)
+                                    # * Can not get weekday from user's question
+                                    if service_time == 99:
+                                        time_services = utils.get_services_time(weekday_name, current_hour, logger)
+                                    else:
+                                        time_services = utils.get_services_time(weekday_name, service_time, logger)
 
-                            # 3. Third Layer(audience)
-                            print('audience select: ' + str(audience_select))
-                            if audience_select:
+                                # 3. Third Layer(audience)
+                                print('audience select: ' + str(audience_select))
+                                if audience_select:
+                                    select_audience = []
+                                    if age_option != 'Not Select':
+                                        select_audience.append(age_option)
+                                    if careservice_option != 'Not Select':
+                                        select_audience.append(careservice_option)
+                                    if population_option != 'Not Select':
+                                        select_audience.append(population_option)
+                                    if pet_option == 'Allowed':
+                                        select_audience.append('pet')
+                                    if veteran_option == 'Yes':
+                                        select_audience.append('veteran')
+        
+                                    audience_services = utils.get_serving_from_list(select_audience, logger)
+
+                                # 4. combine all search service and extract duplicate service
+                                final_service.extend(type_service_list)
+                                final_service.extend(time_services)
+                                final_service.extend(audience_services)
+                                duplicate_services = utils.get_duplicate_service_name(final_service)
+                                extract_duplicate_services = []
+                                for service in service_list:
+                                    if service[0] in duplicate_services:
+                                        start_brasket = service[0].find('(')
+                                        end_brasket = service[0].find(')', start_brasket + 1)
+                                        service_name = service[0]
+                                        extract_duplicate_services.append([service_name[start_brasket+1:end_brasket], service[1]])
+
+                                logger.debug("Final services: \n")
+                                logger.debug(extract_duplicate_services)
+                                
+                                service_info_spinner = 'Loading service information, please wait ...'
+                                service_info_spinner_trans = GoogleTranslator(source='auto', target=input_language).translate(str(service_info_spinner))
+                                with st.spinner(service_info_spinner_trans):
+                                    if len(extract_duplicate_services) == 0:
+                                        logger.debug("knowledge graph query service list: \n")
+                                        logger.debug(type_service_list)
+                                        if len(type_service_list) > 5:
+                                            type_service_list = type_service_list[0:5]
+                                        option_services = type_service_list
+                                        service_information = utils.getQuestion_answer(type_service_list, st, input_language)
+                                    else:
+                                        logger.debug("knowledge graph query service list: \n")
+                                        logger.debug(extract_duplicate_services)
+                                        if len(extract_duplicate_services) > 5:
+                                            extract_duplicate_services = extract_duplicate_services[0:5]
+                                        option_services = extract_duplicate_services
+                                        service_information = utils.getQuestion_answer(extract_duplicate_services, st, input_language)
+
+                            # * (2) G-Retriever search method
+                            if st.session_state.page == "g_retriever" :
+                                service_header = "Services Information"
+                                serviceheader_markdown = GoogleTranslator(source='auto', target=input_language).translate(str(service_header))
+                                st.header(serviceheader_markdown)
+
+                                option_services = []
+                                final_service = []
+                                type_service_list = []
+                                time_services = []
+                                audience_services = []
+
+                                # 1. First Layer (service type)
+                                # ! It doesn't exist in G-Retriever method
+                                # type_service_list =  utils.get_services_type(classified_service_type, logger)
+                                # llm_model, tokenizer
+
+                                # 2. Second Layer(service time)
+                                if not weekday == "":
+                                    # * Can get weekday from user's question
+                                    if service_time == 99:
+                                        # TODO This version G-retriever only can extract time graph based on weekday, future work need to add time 
+                                        
+                                        subgraph_desc = utils.extract_subgraph_based_on_query(classified_service_type, 'time', weekday, logger)
+                                        time_services = utils.ask_model_for_service_extraction(llm_model, subgraph_desc, tokenizer, logger)
+                                    else:
+                                        subgraph_desc = utils.extract_subgraph_based_on_query(classified_service_type, 'time', weekday, logger)
+                                        time_services = utils.ask_model_for_service_extraction(llm_model, subgraph_desc, tokenizer, logger)
+                                        # time_services = utils.get_services_time(weekday, service_time, logger)
+                                else:
+                                    # * Can not get weekday from user's question
+                                    if service_time == 99:
+                                        # time_services = utils.get_services_time(weekday_name, current_hour, logger)
+                                        subgraph_desc = utils.extract_subgraph_based_on_query(classified_service_type, 'time', weekday_name, logger)
+                                        time_services = utils.ask_model_for_service_extraction(llm_model, subgraph_desc, tokenizer, logger)
+                                    else:
+                                        # time_services = utils.get_services_time(weekday_name, service_time, logger)
+                                        subgraph_desc = utils.extract_subgraph_based_on_query(classified_service_type, 'time', weekday_name, logger)
+                                        time_services = utils.ask_model_for_service_extraction(llm_model, subgraph_desc, tokenizer, logger)
+
+                                # 3. Third Layer(audience)
+                                print('audience select: ' + str(audience_select))
                                 select_audience = []
-                                if age_option != 'Not Select':
-                                    select_audience.append(age_option)
-                                if careservice_option != 'Not Select':
-                                    select_audience.append(careservice_option)
-                                if population_option != 'Not Select':
-                                    select_audience.append(population_option)
-                                if pet_option == 'Allowed':
-                                    select_audience.append('pet')
-                                if veteran_option == 'Yes':
-                                    select_audience.append('veteran')
-    
-                                audience_services = utils.get_serving_from_list(select_audience, logger)
+                                if audience_select:
+                                    if age_option != 'Not Select':
+                                        select_audience.append(age_option)
+                                    if careservice_option != 'Not Select':
+                                        select_audience.append(careservice_option)
+                                    if population_option != 'Not Select':
+                                        select_audience.append(population_option)
+                                    if pet_option == 'Allowed':
+                                        select_audience.append('pet')
+                                    if veteran_option == 'Yes':
+                                        select_audience.append('veteran')
 
-                            # 4. combine all search service and extract duplicate service
-                            final_service.extend(type_service_list)
-                            final_service.extend(time_services)
-                            final_service.extend(audience_services)
-                            duplicate_services = utils.get_duplicate_service_name(final_service)
-                            extract_duplicate_services = []
-                            for service in service_list:
-                                if service[0] in duplicate_services:
-                                    start_brasket = service[0].find('(')
-                                    end_brasket = service[0].find(')', start_brasket + 1)
-                                    service_name = service[0]
-                                    extract_duplicate_services.append([service_name[start_brasket+1:end_brasket], service[1]])
-
-                            logger.debug("Final services: \n")
-                            logger.debug(extract_duplicate_services)
+                                for audience in select_audience:
+                                    subgraph_desc = utils.extract_subgraph_based_on_query(classified_service_type, 'audience', audience, logger)
+                                    audience_services.extend(utils.ask_model_for_service_extraction(llm_model, subgraph_desc, tokenizer, logger))
                             
-                            service_info_spinner = 'Loading service information, please wait ...'
-                            service_info_spinner_trans = GoogleTranslator(source='auto', target=input_language).translate(str(service_info_spinner))
-                            with st.spinner(service_info_spinner_trans):
-                                if len(extract_duplicate_services) == 0:
-                                    logger.debug("knowledge graph query service list: \n")
-                                    logger.debug(type_service_list)
-                                    if len(type_service_list) > 5:
-                                        type_service_list = type_service_list[0:5]
-                                    option_services = type_service_list
-                                    service_information = utils.getQuestion_answer(type_service_list, st, input_language)
-                                else:
-                                    logger.debug("knowledge graph query service list: \n")
-                                    logger.debug(extract_duplicate_services)
-                                    if len(extract_duplicate_services) > 5:
-                                        extract_duplicate_services = extract_duplicate_services[0:5]
-                                    option_services = extract_duplicate_services
-                                    service_information = utils.getQuestion_answer(extract_duplicate_services, st, input_language)
+                                # 4. combine all search service and extract duplicate service
+                                final_service.extend(type_service_list)
+                                final_service.extend(time_services)
+                                final_service.extend(audience_services)
+                                duplicate_services = utils.get_duplicate_service_name(final_service)
+                                extract_duplicate_services = []
+                                for service in service_list:
+                                    if service[0] in duplicate_services:
+                                        start_brasket = service[0].find('(')
+                                        end_brasket = service[0].find(')', start_brasket + 1)
+                                        service_name = service[0]
+                                        extract_duplicate_services.append([service_name[start_brasket+1:end_brasket], service[1]])
+
+                                logger.debug("Final services: \n")
+                                logger.debug(extract_duplicate_services)
+                                
+                                service_info_spinner = 'Loading service information, please wait ...'
+                                service_info_spinner_trans = GoogleTranslator(source='auto', target=input_language).translate(str(service_info_spinner))
+                                with st.spinner(service_info_spinner_trans):
+                                    if len(extract_duplicate_services) == 0:
+                                        logger.debug("knowledge graph query service list: \n")
+                                        logger.debug(type_service_list)
+                                        if len(type_service_list) > 5:
+                                            type_service_list = type_service_list[0:5]
+                                        option_services = type_service_list
+                                        service_information = utils.getQuestion_answer(type_service_list, st, input_language)
+                                    else:
+                                        logger.debug("knowledge graph query service list: \n")
+                                        logger.debug(extract_duplicate_services)
+                                        if len(extract_duplicate_services) > 5:
+                                            extract_duplicate_services = extract_duplicate_services[0:5]
+                                        option_services = extract_duplicate_services
+                                        service_information = utils.getQuestion_answer(extract_duplicate_services, st, input_language)
 
                             #! Crime prediction
                             crime_information_title = "#### Crimes Information near " + str(zipcode)
@@ -739,7 +846,7 @@ if __name__ == '__main__':
                             filter_crimes = utils.filter_crime_based_zipcode(crime_data, zipcode)
                             utils.get_crimes_summary(filter_crimes, st, input_language)
 
-                            crime_df = pd.read_csv('Final_Pandas_tensor_2023.csv')
+                            crime_df = pd.read_csv('./files/Final_Pandas_tensor_2023.csv')
                             crime_df.columns = ["month", "zipcode", "Homicide Criminal", "Rape", "Robbery No Firearm",
                                                 "Aggravated Assault No Firearm", "Burglary Residential",
                                                 "Thefts", "Motor Vehicle Theft", "All Other Offenses", "Other Assaults",

@@ -1,0 +1,628 @@
+node_id,node_attr
+0,Church-Based Shelters (Bethesda Project)
+1,39.9539437
+2,Homeless
+3,Meals
+4,OneOnOneSupport
+5,CaseManagement
+6,English
+7,AllAges
+8,TemporaryShelter
+9,Free
+10,Emergency
+11,Available
+12,Shelter
+13,"""19106"""
+14,"""https://www.twitter.com/@Bethesda_Proj"""
+15,"""https://www.facebook.com/BethesdaProject"""
+16,"""Church-Based Shelters (Bethesda Project)_5997720409997312"""
+17,"""Church-Based Shelters (Bethesda Project)"""
+18,""""""
+19,XMLSchema#anyUri
+20,"""This program covers residents of the following counties: Philadelphia County, PA."""
+21,"""151 North 4th Street, Philadelphia, PA 19106"""
+22,XMLSchema#decimal
+23,AB-Church-Based Shelters (Bethesda Project)
+24,P-Church-Based Shelters (Bethesda Project)
+25,19106
+26,"""In partnership with local churches, Bethesda Project provides shelter for men and women, year round and in the winter. This program provides:- Overnight shelterAdditional offerings for shelter recipients include:- Meals- Case management"""
+27,"""Monday from 08:00 to 17:00"""
+28,"""Friday from 08:00 to 17:00"""
+29,"""Tuesday from 08:00 to 17:00"""
+30,"""Saturday Closed"
+31,"""Wednesday from 08:00 to 17:00"""
+32,"""Thursday from 08:00 to 17:00"""
+33,"""Sunday Closed"
+34,"""This program serves homeless individuals."""
+35,Youth Emergency Service YES (HopePHL)
+36,39.9668498
+37,DiseaseScreening
+38,SupportNetwork
+39,ScreeningAndExams
+40,NavigatingTheSystem
+41,Teens
+42,Counseling
+43,InCrisis
+44,Runaways
+45,MedicalCare
+46,Children
+47,MoreEducation
+48,SexEducation
+49,Mental Health
+50,"""19130"""
+51,"""https://www.facebook.com/ysiyouthserviceinc"""
+52,"""https://www.twitter.com/@YSIPHILLY"""
+53,"""Youth Emergency Service YES (HopePHL)_5680777996009472"""
+54,"""Youth Emergency Service YES (HopePHL)"""
+55,"""1526 Fairmount Avenue, Philadelphia, PA 19130"""
+56,AB-Youth Emergency Service YES (HopePHL)
+57,P-Youth Emergency Service YES (HopePHL)
+58,19130
+59,"""tel:+1-215-787-0633"""
+60,"""Youth Emergency Service (YES) offers immediate housing, respite, and support services to youth ages 12-17 facing housing insecurity or are unable to safely live with family. YES Services include:- Twenty four hour emergency respite and protection for youth ages 12-17- Telephone hotline and referral services as well as links to national runaway and homeless youth providers through national Runaway Safeline and National safe Place- Medical care – examinations and follow-up- Counseling supports and referrals- Voluntary and confidential HIV testing- Linkage to The Attic for those wanting service for LGBTQ youth- Physical and sexual health information and supports- Referral to home based services for families- Education and recreation programming and supports- Title I tutoringYouth can be self referred, enter through the formal child welfare system, Department of Human Services, or through referrals from partner organizations throughout the county. Referrals come from family, school staff and other concerned persons."""
+61,"""Youth Emergency Service (YES) offers immediate housing, respite, and support services to youth ages 12-17 facing housing insecurity or are unable to safely live with family. YES Services include:- Twenty four hour emergency respite and protection for youth ages 12-17- Telephone hotline and referral services as well as links to national runaway and homeless youth providers through national Runaway Safeline and National safe Place- Medical care â€“ examinations and follow-up- Counseling supports and referrals- Voluntary and confidential HIV testing- Linkage to The Attic for those wanting service for LGBTQ youth- Physical and sexual health information and supports- Referral to home based services for families- Education and recreation programming and supports- Title I tutoringYouth can be self referred, enter through the formal child welfare system, Department of Human Services, or through referrals from partner organizations throughout the county. Referrals come from family, school staff and other concerned persons."""
+62,"""This program helps people who are 12 to 17 years old."""
+63,Kailo Haven (Resources for Human Development - Pennsylvania)
+64,40.007932
+65,AllMentalHealth
+66,PersonalHygiene
+67,Adults18
+68,12Step
+69,ShortTermHousing
+70,DualDiagnosis
+71,SubstanceDependency
+72,"""19140"""
+73,"""None"""
+74,"""https://www.facebook.com/kailohaven/"""
+75,"""Kailo Haven (Resources for Human Development - Pennsylvania)_5552002522939392"""
+76,"""Kailo Haven (Resources for Human Development - Pennsylvania)"""
+77,"""This program covers residents of the following cities: Philadelphia, PA."""
+78,"""2107 West Tioga Street, Philadelphia, PA 19140"""
+79,AB-Kailo Haven (Resources for Human Development - Pennsylvania)
+80,P-Kailo Haven (Resources for Human Development - Pennsylvania)
+81,19140
+82,"""tel:+1-215-225-8645"""
+83,"""Resources for Human Development's Kailo Haven is a safe haven homeless shelter for individuals experiencing chronic homelessness and identified as suffering from some form of co-occuring disorders, including mental health and addiction challenges.This program provides:- Safe environment to live and sleep- Meals and snacks- Bathroom and laundry facilities- 12-step recovering meetings- Emotional Management Courses- Individualized meetings and support to obtain financial and medical benefits- Referral ServicesPlease call The Homeless Outreach Hotline at 215-225-8645."""
+84,"""This program serves homeless people."""
+85,RHD Fernwood Program (Resources for Human Development - Pennsylvania)
+86,40.0311934
+87,Individuals
+88,Male
+89,"""19136"""
+90,"""https://www.twitter.com/@Resources4HD"""
+91,"""https://www.facebook.com/ResourcesHD/timeline/"""
+92,"""RHD Fernwood Program (Resources for Human Development - Pennsylvania)_4670495380209664"""
+93,"""RHD Fernwood Program (Resources for Human Development - Pennsylvania)"""
+94,"""2100 West Girard Avenue, Philadelphia, PA 19130"""
+95,AB-RHD Fernwood Program (Resources for Human Development - Pennsylvania)
+96,P-RHD Fernwood Program (Resources for Human Development - Pennsylvania)
+97,19136
+98,"""tel:+1-267-797-2500"""
+99,"""RHD Fernwood provides emergency housing for single men in Philadelphia referred by Philadelphiaâ€™s Office of Homeless Services. Assessments focus on the immediate needs of the individual. Linkages with community services enable individuals to address primary social service and housing needs.This program provides:- Emergency housing"""
+100,"""This program serves single males."""
+101,Overnight Services (Horizon House)
+102,39.962058
+103,ReducedCost
+104,MentalHealthEvaluation
+105,"""https://www.facebook.com/horizonhouseinc/?fref=ts"""
+106,"""Overnight Services (Horizon House)_6301124945248256"""
+107,"""Overnight Services (Horizon House)"""
+108,"""5901 Market Street, Philadelphia, PA 19136"""
+109,AB-Overnight Services (Horizon House)
+110,P-Overnight Services (Horizon House)
+111,"""tel:+1-215-386-3838"""
+112,"""The Horizon House Navigation Center in West Philadelphia offers a variety of support services to homeless adults all year round. Here, people have a safe haven to meet their basic needs. The center is open 7 p.m. to 6 a.m. and is available on a drop-in basis.  Services include:- Temporary shelter- Food- Shower- Clean clothing- Laundry facilities- Medical and psychiatric assessments- Case managementExtended daytime hours are available two days/week for medical and psychiatric assessments and referral services. Case management services are offered to link individuals with appropriate housing, benefits, medical care and treatment services.For more information, please call at 215-386-3838, ext. 12603"""
+113,"""Saturday from 07:00 to 18:00"""
+114,"""Thursday from 07:00 to 18:00"""
+115,"""Monday from 07:00 to 18:00"""
+116,"""Tuesday from 07:00 to 18:00"""
+117,"""Wednesday from 07:00 to 18:00"""
+118,"""Sunday from 07:00 to 18:00"""
+119,"""Friday from 07:00 to 18:00"""
+120,Emergency Shelter (Families Forward)
+121,39.9617037
+122,DailyLifeSkills
+123,SkillsAndTraining
+124,ParentingEducation
+125,Families
+126,FinancialEducation
+127,ComputerClass
+128,"""19139"""
+129,"""https://www.facebook.com/FFPhiladelphia/"""
+130,"""Emergency Shelter (Families Forward)_6206753615380480"""
+131,"""Emergency Shelter (Families Forward)"""
+132,"""111 North 49th Street, Philadelphia, PA 19139"""
+133,AB-Emergency Shelter (Families Forward)
+134,P-Emergency Shelter (Families Forward)
+135,19139
+136,"""tel:+1-215-240-4800"""
+137,"""Families Forward Philadelphia offers an emergency family shelter, for families in need, that has 65 individual rooms. While obtaining housing is their top priority, they also encourage saving money â€“ working with families to dedicate funds to rent, furnishings and day-to-day living expenses once they leave the shelter.This program provides:- A warm, safe environment- Nutritious meals- Case managementAdditionally throughout the day, workshops are available to prepare families for independent living, including parenting classes, life skills development, computer classes, money management classes, and much more."""
+138,"""Tuesday from 00:00 to 23:59"""
+139,"""Friday from 00:00 to 23:59"""
+140,"""Thursday from 00:00 to 23:59"""
+141,"""Monday from 00:00 to 23:59"""
+142,"""Saturday from 00:00 to 23:59"""
+143,"""Sunday from 00:00 to 23:59"""
+144,"""Wednesday from 00:00 to 23:59"""
+145,"""All families must be referred to us through the City of Philadelphias Office of Supportive Housing central intake."""
+146,Financial Assistance for Military Families (American Red Cross)
+147,39.9025613
+148,FinancialAssistance
+149,Veterans
+150,Spouses
+151,NationalGuard
+152,EmergencyFood
+153,EmergencyPayments
+154,ActiveDuty
+155,BurialAndFuneralHelp
+156,"""19079"""
+157,"""https://www.facebook.com/redcross"""
+158,"""https://www.twitter.com/@redcross"""
+159,"""Financial Assistance for Military Families (American Red Cross)_5931501920976896"""
+160,"""Financial Assistance for Military Families (American Red Cross)"""
+161,"""This program covers residents of the following states: AK, AR, AZ, CA, CO, CT, DC, DE, FL, GA, HI, IA, ID, IL, IN, KS, KY, LA, MA, MD, ME, MI, MN, MO, MS, MT, NC, ND, NE, NH, NJ, NM, NV, NY, OH, OK, OR, PA, RI, SC, SD, TN, TX, UT, VA, VT, WA, WI, WV and WY."""
+162,"""601 Clifton Ave, Sharon Hill, PA 19079"""
+163,AB-Financial Assistance for Military Families (American Red Cross)
+164,P-Financial Assistance for Military Families (American Red Cross)
+165,19079
+166,"""tel:+1-877-272-7337"""
+167,"""The American Red Cross works in partnership with military aid societies to provide quality, reliable financial assistance to eligible applicants 24/7/365 in times of hardship.This program provides: - Financial assistance for emergency needsAssistance can include funds for emergency travel, burial of a loved one, emergency food and shelter, etc. Red Cross helps to facilitate the application process, the military aid society determines eligibility and the specific financial assistance package that is offered.You can submit a request online or call the American Red Cross Hero Care Center.  When calliing, be sure to have the following information ready to provide the representative:- Legal name- Rank or rating- Social Security number- Date of birth- Branch of service (Army, Navy, Air Force, Marines, Coast Guard)- Military unit address- Information about the deployed unit and home base unit (for deployed service members only)"""
+168,"""Eligible for financial assistance if you are: An active duty service member OR', 'A member of an activated National Guard or Reserve unit OR', 'An immediate family member of a service member in the above two categories OR', 'A military retiree or spouse/widow(er) of a retiree."""
+169,Emergency Safe Havens (Women Against Abuse)
+170,39.9503348
+171,Childcare
+172,ImmediateSafety
+173,AbuseOrNeglectSurvivors
+174,InterviewTraining
+175,Lgbtqia
+176,TransgenderOrNonBinary
+177,Female
+178,DomesticViolenceSurvivors
+179,GroupTherapy
+180,AfterSchoolCare
+181,ResumeDevelopment
+182,IndividualCounseling
+183,SafeHousing
+184,"""19110"""
+185,"""https://www.facebook.com/womenagainstabuse"""
+186,"""https://www.twitter.com/@WomenAgnstAbuse"""
+187,"""Emergency Safe Havens (Women Against Abuse)_5652293370249216"""
+188,"""Emergency Safe Havens (Women Against Abuse)"""
+189,"""100 South Broad Street, Suite 1341, Philadelphia, PA 19102"""
+190,AB-Emergency Safe Havens (Women Against Abuse)
+191,P-Emergency Safe Havens (Women Against Abuse)
+192,19110
+193,"""tel:+1-866-723-3014"""
+194,"""Women Against Abuseâ€™s two 24-hour emergency safe havens provide free services to survivors of all gender identities and their children who are victims of domestic violence. This program provides:- Up to 90 days of shelter- Case management- Individual & group counseling- Three meals a day- Children's health assessments- Emergency relocation funds (as available)- Adult education & job readiness referrals- After school & summer school programs- On-site child careIf you need emergency housing because of a domestic violence situation, please call the toll-free 24-hour Philadelphia Domestic Violence Hotline (866-723-3014)."""
+195,"""For women experiencing domestic violence in the Philadelphia area."""
+196,Human Services (African Family Health Organization AFAHO)
+197,39.9454475
+198,Swahili
+199,Arabic
+200,Immigrants
+201,Refugees
+202,FoodPantry
+203,French
+204,MentalHealthCare
+205,Kinyarwanda
+206,Yoruba
+207,"""19143"""
+208,"""https://www.twitter.com/@AFAHO"""
+209,"""https://www.facebook.com/The-Salvation-Army-Nampa-Idaho-208522825852957/"""
+210,"""Human Services (African Family Health Organization AFAHO)_5355967947210752"""
+211,"""Human Services (African Family Health Organization AFAHO)"""
+212,"""2420 South 45th Street, Philadelphia, PA 19143"""
+213,AB-Human Services (African Family Health Organization AFAHO)
+214,P-Human Services (African Family Health Organization AFAHO)
+215,19143
+216,"""tel:+1-215-546-1232"""
+217,"""AFAHOÕs multi-lingual and bi-cultural case managers assist clients in mitigating the myriad of barriers they face in accessing critical health and social services which play a vital role in their successful integration, improved health, and ability to be self-sufficient."""
+218,"""This program serves African and Caribbean immigrants/refugees."""
+219,Jane Addams Place (Lutheran Settlement House)
+220,39.9935476
+221,39.9935454
+222,HelpFindHousing
+223,Recreation
+224,WithChildren
+225,Mothers
+226,Full
+227,HealthEducation
+228,Food
+229,"""19133"""
+230,"""19104"""
+231,"""https://www.facebook.com/pages/Lutheran-Settlement-House/152800584747421"""
+232,"""https://www.twitter.com/@LSH1902"""
+233,"""Jane Addams Place (Lutheran Settlement House)_5730442313465856"""
+234,"""Jane Addams Place (Lutheran Settlement House)"""
+235,"""1007 West Lehigh Avenue,  Philadelphia, PA 19104"""
+236,"""1007 West Lehigh Avenue, Philadelphia, PA 19104"""
+237,AB-Jane Addams Place (Lutheran Settlement House)
+238,P-Jane Addams Place (Lutheran Settlement House)
+239,19133
+240,19104
+241,"""tel:+1-215-387-2587"""
+242,"""Jane Addams Place clients are admitted through Centralized Homeless Intake Services operated by the Office of Supportive Housing at the Appletree Family Center at 1430 Cherry Street, 215-686-7150. You must go through central intake for an initial assessment of your housing needs before placement. If you are currently experiencing homelessness, please visit the intake center."""
+243,"""Centralized Homeless Intake assessment of eligibility required."""
+244,Various Community Events & Programs (Conquerors Community Development Corporation)
+245,39.9463281
+246,Unemployed
+247,WeatherRelief
+248,InDanger
+249,Employed
+250,Parents
+251,HomeRenters
+252,CommunitySupportServices
+253,Seniors
+254,Students
+255,Infants
+256,Caregivers
+257,CriminalJusticeHistory
+258,AnyoneInNeed
+259,Adults
+260,Retirement
+261,Underinsured
+262,BenefitRecipients
+263,Dependents
+264,HomeOwners
+265,LowIncome
+266,YoungAdults
+267,Dropouts
+268,Fathers
+269,ExerciseAndFitness
+270,Uninsured
+271,ComputerOrInternetAccess
+272,Covid19
+273,NearHomeless
+274,"""https://www.twitter.com/@vcc_philly"""
+275,"""https://www.facebook.com/CCDCPhilly/"""
+276,"""Various Community Events & Programs (Conquerors Community Development Corporation)_5390636500647936"""
+277,"""Various Community Events & Programs (Conquerors Community Development Corporation)"""
+278,"""5220 Whitby Avenue, Philadelphia, PA 19143"""
+279,AB-Various Community Events & Programs (Conquerors Community Development Corporation)
+280,P-Various Community Events & Programs (Conquerors Community Development Corporation)
+281,"""tel:+1-215-474-2717"""
+282,"""The Conquerors Community Development Corporation (CCDC) hosts Various Community Events & Programs that help to elevate the quality of life for the West and Southwest Philadelphia communities.  We host the 51st Ward Register Community Organization (RCO) Mondays 6pm-8pm and a number of other Community engagement events throughout the year with the following being held annually:1) Community Health Fair â€“ A host of healthcare agencies provide access to a wide-range of information and services for our neighbors.2) Back 2 School Community Day â€“ The CCDC partners with Victory Christian Center for our back-to-school event which includes refreshments, activities and entertainment for kids, parents and guardians. We provide information about programs and services for children, new backpacks, and school supplies.3) Senior Thanksgiving Luncheon â€“ In partnership with the United Block Captains Association (UBCA) and Victory Christian Center, we host a Thanksgiving Dinner style luncheon for the senior in the neighborhood.4) Christmas at Victory Village â€“ Through our annual Toy Drive at Victory Christian Center and with Coats received from the YMCA in partnership with Auto Dealers CARing for Kids Foundation, we provide a new coat, a toy, and book for children in need. This is a festive and lively event that includes food, music and entertainment for families during the holiday season."""
+283,"""Tuesday from 09:00 to 17:00"""
+284,"""Thursday from 09:00 to 17:00"""
+285,"""Monday from 09:00 to 17:00"""
+286,"""Wednesday from 09:00 to 17:00"""
+287,"""Friday from 09:00 to 17:00"""
+288,My Brother's House (Bethesda Project)
+289,39.9435134
+290,39.9435352
+291,SubstanceAbuseCounseling
+292,"""19146"""
+293,"""https://www.facebook.com/BethesdaProject/"""
+294,"""My Brother's House (Bethesda Project)_5138871176658944"""
+295,"""My Brother's House (Bethesda Project)"""
+296,"""1630 South Street, Philadelphia, PA 19146"""
+297,"""609 South 15th Street, Philadelphia, PA 19146"""
+298,AB-My Brother's House (Bethesda Project)
+299,P-My Brother's House (Bethesda Project)
+300,19146
+301,"""tel:+1-215-985-1600"""
+302,"""My Brother's House program offers a safe heaven that provides pre-recovery housing and an array of supportive services to 20 vulnerable men with chronic mental illness and substance abuse problem. This program provides:- Temporary shelterIn addition to a safe place to stay, resident are provided with:- Meals- Social services"""
+303,"""This program serves homeless men."""
+304,Men's Shelter (The Veterans Group)
+305,39.9619069
+306,Ptsd
+307,HelpFindWork
+308,GovernmentBenefits
+309,"""https://www.twitter.com/@veterans_group"""
+310,"""https://www.facebook.com/search/results.php?q=the veterans group&init=quick&tas=0.9926988141674462#!/pages/The-Veterans-Group/144681825577008"""
+311,"""Men's Shelter (The Veterans Group)_6710596967858176"""
+312,"""Men's Shelter (The Veterans Group)"""
+313,"""This program covers residents of the following counties: Bucks County, PA, Chester County, PA, Delaware County, PA, Montgomery County, PA and Philadelphia County, PA."""
+314,"""3209 Baring St, Philadelphia, PA 19104"""
+315,AB-Men's Shelter (The Veterans Group)
+316,P-Men's Shelter (The Veterans Group)
+317,"""tel:+1-215-222-4379"""
+318,"""The Veterans Group's Men's Shelter provide shelter for up to 41 men, providing them with a roof over their head, warm meals, and a variety of programs and services.This program provides:- ShelterShelter residents will receive: - Meals- PTSD counseling- Basic skills training"""
+319,"""This program helps people who are older than 17 years old.', 'Must have a referral from your local VA."""
+320,"Station House Shelter (SELF, Inc.)"
+321,39.9923482
+322,"""19132"""
+323,"""Station House Shelter (SELF, Inc.)_6293309907009536"""
+324,"""Station House Shelter (SELF, Inc.)"""
+325,"""2601 North Broad Street, Philadelphia, PA 19132"""
+326,"AB-Station House Shelter (SELF, Inc.)"
+327,"P-Station House Shelter (SELF, Inc.)"
+328,19132
+329,"""tel:+1-215-225-9230"""
+330,"""The Station House Shelter is an emergency shelter and after hour intake site providing client service case management, a computer lab, and residential services for 99 men in North Philadelphia. This program provides:- Emergency temporary shelter- Case managementStation House includes an intake assessment of eligibility and service needs of persons and families presenting for placement into emergency housing. You must go through a central intake assessment before placement into the homeless housing system. Intake hours for our emergency shelter occur after 5pm."""
+331,"""Tuesday from 17:00 to 23:00"""
+332,"""Thursday from 17:00 to 23:00"""
+333,"""Wednesday from 17:00 to 23:00"""
+334,"""Friday from 17:00 to 23:00"""
+335,"""Monday from 17:00 to 23:00"""
+336,"""This program serves single men in North Philadelphia who are experiencing homelessness."""
+337,Cooling Centers (City of Philadelphia - Office of Emergency Management)
+338,39.9480231
+339,"""https://www.facebook.com/cityofphiladelphia"""
+340,"""https://www.twitter.com/@PhiladelphiaGov"""
+341,"""Cooling Centers (City of Philadelphia - Office of Emergency Management)_4804499150602240"""
+342,"""Cooling Centers (City of Philadelphia - Office of Emergency Management)"""
+343,AB-Cooling Centers (City of Philadelphia - Office of Emergency Management)
+344,P-Cooling Centers (City of Philadelphia - Office of Emergency Management)
+345,"""tel:+1-215-232-1984"""
+346,"""In the event of extreme heat and humidity, the City of Philadelphia opens cooling centers, which are air-conditioned spaces available for public use.This program provides:- Relief from extreme weatherVisit the website to find a cooling center located near you."""
+347,"""Anyone can access this program."""
+348,Residential Maternity Shelter (Mother's Home)
+349,39.9221757
+350,Pregnant
+351,NutritionEducation
+352,BabySupplies
+353,"""19023"""
+354,"""https://www.facebook.com/mothershomeshelter"""
+355,"""Residential Maternity Shelter (Mother's Home)_6697255720189952"""
+356,"""Residential Maternity Shelter (Mother's Home)"""
+357,"""51 N MacDade Blvd, Darby, PA, United States, Pennsylvania"""
+358,AB-Residential Maternity Shelter (Mother's Home)
+359,P-Residential Maternity Shelter (Mother's Home)
+360,19023
+361,"""tel:+1-610-583-4663"""
+362,"""Mothers' Home provides a Residential Maternity Shelter and supportive services for pregnant women who are homeless or in crisis over the age of 18 who do not have other children in their care.This program provides: - Temporary housingWomen in the shelter have access to:- Life skills training- Parenting classes- Job readiness training- Counseling services- Pre and postnatal health education- Childbirth and development classes- Housing search assistance- Educational classes on budgeting, legal, and nutrition- Initial personal and baby supplies- Peer supportWomen may continue to reside in our Residential Maternity Shelter for up to six months after giving birth."""
+363,"""This program helps people who are older than 17 years old.', 'Must be a pregnant woman with no children currently in your care."""
+364,Crisis Care Services (Covenant House)
+365,40.0356379
+366,AdvocacyAndLegalAid
+367,FosterYouth
+368,HomeGoods
+369,PhysicalSafety
+370,Clothing
+371,"""19144"""
+372,"""https://www.twitter.com/@CovenantHouse"""
+373,"""https://www.facebook.com/CovenantHouse"""
+374,"""Crisis Care Services (Covenant House)_5925873791401984"""
+375,"""Crisis Care Services (Covenant House)"""
+376,"""This program covers residents of the following cities: Anchorage, AK, Anaheim, CA, Hayward, CA, Los Angeles, CA, Oakland, CA, Santa Clara, CA, Washington, DC, Fort Lauderdale, FL, Orlando, FL, Atlanta, GA, Chicago, IL, New Orleans, LA, Detroit, MI, Grand Rapids, MI, Saint Louis, MO, Asbury Park, NJ, Atlantic City, NJ, Elizabeth, NJ, Jersey City, NJ, Montclair, NJ, Newark, NJ, New York, NY, Philadelphia, PA, York, PA and Houston, TX."""
+377,"""31 East Armat Street, Philadelphia, PA 19144"""
+378,AB-Crisis Care Services (Covenant House)
+379,P-Crisis Care Services (Covenant House)
+380,19144
+381,"""tel:+1-215-951-5411"""
+382,"""tel:+1-800-388-3888"""
+383,"""""""Covenant House's Crisis Care Services are short-term programs where a homeless child's most pressing, urgent needs are met immediately. There is no requirement that a young person be referred through an official channel â€“ they can come anytime, day or nightThis program provides:- Shelter- Hot meal- Emergency medical care- ShowersThis program also provides:- Mental health care- Legal assistanceDuring the intake process, kids share their stories with trained staff so their immediate needs can be identified and then a plan is created for the best way to support them."""""""
+384,"""This program serves teens experiencing homelessness."""
+385,Homeless Shelter (Stenton Family Manor)
+386,40.0559837
+387,40.0563961
+388,Haitian
+389,"""19138"""
+390,"""19119"""
+391,"""https://www.facebook.com/StentonFamilyManor"""
+392,"""Homeless Shelter (Stenton Family Manor)_5186727883833344"""
+393,"""Homeless Shelter (Stenton Family Manor)"""
+394,"""1300 East Tulpehocken Street,  Philadelphia,  PA  19138"""
+395,"""1300 East Tulpehocken Street, Philadelphia, PA 19138"""
+396,AB-Homeless Shelter (Stenton Family Manor)
+397,P-Homeless Shelter (Stenton Family Manor)
+398,19138
+399,19119
+400,"""tel:+1-215-685-2800"""
+401,"""Stenton Family Manor offers a homeless shelter to those in need of a place to stay.This program provides:- Temporary shelter Intake process is done at the Apple Tree Family Center."""
+402,"""For homeless individuals residing in the Philadelphia, PA area."""
+403,Youth Services (Covenant House Pennsylvania)
+404,40.0356453
+405,HumanTraffickingSurvivors
+406,SpiritualSupport
+407,ResidentialHousing
+408,"""https://www.twitter.com/@CovenantHousePA"""
+409,"""https://www.facebook.com/CovenantHousePA"""
+410,"""Youth Services (Covenant House Pennsylvania)_4909220273061888"""
+411,"""Youth Services (Covenant House Pennsylvania)"""
+412,"""31 East Armat St. , Philadelphia, PA 19144"""
+413,"""31 East Armat St., Philadelphia, PA 19144"""
+414,AB-Youth Services (Covenant House Pennsylvania)
+415,P-Youth Services (Covenant House Pennsylvania)
+416,"""tel:+1-888-829-1249"""
+417,"""Covenant House Pennsylvania offers shelter and supportive services to young people experiencing homelessness. They aim to help homeless young people become healthy, happy, responsible, productive, and ultimately independent adults.This program provides:- A safe, secure environment- Immediate and transitional housing- Rapid rehousing- Meals and food- Case Management- Spiritual Support- Counseling- Physical health, mental health, and drug and alcohol services- Saving and budgeting- Continuing education- Support for LGBTQ individuals- Job readinessThe Crisis Center is open 24 hours per day, seven days per week. There are no shelter fees, however, those staying at the shelter must deposit 75% of their income during their stay. All money is returned upon leaving the shelter. Covenant House is a drug and weapon-free program."""
+418,"""This program helps people who are younger than 21 years old"""
+419,Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware)
+420,39.9610016
+421,SingleParent
+422,"""Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware)_5929367212130304"""
+423,"""Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware)"""
+424,"""This program covers residents of the following counties: Kent County, DE, New Castle County, DE, Berks County, PA, Chester County, PA, Lebanon County, PA, Luzerne County, PA, Monroe County, PA, Montgomery County, PA and Philadelphia County, PA."""
+425,"""5501 Market Street, Philadelphia, PA 19139"""
+426,AB-Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware)
+427,P-Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware)
+428,"""tel:+1-215-474-1010"""
+429,"""tel:+1-215-474-1009"""
+430,"""Salvation Army shelters welcome all homeless who come to their door. Comprehensive services are available to single-parent families, single women, single men, married couples, children awaiting placement in a foster home, and dual-parent families.This program provides:- Temporary shelter These shelters offer spiritual and physical care, food, and shelter to people in need. They attend the total needs of the individual and are meant to be a kind resting place to help these individuals get back on their feet."""
+431,"""Thursday from 09:00 to 13:00"""
+432,"""Monday from 09:00 to 16:00"""
+433,"""Sunday from 09:00 to 16:00"""
+434,"""Tuesday from 09:00 to 13:00"""
+435,"""Wednesday from 09:00 to 16:00"""
+436,"""Saturday from 09:00 to 16:00"""
+437,"""Thursday from 09:00 to 16:00"""
+438,"""Friday Closed"
+439,"""Wednesday from 09:00 to 13:00"""
+440,"""Friday from 09:00 to 16:00"""
+441,"""Monday from 09:00 to 13:00"",""Tuesday from 09:00 to 16:00"""
+442,"""This program serves homeless individuals and families."""
+443,RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania)
+444,"""RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania)_4670495380209664"""
+445,"""RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania)"""
+446,AB-RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania)
+447,P-RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania)
+448,"""tel:+1-215-685-8333"""
+449,Emergency Shelter (HELP USA Pennsylvania)
+450,39.9699305
+451,SkilledNursing
+452,PreventAndTreat
+453,"""19131"""
+454,"""https://www.facebook.com/helpusa"""
+455,"""https://www.twitter.com/@HelpUSA"""
+456,"""Emergency Shelter (HELP USA Pennsylvania)_5398794886447104"""
+457,"""Emergency Shelter (HELP USA Pennsylvania)"""
+458,"""This program covers residents of the following counties: Bucks County, PA, Delaware County, PA, Montgomery County, PA and Philadelphia County, PA."""
+459,"""4910 Wyalusing Avenue, Philadelphia, PA 19131"""
+460,AB-Emergency Shelter (HELP USA Pennsylvania)
+461,P-Emergency Shelter (HELP USA Pennsylvania)
+462,19131
+463,"""tel:+1-215-473-6454"""
+464,"""HELP USA is there for those who find themselves suddenly homeless, and they provide them with safe, temporary shelter and the support they need to get back on their feet. They believe in a different kind of homeless shelter â€“ one that is respectful, supportive, and treats each resident as a unique individual.This program provides:- Temporary shelter- Day care and afterschool care- Physical and mental healthcare- Navigating the system- Help find work"""
+465,"""For individuals facing homelessness in the Philadelphia area."""
+466,Homeless Veterans Initiative (Disabled American Veterans)
+467,39.9167076
+468,"""19142"""
+469,"""Homeless Veterans Initiative (Disabled American Veterans)_6359041064304640"""
+470,"""Homeless Veterans Initiative (Disabled American Veterans)"""
+471,"""This program covers residents of All US states and territories."""
+472,"""7050 Reedland St, Philadelphia, PA 19142"""
+473,AB-Homeless Veterans Initiative (Disabled American Veterans)
+474,P-Homeless Veterans Initiative (Disabled American Veterans)
+475,19142
+476,"""tel:+1-877-426-2838"""
+477,"""""""The DAV Homeless Veterans Initiative, supported by DAVâ€™s Charitable Service Trust and Columbia Trust, promotes the development of supportive housing and necessary services to assist homeless veterans in becoming productive, self-sufficient members of society. Our goal is to establish a partnership between the DAV and Federal, state, county and local governments to develop programs to assist homeless veterans in becoming self-sufficientService:-counsel individuals on the many VA benefits for which they may be entitledIf you or someone you know is a homeless veteran in need of assistance, please contact us."""""""
+478,"""Serves homeless veterans."""
+479,Red Shield Family Residence (The Salvation Army - Greater Philadelphia)
+480,39.9676669
+481,"""19123"""
+482,"""https://www.twitter.com/@SalArmyPhilly"""
+483,"""https://www.facebook.com/SalArmyPhilly"""
+484,"""Red Shield Family Residence (The Salvation Army - Greater Philadelphia)_6004150434004992"""
+485,"""Red Shield Family Residence (The Salvation Army - Greater Philadelphia)"""
+486,"""715 North Broad Street, Philadelphia, PA 19123"""
+487,AB-Red Shield Family Residence (The Salvation Army - Greater Philadelphia)
+488,P-Red Shield Family Residence (The Salvation Army - Greater Philadelphia)
+489,19123
+490,"""tel:+1-215-787-2887"""
+491,"""Centralized Homeless Intake Services includes an assessment of eligibility and service needs of persons and families presenting for placement into emergency housing. If eligible, persons and families are placed in appropriate emergency housing, boarding homes, or other alternative housing. Mental health assessments and referrals to drug/alcohol treatment, health services, children and youth services, legal services and veteranâ€™s services, etc., are provided as needed.This program provides:- Temporary shelter- Ongoing case management services- Assistance with obtaining transitional and/or permanent housing- Supportive housing for special populations- An optional savings program which allows households to save a part of their income for future housing expensesIf you are currently experiencing homelessness, please call during business hours. You must go through central intake for an initial assessment of your housing needs before placement into the homeless housing system."""
+492,"""Serves families seeking emergency housing."""
+493,Residential Maternity Shelter (Mothers' Home)
+494,"""Residential Maternity Shelter (Mothers' Home)_6697255720189952"""
+495,"""Residential Maternity Shelter (Mothers' Home)"""
+496,"""51 North MacDade Blvd, Darby, PA 19023"""
+497,AB-Residential Maternity Shelter (Mothers' Home)
+498,P-Residential Maternity Shelter (Mothers' Home)
+499,Men's Shelter (Philly House)
+500,39.958175
+501,"""19107"""
+502,"""https://www.facebook.com/phillyhomeless"""
+503,"""https://www.twitter.com/@phillyhomeless"""
+504,"""Men's Shelter (Philly House)_5704371963166720"""
+505,"""Men's Shelter (Philly House)"""
+506,"""302 North 13th Street, Philadelphia, PA 19107"""
+507,AB-Men's Shelter (Philly House)
+508,P-Men's Shelter (Philly House)
+509,19107
+510,"""tel:+1-215-922-6400"""
+511,"""Sunday Breakfast Rescue Mission strives to meet the physical needs of the homeless and hurting men in Philadelphia through emergency shelter services that provide safe beds and nutritious meals to their homeless guests 365 days a year. Services:- Temporary Shelter- Meals- Shower- Case Management Sunday Breakfast Rescue Mission includes an intake assessment of eligibility and service needs of persons and families presenting for placement into emergency housing. You must go through a central intake assessment before placement into the homeless housing system. To receive a bed, please arrive at 7:00 PM. Intake closes at 8:00 PM. You do not need to call ahead. Men are able to stay with us for thirty days at a time."""
+512,"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)"
+513,39.968264
+514,HelpPayForUtilities
+515,LimitedEnglish
+516,HelpPayForHousing
+517,Spanish
+518,"""https://www.facebook.com/pages/Philadelphia-PA/City-of-Philadelphia/23587514958"""
+519,"""City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)_6101823548030976"""
+520,"""City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)"""
+521,"""1401 John F Kennedy Boulevard 10th floor, Philadelphia, PA 19102"""
+522,"AB-City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)"
+523,"P-City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)"
+524,"""tel:+1-215-686-7175"""
+525,"""The City of Philadelphia - Office of Homeless Services provides limited emergency financial assistance and/or emergency response for families and individuals displaced or experiencing homelessness and residents with court-ordered evictions.This program provides:- Mediation- Financial Counseling- Problem solving- One-time payment for move-in costs (security deposit, first and last monthâ€™s rent)- Up to 12 months of rental assistance with housing case management- Emergency Housing (shelter)Assistance is available for residents displaced by disasters, natural and otherwise. Due to high call volume, OHS staff will return calls within 5 to 10 business days. Assistance is based on funding availability.Please call for updated information on available funding for assistance."""
+526,"""This program helps people with income at or below 125% of federal poverty guidelines.', 'Must be experiencing a financial crisis and at imminent risk of becoming homeless. OR', 'Received a court eviction hearing notice or court-ordered eviction. OR', 'Received a notice to vacate from landlord. OR', 'Lack family and financial resources, placing you at risk for homelessness. OR', 'Have the ability to sustain housing after receiving assistance."""
+527,Emergency Shelter (Gaudenzia)
+528,39.9619265
+529,"""https://www.facebook.com/gaudenziaorg/"""
+530,"""https://www.twitter.com/@Gaudenzia"""
+531,"""Emergency Shelter (Gaudenzia)_6571638428270592"""
+532,"""Emergency Shelter (Gaudenzia)"""
+533,"""This program covers residents of the following cities: Washington, DC, Claymont, DE and Philadelphia, PA."""
+534,AB-Emergency Shelter (Gaudenzia)
+535,P-Emergency Shelter (Gaudenzia)
+536,"""tel:+1-833-976-4357"""
+537,"""Gaudenzia provides temporary shelter and services to meet basic needs when individuals fall on hard times and have nowhere left to go.This program provides:- Temporary shelterThe shelter provides the following additional services: - Meals- Showers"""
+538,Navigation Center (Horizon House)
+539,"""Navigation Center (Horizon House)_6224216144216064"""
+540,"""Navigation Center (Horizon House)"""
+541,"""5901 Market Street, Philadelphia, PA 19104"""
+542,AB-Navigation Center (Horizon House)
+543,P-Navigation Center (Horizon House)
+544,"""tel:+1-215-222-2466"""
+545,"""Navigation Center offers service-resistant homeless individuals the chance to gain stability by offering to meet their immediate needs by providing basic human services.Services include:- Temporary shelter- Food- Showers - Season-appropriate clothing- Resources for other human servicesFor more information, please call the Outreach Coordination Center's 24-hour hotline: 215-232-1984."""
+546,"""This program serves people experiencing homelessness."""
+547,Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice)
+548,39.9561156
+549,"""https://www.facebook.com/saintjohnshospice"""
+550,"""Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice)_5112554392387584"""
+551,"""Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice)"""
+552,"""1221 Race St, Philadelphia, PA 19107"""
+553,AB-Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice)
+554,P-Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice)
+555,"""tel:+1-215-563-7763"""
+556,"""The Coffee House provides a safe resting and sleeping environment for chronically homeless men who typically avoid shelter living.This program provides:- Overnight shelterAdditional services:- Warm meal- Beverages- Restrooms- ShowersIf you are interested in staying at the SJH Coffee House, report to at the corner of N. Camac and Race Streets at 10 pm."""
+557,"""Wednesday from 20:30 to 17:00"""
+558,"""Thursday from 20:30 to 17:00"""
+559,"""Friday from 20:30 to 17:00"""
+560,"""Monday from 20:30 to 17:00"""
+561,"""Tuesday from 20:30 to 17:00"""
+562,"""This program helps homeless men."""
+563,Drop In Center (Prevention Point Philadelphia)
+564,39.9927854
+565,AddictionAndRecovery
+566,"""19134"""
+567,"""https://www.facebook.com/preventionpointphiladelphia"""
+568,"""https://www.twitter.com/@preventionpp"""
+569,"""Drop In Center (Prevention Point Philadelphia)_5089660355477504"""
+570,"""Drop In Center (Prevention Point Philadelphia)"""
+571,"""2915 Kensington Avenue, Philadelphia, PA 19134"""
+572,AB-Drop In Center (Prevention Point Philadelphia)
+573,P-Drop In Center (Prevention Point Philadelphia)
+574,19134
+575,"""tel:+1-215-634-5272"""
+576,"""The Drop In Center strives to be free of judgment, allowing people of all backgrounds to come in and relax. The Drop In Center is in many ways the gateway through which participants are connected to the many services provided by PPP. This program provides:- Case management- HIV/HCV testing and counseling- Mail services- Legal clinic- Medical services- CRAFT (links participants to addiction treatment)- Specialized surveys - MealsThe Drop In Center is open five days a week and provides daily respite for clients from outside weather."""
+577,"""Friday from 05:00 to 14:00"""
+578,"""Wednesday from 05:00 to 14:00"""
+579,"""Thursday from 05:00 to 14:00"""
+580,"""Tuesday from 05:00 to 14:00"""
+581,"""This program serves residents in Philadelphia county, PA."""
+582,"Station House Intake Center Services (SELF, Inc.)"
+583,"""Station House Intake Center Services (SELF, Inc.)_6354456388829184"""
+584,"""Station House Intake Center Services (SELF, Inc.)"""
+585,"AB-Station House Intake Center Services (SELF, Inc.)"
+586,"P-Station House Intake Center Services (SELF, Inc.)"
+587,"""Centralized Homeless Intake Services includes an assessment of eligibility and service needs of persons and families presenting for placement into emergency housing. If eligible, persons and families are placed in appropriate emergency housing, boarding homes, or other alternative housing. Services include:- Temporary shelter- Ongoing case management services- Assistance with obtaining transitional and/or permanent housing- Supportive housing for special populations- An optional savings program which allows households to save a part of their income for future housing expensesMental health assessments and referrals to drug/alcohol treatment, health services, children and youth services, legal services and veteranâ€™s services, etc., are provided as needed to clients of the program.- Connecting Services to other community resources- ScreeningIf you are currently experiencing homelessness, please call us during business hours. You must go through central intake for an initial assessment of your housing needs before placement into the homeless housing system."""
+588,"""Thursday Closed"
+589,"""Saturday from 17:00 to 23:00"""
+590,"""Tuesday Closed"
+591,"""Monday Closed"
+592,"""Wednesday Closed"
+593,"""Sunday from 17:00 to 23:00"""
+594,"""We serve single men experiencing homelessness."""
+595,Kailo Haven (Resources for Human Development RHD - Pennsylvania)
+596,"""Kailo Haven (Resources for Human Development RHD - Pennsylvania)_5552002522939392"""
+597,"""Kailo Haven (Resources for Human Development RHD - Pennsylvania)"""
+598,AB-Kailo Haven (Resources for Human Development RHD - Pennsylvania)
+599,P-Kailo Haven (Resources for Human Development RHD - Pennsylvania)
+600,"Outley House (SELF, Inc.)"
+601,39.9506585
+602,HelpFindHealthcare
+603,HelpFindSchool
+604,"""https://www.facebook.com/SELFIncorp/"""
+605,"""https://www.twitter.com/@SelfInc1"""
+606,"""Outley House (SELF, Inc.)_5992920927698944"""
+607,"""Outley House (SELF, Inc.)"""
+608,"""1211 Chestnut Street, Philadelphia, PA 19107"""
+609,"AB-Outley House (SELF, Inc.)"
+610,"P-Outley House (SELF, Inc.)"
+611,"""tel:+1-215-496-9610"""
+612,"""Outley House serves single, adult men who are experiencing homelessness and are between the ages of 18 and 70+ years old. Their staff work tirelessly to help clients get back on their feet and start along the path to independence.This program provides:- Help find housing- Temporary shelter- Case managementThey also offer:- Behavioral and physical health services- Education opportunities- Independent living preparation- Access to resources and community contacts"""
+613,"""Must be male and homeless', 'Must have a referral from The Office of Homeless Services (OHS).', 'This program helps people who are older than 17 years old."""
+614,Code Blue (Project HOME)
+615,39.9540966
+616,HelpHotlines
+617,Transportation
+618,"""19102"""
+619,"""https://www.twitter.com/@PHLCityHomeless"""
+620,"""Code Blue (Project HOME)_5982309675433984"""
+621,"""Code Blue (Project HOME)"""
+622,"""1401 John F Kennedy Boulevard, Philadelphia, PA 19102"""
+623,AB-Code Blue (Project HOME)
+624,P-Code Blue (Project HOME)
+625,19102
+626,"""Project HOME provides an emergency shelter when it issues an emergency warning Code Blue. Code Blue is when the National Weather Service predicts wind chills of 20 degrees or lower or precipitation with temperatures below 32 degrees to preserve the lives of chronically homeless individuals.This program provides:- Short-term emergency shelterCity officials are urging the public to call Homeless Outreach at any time if they see someone who is homeless and sleeping on the street. Homeless outreach teams are available 24 hours a day, seven days a week."""

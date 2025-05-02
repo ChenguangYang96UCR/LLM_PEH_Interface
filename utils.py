@@ -4,17 +4,73 @@ import openai
 from py2neo import Graph
 from deep_translator import GoogleTranslator
 import logging
+from retriever.lm_modeling import load_model, load_text2embedding
+import os
+import csv 
+import pandas as pd
+import numpy as np
+from torch_geometric.data import Data
+from retriever.retrieval import retrieval_via_pcst
 
+import huggingface_hub
+import torch
+import os
+from transformers import AutoTokenizer
+from transformers import AutoModelForCausalLM, AutoTokenizer, set_seed, Trainer, TrainingArguments, BitsAndBytesConfig, \
+    DataCollatorForLanguageModeling, Trainer, TrainingArguments
+from huggingface_hub import login
+
+
+login(token = "")
+
+
+#* Define global value
 google_translator_max_char = 5000
+path = 'retriever_graph'
+embeding_model_name = 'sbert'
+path_nodes = f'{path}/nodes'
+path_edges = f'{path}/edges'
+path_graphs = f'{path}/graphs'
+cached_graph = f'{path}/cached_graphs'
+cached_desc = f'{path}/cached_desc'
 
-# * Extract weekday from string
-def extract_weekday(input_string):
+def switch_page():
+    if st.session_state.page == "g_retriever":
+        st.session_state.page = "cypher"
+    else:
+        st.session_state.page = "g_retriever"
+
+
+def extract_weekday(input_string : str):
+
+    """
+    Extract weekday based on input
+
+    Args:
+        input_string (string): input string 
+
+    Returns:
+        weekday_match: extracted weekday 
+    """    
+
     # extract weekday from string
     weekday_match = re.search(r"(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)", input_string)
     return weekday_match.group(1) if weekday_match else None
 
 # * Get service open time from graph
 def get_services_time(weekday, relation='xmlschema11-2#time'):
+
+    """
+    Get service open time from graph (cypher search)
+
+    Args:
+        weekday (str): weekday string
+        relation (str, optional): relationship define. Defaults to 'xmlschema11-2#time'.
+
+    Returns:
+        triples: service triples
+    """    
+
     triples = []
     graph = Graph(
             "bolt://localhost:7687", 
@@ -263,7 +319,19 @@ def set_logger(log_file = 'streamlit.log', log_level=logging.DEBUG):
 
     return logger
 
-def filter_crime_based_zipcode(crime_array, zipcode):
+def filter_crime_based_zipcode(crime_array: list, zipcode: str):
+
+    """
+    filter crime information
+
+    Args:
+        crime_array (list): crime's information list
+        zipcode (str): crime happen's zipcode
+
+    Returns:
+        filter_crime: crime information based on zipcode
+    """    
+
     print('filter_crime')
     filter_crime = []
     index = 0
@@ -274,6 +342,16 @@ def filter_crime_based_zipcode(crime_array, zipcode):
     return filter_crime
 
 def get_crimes_summary(crimes_list, st, language = 'en'):
+
+    """
+    Get crimes' summary information
+
+    Args:
+        crimes_list (list): crime's information list
+        st (streamlit): interface pointer
+        language (str, optional): translation language. Defaults to 'en'.
+    """    
+
     if len(crimes_list) == 0:
         st.write('There is no crime record in this area.')
         return
@@ -294,3 +372,170 @@ response: {crimes_list}
         crimes_information = crimes_information[:google_translator_max_char]
     crimes_information_trans = GoogleTranslator(source='auto', target=language).translate(str(crimes_information))
     st.write(crimes_information_trans)
+
+
+def construct_retriever_question(question_type: str, question_information: str, logger) -> str:
+    
+    """
+    Construct question used by G-Retriever
+
+    Args:
+        question_type (str): (time , zipcode, audience)
+        question_information (str): information extracted from user query
+        logger : python logger
+    """    
+
+    question = ''
+    if question_type == 'time':
+        question = question_information + ' from ? to ?'
+
+    if question_type == 'zipcode':
+        question = question_information
+
+    if question_type == 'audience':
+        question = question_information
+
+    logger.debug("G-Retriever question: " + question)
+    return question
+
+
+def extract_subgraph_based_on_query(service_type: str, question_type: str, question_information: str, logger):
+
+    """
+    Extract subgraph based on query type (time , zipcode, audience) (G-Retriever search)
+
+    Args:
+        service_type (str): (food, shelter, mental_health)
+        question_type (str): (time , zipcode, audience)
+        question_information (str): information extracted from user query
+        logger : python logger
+    """    
+
+    # 1. embeding question and graph
+    if service_type == "Shelter":
+        service_type = "shelter"
+    if service_type == "Mental Health":
+        service_type = "mental_health"
+    if service_type == "Food":
+        service_type = "food"
+
+    model, tokenizer, device = load_model[embeding_model_name]()
+    text2embedding = load_text2embedding[embeding_model_name]
+
+    # 1.1 encode questions
+    print('Encoding questions...')
+    questions = []
+    questions.append(construct_retriever_question(question_type, question_information, logger))
+    q_embs = text2embedding(model, tokenizer, device, questions)
+
+    # 2. embeding question and graph
+    for index in range(len(q_embs)):
+        nodes = pd.read_csv(f'{path_nodes}/' + service_type + '/'+ f'{0}.csv')
+        edges = pd.read_csv(f'{path_edges}/' + service_type + '/'+ f'{0}.csv')
+
+        if len(nodes) == 0:
+            print(f'Empty graph at index {index}')
+            continue
+
+        graph = torch.load(f'{path_graphs}/' + service_type + '/'+ f'{0}.pt')
+        q_emb = q_embs[index]
+        subg, desc = retrieval_via_pcst(graph, q_emb, nodes, edges, topk=5, topk_e=1, cost_e=0.5)
+        logger.debug(desc)
+        # open(f'{cached_desc}/{index}.txt', 'w+').write(desc)
+    return desc
+
+def create_bnb_config():
+
+    """
+    Used to load model, llm model bit config
+
+    Returns:
+        bnb_config (class): the bit config class
+    """    
+
+    bnb_config = BitsAndBytesConfig(
+        load_in_8bit=False,
+        bnb_8bit_use_double_quant=False
+    )
+
+    return bnb_config
+
+def load_llm_model(model_name, bnb_config):
+
+    """
+    Used to load model
+
+    Args:
+        model_name (string): model's name
+        bnb_config (class): bit config class
+
+    Returns:
+        model(class): llm model
+        tokenizer(class): model tokenizer
+    """    
+
+    model = AutoModelForCausalLM.from_pretrained(
+        model_name,
+        device_map = 'auto',
+    )
+    tokenizer = AutoTokenizer.from_pretrained(model_name, use_auth_token=True, low_cpu_mem_usage = True)
+    tokenizer.pad_token = tokenizer.eos_token
+    return model, tokenizer
+
+def init_llm_model(model_name : str = "deepseek-ai/DeepSeek-R1-Distill-Qwen-14B"):
+
+    """
+    Init llm model
+
+    Args:
+        model_name (str, optional): model name. Defaults to "deepseek-ai/DeepSeek-R1-Distill-Qwen-14B".
+
+    Returns:
+        model: llm model  
+        tokenizer: llm model tokenizer
+    """    
+
+    bnb_config = create_bnb_config()
+    model, tokenizer = load_llm_model(model_name, bnb_config)
+    # device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    output_merged_dir = "./results/deepseek/final_merged_checkpoint"
+    os.makedirs(output_merged_dir, exist_ok=True)
+    model.save_pretrained(output_merged_dir, safe_serialization=True)
+
+    # save tokenizer for easy inference
+    tokenizer = AutoTokenizer.from_pretrained("deepseek-ai/DeepSeek-R1-Distill-Qwen-14B")
+    tokenizer.save_pretrained(output_merged_dir)
+    return model, tokenizer
+
+def ask_model_for_service_extraction(model, question, tokenizer, logger):
+
+    """
+    Ask llm model to extract service list based on G-Retriever sub-graph
+
+
+    Args:
+        model (class): llm model
+        question (string): G-Retriever sub-graph
+        tokenizer (class): model tokenizer
+        logger : python logger
+
+    Returns:
+        service_list: service name list
+    """ 
+
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    extraction_instruction = "Can you help me extract a service list based on below nodes, edges, graph information? Only response a service name list.\n"
+    # full_conversation = conversation_history + [{"role": "user", "content": combined_query}]
+    full_question = extraction_instruction + question
+    inputs = tokenizer(full_question, return_tensors="pt").to(device)
+    outputs = model.generate(**inputs, max_new_tokens=2550, pad_token_id=tokenizer.eos_token_id)
+    model_answer = tokenizer.decode(outputs[0], skip_special_tokens=True)
+
+    # TODO: Create a services list based on model answer
+    service_list = []
+    clean_text = model_answer.split("</think>")[-1]
+    matches = re.findall(r'\d+\.\s*(.*)', clean_text)
+    for service in matches:
+        service_list.append(service)
+
+    return service_list

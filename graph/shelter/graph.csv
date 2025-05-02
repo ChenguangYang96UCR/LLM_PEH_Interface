@@ -1,0 +1,1522 @@
+subject,relation,object
+Church-Based Shelters (Bethesda Project),latitude,39.9539437
+Church-Based Shelters (Bethesda Project),audience,Homeless
+Church-Based Shelters (Bethesda Project),category,Meals
+Church-Based Shelters (Bethesda Project),category,OneOnOneSupport
+Church-Based Shelters (Bethesda Project),category,CaseManagement
+Church-Based Shelters (Bethesda Project),language,English
+Church-Based Shelters (Bethesda Project),audience,AllAges
+Church-Based Shelters (Bethesda Project),category,TemporaryShelter
+Church-Based Shelters (Bethesda Project),cost,Free
+Church-Based Shelters (Bethesda Project),audience,Emergency
+Church-Based Shelters (Bethesda Project),availability,Available
+Church-Based Shelters (Bethesda Project),service type,Shelter
+Church-Based Shelters (Bethesda Project),postalCode,"""19106"""
+Church-Based Shelters (Bethesda Project),url,"""https://www.twitter.com/@Bethesda_Proj"""
+Church-Based Shelters (Bethesda Project),url,"""https://www.facebook.com/BethesdaProject"""
+Church-Based Shelters (Bethesda Project),identifier,"""Church-Based Shelters (Bethesda Project)_5997720409997312"""
+Church-Based Shelters (Bethesda Project),name,"""Church-Based Shelters (Bethesda Project)"""
+Church-Based Shelters (Bethesda Project),name,""""""
+Church-Based Shelters (Bethesda Project),hasMap,XMLSchema#anyUri
+Church-Based Shelters (Bethesda Project),areaServed,"""This program covers residents of the following counties: Philadelphia County, PA."""
+Church-Based Shelters (Bethesda Project),provider,Church-Based Shelters (Bethesda Project)
+Church-Based Shelters (Bethesda Project),address,"""151 North 4th Street, Philadelphia, PA 19106"""
+Church-Based Shelters (Bethesda Project),longitude,XMLSchema#decimal
+Church-Based Shelters (Bethesda Project),availableChannel,AB-Church-Based Shelters (Bethesda Project)
+Church-Based Shelters (Bethesda Project),availableChannel,P-Church-Based Shelters (Bethesda Project)
+Church-Based Shelters (Bethesda Project),containedInPlace,19106
+Church-Based Shelters (Bethesda Project),description,Church-Based Shelters (Bethesda Project)
+Church-Based Shelters (Bethesda Project),text,"""In partnership with local churches, Bethesda Project provides shelter for men and women, year round and in the winter. This program provides:- Overnight shelterAdditional offerings for shelter recipients include:- Meals- Case management"""
+Church-Based Shelters (Bethesda Project),xmlschema11-2#time,"""Monday from 08:00 to 17:00"""
+Church-Based Shelters (Bethesda Project),xmlschema11-2#time,"""Friday from 08:00 to 17:00"""
+Church-Based Shelters (Bethesda Project),xmlschema11-2#time,"""Tuesday from 08:00 to 17:00"""
+Church-Based Shelters (Bethesda Project),xmlschema11-2#time,"""Saturday Closed"
+Church-Based Shelters (Bethesda Project),xmlschema11-2#time,"""Wednesday from 08:00 to 17:00"""
+Church-Based Shelters (Bethesda Project),xmlschema11-2#time,"""Thursday from 08:00 to 17:00"""
+Church-Based Shelters (Bethesda Project),xmlschema11-2#time,"""Sunday Closed"
+Church-Based Shelters (Bethesda Project),conditionsOfAccess,"""This program serves homeless individuals."""
+Youth Emergency Service YES (HopePHL),latitude,39.9668498
+Youth Emergency Service YES (HopePHL),audience,Emergency
+Youth Emergency Service YES (HopePHL),category,Meals
+Youth Emergency Service YES (HopePHL),category,DiseaseScreening
+Youth Emergency Service YES (HopePHL),category,SupportNetwork
+Youth Emergency Service YES (HopePHL),category,ScreeningAndExams
+Youth Emergency Service YES (HopePHL),language,English
+Youth Emergency Service YES (HopePHL),category,NavigatingTheSystem
+Youth Emergency Service YES (HopePHL),audience,Teens
+Youth Emergency Service YES (HopePHL),category,Counseling
+Youth Emergency Service YES (HopePHL),audience,InCrisis
+Youth Emergency Service YES (HopePHL),cost,Free
+Youth Emergency Service YES (HopePHL),audience,Runaways
+Youth Emergency Service YES (HopePHL),availability,Available
+Youth Emergency Service YES (HopePHL),category,MedicalCare
+Youth Emergency Service YES (HopePHL),audience,Homeless
+Youth Emergency Service YES (HopePHL),audience,Children
+Youth Emergency Service YES (HopePHL),category,MoreEducation
+Youth Emergency Service YES (HopePHL),category,TemporaryShelter
+Youth Emergency Service YES (HopePHL),category,SexEducation
+Youth Emergency Service YES (HopePHL),service type,Shelter
+Youth Emergency Service YES (HopePHL),service type,Mental Health
+Youth Emergency Service YES (HopePHL),postalCode,"""19130"""
+Youth Emergency Service YES (HopePHL),url,"""https://www.facebook.com/ysiyouthserviceinc"""
+Youth Emergency Service YES (HopePHL),url,"""https://www.twitter.com/@YSIPHILLY"""
+Youth Emergency Service YES (HopePHL),identifier,"""Youth Emergency Service YES (HopePHL)_5680777996009472"""
+Youth Emergency Service YES (HopePHL),name,""""""
+Youth Emergency Service YES (HopePHL),name,"""Youth Emergency Service YES (HopePHL)"""
+Youth Emergency Service YES (HopePHL),hasMap,XMLSchema#anyUri
+Youth Emergency Service YES (HopePHL),areaServed,"""This program covers residents of the following counties: Philadelphia County, PA."""
+Youth Emergency Service YES (HopePHL),provider,Youth Emergency Service YES (HopePHL)
+Youth Emergency Service YES (HopePHL),address,"""1526 Fairmount Avenue, Philadelphia, PA 19130"""
+Youth Emergency Service YES (HopePHL),longitude,XMLSchema#decimal
+Youth Emergency Service YES (HopePHL),availableChannel,AB-Youth Emergency Service YES (HopePHL)
+Youth Emergency Service YES (HopePHL),availableChannel,P-Youth Emergency Service YES (HopePHL)
+Youth Emergency Service YES (HopePHL),containedInPlace,19130
+Youth Emergency Service YES (HopePHL),description,Youth Emergency Service YES (HopePHL)
+Youth Emergency Service YES (HopePHL),telephone,"""tel:+1-215-787-0633"""
+Youth Emergency Service YES (HopePHL),text,"""Youth Emergency Service (YES) offers immediate housing, respite, and support services to youth ages 12-17 facing housing insecurity or are unable to safely live with family. YES Services include:- Twenty four hour emergency respite and protection for youth ages 12-17- Telephone hotline and referral services as well as links to national runaway and homeless youth providers through national Runaway Safeline and National safe Place- Medical care – examinations and follow-up- Counseling supports and referrals- Voluntary and confidential HIV testing- Linkage to The Attic for those wanting service for LGBTQ youth- Physical and sexual health information and supports- Referral to home based services for families- Education and recreation programming and supports- Title I tutoringYouth can be self referred, enter through the formal child welfare system, Department of Human Services, or through referrals from partner organizations throughout the county. Referrals come from family, school staff and other concerned persons."""
+Youth Emergency Service YES (HopePHL),text,"""Youth Emergency Service (YES) offers immediate housing, respite, and support services to youth ages 12-17 facing housing insecurity or are unable to safely live with family. YES Services include:- Twenty four hour emergency respite and protection for youth ages 12-17- Telephone hotline and referral services as well as links to national runaway and homeless youth providers through national Runaway Safeline and National safe Place- Medical care â€“ examinations and follow-up- Counseling supports and referrals- Voluntary and confidential HIV testing- Linkage to The Attic for those wanting service for LGBTQ youth- Physical and sexual health information and supports- Referral to home based services for families- Education and recreation programming and supports- Title I tutoringYouth can be self referred, enter through the formal child welfare system, Department of Human Services, or through referrals from partner organizations throughout the county. Referrals come from family, school staff and other concerned persons."""
+Youth Emergency Service YES (HopePHL),xmlschema11-2#time,"""Thursday from 08:00 to 17:00"""
+Youth Emergency Service YES (HopePHL),xmlschema11-2#time,"""Saturday Closed"
+Youth Emergency Service YES (HopePHL),xmlschema11-2#time,"""Sunday Closed"
+Youth Emergency Service YES (HopePHL),xmlschema11-2#time,"""Monday from 08:00 to 17:00"""
+Youth Emergency Service YES (HopePHL),xmlschema11-2#time,"""Tuesday from 08:00 to 17:00"""
+Youth Emergency Service YES (HopePHL),xmlschema11-2#time,"""Friday from 08:00 to 17:00"""
+Youth Emergency Service YES (HopePHL),xmlschema11-2#time,"""Wednesday from 08:00 to 17:00"""
+Youth Emergency Service YES (HopePHL),conditionsOfAccess,"""This program helps people who are 12 to 17 years old."""
+Kailo Haven (Resources for Human Development - Pennsylvania),latitude,40.007932
+Kailo Haven (Resources for Human Development - Pennsylvania),audience,AllMentalHealth
+Kailo Haven (Resources for Human Development - Pennsylvania),audience,Homeless
+Kailo Haven (Resources for Human Development - Pennsylvania),category,PersonalHygiene
+Kailo Haven (Resources for Human Development - Pennsylvania),category,Meals
+Kailo Haven (Resources for Human Development - Pennsylvania),audience,Adults18
+Kailo Haven (Resources for Human Development - Pennsylvania),category,12Step
+Kailo Haven (Resources for Human Development - Pennsylvania),category,NavigatingTheSystem
+Kailo Haven (Resources for Human Development - Pennsylvania),cost,Free
+Kailo Haven (Resources for Human Development - Pennsylvania),category,TemporaryShelter
+Kailo Haven (Resources for Human Development - Pennsylvania),availability,Available
+Kailo Haven (Resources for Human Development - Pennsylvania),category,ShortTermHousing
+Kailo Haven (Resources for Human Development - Pennsylvania),language,English
+Kailo Haven (Resources for Human Development - Pennsylvania),category,OneOnOneSupport
+Kailo Haven (Resources for Human Development - Pennsylvania),audience,DualDiagnosis
+Kailo Haven (Resources for Human Development - Pennsylvania),audience,SubstanceDependency
+Kailo Haven (Resources for Human Development - Pennsylvania),service type,Shelter
+Kailo Haven (Resources for Human Development - Pennsylvania),postalCode,"""19140"""
+Kailo Haven (Resources for Human Development - Pennsylvania),url,"""None"""
+Kailo Haven (Resources for Human Development - Pennsylvania),url,"""https://www.facebook.com/kailohaven/"""
+Kailo Haven (Resources for Human Development - Pennsylvania),identifier,"""Kailo Haven (Resources for Human Development - Pennsylvania)_5552002522939392"""
+Kailo Haven (Resources for Human Development - Pennsylvania),name,"""Kailo Haven (Resources for Human Development - Pennsylvania)"""
+Kailo Haven (Resources for Human Development - Pennsylvania),name,""""""
+Kailo Haven (Resources for Human Development - Pennsylvania),hasMap,XMLSchema#anyUri
+Kailo Haven (Resources for Human Development - Pennsylvania),areaServed,"""This program covers residents of the following cities: Philadelphia, PA."""
+Kailo Haven (Resources for Human Development - Pennsylvania),provider,Kailo Haven (Resources for Human Development - Pennsylvania)
+Kailo Haven (Resources for Human Development - Pennsylvania),address,"""2107 West Tioga Street, Philadelphia, PA 19140"""
+Kailo Haven (Resources for Human Development - Pennsylvania),longitude,XMLSchema#decimal
+Kailo Haven (Resources for Human Development - Pennsylvania),availableChannel,AB-Kailo Haven (Resources for Human Development - Pennsylvania)
+Kailo Haven (Resources for Human Development - Pennsylvania),availableChannel,P-Kailo Haven (Resources for Human Development - Pennsylvania)
+Kailo Haven (Resources for Human Development - Pennsylvania),containedInPlace,19140
+Kailo Haven (Resources for Human Development - Pennsylvania),description,Kailo Haven (Resources for Human Development - Pennsylvania)
+Kailo Haven (Resources for Human Development - Pennsylvania),telephone,"""tel:+1-215-225-8645"""
+Kailo Haven (Resources for Human Development - Pennsylvania),text,"""Resources for Human Development's Kailo Haven is a safe haven homeless shelter for individuals experiencing chronic homelessness and identified as suffering from some form of co-occuring disorders, including mental health and addiction challenges.This program provides:- Safe environment to live and sleep- Meals and snacks- Bathroom and laundry facilities- 12-step recovering meetings- Emotional Management Courses- Individualized meetings and support to obtain financial and medical benefits- Referral ServicesPlease call The Homeless Outreach Hotline at 215-225-8645."""
+Kailo Haven (Resources for Human Development - Pennsylvania),xmlschema11-2#time,"""Wednesday from 08:00 to 17:00"""
+Kailo Haven (Resources for Human Development - Pennsylvania),xmlschema11-2#time,"""Friday from 08:00 to 17:00"""
+Kailo Haven (Resources for Human Development - Pennsylvania),xmlschema11-2#time,"""Tuesday from 08:00 to 17:00"""
+Kailo Haven (Resources for Human Development - Pennsylvania),xmlschema11-2#time,"""Sunday Closed"
+Kailo Haven (Resources for Human Development - Pennsylvania),xmlschema11-2#time,"""Monday from 08:00 to 17:00"""
+Kailo Haven (Resources for Human Development - Pennsylvania),xmlschema11-2#time,"""Saturday Closed"
+Kailo Haven (Resources for Human Development - Pennsylvania),xmlschema11-2#time,"""Thursday from 08:00 to 17:00"""
+Kailo Haven (Resources for Human Development - Pennsylvania),conditionsOfAccess,"""This program serves homeless people."""
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),latitude,40.0311934
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),audience,AllAges
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),availability,Available
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),cost,Free
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),language,English
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),audience,Individuals
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),category,NavigatingTheSystem
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),audience,Male
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),category,TemporaryShelter
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),audience,Homeless
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),service type,Shelter
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),postalCode,"""19136"""
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),url,"""https://www.twitter.com/@Resources4HD"""
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),url,"""https://www.facebook.com/ResourcesHD/timeline/"""
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),identifier,"""RHD Fernwood Program (Resources for Human Development - Pennsylvania)_4670495380209664"""
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),name,"""RHD Fernwood Program (Resources for Human Development - Pennsylvania)"""
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),name,""""""
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),hasMap,XMLSchema#anyUri
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),areaServed,"""This program covers residents of the following counties: Philadelphia County, PA."""
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),provider,RHD Fernwood Program (Resources for Human Development - Pennsylvania)
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),address,"""2100 West Girard Avenue, Philadelphia, PA 19130"""
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),longitude,XMLSchema#decimal
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),availableChannel,AB-RHD Fernwood Program (Resources for Human Development - Pennsylvania)
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),availableChannel,P-RHD Fernwood Program (Resources for Human Development - Pennsylvania)
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),containedInPlace,19136
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),description,RHD Fernwood Program (Resources for Human Development - Pennsylvania)
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),telephone,"""tel:+1-267-797-2500"""
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),text,"""RHD Fernwood provides emergency housing for single men in Philadelphia referred by Philadelphiaâ€™s Office of Homeless Services. Assessments focus on the immediate needs of the individual. Linkages with community services enable individuals to address primary social service and housing needs.This program provides:- Emergency housing"""
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),xmlschema11-2#time,"""Wednesday from 08:00 to 17:00"""
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),xmlschema11-2#time,"""Friday from 08:00 to 17:00"""
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),xmlschema11-2#time,"""Tuesday from 08:00 to 17:00"""
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),xmlschema11-2#time,"""Monday from 08:00 to 17:00"""
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),xmlschema11-2#time,"""Thursday from 08:00 to 17:00"""
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),xmlschema11-2#time,"""Saturday Closed"
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),xmlschema11-2#time,"""Sunday Closed"
+RHD Fernwood Program (Resources for Human Development - Pennsylvania),conditionsOfAccess,"""This program serves single males."""
+Overnight Services (Horizon House),latitude,39.962058
+Overnight Services (Horizon House),cost,ReducedCost
+Overnight Services (Horizon House),language,English
+Overnight Services (Horizon House),category,OneOnOneSupport
+Overnight Services (Horizon House),audience,Adults18
+Overnight Services (Horizon House),category,TemporaryShelter
+Overnight Services (Horizon House),availability,Available
+Overnight Services (Horizon House),category,MentalHealthEvaluation
+Overnight Services (Horizon House),audience,Homeless
+Overnight Services (Horizon House),category,PersonalHygiene
+Overnight Services (Horizon House),category,Meals
+Overnight Services (Horizon House),service type,Shelter
+Overnight Services (Horizon House),postalCode,"""19136"""
+Overnight Services (Horizon House),url,"""https://www.facebook.com/horizonhouseinc/?fref=ts"""
+Overnight Services (Horizon House),identifier,"""Overnight Services (Horizon House)_6301124945248256"""
+Overnight Services (Horizon House),name,"""Overnight Services (Horizon House)"""
+Overnight Services (Horizon House),name,""""""
+Overnight Services (Horizon House),hasMap,XMLSchema#anyUri
+Overnight Services (Horizon House),areaServed,"""This program covers residents of the following counties: Philadelphia County, PA."""
+Overnight Services (Horizon House),provider,Overnight Services (Horizon House)
+Overnight Services (Horizon House),address,"""5901 Market Street, Philadelphia, PA 19136"""
+Overnight Services (Horizon House),longitude,XMLSchema#decimal
+Overnight Services (Horizon House),longitude,XMLSchema#decimal
+Overnight Services (Horizon House),availableChannel,AB-Overnight Services (Horizon House)
+Overnight Services (Horizon House),availableChannel,P-Overnight Services (Horizon House)
+Overnight Services (Horizon House),containedInPlace,19136
+Overnight Services (Horizon House),description,Overnight Services (Horizon House)
+Overnight Services (Horizon House),telephone,"""tel:+1-215-386-3838"""
+Overnight Services (Horizon House),text,"""The Horizon House Navigation Center in West Philadelphia offers a variety of support services to homeless adults all year round. Here, people have a safe haven to meet their basic needs. The center is open 7 p.m. to 6 a.m. and is available on a drop-in basis.  Services include:- Temporary shelter- Food- Shower- Clean clothing- Laundry facilities- Medical and psychiatric assessments- Case managementExtended daytime hours are available two days/week for medical and psychiatric assessments and referral services. Case management services are offered to link individuals with appropriate housing, benefits, medical care and treatment services.For more information, please call at 215-386-3838, ext. 12603"""
+Overnight Services (Horizon House),xmlschema11-2#time,"""Saturday from 07:00 to 18:00"""
+Overnight Services (Horizon House),xmlschema11-2#time,"""Thursday from 07:00 to 18:00"""
+Overnight Services (Horizon House),xmlschema11-2#time,"""Monday from 07:00 to 18:00"""
+Overnight Services (Horizon House),xmlschema11-2#time,"""Tuesday from 07:00 to 18:00"""
+Overnight Services (Horizon House),xmlschema11-2#time,"""Wednesday from 07:00 to 18:00"""
+Overnight Services (Horizon House),xmlschema11-2#time,"""Sunday from 07:00 to 18:00"""
+Overnight Services (Horizon House),xmlschema11-2#time,"""Friday from 07:00 to 18:00"""
+Overnight Services (Horizon House),conditionsOfAccess,"""This program serves homeless individuals."""
+Emergency Shelter (Families Forward),latitude,39.9617037
+Emergency Shelter (Families Forward),category,DailyLifeSkills
+Emergency Shelter (Families Forward),audience,AllAges
+Emergency Shelter (Families Forward),availability,Available
+Emergency Shelter (Families Forward),category,SkillsAndTraining
+Emergency Shelter (Families Forward),category,ParentingEducation
+Emergency Shelter (Families Forward),audience,Individuals
+Emergency Shelter (Families Forward),category,NavigatingTheSystem
+Emergency Shelter (Families Forward),audience,Families
+Emergency Shelter (Families Forward),category,FinancialEducation
+Emergency Shelter (Families Forward),cost,Free
+Emergency Shelter (Families Forward),audience,Homeless
+Emergency Shelter (Families Forward),category,ComputerClass
+Emergency Shelter (Families Forward),language,English
+Emergency Shelter (Families Forward),category,TemporaryShelter
+Emergency Shelter (Families Forward),service type,Shelter
+Emergency Shelter (Families Forward),postalCode,"""19139"""
+Emergency Shelter (Families Forward),url,"""https://www.facebook.com/FFPhiladelphia/"""
+Emergency Shelter (Families Forward),url,"""None"""
+Emergency Shelter (Families Forward),identifier,"""Emergency Shelter (Families Forward)_6206753615380480"""
+Emergency Shelter (Families Forward),name,"""Emergency Shelter (Families Forward)"""
+Emergency Shelter (Families Forward),name,""""""
+Emergency Shelter (Families Forward),hasMap,XMLSchema#anyUri
+Emergency Shelter (Families Forward),areaServed,"""This program covers residents of the following counties: Philadelphia County, PA."""
+Emergency Shelter (Families Forward),provider,Emergency Shelter (Families Forward)
+Emergency Shelter (Families Forward),address,"""111 North 49th Street, Philadelphia, PA 19139"""
+Emergency Shelter (Families Forward),longitude,XMLSchema#decimal
+Emergency Shelter (Families Forward),longitude,XMLSchema#decimal
+Emergency Shelter (Families Forward),availableChannel,AB-Emergency Shelter (Families Forward)
+Emergency Shelter (Families Forward),availableChannel,P-Emergency Shelter (Families Forward)
+Emergency Shelter (Families Forward),containedInPlace,19139
+Emergency Shelter (Families Forward),description,Emergency Shelter (Families Forward)
+Emergency Shelter (Families Forward),telephone,"""tel:+1-215-240-4800"""
+Emergency Shelter (Families Forward),text,"""Families Forward Philadelphia offers an emergency family shelter, for families in need, that has 65 individual rooms. While obtaining housing is their top priority, they also encourage saving money â€“ working with families to dedicate funds to rent, furnishings and day-to-day living expenses once they leave the shelter.This program provides:- A warm, safe environment- Nutritious meals- Case managementAdditionally throughout the day, workshops are available to prepare families for independent living, including parenting classes, life skills development, computer classes, money management classes, and much more."""
+Emergency Shelter (Families Forward),xmlschema11-2#time,"""Tuesday from 00:00 to 23:59"""
+Emergency Shelter (Families Forward),xmlschema11-2#time,"""Friday from 00:00 to 23:59"""
+Emergency Shelter (Families Forward),xmlschema11-2#time,"""Thursday from 00:00 to 23:59"""
+Emergency Shelter (Families Forward),xmlschema11-2#time,"""Monday from 00:00 to 23:59"""
+Emergency Shelter (Families Forward),xmlschema11-2#time,"""Saturday from 00:00 to 23:59"""
+Emergency Shelter (Families Forward),xmlschema11-2#time,"""Sunday from 00:00 to 23:59"""
+Emergency Shelter (Families Forward),xmlschema11-2#time,"""Wednesday from 00:00 to 23:59"""
+Emergency Shelter (Families Forward),conditionsOfAccess,"""All families must be referred to us through the City of Philadelphias Office of Supportive Housing central intake."""
+Financial Assistance for Military Families (American Red Cross),latitude,39.9025613
+Financial Assistance for Military Families (American Red Cross),category,FinancialAssistance
+Financial Assistance for Military Families (American Red Cross),language,English
+Financial Assistance for Military Families (American Red Cross),audience,Veterans
+Financial Assistance for Military Families (American Red Cross),audience,Spouses
+Financial Assistance for Military Families (American Red Cross),audience,NationalGuard
+Financial Assistance for Military Families (American Red Cross),availability,Available
+Financial Assistance for Military Families (American Red Cross),category,EmergencyFood
+Financial Assistance for Military Families (American Red Cross),category,TemporaryShelter
+Financial Assistance for Military Families (American Red Cross),audience,Emergency
+Financial Assistance for Military Families (American Red Cross),audience,Adults18
+Financial Assistance for Military Families (American Red Cross),category,EmergencyPayments
+Financial Assistance for Military Families (American Red Cross),cost,Free
+Financial Assistance for Military Families (American Red Cross),audience,ActiveDuty
+Financial Assistance for Military Families (American Red Cross),audience,Families
+Financial Assistance for Military Families (American Red Cross),category,BurialAndFuneralHelp
+Financial Assistance for Military Families (American Red Cross),service type,Shelter
+Financial Assistance for Military Families (American Red Cross),postalCode,"""19079"""
+Financial Assistance for Military Families (American Red Cross),url,"""https://www.facebook.com/redcross"""
+Financial Assistance for Military Families (American Red Cross),url,"""https://www.twitter.com/@redcross"""
+Financial Assistance for Military Families (American Red Cross),identifier,"""Financial Assistance for Military Families (American Red Cross)_5931501920976896"""
+Financial Assistance for Military Families (American Red Cross),name,""""""
+Financial Assistance for Military Families (American Red Cross),name,"""Financial Assistance for Military Families (American Red Cross)"""
+Financial Assistance for Military Families (American Red Cross),areaServed,"""This program covers residents of the following states: AK, AR, AZ, CA, CO, CT, DC, DE, FL, GA, HI, IA, ID, IL, IN, KS, KY, LA, MA, MD, ME, MI, MN, MO, MS, MT, NC, ND, NE, NH, NJ, NM, NV, NY, OH, OK, OR, PA, RI, SC, SD, TN, TX, UT, VA, VT, WA, WI, WV and WY."""
+Financial Assistance for Military Families (American Red Cross),provider,Financial Assistance for Military Families (American Red Cross)
+Financial Assistance for Military Families (American Red Cross),address,"""601 Clifton Ave, Sharon Hill, PA 19079"""
+Financial Assistance for Military Families (American Red Cross),longitude,XMLSchema#decimal
+Financial Assistance for Military Families (American Red Cross),availableChannel,AB-Financial Assistance for Military Families (American Red Cross)
+Financial Assistance for Military Families (American Red Cross),availableChannel,P-Financial Assistance for Military Families (American Red Cross)
+Financial Assistance for Military Families (American Red Cross),containedInPlace,19079
+Financial Assistance for Military Families (American Red Cross),description,Financial Assistance for Military Families (American Red Cross)
+Financial Assistance for Military Families (American Red Cross),telephone,"""tel:+1-877-272-7337"""
+Financial Assistance for Military Families (American Red Cross),text,"""The American Red Cross works in partnership with military aid societies to provide quality, reliable financial assistance to eligible applicants 24/7/365 in times of hardship.This program provides: - Financial assistance for emergency needsAssistance can include funds for emergency travel, burial of a loved one, emergency food and shelter, etc. Red Cross helps to facilitate the application process, the military aid society determines eligibility and the specific financial assistance package that is offered.You can submit a request online or call the American Red Cross Hero Care Center.  When calliing, be sure to have the following information ready to provide the representative:- Legal name- Rank or rating- Social Security number- Date of birth- Branch of service (Army, Navy, Air Force, Marines, Coast Guard)- Military unit address- Information about the deployed unit and home base unit (for deployed service members only)"""
+Financial Assistance for Military Families (American Red Cross),xmlschema11-2#time,"""Sunday from 00:00 to 23:59"""
+Financial Assistance for Military Families (American Red Cross),xmlschema11-2#time,"""Wednesday from 00:00 to 23:59"""
+Financial Assistance for Military Families (American Red Cross),xmlschema11-2#time,"""Friday from 00:00 to 23:59"""
+Financial Assistance for Military Families (American Red Cross),xmlschema11-2#time,"""Saturday from 00:00 to 23:59"""
+Financial Assistance for Military Families (American Red Cross),xmlschema11-2#time,"""Monday from 00:00 to 23:59"""
+Financial Assistance for Military Families (American Red Cross),xmlschema11-2#time,"""Tuesday from 00:00 to 23:59"""
+Financial Assistance for Military Families (American Red Cross),xmlschema11-2#time,"""Thursday from 00:00 to 23:59"""
+Financial Assistance for Military Families (American Red Cross),conditionsOfAccess,"""Eligible for financial assistance if you are: An active duty service member OR', 'A member of an activated National Guard or Reserve unit OR', 'An immediate family member of a service member in the above two categories OR', 'A military retiree or spouse/widow(er) of a retiree."""
+Emergency Safe Havens (Women Against Abuse),latitude,39.9503348
+Emergency Safe Havens (Women Against Abuse),category,Childcare
+Emergency Safe Havens (Women Against Abuse),category,ShortTermHousing
+Emergency Safe Havens (Women Against Abuse),language,English
+Emergency Safe Havens (Women Against Abuse),category,NavigatingTheSystem
+Emergency Safe Havens (Women Against Abuse),availability,Available
+Emergency Safe Havens (Women Against Abuse),category,ImmediateSafety
+Emergency Safe Havens (Women Against Abuse),category,Meals
+Emergency Safe Havens (Women Against Abuse),audience,AbuseOrNeglectSurvivors
+Emergency Safe Havens (Women Against Abuse),category,InterviewTraining
+Emergency Safe Havens (Women Against Abuse),audience,AllAges
+Emergency Safe Havens (Women Against Abuse),audience,Lgbtqia
+Emergency Safe Havens (Women Against Abuse),audience,TransgenderOrNonBinary
+Emergency Safe Havens (Women Against Abuse),cost,Free
+Emergency Safe Havens (Women Against Abuse),audience,Female
+Emergency Safe Havens (Women Against Abuse),audience,DomesticViolenceSurvivors
+Emergency Safe Havens (Women Against Abuse),category,OneOnOneSupport
+Emergency Safe Havens (Women Against Abuse),audience,Male
+Emergency Safe Havens (Women Against Abuse),category,GroupTherapy
+Emergency Safe Havens (Women Against Abuse),category,TemporaryShelter
+Emergency Safe Havens (Women Against Abuse),category,AfterSchoolCare
+Emergency Safe Havens (Women Against Abuse),category,ResumeDevelopment
+Emergency Safe Havens (Women Against Abuse),category,IndividualCounseling
+Emergency Safe Havens (Women Against Abuse),category,SafeHousing
+Emergency Safe Havens (Women Against Abuse),category,MoreEducation
+Emergency Safe Havens (Women Against Abuse),audience,Emergency
+Emergency Safe Havens (Women Against Abuse),service type,Shelter
+Emergency Safe Havens (Women Against Abuse),postalCode,"""19110"""
+Emergency Safe Havens (Women Against Abuse),url,"""https://www.facebook.com/womenagainstabuse"""
+Emergency Safe Havens (Women Against Abuse),url,"""https://www.twitter.com/@WomenAgnstAbuse"""
+Emergency Safe Havens (Women Against Abuse),identifier,"""Emergency Safe Havens (Women Against Abuse)_5652293370249216"""
+Emergency Safe Havens (Women Against Abuse),name,""""""
+Emergency Safe Havens (Women Against Abuse),name,"""Emergency Safe Havens (Women Against Abuse)"""
+Emergency Safe Havens (Women Against Abuse),hasMap,XMLSchema#anyUri
+Emergency Safe Havens (Women Against Abuse),areaServed,"""This program covers residents of the following counties: Philadelphia County, PA."""
+Emergency Safe Havens (Women Against Abuse),provider,Emergency Safe Havens (Women Against Abuse)
+Emergency Safe Havens (Women Against Abuse),address,"""100 South Broad Street, Suite 1341, Philadelphia, PA 19102"""
+Emergency Safe Havens (Women Against Abuse),longitude,XMLSchema#decimal
+Emergency Safe Havens (Women Against Abuse),availableChannel,AB-Emergency Safe Havens (Women Against Abuse)
+Emergency Safe Havens (Women Against Abuse),availableChannel,P-Emergency Safe Havens (Women Against Abuse)
+Emergency Safe Havens (Women Against Abuse),containedInPlace,19110
+Emergency Safe Havens (Women Against Abuse),description,Emergency Safe Havens (Women Against Abuse)
+Emergency Safe Havens (Women Against Abuse),telephone,"""tel:+1-866-723-3014"""
+Emergency Safe Havens (Women Against Abuse),text,"""Women Against Abuseâ€™s two 24-hour emergency safe havens provide free services to survivors of all gender identities and their children who are victims of domestic violence. This program provides:- Up to 90 days of shelter- Case management- Individual & group counseling- Three meals a day- Children's health assessments- Emergency relocation funds (as available)- Adult education & job readiness referrals- After school & summer school programs- On-site child careIf you need emergency housing because of a domestic violence situation, please call the toll-free 24-hour Philadelphia Domestic Violence Hotline (866-723-3014)."""
+Emergency Safe Havens (Women Against Abuse),xmlschema11-2#time,"""Saturday from 00:00 to 23:59"""
+Emergency Safe Havens (Women Against Abuse),xmlschema11-2#time,"""Tuesday from 00:00 to 23:59"""
+Emergency Safe Havens (Women Against Abuse),xmlschema11-2#time,"""Wednesday from 00:00 to 23:59"""
+Emergency Safe Havens (Women Against Abuse),xmlschema11-2#time,"""Thursday from 00:00 to 23:59"""
+Emergency Safe Havens (Women Against Abuse),xmlschema11-2#time,"""Friday from 00:00 to 23:59"""
+Emergency Safe Havens (Women Against Abuse),xmlschema11-2#time,"""Monday from 00:00 to 23:59"""
+Emergency Safe Havens (Women Against Abuse),xmlschema11-2#time,"""Sunday from 00:00 to 23:59"""
+Emergency Safe Havens (Women Against Abuse),conditionsOfAccess,"""For women experiencing domestic violence in the Philadelphia area."""
+Human Services (African Family Health Organization AFAHO),latitude,39.9454475
+Human Services (African Family Health Organization AFAHO),language,Swahili
+Human Services (African Family Health Organization AFAHO),audience,Families
+Human Services (African Family Health Organization AFAHO),category,NavigatingTheSystem
+Human Services (African Family Health Organization AFAHO),cost,Free
+Human Services (African Family Health Organization AFAHO),language,Arabic
+Human Services (African Family Health Organization AFAHO),category,CaseManagement
+Human Services (African Family Health Organization AFAHO),audience,AllAges
+Human Services (African Family Health Organization AFAHO),audience,Immigrants
+Human Services (African Family Health Organization AFAHO),category,TemporaryShelter
+Human Services (African Family Health Organization AFAHO),language,English
+Human Services (African Family Health Organization AFAHO),audience,Refugees
+Human Services (African Family Health Organization AFAHO),category,FoodPantry
+Human Services (African Family Health Organization AFAHO),audience,Individuals
+Human Services (African Family Health Organization AFAHO),language,French
+Human Services (African Family Health Organization AFAHO),availability,Available
+Human Services (African Family Health Organization AFAHO),category,MentalHealthCare
+Human Services (African Family Health Organization AFAHO),language,Kinyarwanda
+Human Services (African Family Health Organization AFAHO),language,Yoruba
+Human Services (African Family Health Organization AFAHO),service type,Shelter
+Human Services (African Family Health Organization AFAHO),postalCode,"""19143"""
+Human Services (African Family Health Organization AFAHO),url,"""https://www.twitter.com/@AFAHO"""
+Human Services (African Family Health Organization AFAHO),url,"""https://www.facebook.com/The-Salvation-Army-Nampa-Idaho-208522825852957/"""
+Human Services (African Family Health Organization AFAHO),identifier,"""Human Services (African Family Health Organization AFAHO)_5355967947210752"""
+Human Services (African Family Health Organization AFAHO),name,"""Human Services (African Family Health Organization AFAHO)"""
+Human Services (African Family Health Organization AFAHO),name,""""""
+Human Services (African Family Health Organization AFAHO),hasMap,XMLSchema#anyUri
+Human Services (African Family Health Organization AFAHO),areaServed,"""This program covers residents of the following cities: Philadelphia, PA."""
+Human Services (African Family Health Organization AFAHO),provider,Human Services (African Family Health Organization AFAHO)
+Human Services (African Family Health Organization AFAHO),address,"""2420 South 45th Street, Philadelphia, PA 19143"""
+Human Services (African Family Health Organization AFAHO),longitude,XMLSchema#decimal
+Human Services (African Family Health Organization AFAHO),availableChannel,AB-Human Services (African Family Health Organization AFAHO)
+Human Services (African Family Health Organization AFAHO),availableChannel,P-Human Services (African Family Health Organization AFAHO)
+Human Services (African Family Health Organization AFAHO),containedInPlace,19143
+Human Services (African Family Health Organization AFAHO),description,Human Services (African Family Health Organization AFAHO)
+Human Services (African Family Health Organization AFAHO),telephone,"""tel:+1-215-546-1232"""
+Human Services (African Family Health Organization AFAHO),text,"""AFAHOÕs multi-lingual and bi-cultural case managers assist clients in mitigating the myriad of barriers they face in accessing critical health and social services which play a vital role in their successful integration, improved health, and ability to be self-sufficient."""
+Human Services (African Family Health Organization AFAHO),xmlschema11-2#time,"""Wednesday from 08:00 to 17:00"""
+Human Services (African Family Health Organization AFAHO),xmlschema11-2#time,"""Monday from 08:00 to 17:00"""
+Human Services (African Family Health Organization AFAHO),xmlschema11-2#time,"""Friday from 08:00 to 17:00"""
+Human Services (African Family Health Organization AFAHO),xmlschema11-2#time,"""Tuesday from 08:00 to 17:00"""
+Human Services (African Family Health Organization AFAHO),xmlschema11-2#time,"""Saturday Closed"
+Human Services (African Family Health Organization AFAHO),xmlschema11-2#time,"""Sunday Closed"
+Human Services (African Family Health Organization AFAHO),xmlschema11-2#time,"""Thursday from 08:00 to 17:00"""
+Human Services (African Family Health Organization AFAHO),conditionsOfAccess,"""This program serves African and Caribbean immigrants/refugees."""
+Jane Addams Place (Lutheran Settlement House),latitude,39.9935476
+Jane Addams Place (Lutheran Settlement House),latitude,39.9935454
+Jane Addams Place (Lutheran Settlement House),category,HelpFindHousing
+Jane Addams Place (Lutheran Settlement House),audience,Homeless
+Jane Addams Place (Lutheran Settlement House),audience,Female
+Jane Addams Place (Lutheran Settlement House),category,Recreation
+Jane Addams Place (Lutheran Settlement House),category,TemporaryShelter
+Jane Addams Place (Lutheran Settlement House),category,CaseManagement
+Jane Addams Place (Lutheran Settlement House),cost,Free
+Jane Addams Place (Lutheran Settlement House),language,English
+Jane Addams Place (Lutheran Settlement House),audience,WithChildren
+Jane Addams Place (Lutheran Settlement House),category,ParentingEducation
+Jane Addams Place (Lutheran Settlement House),audience,AllAges
+Jane Addams Place (Lutheran Settlement House),category,MedicalCare
+Jane Addams Place (Lutheran Settlement House),audience,Mothers
+Jane Addams Place (Lutheran Settlement House),category,NavigatingTheSystem
+Jane Addams Place (Lutheran Settlement House),category,MentalHealthCare
+Jane Addams Place (Lutheran Settlement House),availability,Full
+Jane Addams Place (Lutheran Settlement House),category,HealthEducation
+Jane Addams Place (Lutheran Settlement House),audience,Families
+Jane Addams Place (Lutheran Settlement House),service type,Food
+Jane Addams Place (Lutheran Settlement House),service type,Shelter
+Jane Addams Place (Lutheran Settlement House),postalCode,"""19133"""
+Jane Addams Place (Lutheran Settlement House),postalCode,"""19104"""
+Jane Addams Place (Lutheran Settlement House),url,"""https://www.facebook.com/pages/Lutheran-Settlement-House/152800584747421"""
+Jane Addams Place (Lutheran Settlement House),url,"""https://www.twitter.com/@LSH1902"""
+Jane Addams Place (Lutheran Settlement House),identifier,"""Jane Addams Place (Lutheran Settlement House)_5730442313465856"""
+Jane Addams Place (Lutheran Settlement House),name,"""Jane Addams Place (Lutheran Settlement House)"""
+Jane Addams Place (Lutheran Settlement House),name,""""""
+Jane Addams Place (Lutheran Settlement House),hasMap,XMLSchema#anyUri
+Jane Addams Place (Lutheran Settlement House),areaServed,"""This program covers residents of the following counties: Philadelphia County, PA."""
+Jane Addams Place (Lutheran Settlement House),provider,Jane Addams Place (Lutheran Settlement House)
+Jane Addams Place (Lutheran Settlement House),address,"""1007 West Lehigh Avenue,  Philadelphia, PA 19104"""
+Jane Addams Place (Lutheran Settlement House),address,"""1007 West Lehigh Avenue, Philadelphia, PA 19104"""
+Jane Addams Place (Lutheran Settlement House),longitude,XMLSchema#decimal
+Jane Addams Place (Lutheran Settlement House),longitude,XMLSchema#decimal
+Jane Addams Place (Lutheran Settlement House),availableChannel,AB-Jane Addams Place (Lutheran Settlement House)
+Jane Addams Place (Lutheran Settlement House),availableChannel,P-Jane Addams Place (Lutheran Settlement House)
+Jane Addams Place (Lutheran Settlement House),containedInPlace,19133
+Jane Addams Place (Lutheran Settlement House),containedInPlace,19104
+Jane Addams Place (Lutheran Settlement House),description,Jane Addams Place (Lutheran Settlement House)
+Jane Addams Place (Lutheran Settlement House),telephone,"""tel:+1-215-387-2587"""
+Jane Addams Place (Lutheran Settlement House),text,"""Jane Addams Place clients are admitted through Centralized Homeless Intake Services operated by the Office of Supportive Housing at the Appletree Family Center at 1430 Cherry Street, 215-686-7150. You must go through central intake for an initial assessment of your housing needs before placement. If you are currently experiencing homelessness, please visit the intake center."""
+Jane Addams Place (Lutheran Settlement House),xmlschema11-2#time,"""Sunday from 00:00 to 23:59"""
+Jane Addams Place (Lutheran Settlement House),xmlschema11-2#time,"""Monday from 08:00 to 17:00"""
+Jane Addams Place (Lutheran Settlement House),xmlschema11-2#time,"""Friday from 00:00 to 23:59"""
+Jane Addams Place (Lutheran Settlement House),xmlschema11-2#time,"""Wednesday from 00:00 to 23:59"""
+Jane Addams Place (Lutheran Settlement House),xmlschema11-2#time,"""Tuesday from 00:00 to 23:59"""
+Jane Addams Place (Lutheran Settlement House),xmlschema11-2#time,"""Saturday from 00:00 to 23:59"""
+Jane Addams Place (Lutheran Settlement House),xmlschema11-2#time,"""Thursday from 08:00 to 17:00"""
+Jane Addams Place (Lutheran Settlement House),xmlschema11-2#time,"""Sunday Closed"
+Jane Addams Place (Lutheran Settlement House),xmlschema11-2#time,"""Wednesday from 08:00 to 17:00"""
+Jane Addams Place (Lutheran Settlement House),xmlschema11-2#time,"""Saturday Closed"
+Jane Addams Place (Lutheran Settlement House),xmlschema11-2#time,"""Friday from 08:00 to 17:00"""
+Jane Addams Place (Lutheran Settlement House),xmlschema11-2#time,"""Thursday from 00:00 to 23:59"""
+Jane Addams Place (Lutheran Settlement House),xmlschema11-2#time,"""Tuesday from 08:00 to 17:00"""
+Jane Addams Place (Lutheran Settlement House),xmlschema11-2#time,"""Monday from 00:00 to 23:59"""
+Jane Addams Place (Lutheran Settlement House),conditionsOfAccess,"""Centralized Homeless Intake assessment of eligibility required."""
+Various Community Events & Programs (Conquerors Community Development Corporation),latitude,39.9463281
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,Unemployed
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,Adults18
+Various Community Events & Programs (Conquerors Community Development Corporation),category,WeatherRelief
+Various Community Events & Programs (Conquerors Community Development Corporation),category,Recreation
+Various Community Events & Programs (Conquerors Community Development Corporation),category,WeatherRelief
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,InDanger
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,Spouses
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,Employed
+Various Community Events & Programs (Conquerors Community Development Corporation),cost,Free
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,Parents
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,InCrisis
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,HomeRenters
+Various Community Events & Programs (Conquerors Community Development Corporation),category,CommunitySupportServices
+Various Community Events & Programs (Conquerors Community Development Corporation),availability,Full
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,Seniors
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,Students
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,Individuals
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,Infants
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,Caregivers
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,CriminalJusticeHistory
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,AnyoneInNeed
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,Female
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,Adults
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,Retirement
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,Mothers
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,Underinsured
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,BenefitRecipients
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,Families
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,Dependents
+Various Community Events & Programs (Conquerors Community Development Corporation),language,English
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,HomeOwners
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,LowIncome
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,YoungAdults
+Various Community Events & Programs (Conquerors Community Development Corporation),category,CommunitySupportServices
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,Dropouts
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,Fathers
+Various Community Events & Programs (Conquerors Community Development Corporation),category,ExerciseAndFitness
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,Male
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,WithChildren
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,Uninsured
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,AllAges
+Various Community Events & Programs (Conquerors Community Development Corporation),category,Recreation
+Various Community Events & Programs (Conquerors Community Development Corporation),category,ExerciseAndFitness
+Various Community Events & Programs (Conquerors Community Development Corporation),category,ComputerOrInternetAccess
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,Teens
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,Covid19
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,Emergency
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,Children
+Various Community Events & Programs (Conquerors Community Development Corporation),category,ComputerOrInternetAccess
+Various Community Events & Programs (Conquerors Community Development Corporation),audience,NearHomeless
+Various Community Events & Programs (Conquerors Community Development Corporation),service type,Shelter
+Various Community Events & Programs (Conquerors Community Development Corporation),postalCode,"""19143"""
+Various Community Events & Programs (Conquerors Community Development Corporation),url,"""https://www.twitter.com/@vcc_philly"""
+Various Community Events & Programs (Conquerors Community Development Corporation),url,"""https://www.facebook.com/CCDCPhilly/"""
+Various Community Events & Programs (Conquerors Community Development Corporation),identifier,"""Various Community Events & Programs (Conquerors Community Development Corporation)_5390636500647936"""
+Various Community Events & Programs (Conquerors Community Development Corporation),name,"""Various Community Events & Programs (Conquerors Community Development Corporation)"""
+Various Community Events & Programs (Conquerors Community Development Corporation),name,""""""
+Various Community Events & Programs (Conquerors Community Development Corporation),hasMap,XMLSchema#anyUri
+Various Community Events & Programs (Conquerors Community Development Corporation),areaServed,"""This program covers residents of the following cities: Philadelphia, PA."""
+Various Community Events & Programs (Conquerors Community Development Corporation),provider,Various Community Events & Programs (Conquerors Community Development Corporation)
+Various Community Events & Programs (Conquerors Community Development Corporation),address,"""5220 Whitby Avenue, Philadelphia, PA 19143"""
+Various Community Events & Programs (Conquerors Community Development Corporation),longitude,XMLSchema#decimal
+Various Community Events & Programs (Conquerors Community Development Corporation),availableChannel,AB-Various Community Events & Programs (Conquerors Community Development Corporation)
+Various Community Events & Programs (Conquerors Community Development Corporation),availableChannel,P-Various Community Events & Programs (Conquerors Community Development Corporation)
+Various Community Events & Programs (Conquerors Community Development Corporation),containedInPlace,19143
+Various Community Events & Programs (Conquerors Community Development Corporation),description,Various Community Events & Programs (Conquerors Community Development Corporation)
+Various Community Events & Programs (Conquerors Community Development Corporation),telephone,"""tel:+1-215-474-2717"""
+Various Community Events & Programs (Conquerors Community Development Corporation),text,"""The Conquerors Community Development Corporation (CCDC) hosts Various Community Events & Programs that help to elevate the quality of life for the West and Southwest Philadelphia communities.  We host the 51st Ward Register Community Organization (RCO) Mondays 6pm-8pm and a number of other Community engagement events throughout the year with the following being held annually:1) Community Health Fair â€“ A host of healthcare agencies provide access to a wide-range of information and services for our neighbors.2) Back 2 School Community Day â€“ The CCDC partners with Victory Christian Center for our back-to-school event which includes refreshments, activities and entertainment for kids, parents and guardians. We provide information about programs and services for children, new backpacks, and school supplies.3) Senior Thanksgiving Luncheon â€“ In partnership with the United Block Captains Association (UBCA) and Victory Christian Center, we host a Thanksgiving Dinner style luncheon for the senior in the neighborhood.4) Christmas at Victory Village â€“ Through our annual Toy Drive at Victory Christian Center and with Coats received from the YMCA in partnership with Auto Dealers CARing for Kids Foundation, we provide a new coat, a toy, and book for children in need. This is a festive and lively event that includes food, music and entertainment for families during the holiday season."""
+Various Community Events & Programs (Conquerors Community Development Corporation),xmlschema11-2#time,"""Sunday Closed"
+Various Community Events & Programs (Conquerors Community Development Corporation),xmlschema11-2#time,"""Saturday Closed"
+Various Community Events & Programs (Conquerors Community Development Corporation),xmlschema11-2#time,"""Tuesday from 09:00 to 17:00"""
+Various Community Events & Programs (Conquerors Community Development Corporation),xmlschema11-2#time,"""Thursday from 09:00 to 17:00"""
+Various Community Events & Programs (Conquerors Community Development Corporation),xmlschema11-2#time,"""Monday from 09:00 to 17:00"""
+Various Community Events & Programs (Conquerors Community Development Corporation),xmlschema11-2#time,"""Wednesday from 09:00 to 17:00"""
+Various Community Events & Programs (Conquerors Community Development Corporation),xmlschema11-2#time,"""Friday from 09:00 to 17:00"""
+Various Community Events & Programs (Conquerors Community Development Corporation),conditionsOfAccess,""""""
+My Brother's House (Bethesda Project),latitude,39.9435134
+My Brother's House (Bethesda Project),latitude,39.9435352
+My Brother's House (Bethesda Project),audience,AllAges
+My Brother's House (Bethesda Project),audience,Male
+My Brother's House (Bethesda Project),category,TemporaryShelter
+My Brother's House (Bethesda Project),category,SafeHousing
+My Brother's House (Bethesda Project),cost,Free
+My Brother's House (Bethesda Project),language,English
+My Brother's House (Bethesda Project),category,MentalHealthCare
+My Brother's House (Bethesda Project),category,NavigatingTheSystem
+My Brother's House (Bethesda Project),audience,NearHomeless
+My Brother's House (Bethesda Project),category,CaseManagement
+My Brother's House (Bethesda Project),audience,Homeless
+My Brother's House (Bethesda Project),category,SubstanceAbuseCounseling
+My Brother's House (Bethesda Project),availability,Available
+My Brother's House (Bethesda Project),category,Meals
+My Brother's House (Bethesda Project),audience,AllMentalHealth
+My Brother's House (Bethesda Project),service type,Mental Health
+My Brother's House (Bethesda Project),service type,Shelter
+My Brother's House (Bethesda Project),service type,Food
+My Brother's House (Bethesda Project),postalCode,"""19146"""
+My Brother's House (Bethesda Project),url,"""https://www.twitter.com/@Bethesda_Proj"""
+My Brother's House (Bethesda Project),url,"""https://www.facebook.com/BethesdaProject/"""
+My Brother's House (Bethesda Project),identifier,"""My Brother's House (Bethesda Project)_5138871176658944"""
+My Brother's House (Bethesda Project),name,""""""
+My Brother's House (Bethesda Project),name,"""My Brother's House (Bethesda Project)"""
+My Brother's House (Bethesda Project),hasMap,XMLSchema#anyUri
+My Brother's House (Bethesda Project),areaServed,"""This program covers residents of the following counties: Philadelphia County, PA."""
+My Brother's House (Bethesda Project),provider,My Brother's House (Bethesda Project)
+My Brother's House (Bethesda Project),address,"""1630 South Street, Philadelphia, PA 19146"""
+My Brother's House (Bethesda Project),address,"""609 South 15th Street, Philadelphia, PA 19146"""
+My Brother's House (Bethesda Project),longitude,XMLSchema#decimal
+My Brother's House (Bethesda Project),longitude,XMLSchema#decimal
+My Brother's House (Bethesda Project),longitude,XMLSchema#decimal
+My Brother's House (Bethesda Project),availableChannel,AB-My Brother's House (Bethesda Project)
+My Brother's House (Bethesda Project),availableChannel,P-My Brother's House (Bethesda Project)
+My Brother's House (Bethesda Project),containedInPlace,19146
+My Brother's House (Bethesda Project),description,My Brother's House (Bethesda Project)
+My Brother's House (Bethesda Project),telephone,"""tel:+1-215-985-1600"""
+My Brother's House (Bethesda Project),text,"""My Brother's House program offers a safe heaven that provides pre-recovery housing and an array of supportive services to 20 vulnerable men with chronic mental illness and substance abuse problem. This program provides:- Temporary shelterIn addition to a safe place to stay, resident are provided with:- Meals- Social services"""
+My Brother's House (Bethesda Project),xmlschema11-2#time,"""Monday from 00:00 to 23:59"""
+My Brother's House (Bethesda Project),xmlschema11-2#time,"""Wednesday from 00:00 to 23:59"""
+My Brother's House (Bethesda Project),xmlschema11-2#time,"""Thursday from 08:00 to 17:00"""
+My Brother's House (Bethesda Project),xmlschema11-2#time,"""Sunday Closed"
+My Brother's House (Bethesda Project),xmlschema11-2#time,"""Saturday from 00:00 to 23:59"""
+My Brother's House (Bethesda Project),xmlschema11-2#time,"""Wednesday from 08:00 to 17:00"""
+My Brother's House (Bethesda Project),xmlschema11-2#time,"""Tuesday from 00:00 to 23:59"""
+My Brother's House (Bethesda Project),xmlschema11-2#time,"""Tuesday from 08:00 to 17:00"""
+My Brother's House (Bethesda Project),xmlschema11-2#time,"""Friday from 00:00 to 23:59"""
+My Brother's House (Bethesda Project),xmlschema11-2#time,"""Saturday Closed"
+My Brother's House (Bethesda Project),xmlschema11-2#time,"""Friday from 08:00 to 17:00"""
+My Brother's House (Bethesda Project),xmlschema11-2#time,"""Monday from 08:00 to 17:00"""
+My Brother's House (Bethesda Project),xmlschema11-2#time,"""Sunday from 00:00 to 23:59"""
+My Brother's House (Bethesda Project),xmlschema11-2#time,"""Thursday from 00:00 to 23:59"""
+My Brother's House (Bethesda Project),conditionsOfAccess,"""This program serves homeless men."""
+Men's Shelter (The Veterans Group),latitude,39.9619069
+Men's Shelter (The Veterans Group),category,Counseling
+Men's Shelter (The Veterans Group),audience,Ptsd
+Men's Shelter (The Veterans Group),cost,Free
+Men's Shelter (The Veterans Group),audience,Veterans
+Men's Shelter (The Veterans Group),audience,Homeless
+Men's Shelter (The Veterans Group),category,ComputerClass
+Men's Shelter (The Veterans Group),category,HelpFindWork
+Men's Shelter (The Veterans Group),category,MoreEducation
+Men's Shelter (The Veterans Group),audience,Adults18
+Men's Shelter (The Veterans Group),availability,Available
+Men's Shelter (The Veterans Group),category,Meals
+Men's Shelter (The Veterans Group),category,GovernmentBenefits
+Men's Shelter (The Veterans Group),language,English
+Men's Shelter (The Veterans Group),category,SkillsAndTraining
+Men's Shelter (The Veterans Group),category,TemporaryShelter
+Men's Shelter (The Veterans Group),category,ResumeDevelopment
+Men's Shelter (The Veterans Group),service type,Shelter
+Men's Shelter (The Veterans Group),postalCode,"""19104"""
+Men's Shelter (The Veterans Group),url,"""https://www.twitter.com/@veterans_group"""
+Men's Shelter (The Veterans Group),url,"""https://www.facebook.com/search/results.php?q=the veterans group&init=quick&tas=0.9926988141674462#!/pages/The-Veterans-Group/144681825577008"""
+Men's Shelter (The Veterans Group),identifier,"""Men's Shelter (The Veterans Group)_6710596967858176"""
+Men's Shelter (The Veterans Group),name,""""""
+Men's Shelter (The Veterans Group),name,"""Men's Shelter (The Veterans Group)"""
+Men's Shelter (The Veterans Group),hasMap,XMLSchema#anyUri
+Men's Shelter (The Veterans Group),areaServed,"""This program covers residents of the following counties: Bucks County, PA, Chester County, PA, Delaware County, PA, Montgomery County, PA and Philadelphia County, PA."""
+Men's Shelter (The Veterans Group),provider,Men's Shelter (The Veterans Group)
+Men's Shelter (The Veterans Group),address,"""3209 Baring St, Philadelphia, PA 19104"""
+Men's Shelter (The Veterans Group),longitude,XMLSchema#decimal
+Men's Shelter (The Veterans Group),availableChannel,AB-Men's Shelter (The Veterans Group)
+Men's Shelter (The Veterans Group),availableChannel,P-Men's Shelter (The Veterans Group)
+Men's Shelter (The Veterans Group),containedInPlace,19104
+Men's Shelter (The Veterans Group),description,Men's Shelter (The Veterans Group)
+Men's Shelter (The Veterans Group),telephone,"""tel:+1-215-222-4379"""
+Men's Shelter (The Veterans Group),text,"""The Veterans Group's Men's Shelter provide shelter for up to 41 men, providing them with a roof over their head, warm meals, and a variety of programs and services.This program provides:- ShelterShelter residents will receive: - Meals- PTSD counseling- Basic skills training"""
+Men's Shelter (The Veterans Group),xmlschema11-2#time,"""Wednesday from 08:00 to 17:00"""
+Men's Shelter (The Veterans Group),xmlschema11-2#time,"""Monday from 08:00 to 17:00"""
+Men's Shelter (The Veterans Group),xmlschema11-2#time,"""Friday from 08:00 to 17:00"""
+Men's Shelter (The Veterans Group),xmlschema11-2#time,"""Thursday from 08:00 to 17:00"""
+Men's Shelter (The Veterans Group),xmlschema11-2#time,"""Saturday Closed"
+Men's Shelter (The Veterans Group),xmlschema11-2#time,"""Sunday Closed"
+Men's Shelter (The Veterans Group),xmlschema11-2#time,"""Tuesday from 08:00 to 17:00"""
+Men's Shelter (The Veterans Group),conditionsOfAccess,"""This program helps people who are older than 17 years old.', 'Must have a referral from your local VA."""
+"Station House Shelter (SELF, Inc.)",latitude,39.9923482
+"Station House Shelter (SELF, Inc.)",category,CaseManagement
+"Station House Shelter (SELF, Inc.)",language,English
+"Station House Shelter (SELF, Inc.)",audience,Emergency
+"Station House Shelter (SELF, Inc.)",category,OneOnOneSupport
+"Station House Shelter (SELF, Inc.)",cost,Free
+"Station House Shelter (SELF, Inc.)",availability,Available
+"Station House Shelter (SELF, Inc.)",audience,Seniors
+"Station House Shelter (SELF, Inc.)",category,TemporaryShelter
+"Station House Shelter (SELF, Inc.)",audience,Homeless
+"Station House Shelter (SELF, Inc.)",audience,Male
+"Station House Shelter (SELF, Inc.)",audience,Adults18
+"Station House Shelter (SELF, Inc.)",category,NavigatingTheSystem
+"Station House Shelter (SELF, Inc.)",service type,Shelter
+"Station House Shelter (SELF, Inc.)",postalCode,"""19132"""
+"Station House Shelter (SELF, Inc.)",url,"""None"""
+"Station House Shelter (SELF, Inc.)",identifier,"""Station House Shelter (SELF, Inc.)_6293309907009536"""
+"Station House Shelter (SELF, Inc.)",name,"""Station House Shelter (SELF, Inc.)"""
+"Station House Shelter (SELF, Inc.)",name,""""""
+"Station House Shelter (SELF, Inc.)",hasMap,XMLSchema#anyUri
+"Station House Shelter (SELF, Inc.)",areaServed,"""This program covers residents of the following counties: Philadelphia County, PA."""
+"Station House Shelter (SELF, Inc.)",provider,"Station House Shelter (SELF, Inc.)"
+"Station House Shelter (SELF, Inc.)",address,"""2601 North Broad Street, Philadelphia, PA 19132"""
+"Station House Shelter (SELF, Inc.)",longitude,XMLSchema#decimal
+"Station House Shelter (SELF, Inc.)",longitude,XMLSchema#decimal
+"Station House Shelter (SELF, Inc.)",availableChannel,"AB-Station House Shelter (SELF, Inc.)"
+"Station House Shelter (SELF, Inc.)",availableChannel,"P-Station House Shelter (SELF, Inc.)"
+"Station House Shelter (SELF, Inc.)",containedInPlace,19132
+"Station House Shelter (SELF, Inc.)",description,"Station House Shelter (SELF, Inc.)"
+"Station House Shelter (SELF, Inc.)",telephone,"""tel:+1-215-225-9230"""
+"Station House Shelter (SELF, Inc.)",text,"""The Station House Shelter is an emergency shelter and after hour intake site providing client service case management, a computer lab, and residential services for 99 men in North Philadelphia. This program provides:- Emergency temporary shelter- Case managementStation House includes an intake assessment of eligibility and service needs of persons and families presenting for placement into emergency housing. You must go through a central intake assessment before placement into the homeless housing system. Intake hours for our emergency shelter occur after 5pm."""
+"Station House Shelter (SELF, Inc.)",xmlschema11-2#time,"""Friday from 00:00 to 23:59"""
+"Station House Shelter (SELF, Inc.)",xmlschema11-2#time,"""Thursday from 00:00 to 23:59"""
+"Station House Shelter (SELF, Inc.)",xmlschema11-2#time,"""Saturday Closed"
+"Station House Shelter (SELF, Inc.)",xmlschema11-2#time,"""Wednesday from 00:00 to 23:59"""
+"Station House Shelter (SELF, Inc.)",xmlschema11-2#time,"""Saturday from 00:00 to 23:59"""
+"Station House Shelter (SELF, Inc.)",xmlschema11-2#time,"""Sunday Closed"
+"Station House Shelter (SELF, Inc.)",xmlschema11-2#time,"""Tuesday from 17:00 to 23:00"""
+"Station House Shelter (SELF, Inc.)",xmlschema11-2#time,"""Thursday from 17:00 to 23:00"""
+"Station House Shelter (SELF, Inc.)",xmlschema11-2#time,"""Wednesday from 17:00 to 23:00"""
+"Station House Shelter (SELF, Inc.)",xmlschema11-2#time,"""Monday from 00:00 to 23:59"""
+"Station House Shelter (SELF, Inc.)",xmlschema11-2#time,"""Tuesday from 00:00 to 23:59"""
+"Station House Shelter (SELF, Inc.)",xmlschema11-2#time,"""Friday from 17:00 to 23:00"""
+"Station House Shelter (SELF, Inc.)",xmlschema11-2#time,"""Sunday from 00:00 to 23:59"""
+"Station House Shelter (SELF, Inc.)",xmlschema11-2#time,"""Monday from 17:00 to 23:00"""
+"Station House Shelter (SELF, Inc.)",conditionsOfAccess,"""This program serves single men in North Philadelphia who are experiencing homelessness."""
+Cooling Centers (City of Philadelphia - Office of Emergency Management),latitude,39.9480231
+Cooling Centers (City of Philadelphia - Office of Emergency Management),language,English
+Cooling Centers (City of Philadelphia - Office of Emergency Management),availability,Available
+Cooling Centers (City of Philadelphia - Office of Emergency Management),audience,Homeless
+Cooling Centers (City of Philadelphia - Office of Emergency Management),audience,Families
+Cooling Centers (City of Philadelphia - Office of Emergency Management),audience,Individuals
+Cooling Centers (City of Philadelphia - Office of Emergency Management),audience,AnyoneInNeed
+Cooling Centers (City of Philadelphia - Office of Emergency Management),category,WeatherRelief
+Cooling Centers (City of Philadelphia - Office of Emergency Management),audience,AllAges
+Cooling Centers (City of Philadelphia - Office of Emergency Management),cost,Free
+Cooling Centers (City of Philadelphia - Office of Emergency Management),service type,Shelter
+Cooling Centers (City of Philadelphia - Office of Emergency Management),postalCode,"""19106"""
+Cooling Centers (City of Philadelphia - Office of Emergency Management),url,"""https://www.facebook.com/cityofphiladelphia"""
+Cooling Centers (City of Philadelphia - Office of Emergency Management),url,"""https://www.twitter.com/@PhiladelphiaGov"""
+Cooling Centers (City of Philadelphia - Office of Emergency Management),identifier,"""Cooling Centers (City of Philadelphia - Office of Emergency Management)_4804499150602240"""
+Cooling Centers (City of Philadelphia - Office of Emergency Management),name,"""Cooling Centers (City of Philadelphia - Office of Emergency Management)"""
+Cooling Centers (City of Philadelphia - Office of Emergency Management),name,""""""
+Cooling Centers (City of Philadelphia - Office of Emergency Management),areaServed,"""This program covers residents of the following cities: Philadelphia, PA."""
+Cooling Centers (City of Philadelphia - Office of Emergency Management),provider,Cooling Centers (City of Philadelphia - Office of Emergency Management)
+Cooling Centers (City of Philadelphia - Office of Emergency Management),longitude,XMLSchema#decimal
+Cooling Centers (City of Philadelphia - Office of Emergency Management),availableChannel,AB-Cooling Centers (City of Philadelphia - Office of Emergency Management)
+Cooling Centers (City of Philadelphia - Office of Emergency Management),availableChannel,P-Cooling Centers (City of Philadelphia - Office of Emergency Management)
+Cooling Centers (City of Philadelphia - Office of Emergency Management),containedInPlace,19106
+Cooling Centers (City of Philadelphia - Office of Emergency Management),description,Cooling Centers (City of Philadelphia - Office of Emergency Management)
+Cooling Centers (City of Philadelphia - Office of Emergency Management),telephone,"""tel:+1-215-232-1984"""
+Cooling Centers (City of Philadelphia - Office of Emergency Management),text,"""In the event of extreme heat and humidity, the City of Philadelphia opens cooling centers, which are air-conditioned spaces available for public use.This program provides:- Relief from extreme weatherVisit the website to find a cooling center located near you."""
+Cooling Centers (City of Philadelphia - Office of Emergency Management),xmlschema11-2#time,"""Thursday from 08:00 to 17:00"""
+Cooling Centers (City of Philadelphia - Office of Emergency Management),xmlschema11-2#time,"""Monday from 08:00 to 17:00"""
+Cooling Centers (City of Philadelphia - Office of Emergency Management),xmlschema11-2#time,"""Saturday Closed"
+Cooling Centers (City of Philadelphia - Office of Emergency Management),xmlschema11-2#time,"""Friday from 08:00 to 17:00"""
+Cooling Centers (City of Philadelphia - Office of Emergency Management),xmlschema11-2#time,"""Wednesday from 08:00 to 17:00"""
+Cooling Centers (City of Philadelphia - Office of Emergency Management),xmlschema11-2#time,"""Tuesday from 08:00 to 17:00"""
+Cooling Centers (City of Philadelphia - Office of Emergency Management),xmlschema11-2#time,"""Sunday Closed"
+Cooling Centers (City of Philadelphia - Office of Emergency Management),conditionsOfAccess,"""Anyone can access this program."""
+Residential Maternity Shelter (Mother's Home),latitude,39.9221757
+Residential Maternity Shelter (Mother's Home),audience,NearHomeless
+Residential Maternity Shelter (Mother's Home),category,HealthEducation
+Residential Maternity Shelter (Mother's Home),audience,Pregnant
+Residential Maternity Shelter (Mother's Home),category,NutritionEducation
+Residential Maternity Shelter (Mother's Home),language,English
+Residential Maternity Shelter (Mother's Home),category,IndividualCounseling
+Residential Maternity Shelter (Mother's Home),category,TemporaryShelter
+Residential Maternity Shelter (Mother's Home),cost,Free
+Residential Maternity Shelter (Mother's Home),audience,Female
+Residential Maternity Shelter (Mother's Home),availability,Available
+Residential Maternity Shelter (Mother's Home),category,FinancialEducation
+Residential Maternity Shelter (Mother's Home),audience,Adults18
+Residential Maternity Shelter (Mother's Home),category,BabySupplies
+Residential Maternity Shelter (Mother's Home),audience,Homeless
+Residential Maternity Shelter (Mother's Home),category,SafeHousing
+Residential Maternity Shelter (Mother's Home),category,HelpFindHousing
+Residential Maternity Shelter (Mother's Home),category,ParentingEducation
+Residential Maternity Shelter (Mother's Home),category,SkillsAndTraining
+Residential Maternity Shelter (Mother's Home),service type,Shelter
+Residential Maternity Shelter (Mother's Home),postalCode,"""19023"""
+Residential Maternity Shelter (Mother's Home),url,"""None"""
+Residential Maternity Shelter (Mother's Home),url,"""https://www.facebook.com/mothershomeshelter"""
+Residential Maternity Shelter (Mother's Home),identifier,"""Residential Maternity Shelter (Mother's Home)_6697255720189952"""
+Residential Maternity Shelter (Mother's Home),name,"""Residential Maternity Shelter (Mother's Home)"""
+Residential Maternity Shelter (Mother's Home),name,""""""
+Residential Maternity Shelter (Mother's Home),hasMap,XMLSchema#anyUri
+Residential Maternity Shelter (Mother's Home),areaServed,"""This program covers residents of the following counties: Bucks County, PA, Chester County, PA, Delaware County, PA, Montgomery County, PA and Philadelphia County, PA."""
+Residential Maternity Shelter (Mother's Home),provider,Residential Maternity Shelter (Mother's Home)
+Residential Maternity Shelter (Mother's Home),address,"""51 N MacDade Blvd, Darby, PA, United States, Pennsylvania"""
+Residential Maternity Shelter (Mother's Home),longitude,XMLSchema#decimal
+Residential Maternity Shelter (Mother's Home),availableChannel,AB-Residential Maternity Shelter (Mother's Home)
+Residential Maternity Shelter (Mother's Home),availableChannel,P-Residential Maternity Shelter (Mother's Home)
+Residential Maternity Shelter (Mother's Home),containedInPlace,19023
+Residential Maternity Shelter (Mother's Home),description,Residential Maternity Shelter (Mother's Home)
+Residential Maternity Shelter (Mother's Home),telephone,"""tel:+1-610-583-4663"""
+Residential Maternity Shelter (Mother's Home),text,"""Mothers' Home provides a Residential Maternity Shelter and supportive services for pregnant women who are homeless or in crisis over the age of 18 who do not have other children in their care.This program provides: - Temporary housingWomen in the shelter have access to:- Life skills training- Parenting classes- Job readiness training- Counseling services- Pre and postnatal health education- Childbirth and development classes- Housing search assistance- Educational classes on budgeting, legal, and nutrition- Initial personal and baby supplies- Peer supportWomen may continue to reside in our Residential Maternity Shelter for up to six months after giving birth."""
+Residential Maternity Shelter (Mother's Home),xmlschema11-2#time,"""Friday from 08:00 to 17:00"""
+Residential Maternity Shelter (Mother's Home),xmlschema11-2#time,"""Wednesday from 08:00 to 17:00"""
+Residential Maternity Shelter (Mother's Home),xmlschema11-2#time,"""Saturday Closed"
+Residential Maternity Shelter (Mother's Home),xmlschema11-2#time,"""Monday from 08:00 to 17:00"""
+Residential Maternity Shelter (Mother's Home),xmlschema11-2#time,"""Tuesday from 08:00 to 17:00"""
+Residential Maternity Shelter (Mother's Home),xmlschema11-2#time,"""Sunday Closed"
+Residential Maternity Shelter (Mother's Home),xmlschema11-2#time,"""Thursday from 08:00 to 17:00"""
+Residential Maternity Shelter (Mother's Home),conditionsOfAccess,"""This program helps people who are older than 17 years old.', 'Must be a pregnant woman with no children currently in your care."""
+Crisis Care Services (Covenant House),latitude,40.0356379
+Crisis Care Services (Covenant House),category,AdvocacyAndLegalAid
+Crisis Care Services (Covenant House),audience,FosterYouth
+Crisis Care Services (Covenant House),audience,Homeless
+Crisis Care Services (Covenant House),category,TemporaryShelter
+Crisis Care Services (Covenant House),audience,Teens
+Crisis Care Services (Covenant House),category,TemporaryShelter
+Crisis Care Services (Covenant House),cost,Free
+Crisis Care Services (Covenant House),category,HomeGoods
+Crisis Care Services (Covenant House),category,Meals
+Crisis Care Services (Covenant House),category,MedicalCare
+Crisis Care Services (Covenant House),availability,Available
+Crisis Care Services (Covenant House),category,PersonalHygiene
+Crisis Care Services (Covenant House),category,PhysicalSafety
+Crisis Care Services (Covenant House),category,Clothing
+Crisis Care Services (Covenant House),language,English
+Crisis Care Services (Covenant House),service type,Shelter
+Crisis Care Services (Covenant House),postalCode,"""19144"""
+Crisis Care Services (Covenant House),url,"""https://www.twitter.com/@CovenantHouse"""
+Crisis Care Services (Covenant House),url,"""https://www.facebook.com/CovenantHouse"""
+Crisis Care Services (Covenant House),identifier,"""Crisis Care Services (Covenant House)_5925873791401984"""
+Crisis Care Services (Covenant House),name,"""Crisis Care Services (Covenant House)"""
+Crisis Care Services (Covenant House),name,""""""
+Crisis Care Services (Covenant House),hasMap,XMLSchema#anyUri
+Crisis Care Services (Covenant House),areaServed,"""This program covers residents of the following cities: Anchorage, AK, Anaheim, CA, Hayward, CA, Los Angeles, CA, Oakland, CA, Santa Clara, CA, Washington, DC, Fort Lauderdale, FL, Orlando, FL, Atlanta, GA, Chicago, IL, New Orleans, LA, Detroit, MI, Grand Rapids, MI, Saint Louis, MO, Asbury Park, NJ, Atlantic City, NJ, Elizabeth, NJ, Jersey City, NJ, Montclair, NJ, Newark, NJ, New York, NY, Philadelphia, PA, York, PA and Houston, TX."""
+Crisis Care Services (Covenant House),provider,Crisis Care Services (Covenant House)
+Crisis Care Services (Covenant House),address,"""31 East Armat Street, Philadelphia, PA 19144"""
+Crisis Care Services (Covenant House),longitude,XMLSchema#decimal
+Crisis Care Services (Covenant House),longitude,XMLSchema#decimal
+Crisis Care Services (Covenant House),availableChannel,AB-Crisis Care Services (Covenant House)
+Crisis Care Services (Covenant House),availableChannel,P-Crisis Care Services (Covenant House)
+Crisis Care Services (Covenant House),containedInPlace,19144
+Crisis Care Services (Covenant House),description,Crisis Care Services (Covenant House)
+Crisis Care Services (Covenant House),telephone,"""tel:+1-215-951-5411"""
+Crisis Care Services (Covenant House),telephone,"""tel:+1-800-388-3888"""
+Crisis Care Services (Covenant House),text,"""""""Covenant House's Crisis Care Services are short-term programs where a homeless child's most pressing, urgent needs are met immediately. There is no requirement that a young person be referred through an official channel â€“ they can come anytime, day or nightThis program provides:- Shelter- Hot meal- Emergency medical care- ShowersThis program also provides:- Mental health care- Legal assistanceDuring the intake process, kids share their stories with trained staff so their immediate needs can be identified and then a plan is created for the best way to support them."""""""
+Crisis Care Services (Covenant House),xmlschema11-2#time,"""Wednesday from 00:00 to 23:59"""
+Crisis Care Services (Covenant House),xmlschema11-2#time,"""Thursday from 08:00 to 17:00"""
+Crisis Care Services (Covenant House),xmlschema11-2#time,"""Sunday Closed"
+Crisis Care Services (Covenant House),xmlschema11-2#time,"""Friday from 00:00 to 23:59"""
+Crisis Care Services (Covenant House),xmlschema11-2#time,"""Tuesday from 00:00 to 23:59"""
+Crisis Care Services (Covenant House),xmlschema11-2#time,"""Sunday from 00:00 to 23:59"""
+Crisis Care Services (Covenant House),xmlschema11-2#time,"""Thursday from 00:00 to 23:59"""
+Crisis Care Services (Covenant House),xmlschema11-2#time,"""Saturday Closed"
+Crisis Care Services (Covenant House),xmlschema11-2#time,"""Tuesday from 08:00 to 17:00"""
+Crisis Care Services (Covenant House),xmlschema11-2#time,"""Wednesday from 08:00 to 17:00"""
+Crisis Care Services (Covenant House),xmlschema11-2#time,"""Friday from 08:00 to 17:00"""
+Crisis Care Services (Covenant House),xmlschema11-2#time,"""Saturday from 00:00 to 23:59"""
+Crisis Care Services (Covenant House),xmlschema11-2#time,"""Monday from 08:00 to 17:00"""
+Crisis Care Services (Covenant House),xmlschema11-2#time,"""Monday from 00:00 to 23:59"""
+Crisis Care Services (Covenant House),conditionsOfAccess,"""This program serves teens experiencing homelessness."""
+Homeless Shelter (Stenton Family Manor),latitude,40.0559837
+Homeless Shelter (Stenton Family Manor),latitude,40.0563961
+Homeless Shelter (Stenton Family Manor),availability,Available
+Homeless Shelter (Stenton Family Manor),category,TemporaryShelter
+Homeless Shelter (Stenton Family Manor),language,English
+Homeless Shelter (Stenton Family Manor),cost,Free
+Homeless Shelter (Stenton Family Manor),audience,AllAges
+Homeless Shelter (Stenton Family Manor),language,Haitian
+Homeless Shelter (Stenton Family Manor),audience,Homeless
+Homeless Shelter (Stenton Family Manor),category,Meals
+Homeless Shelter (Stenton Family Manor),category,PersonalHygiene
+Homeless Shelter (Stenton Family Manor),service type,Food
+Homeless Shelter (Stenton Family Manor),service type,Shelter
+Homeless Shelter (Stenton Family Manor),postalCode,"""19138"""
+Homeless Shelter (Stenton Family Manor),postalCode,"""19119"""
+Homeless Shelter (Stenton Family Manor),url,"""https://www.facebook.com/StentonFamilyManor"""
+Homeless Shelter (Stenton Family Manor),url,"""None"""
+Homeless Shelter (Stenton Family Manor),identifier,"""Homeless Shelter (Stenton Family Manor)_5186727883833344"""
+Homeless Shelter (Stenton Family Manor),name,"""Homeless Shelter (Stenton Family Manor)"""
+Homeless Shelter (Stenton Family Manor),name,""""""
+Homeless Shelter (Stenton Family Manor),hasMap,XMLSchema#anyUri
+Homeless Shelter (Stenton Family Manor),areaServed,"""This program covers residents of the following counties: Philadelphia County, PA."""
+Homeless Shelter (Stenton Family Manor),provider,Homeless Shelter (Stenton Family Manor)
+Homeless Shelter (Stenton Family Manor),address,"""1300 East Tulpehocken Street,  Philadelphia,  PA  19138"""
+Homeless Shelter (Stenton Family Manor),address,"""1300 East Tulpehocken Street, Philadelphia, PA 19138"""
+Homeless Shelter (Stenton Family Manor),longitude,XMLSchema#decimal
+Homeless Shelter (Stenton Family Manor),longitude,XMLSchema#decimal
+Homeless Shelter (Stenton Family Manor),availableChannel,AB-Homeless Shelter (Stenton Family Manor)
+Homeless Shelter (Stenton Family Manor),availableChannel,P-Homeless Shelter (Stenton Family Manor)
+Homeless Shelter (Stenton Family Manor),containedInPlace,19138
+Homeless Shelter (Stenton Family Manor),containedInPlace,19119
+Homeless Shelter (Stenton Family Manor),description,Homeless Shelter (Stenton Family Manor)
+Homeless Shelter (Stenton Family Manor),telephone,"""tel:+1-215-685-2800"""
+Homeless Shelter (Stenton Family Manor),text,"""Stenton Family Manor offers a homeless shelter to those in need of a place to stay.This program provides:- Temporary shelter Intake process is done at the Apple Tree Family Center."""
+Homeless Shelter (Stenton Family Manor),xmlschema11-2#time,"""Sunday Closed"
+Homeless Shelter (Stenton Family Manor),xmlschema11-2#time,"""Friday from 09:00 to 17:00"""
+Homeless Shelter (Stenton Family Manor),xmlschema11-2#time,"""Thursday from 09:00 to 17:00"""
+Homeless Shelter (Stenton Family Manor),xmlschema11-2#time,"""Wednesday from 09:00 to 17:00"""
+Homeless Shelter (Stenton Family Manor),xmlschema11-2#time,"""Tuesday from 09:00 to 17:00"""
+Homeless Shelter (Stenton Family Manor),xmlschema11-2#time,"""Monday from 09:00 to 17:00"""
+Homeless Shelter (Stenton Family Manor),xmlschema11-2#time,"""Saturday Closed"
+Homeless Shelter (Stenton Family Manor),conditionsOfAccess,"""For homeless individuals residing in the Philadelphia, PA area."""
+Youth Services (Covenant House Pennsylvania),latitude,40.0356453
+Youth Services (Covenant House Pennsylvania),latitude,40.0356379
+Youth Services (Covenant House Pennsylvania),audience,InCrisis
+Youth Services (Covenant House Pennsylvania),audience,HumanTraffickingSurvivors
+Youth Services (Covenant House Pennsylvania),language,English
+Youth Services (Covenant House Pennsylvania),category,Counseling
+Youth Services (Covenant House Pennsylvania),category,SpiritualSupport
+Youth Services (Covenant House Pennsylvania),availability,Available
+Youth Services (Covenant House Pennsylvania),audience,Children
+Youth Services (Covenant House Pennsylvania),audience,Teens
+Youth Services (Covenant House Pennsylvania),category,OneOnOneSupport
+Youth Services (Covenant House Pennsylvania),category,AdvocacyAndLegalAid
+Youth Services (Covenant House Pennsylvania),audience,Homeless
+Youth Services (Covenant House Pennsylvania),audience,Runaways
+Youth Services (Covenant House Pennsylvania),category,NavigatingTheSystem
+Youth Services (Covenant House Pennsylvania),category,ShortTermHousing
+Youth Services (Covenant House Pennsylvania),category,CaseManagement
+Youth Services (Covenant House Pennsylvania),category,ResidentialHousing
+Youth Services (Covenant House Pennsylvania),category,MedicalCare
+Youth Services (Covenant House Pennsylvania),category,Meals
+Youth Services (Covenant House Pennsylvania),audience,Lgbtqia
+Youth Services (Covenant House Pennsylvania),category,TemporaryShelter
+Youth Services (Covenant House Pennsylvania),audience,YoungAdults
+Youth Services (Covenant House Pennsylvania),category,FinancialEducation
+Youth Services (Covenant House Pennsylvania),cost,Free
+Youth Services (Covenant House Pennsylvania),service type,Food
+Youth Services (Covenant House Pennsylvania),service type,Shelter
+Youth Services (Covenant House Pennsylvania),postalCode,"""19144"""
+Youth Services (Covenant House Pennsylvania),url,"""https://www.twitter.com/@CovenantHousePA"""
+Youth Services (Covenant House Pennsylvania),url,"""https://www.facebook.com/CovenantHousePA"""
+Youth Services (Covenant House Pennsylvania),identifier,"""Youth Services (Covenant House Pennsylvania)_4909220273061888"""
+Youth Services (Covenant House Pennsylvania),name,"""Youth Services (Covenant House Pennsylvania)"""
+Youth Services (Covenant House Pennsylvania),name,""""""
+Youth Services (Covenant House Pennsylvania),hasMap,XMLSchema#anyUri
+Youth Services (Covenant House Pennsylvania),areaServed,"""This program covers residents of the following counties: Philadelphia County, PA."""
+Youth Services (Covenant House Pennsylvania),provider,Youth Services (Covenant House Pennsylvania)
+Youth Services (Covenant House Pennsylvania),address,"""31 East Armat St. , Philadelphia, PA 19144"""
+Youth Services (Covenant House Pennsylvania),address,"""31 East Armat St., Philadelphia, PA 19144"""
+Youth Services (Covenant House Pennsylvania),longitude,XMLSchema#decimal
+Youth Services (Covenant House Pennsylvania),longitude,XMLSchema#decimal
+Youth Services (Covenant House Pennsylvania),availableChannel,AB-Youth Services (Covenant House Pennsylvania)
+Youth Services (Covenant House Pennsylvania),availableChannel,P-Youth Services (Covenant House Pennsylvania)
+Youth Services (Covenant House Pennsylvania),containedInPlace,19144
+Youth Services (Covenant House Pennsylvania),description,Youth Services (Covenant House Pennsylvania)
+Youth Services (Covenant House Pennsylvania),telephone,"""tel:+1-888-829-1249"""
+Youth Services (Covenant House Pennsylvania),text,"""Covenant House Pennsylvania offers shelter and supportive services to young people experiencing homelessness. They aim to help homeless young people become healthy, happy, responsible, productive, and ultimately independent adults.This program provides:- A safe, secure environment- Immediate and transitional housing- Rapid rehousing- Meals and food- Case Management- Spiritual Support- Counseling- Physical health, mental health, and drug and alcohol services- Saving and budgeting- Continuing education- Support for LGBTQ individuals- Job readinessThe Crisis Center is open 24 hours per day, seven days per week. There are no shelter fees, however, those staying at the shelter must deposit 75% of their income during their stay. All money is returned upon leaving the shelter. Covenant House is a drug and weapon-free program."""
+Youth Services (Covenant House Pennsylvania),xmlschema11-2#time,"""Thursday from 00:00 to 23:59"""
+Youth Services (Covenant House Pennsylvania),xmlschema11-2#time,"""Saturday from 00:00 to 23:59"""
+Youth Services (Covenant House Pennsylvania),xmlschema11-2#time,"""Tuesday from 00:00 to 23:59"""
+Youth Services (Covenant House Pennsylvania),xmlschema11-2#time,"""Wednesday from 00:00 to 23:59"""
+Youth Services (Covenant House Pennsylvania),xmlschema11-2#time,"""Friday from 00:00 to 23:59"""
+Youth Services (Covenant House Pennsylvania),xmlschema11-2#time,"""Monday from 00:00 to 23:59"""
+Youth Services (Covenant House Pennsylvania),xmlschema11-2#time,"""Sunday from 00:00 to 23:59"""
+Youth Services (Covenant House Pennsylvania),conditionsOfAccess,"""This program helps people who are younger than 21 years old"""
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),latitude,39.9610016
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),audience,Children
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),cost,Free
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),audience,Individuals
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),audience,AllAges
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),audience,Homeless
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),audience,Families
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),category,CommunitySupportServices
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),category,SpiritualSupport
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),audience,Parents
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),category,Meals
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),category,TemporaryShelter
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),language,English
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),availability,Available
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),audience,SingleParent
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),service type,Shelter
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),postalCode,"""19139"""
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),url,"""None"""
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),identifier,"""Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware)_5929367212130304"""
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),name,""""""
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),name,"""Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware)"""
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),hasMap,XMLSchema#anyUri
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),areaServed,"""This program covers residents of the following counties: Kent County, DE, New Castle County, DE, Berks County, PA, Chester County, PA, Lebanon County, PA, Luzerne County, PA, Monroe County, PA, Montgomery County, PA and Philadelphia County, PA."""
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),provider,Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware)
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),address,"""5501 Market Street, Philadelphia, PA 19139"""
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),longitude,XMLSchema#decimal
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),longitude,XMLSchema#decimal
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),availableChannel,AB-Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware)
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),availableChannel,P-Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware)
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),containedInPlace,19139
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),description,Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware)
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),telephone,"""tel:+1-215-474-1010"""
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),telephone,"""tel:+1-215-474-1009"""
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),text,"""Salvation Army shelters welcome all homeless who come to their door. Comprehensive services are available to single-parent families, single women, single men, married couples, children awaiting placement in a foster home, and dual-parent families.This program provides:- Temporary shelter These shelters offer spiritual and physical care, food, and shelter to people in need. They attend the total needs of the individual and are meant to be a kind resting place to help these individuals get back on their feet."""
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),xmlschema11-2#time,"""Thursday from 09:00 to 13:00"""
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),xmlschema11-2#time,"""Monday from 09:00 to 16:00"""
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),xmlschema11-2#time,"""Sunday from 09:00 to 16:00"""
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),xmlschema11-2#time,"""Tuesday from 09:00 to 13:00"""
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),xmlschema11-2#time,"""Wednesday from 09:00 to 16:00"""
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),xmlschema11-2#time,"""Saturday Closed"
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),xmlschema11-2#time,"""Sunday Closed"
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),xmlschema11-2#time,"""Saturday from 09:00 to 16:00"""
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),xmlschema11-2#time,"""Thursday from 09:00 to 16:00"""
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),xmlschema11-2#time,"""Friday Closed"
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),xmlschema11-2#time,"""Wednesday from 09:00 to 13:00"""
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),xmlschema11-2#time,"""Friday from 09:00 to 16:00"""
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),xmlschema11-2#time,"""Monday from 09:00 to 13:00"",""Tuesday from 09:00 to 16:00"""
+Comprehensive Shelters (Salvation Army Eastern Pennsylvania & Delaware),conditionsOfAccess,"""This program serves homeless individuals and families."""
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),latitude,40.0311934
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),language,English
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),cost,Free
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),audience,Male
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),category,TemporaryShelter
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),category,NavigatingTheSystem
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),audience,AllAges
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),audience,Individuals
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),audience,Homeless
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),availability,Available
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),service type,Shelter
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),postalCode,"""19136"""
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),url,"""https://www.facebook.com/ResourcesHD/timeline/"""
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),url,"""https://www.twitter.com/@Resources4HD"""
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),identifier,"""RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania)_4670495380209664"""
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),name,"""RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania)"""
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),name,""""""
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),hasMap,XMLSchema#anyUri
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),areaServed,"""This program covers residents of the following counties: Philadelphia County, PA."""
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),provider,RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania)
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),address,"""2100 West Girard Avenue, Philadelphia, PA 19130"""
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),longitude,XMLSchema#decimal
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),availableChannel,AB-RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania)
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),availableChannel,P-RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania)
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),containedInPlace,19136
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),description,RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania)
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),telephone,"""tel:+1-215-685-8333"""
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),text,"""RHD Fernwood provides emergency housing for single men in Philadelphia referred by Philadelphiaâ€™s Office of Homeless Services. Assessments focus on the immediate needs of the individual. Linkages with community services enable individuals to address primary social service and housing needs.This program provides:- Emergency housing"""
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),xmlschema11-2#time,"""Friday from 08:00 to 17:00"""
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),xmlschema11-2#time,"""Sunday Closed"
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),xmlschema11-2#time,"""Wednesday from 08:00 to 17:00"""
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),xmlschema11-2#time,"""Saturday Closed"
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),xmlschema11-2#time,"""Tuesday from 08:00 to 17:00"""
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),xmlschema11-2#time,"""Monday from 08:00 to 17:00"""
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),xmlschema11-2#time,"""Thursday from 08:00 to 17:00"""
+RHD Fernwood Program (Resources for Human Development RHD - Pennsylvania),conditionsOfAccess,"""This program serves single males."""
+Emergency Shelter (HELP USA Pennsylvania),latitude,39.9699305
+Emergency Shelter (HELP USA Pennsylvania),audience,Homeless
+Emergency Shelter (HELP USA Pennsylvania),category,NavigatingTheSystem
+Emergency Shelter (HELP USA Pennsylvania),availability,Available
+Emergency Shelter (HELP USA Pennsylvania),audience,LowIncome
+Emergency Shelter (HELP USA Pennsylvania),cost,Free
+Emergency Shelter (HELP USA Pennsylvania),audience,AllAges
+Emergency Shelter (HELP USA Pennsylvania),audience,Families
+Emergency Shelter (HELP USA Pennsylvania),category,TemporaryShelter
+Emergency Shelter (HELP USA Pennsylvania),audience,NearHomeless
+Emergency Shelter (HELP USA Pennsylvania),category,SkilledNursing
+Emergency Shelter (HELP USA Pennsylvania),category,HelpFindWork
+Emergency Shelter (HELP USA Pennsylvania),audience,DomesticViolenceSurvivors
+Emergency Shelter (HELP USA Pennsylvania),audience,Individuals
+Emergency Shelter (HELP USA Pennsylvania),language,English
+Emergency Shelter (HELP USA Pennsylvania),category,PreventAndTreat
+Emergency Shelter (HELP USA Pennsylvania),audience,AbuseOrNeglectSurvivors
+Emergency Shelter (HELP USA Pennsylvania),service type,Shelter
+Emergency Shelter (HELP USA Pennsylvania),postalCode,"""19131"""
+Emergency Shelter (HELP USA Pennsylvania),url,"""https://www.facebook.com/helpusa"""
+Emergency Shelter (HELP USA Pennsylvania),url,"""https://www.twitter.com/@HelpUSA"""
+Emergency Shelter (HELP USA Pennsylvania),identifier,"""Emergency Shelter (HELP USA Pennsylvania)_5398794886447104"""
+Emergency Shelter (HELP USA Pennsylvania),name,""""""
+Emergency Shelter (HELP USA Pennsylvania),name,"""Emergency Shelter (HELP USA Pennsylvania)"""
+Emergency Shelter (HELP USA Pennsylvania),hasMap,XMLSchema#anyUri
+Emergency Shelter (HELP USA Pennsylvania),areaServed,"""This program covers residents of the following counties: Bucks County, PA, Delaware County, PA, Montgomery County, PA and Philadelphia County, PA."""
+Emergency Shelter (HELP USA Pennsylvania),provider,Emergency Shelter (HELP USA Pennsylvania)
+Emergency Shelter (HELP USA Pennsylvania),address,"""4910 Wyalusing Avenue, Philadelphia, PA 19131"""
+Emergency Shelter (HELP USA Pennsylvania),longitude,XMLSchema#decimal
+Emergency Shelter (HELP USA Pennsylvania),longitude,XMLSchema#decimal
+Emergency Shelter (HELP USA Pennsylvania),availableChannel,AB-Emergency Shelter (HELP USA Pennsylvania)
+Emergency Shelter (HELP USA Pennsylvania),availableChannel,P-Emergency Shelter (HELP USA Pennsylvania)
+Emergency Shelter (HELP USA Pennsylvania),containedInPlace,19131
+Emergency Shelter (HELP USA Pennsylvania),description,Emergency Shelter (HELP USA Pennsylvania)
+Emergency Shelter (HELP USA Pennsylvania),telephone,"""tel:+1-215-473-6454"""
+Emergency Shelter (HELP USA Pennsylvania),text,"""HELP USA is there for those who find themselves suddenly homeless, and they provide them with safe, temporary shelter and the support they need to get back on their feet. They believe in a different kind of homeless shelter â€“ one that is respectful, supportive, and treats each resident as a unique individual.This program provides:- Temporary shelter- Day care and afterschool care- Physical and mental healthcare- Navigating the system- Help find work"""
+Emergency Shelter (HELP USA Pennsylvania),xmlschema11-2#time,"""Tuesday from 08:00 to 17:00"""
+Emergency Shelter (HELP USA Pennsylvania),xmlschema11-2#time,"""Friday from 08:00 to 17:00"""
+Emergency Shelter (HELP USA Pennsylvania),xmlschema11-2#time,"""Saturday Closed"
+Emergency Shelter (HELP USA Pennsylvania),xmlschema11-2#time,"""Monday from 08:00 to 17:00"""
+Emergency Shelter (HELP USA Pennsylvania),xmlschema11-2#time,"""Sunday Closed"
+Emergency Shelter (HELP USA Pennsylvania),xmlschema11-2#time,"""Thursday from 08:00 to 17:00"""
+Emergency Shelter (HELP USA Pennsylvania),xmlschema11-2#time,"""Wednesday from 08:00 to 17:00"""
+Emergency Shelter (HELP USA Pennsylvania),conditionsOfAccess,"""For individuals facing homelessness in the Philadelphia area."""
+Homeless Veterans Initiative (Disabled American Veterans),latitude,39.9167076
+Homeless Veterans Initiative (Disabled American Veterans),category,TemporaryShelter
+Homeless Veterans Initiative (Disabled American Veterans),language,English
+Homeless Veterans Initiative (Disabled American Veterans),cost,Free
+Homeless Veterans Initiative (Disabled American Veterans),availability,Available
+Homeless Veterans Initiative (Disabled American Veterans),audience,Veterans
+Homeless Veterans Initiative (Disabled American Veterans),category,GovernmentBenefits
+Homeless Veterans Initiative (Disabled American Veterans),service type,Shelter
+Homeless Veterans Initiative (Disabled American Veterans),postalCode,"""19142"""
+Homeless Veterans Initiative (Disabled American Veterans),url,"""None"""
+Homeless Veterans Initiative (Disabled American Veterans),identifier,"""Homeless Veterans Initiative (Disabled American Veterans)_6359041064304640"""
+Homeless Veterans Initiative (Disabled American Veterans),name,""""""
+Homeless Veterans Initiative (Disabled American Veterans),name,"""Homeless Veterans Initiative (Disabled American Veterans)"""
+Homeless Veterans Initiative (Disabled American Veterans),areaServed,"""This program covers residents of All US states and territories."""
+Homeless Veterans Initiative (Disabled American Veterans),provider,Homeless Veterans Initiative (Disabled American Veterans)
+Homeless Veterans Initiative (Disabled American Veterans),address,"""7050 Reedland St, Philadelphia, PA 19142"""
+Homeless Veterans Initiative (Disabled American Veterans),longitude,XMLSchema#decimal
+Homeless Veterans Initiative (Disabled American Veterans),availableChannel,AB-Homeless Veterans Initiative (Disabled American Veterans)
+Homeless Veterans Initiative (Disabled American Veterans),availableChannel,P-Homeless Veterans Initiative (Disabled American Veterans)
+Homeless Veterans Initiative (Disabled American Veterans),containedInPlace,19142
+Homeless Veterans Initiative (Disabled American Veterans),description,Homeless Veterans Initiative (Disabled American Veterans)
+Homeless Veterans Initiative (Disabled American Veterans),telephone,"""tel:+1-877-426-2838"""
+Homeless Veterans Initiative (Disabled American Veterans),text,"""""""The DAV Homeless Veterans Initiative, supported by DAVâ€™s Charitable Service Trust and Columbia Trust, promotes the development of supportive housing and necessary services to assist homeless veterans in becoming productive, self-sufficient members of society. Our goal is to establish a partnership between the DAV and Federal, state, county and local governments to develop programs to assist homeless veterans in becoming self-sufficientService:-counsel individuals on the many VA benefits for which they may be entitledIf you or someone you know is a homeless veteran in need of assistance, please contact us."""""""
+Homeless Veterans Initiative (Disabled American Veterans),xmlschema11-2#time,"""Sunday Closed"
+Homeless Veterans Initiative (Disabled American Veterans),xmlschema11-2#time,"""Saturday Closed"
+Homeless Veterans Initiative (Disabled American Veterans),xmlschema11-2#time,"""Wednesday from 08:00 to 17:00"""
+Homeless Veterans Initiative (Disabled American Veterans),xmlschema11-2#time,"""Monday from 08:00 to 17:00"""
+Homeless Veterans Initiative (Disabled American Veterans),xmlschema11-2#time,"""Tuesday from 08:00 to 17:00"""
+Homeless Veterans Initiative (Disabled American Veterans),xmlschema11-2#time,"""Friday from 08:00 to 17:00"""
+Homeless Veterans Initiative (Disabled American Veterans),xmlschema11-2#time,"""Thursday from 08:00 to 17:00"""
+Homeless Veterans Initiative (Disabled American Veterans),conditionsOfAccess,"""Serves homeless veterans."""
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),latitude,39.9676669
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),audience,Individuals
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),language,English
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),audience,WithChildren
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),audience,Homeless
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),cost,Free
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),audience,Families
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),audience,Adults18
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),category,TemporaryShelter
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),category,CaseManagement
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),availability,Available
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),service type,Shelter
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),postalCode,"""19123"""
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),url,"""https://www.twitter.com/@SalArmyPhilly"""
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),url,"""https://www.facebook.com/SalArmyPhilly"""
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),identifier,"""Red Shield Family Residence (The Salvation Army - Greater Philadelphia)_6004150434004992"""
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),name,""""""
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),name,"""Red Shield Family Residence (The Salvation Army - Greater Philadelphia)"""
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),hasMap,XMLSchema#anyUri
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),areaServed,"""This program covers residents of the following counties: Philadelphia County, PA."""
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),provider,Red Shield Family Residence (The Salvation Army - Greater Philadelphia)
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),address,"""715 North Broad Street, Philadelphia, PA 19123"""
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),longitude,XMLSchema#decimal
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),availableChannel,AB-Red Shield Family Residence (The Salvation Army - Greater Philadelphia)
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),availableChannel,P-Red Shield Family Residence (The Salvation Army - Greater Philadelphia)
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),containedInPlace,19123
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),description,Red Shield Family Residence (The Salvation Army - Greater Philadelphia)
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),telephone,"""tel:+1-215-787-2887"""
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),text,"""Centralized Homeless Intake Services includes an assessment of eligibility and service needs of persons and families presenting for placement into emergency housing. If eligible, persons and families are placed in appropriate emergency housing, boarding homes, or other alternative housing. Mental health assessments and referrals to drug/alcohol treatment, health services, children and youth services, legal services and veteranâ€™s services, etc., are provided as needed.This program provides:- Temporary shelter- Ongoing case management services- Assistance with obtaining transitional and/or permanent housing- Supportive housing for special populations- An optional savings program which allows households to save a part of their income for future housing expensesIf you are currently experiencing homelessness, please call during business hours. You must go through central intake for an initial assessment of your housing needs before placement into the homeless housing system."""
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),xmlschema11-2#time,"""Friday from 00:00 to 23:59"""
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),xmlschema11-2#time,"""Wednesday from 00:00 to 23:59"""
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),xmlschema11-2#time,"""Saturday from 00:00 to 23:59"""
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),xmlschema11-2#time,"""Monday from 00:00 to 23:59"""
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),xmlschema11-2#time,"""Thursday from 00:00 to 23:59"""
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),xmlschema11-2#time,"""Tuesday from 00:00 to 23:59"""
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),xmlschema11-2#time,"""Sunday from 00:00 to 23:59"""
+Red Shield Family Residence (The Salvation Army - Greater Philadelphia),conditionsOfAccess,"""Serves families seeking emergency housing."""
+Residential Maternity Shelter (Mothers' Home),latitude,39.9221757
+Residential Maternity Shelter (Mothers' Home),audience,Pregnant
+Residential Maternity Shelter (Mothers' Home),audience,Female
+Residential Maternity Shelter (Mothers' Home),category,HelpFindHousing
+Residential Maternity Shelter (Mothers' Home),category,SafeHousing
+Residential Maternity Shelter (Mothers' Home),availability,Available
+Residential Maternity Shelter (Mothers' Home),language,English
+Residential Maternity Shelter (Mothers' Home),audience,Homeless
+Residential Maternity Shelter (Mothers' Home),category,HealthEducation
+Residential Maternity Shelter (Mothers' Home),audience,NearHomeless
+Residential Maternity Shelter (Mothers' Home),cost,Free
+Residential Maternity Shelter (Mothers' Home),category,SkillsAndTraining
+Residential Maternity Shelter (Mothers' Home),category,NutritionEducation
+Residential Maternity Shelter (Mothers' Home),category,TemporaryShelter
+Residential Maternity Shelter (Mothers' Home),category,IndividualCounseling
+Residential Maternity Shelter (Mothers' Home),audience,Adults18
+Residential Maternity Shelter (Mothers' Home),category,ParentingEducation
+Residential Maternity Shelter (Mothers' Home),category,BabySupplies
+Residential Maternity Shelter (Mothers' Home),category,FinancialEducation
+Residential Maternity Shelter (Mothers' Home),service type,Shelter
+Residential Maternity Shelter (Mothers' Home),postalCode,"""19023"""
+Residential Maternity Shelter (Mothers' Home),url,"""https://www.facebook.com/mothershomeshelter"""
+Residential Maternity Shelter (Mothers' Home),identifier,"""Residential Maternity Shelter (Mothers' Home)_6697255720189952"""
+Residential Maternity Shelter (Mothers' Home),name,"""Residential Maternity Shelter (Mothers' Home)"""
+Residential Maternity Shelter (Mothers' Home),name,""""""
+Residential Maternity Shelter (Mothers' Home),hasMap,XMLSchema#anyUri
+Residential Maternity Shelter (Mothers' Home),areaServed,"""This program covers residents of the following counties: Bucks County, PA, Chester County, PA, Delaware County, PA, Montgomery County, PA and Philadelphia County, PA."""
+Residential Maternity Shelter (Mothers' Home),provider,Residential Maternity Shelter (Mothers' Home)
+Residential Maternity Shelter (Mothers' Home),address,"""51 North MacDade Blvd, Darby, PA 19023"""
+Residential Maternity Shelter (Mothers' Home),longitude,XMLSchema#decimal
+Residential Maternity Shelter (Mothers' Home),availableChannel,AB-Residential Maternity Shelter (Mothers' Home)
+Residential Maternity Shelter (Mothers' Home),availableChannel,P-Residential Maternity Shelter (Mothers' Home)
+Residential Maternity Shelter (Mothers' Home),containedInPlace,19023
+Residential Maternity Shelter (Mothers' Home),description,Residential Maternity Shelter (Mothers' Home)
+Residential Maternity Shelter (Mothers' Home),telephone,"""tel:+1-610-583-4663"""
+Residential Maternity Shelter (Mothers' Home),text,"""Mothers' Home provides a Residential Maternity Shelter and supportive services for pregnant women who are homeless or in crisis over the age of 18 who do not have other children in their care.This program provides: - Temporary housingWomen in the shelter have access to:- Life skills training- Parenting classes- Job readiness training- Counseling services- Pre and postnatal health education- Childbirth and development classes- Housing search assistance- Educational classes on budgeting, legal, and nutrition- Initial personal and baby supplies- Peer supportWomen may continue to reside in our Residential Maternity Shelter for up to six months after giving birth."""
+Residential Maternity Shelter (Mothers' Home),xmlschema11-2#time,"""Sunday Closed"
+Residential Maternity Shelter (Mothers' Home),xmlschema11-2#time,"""Wednesday from 08:00 to 17:00"""
+Residential Maternity Shelter (Mothers' Home),xmlschema11-2#time,"""Tuesday from 08:00 to 17:00"""
+Residential Maternity Shelter (Mothers' Home),xmlschema11-2#time,"""Monday from 08:00 to 17:00"""
+Residential Maternity Shelter (Mothers' Home),xmlschema11-2#time,"""Thursday from 08:00 to 17:00"""
+Residential Maternity Shelter (Mothers' Home),xmlschema11-2#time,"""Saturday Closed"
+Residential Maternity Shelter (Mothers' Home),xmlschema11-2#time,"""Friday from 08:00 to 17:00"""
+Residential Maternity Shelter (Mothers' Home),conditionsOfAccess,"""This program helps people who are older than 17 years old.', 'Must be a pregnant woman with no children currently in your care."""
+Men's Shelter (Philly House),latitude,39.958175
+Men's Shelter (Philly House),audience,Male
+Men's Shelter (Philly House),audience,Emergency
+Men's Shelter (Philly House),audience,Individuals
+Men's Shelter (Philly House),category,TemporaryShelter
+Men's Shelter (Philly House),audience,Homeless
+Men's Shelter (Philly House),category,PersonalHygiene
+Men's Shelter (Philly House),category,Meals
+Men's Shelter (Philly House),language,English
+Men's Shelter (Philly House),cost,Free
+Men's Shelter (Philly House),availability,Available
+Men's Shelter (Philly House),audience,Adults18
+Men's Shelter (Philly House),service type,Shelter
+Men's Shelter (Philly House),postalCode,"""19107"""
+Men's Shelter (Philly House),url,"""https://www.facebook.com/phillyhomeless"""
+Men's Shelter (Philly House),url,"""https://www.twitter.com/@phillyhomeless"""
+Men's Shelter (Philly House),identifier,"""Men's Shelter (Philly House)_5704371963166720"""
+Men's Shelter (Philly House),name,""""""
+Men's Shelter (Philly House),name,"""Men's Shelter (Philly House)"""
+Men's Shelter (Philly House),hasMap,XMLSchema#anyUri
+Men's Shelter (Philly House),areaServed,"""This program covers residents of the following counties: Philadelphia County, PA."""
+Men's Shelter (Philly House),provider,Men's Shelter (Philly House)
+Men's Shelter (Philly House),address,"""302 North 13th Street, Philadelphia, PA 19107"""
+Men's Shelter (Philly House),longitude,XMLSchema#decimal
+Men's Shelter (Philly House),availableChannel,AB-Men's Shelter (Philly House)
+Men's Shelter (Philly House),availableChannel,P-Men's Shelter (Philly House)
+Men's Shelter (Philly House),containedInPlace,19107
+Men's Shelter (Philly House),description,Men's Shelter (Philly House)
+Men's Shelter (Philly House),telephone,"""tel:+1-215-922-6400"""
+Men's Shelter (Philly House),text,"""Sunday Breakfast Rescue Mission strives to meet the physical needs of the homeless and hurting men in Philadelphia through emergency shelter services that provide safe beds and nutritious meals to their homeless guests 365 days a year. Services:- Temporary Shelter- Meals- Shower- Case Management Sunday Breakfast Rescue Mission includes an intake assessment of eligibility and service needs of persons and families presenting for placement into emergency housing. You must go through a central intake assessment before placement into the homeless housing system. To receive a bed, please arrive at 7:00 PM. Intake closes at 8:00 PM. You do not need to call ahead. Men are able to stay with us for thirty days at a time."""
+Men's Shelter (Philly House),xmlschema11-2#time,"""Saturday from 00:00 to 23:59"""
+Men's Shelter (Philly House),xmlschema11-2#time,"""Thursday from 00:00 to 23:59"""
+Men's Shelter (Philly House),xmlschema11-2#time,"""Tuesday from 00:00 to 23:59"""
+Men's Shelter (Philly House),xmlschema11-2#time,"""Monday from 00:00 to 23:59"""
+Men's Shelter (Philly House),xmlschema11-2#time,"""Wednesday from 00:00 to 23:59"""
+Men's Shelter (Philly House),xmlschema11-2#time,"""Sunday from 00:00 to 23:59"""
+Men's Shelter (Philly House),xmlschema11-2#time,"""Friday from 00:00 to 23:59"""
+Men's Shelter (Philly House),conditionsOfAccess,"""This program serves single men in North Philadelphia who are experiencing homelessness."""
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",latitude,39.968264
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",category,HelpPayForUtilities
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",audience,HomeRenters
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",category,TemporaryShelter
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",audience,Families
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",audience,LimitedEnglish
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",language,English
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",category,EmergencyPayments
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",category,FinancialAssistance
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",audience,NearHomeless
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",availability,Available
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",cost,Free
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",category,FinancialEducation
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",category,HelpPayForHousing
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",audience,Adults18
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",language,Spanish
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",audience,Individuals
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",service type,Shelter
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",postalCode,"""19130"""
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",url,"""https://www.facebook.com/pages/Philadelphia-PA/City-of-Philadelphia/23587514958"""
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",url,"""https://www.twitter.com/@PhiladelphiaGov"""
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",identifier,"""City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)_6101823548030976"""
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",name,"""City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)"""
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",name,""""""
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",hasMap,XMLSchema#anyUri
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",areaServed,"""This program covers residents of the following counties: Philadelphia County, PA."""
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",provider,"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)"
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",address,"""1401 John F Kennedy Boulevard 10th floor, Philadelphia, PA 19102"""
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",longitude,XMLSchema#decimal
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",availableChannel,"AB-City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)"
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",availableChannel,"P-City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)"
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",containedInPlace,19130
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",description,"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)"
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",telephone,"""tel:+1-215-686-7175"""
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",text,"""The City of Philadelphia - Office of Homeless Services provides limited emergency financial assistance and/or emergency response for families and individuals displaced or experiencing homelessness and residents with court-ordered evictions.This program provides:- Mediation- Financial Counseling- Problem solving- One-time payment for move-in costs (security deposit, first and last monthâ€™s rent)- Up to 12 months of rental assistance with housing case management- Emergency Housing (shelter)Assistance is available for residents displaced by disasters, natural and otherwise. Due to high call volume, OHS staff will return calls within 5 to 10 business days. Assistance is based on funding availability.Please call for updated information on available funding for assistance."""
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",xmlschema11-2#time,"""Sunday Closed"
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",xmlschema11-2#time,"""Thursday from 08:00 to 17:00"""
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",xmlschema11-2#time,"""Wednesday from 08:00 to 17:00"""
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",xmlschema11-2#time,"""Tuesday from 08:00 to 17:00"""
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",xmlschema11-2#time,"""Saturday Closed"
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",xmlschema11-2#time,"""Friday from 08:00 to 17:00"""
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",xmlschema11-2#time,"""Monday from 08:00 to 17:00"""
+"City of Philadelphia, Office of Homeless Services - Prevention, Diversion and Intake (City of Philadelphia - Office of Homeless Services)",conditionsOfAccess,"""This program helps people with income at or below 125% of federal poverty guidelines.', 'Must be experiencing a financial crisis and at imminent risk of becoming homeless. OR', 'Received a court eviction hearing notice or court-ordered eviction. OR', 'Received a notice to vacate from landlord. OR', 'Lack family and financial resources, placing you at risk for homelessness. OR', 'Have the ability to sustain housing after receiving assistance."""
+Emergency Shelter (Gaudenzia),latitude,39.9619265
+Emergency Shelter (Gaudenzia),audience,Male
+Emergency Shelter (Gaudenzia),audience,Emergency
+Emergency Shelter (Gaudenzia),category,TemporaryShelter
+Emergency Shelter (Gaudenzia),audience,Female
+Emergency Shelter (Gaudenzia),audience,Homeless
+Emergency Shelter (Gaudenzia),audience,Individuals
+Emergency Shelter (Gaudenzia),availability,Available
+Emergency Shelter (Gaudenzia),cost,Free
+Emergency Shelter (Gaudenzia),language,English
+Emergency Shelter (Gaudenzia),audience,Adults18
+Emergency Shelter (Gaudenzia),service type,Shelter
+Emergency Shelter (Gaudenzia),postalCode,"""19139"""
+Emergency Shelter (Gaudenzia),url,"""https://www.facebook.com/gaudenziaorg/"""
+Emergency Shelter (Gaudenzia),url,"""https://www.twitter.com/@Gaudenzia"""
+Emergency Shelter (Gaudenzia),identifier,"""Emergency Shelter (Gaudenzia)_6571638428270592"""
+Emergency Shelter (Gaudenzia),name,""""""
+Emergency Shelter (Gaudenzia),name,"""Emergency Shelter (Gaudenzia)"""
+Emergency Shelter (Gaudenzia),hasMap,XMLSchema#anyUri
+Emergency Shelter (Gaudenzia),areaServed,"""This program covers residents of the following cities: Washington, DC, Claymont, DE and Philadelphia, PA."""
+Emergency Shelter (Gaudenzia),provider,Emergency Shelter (Gaudenzia)
+Emergency Shelter (Gaudenzia),address,"""111 North 49th Street, Philadelphia, PA 19139"""
+Emergency Shelter (Gaudenzia),longitude,XMLSchema#decimal
+Emergency Shelter (Gaudenzia),availableChannel,AB-Emergency Shelter (Gaudenzia)
+Emergency Shelter (Gaudenzia),availableChannel,P-Emergency Shelter (Gaudenzia)
+Emergency Shelter (Gaudenzia),containedInPlace,19139
+Emergency Shelter (Gaudenzia),description,Emergency Shelter (Gaudenzia)
+Emergency Shelter (Gaudenzia),telephone,"""tel:+1-833-976-4357"""
+Emergency Shelter (Gaudenzia),text,"""Gaudenzia provides temporary shelter and services to meet basic needs when individuals fall on hard times and have nowhere left to go.This program provides:- Temporary shelterThe shelter provides the following additional services: - Meals- Showers"""
+Emergency Shelter (Gaudenzia),xmlschema11-2#time,"""Monday from 00:00 to 23:59"""
+Emergency Shelter (Gaudenzia),xmlschema11-2#time,"""Sunday from 00:00 to 23:59"""
+Emergency Shelter (Gaudenzia),xmlschema11-2#time,"""Friday from 00:00 to 23:59"""
+Emergency Shelter (Gaudenzia),xmlschema11-2#time,"""Thursday from 00:00 to 23:59"""
+Emergency Shelter (Gaudenzia),xmlschema11-2#time,"""Wednesday from 00:00 to 23:59"""
+Emergency Shelter (Gaudenzia),xmlschema11-2#time,"""Saturday from 00:00 to 23:59"""
+Emergency Shelter (Gaudenzia),xmlschema11-2#time,"""Tuesday from 00:00 to 23:59"""
+Emergency Shelter (Gaudenzia),conditionsOfAccess,""""""
+Navigation Center (Horizon House),latitude,39.962058
+Navigation Center (Horizon House),audience,Homeless
+Navigation Center (Horizon House),cost,Free
+Navigation Center (Horizon House),category,NavigatingTheSystem
+Navigation Center (Horizon House),language,English
+Navigation Center (Horizon House),audience,AllAges
+Navigation Center (Horizon House),category,Meals
+Navigation Center (Horizon House),category,Clothing
+Navigation Center (Horizon House),availability,Available
+Navigation Center (Horizon House),category,PersonalHygiene
+Navigation Center (Horizon House),category,TemporaryShelter
+Navigation Center (Horizon House),service type,Shelter
+Navigation Center (Horizon House),postalCode,"""19104"""
+Navigation Center (Horizon House),url,"""None"""
+Navigation Center (Horizon House),identifier,"""Navigation Center (Horizon House)_6224216144216064"""
+Navigation Center (Horizon House),name,""""""
+Navigation Center (Horizon House),name,"""Navigation Center (Horizon House)"""
+Navigation Center (Horizon House),hasMap,XMLSchema#anyUri
+Navigation Center (Horizon House),areaServed,"""This program covers residents of the following counties: Philadelphia County, PA."""
+Navigation Center (Horizon House),provider,Navigation Center (Horizon House)
+Navigation Center (Horizon House),address,"""5901 Market Street, Philadelphia, PA 19104"""
+Navigation Center (Horizon House),longitude,XMLSchema#decimal
+Navigation Center (Horizon House),availableChannel,AB-Navigation Center (Horizon House)
+Navigation Center (Horizon House),availableChannel,P-Navigation Center (Horizon House)
+Navigation Center (Horizon House),containedInPlace,19104
+Navigation Center (Horizon House),description,Navigation Center (Horizon House)
+Navigation Center (Horizon House),telephone,"""tel:+1-215-222-2466"""
+Navigation Center (Horizon House),text,"""Navigation Center offers service-resistant homeless individuals the chance to gain stability by offering to meet their immediate needs by providing basic human services.Services include:- Temporary shelter- Food- Showers - Season-appropriate clothing- Resources for other human servicesFor more information, please call the Outreach Coordination Center's 24-hour hotline: 215-232-1984."""
+Navigation Center (Horizon House),xmlschema11-2#time,"""Sunday Closed"
+Navigation Center (Horizon House),xmlschema11-2#time,"""Tuesday from 09:00 to 17:00"""
+Navigation Center (Horizon House),xmlschema11-2#time,"""Wednesday from 09:00 to 17:00"""
+Navigation Center (Horizon House),xmlschema11-2#time,"""Friday from 09:00 to 17:00"""
+Navigation Center (Horizon House),xmlschema11-2#time,"""Monday from 09:00 to 17:00"""
+Navigation Center (Horizon House),xmlschema11-2#time,"""Thursday from 09:00 to 17:00"""
+Navigation Center (Horizon House),xmlschema11-2#time,"""Saturday Closed"
+Navigation Center (Horizon House),conditionsOfAccess,"""This program serves people experiencing homelessness."""
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),latitude,39.9561156
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),category,PersonalHygiene
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),category,Meals
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),availability,Available
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),audience,Homeless
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),audience,Male
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),audience,Adults18
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),category,TemporaryShelter
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),language,English
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),cost,Free
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),service type,Shelter
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),postalCode,"""19107"""
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),url,"""https://www.facebook.com/saintjohnshospice"""
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),identifier,"""Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice)_5112554392387584"""
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),name,"""Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice)"""
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),name,""""""
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),hasMap,XMLSchema#anyUri
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),areaServed,"""This program covers residents of the following counties: Philadelphia County, PA."""
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),provider,Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice)
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),address,"""1221 Race St, Philadelphia, PA 19107"""
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),longitude,XMLSchema#decimal
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),availableChannel,AB-Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice)
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),availableChannel,P-Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice)
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),containedInPlace,19107
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),description,Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice)
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),telephone,"""tel:+1-215-563-7763"""
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),text,"""The Coffee House provides a safe resting and sleeping environment for chronically homeless men who typically avoid shelter living.This program provides:- Overnight shelterAdditional services:- Warm meal- Beverages- Restrooms- ShowersIf you are interested in staying at the SJH Coffee House, report to at the corner of N. Camac and Race Streets at 10 pm."""
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),xmlschema11-2#time,"""Wednesday from 20:30 to 17:00"""
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),xmlschema11-2#time,"""Thursday from 20:30 to 17:00"""
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),xmlschema11-2#time,"""Saturday Closed"
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),xmlschema11-2#time,"""Friday from 20:30 to 17:00"""
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),xmlschema11-2#time,"""Monday from 20:30 to 17:00"""
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),xmlschema11-2#time,"""Sunday Closed"
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),xmlschema11-2#time,"""Tuesday from 20:30 to 17:00"""
+Coffee House (Catholic Social Services of the Archdiocese of Philadelphia - Saint John's Hospice),conditionsOfAccess,"""This program helps homeless men."""
+Drop In Center (Prevention Point Philadelphia),latitude,39.9927854
+Drop In Center (Prevention Point Philadelphia),category,OneOnOneSupport
+Drop In Center (Prevention Point Philadelphia),category,WeatherRelief
+Drop In Center (Prevention Point Philadelphia),language,Spanish
+Drop In Center (Prevention Point Philadelphia),audience,Families
+Drop In Center (Prevention Point Philadelphia),category,CaseManagement
+Drop In Center (Prevention Point Philadelphia),category,AdvocacyAndLegalAid
+Drop In Center (Prevention Point Philadelphia),category,NavigatingTheSystem
+Drop In Center (Prevention Point Philadelphia),category,Meals
+Drop In Center (Prevention Point Philadelphia),category,MedicalCare
+Drop In Center (Prevention Point Philadelphia),audience,Individuals
+Drop In Center (Prevention Point Philadelphia),availability,Available
+Drop In Center (Prevention Point Philadelphia),cost,Free
+Drop In Center (Prevention Point Philadelphia),category,AddictionAndRecovery
+Drop In Center (Prevention Point Philadelphia),language,English
+Drop In Center (Prevention Point Philadelphia),audience,Adults18
+Drop In Center (Prevention Point Philadelphia),service type,Shelter
+Drop In Center (Prevention Point Philadelphia),postalCode,"""19134"""
+Drop In Center (Prevention Point Philadelphia),url,"""https://www.facebook.com/preventionpointphiladelphia"""
+Drop In Center (Prevention Point Philadelphia),url,"""https://www.twitter.com/@preventionpp"""
+Drop In Center (Prevention Point Philadelphia),identifier,"""Drop In Center (Prevention Point Philadelphia)_5089660355477504"""
+Drop In Center (Prevention Point Philadelphia),name,"""Drop In Center (Prevention Point Philadelphia)"""
+Drop In Center (Prevention Point Philadelphia),name,""""""
+Drop In Center (Prevention Point Philadelphia),hasMap,XMLSchema#anyUri
+Drop In Center (Prevention Point Philadelphia),areaServed,"""This program covers residents of the following counties: Philadelphia County, PA."""
+Drop In Center (Prevention Point Philadelphia),provider,Drop In Center (Prevention Point Philadelphia)
+Drop In Center (Prevention Point Philadelphia),address,"""2915 Kensington Avenue, Philadelphia, PA 19134"""
+Drop In Center (Prevention Point Philadelphia),longitude,XMLSchema#decimal
+Drop In Center (Prevention Point Philadelphia),availableChannel,AB-Drop In Center (Prevention Point Philadelphia)
+Drop In Center (Prevention Point Philadelphia),availableChannel,P-Drop In Center (Prevention Point Philadelphia)
+Drop In Center (Prevention Point Philadelphia),containedInPlace,19134
+Drop In Center (Prevention Point Philadelphia),description,Drop In Center (Prevention Point Philadelphia)
+Drop In Center (Prevention Point Philadelphia),telephone,"""tel:+1-215-634-5272"""
+Drop In Center (Prevention Point Philadelphia),text,"""The Drop In Center strives to be free of judgment, allowing people of all backgrounds to come in and relax. The Drop In Center is in many ways the gateway through which participants are connected to the many services provided by PPP. This program provides:- Case management- HIV/HCV testing and counseling- Mail services- Legal clinic- Medical services- CRAFT (links participants to addiction treatment)- Specialized surveys - MealsThe Drop In Center is open five days a week and provides daily respite for clients from outside weather."""
+Drop In Center (Prevention Point Philadelphia),xmlschema11-2#time,"""Monday from 08:00 to 17:00"""
+Drop In Center (Prevention Point Philadelphia),xmlschema11-2#time,"""Friday from 05:00 to 14:00"""
+Drop In Center (Prevention Point Philadelphia),xmlschema11-2#time,"""Wednesday from 05:00 to 14:00"""
+Drop In Center (Prevention Point Philadelphia),xmlschema11-2#time,"""Sunday Closed"
+Drop In Center (Prevention Point Philadelphia),xmlschema11-2#time,"""Thursday from 05:00 to 14:00"""
+Drop In Center (Prevention Point Philadelphia),xmlschema11-2#time,"""Saturday Closed"
+Drop In Center (Prevention Point Philadelphia),xmlschema11-2#time,"""Tuesday from 05:00 to 14:00"""
+Drop In Center (Prevention Point Philadelphia),conditionsOfAccess,"""This program serves residents in Philadelphia county, PA."""
+"Station House Intake Center Services (SELF, Inc.)",latitude,39.9923482
+"Station House Intake Center Services (SELF, Inc.)",cost,Free
+"Station House Intake Center Services (SELF, Inc.)",category,TemporaryShelter
+"Station House Intake Center Services (SELF, Inc.)",category,CaseManagement
+"Station House Intake Center Services (SELF, Inc.)",language,English
+"Station House Intake Center Services (SELF, Inc.)",audience,Homeless
+"Station House Intake Center Services (SELF, Inc.)",audience,Adults18
+"Station House Intake Center Services (SELF, Inc.)",audience,Male
+"Station House Intake Center Services (SELF, Inc.)",availability,Available
+"Station House Intake Center Services (SELF, Inc.)",service type,Shelter
+"Station House Intake Center Services (SELF, Inc.)",postalCode,"""19132"""
+"Station House Intake Center Services (SELF, Inc.)",url,"""None"""
+"Station House Intake Center Services (SELF, Inc.)",identifier,"""Station House Intake Center Services (SELF, Inc.)_6354456388829184"""
+"Station House Intake Center Services (SELF, Inc.)",name,""""""
+"Station House Intake Center Services (SELF, Inc.)",name,"""Station House Intake Center Services (SELF, Inc.)"""
+"Station House Intake Center Services (SELF, Inc.)",hasMap,XMLSchema#anyUri
+"Station House Intake Center Services (SELF, Inc.)",areaServed,"""This program covers residents of the following counties: Philadelphia County, PA."""
+"Station House Intake Center Services (SELF, Inc.)",provider,"Station House Intake Center Services (SELF, Inc.)"
+"Station House Intake Center Services (SELF, Inc.)",address,"""2601 North Broad Street, Philadelphia, PA 19132"""
+"Station House Intake Center Services (SELF, Inc.)",longitude,XMLSchema#decimal
+"Station House Intake Center Services (SELF, Inc.)",longitude,XMLSchema#decimal
+"Station House Intake Center Services (SELF, Inc.)",availableChannel,"AB-Station House Intake Center Services (SELF, Inc.)"
+"Station House Intake Center Services (SELF, Inc.)",availableChannel,"P-Station House Intake Center Services (SELF, Inc.)"
+"Station House Intake Center Services (SELF, Inc.)",containedInPlace,19132
+"Station House Intake Center Services (SELF, Inc.)",description,"Station House Intake Center Services (SELF, Inc.)"
+"Station House Intake Center Services (SELF, Inc.)",telephone,"""tel:+1-215-225-9230"""
+"Station House Intake Center Services (SELF, Inc.)",text,"""Centralized Homeless Intake Services includes an assessment of eligibility and service needs of persons and families presenting for placement into emergency housing. If eligible, persons and families are placed in appropriate emergency housing, boarding homes, or other alternative housing. Services include:- Temporary shelter- Ongoing case management services- Assistance with obtaining transitional and/or permanent housing- Supportive housing for special populations- An optional savings program which allows households to save a part of their income for future housing expensesMental health assessments and referrals to drug/alcohol treatment, health services, children and youth services, legal services and veteranâ€™s services, etc., are provided as needed to clients of the program.- Connecting Services to other community resources- ScreeningIf you are currently experiencing homelessness, please call us during business hours. You must go through central intake for an initial assessment of your housing needs before placement into the homeless housing system."""
+"Station House Intake Center Services (SELF, Inc.)",xmlschema11-2#time,"""Sunday from 00:00 to 23:59"""
+"Station House Intake Center Services (SELF, Inc.)",xmlschema11-2#time,"""Thursday from 00:00 to 23:59"""
+"Station House Intake Center Services (SELF, Inc.)",xmlschema11-2#time,"""Friday Closed"
+"Station House Intake Center Services (SELF, Inc.)",xmlschema11-2#time,"""Thursday Closed"
+"Station House Intake Center Services (SELF, Inc.)",xmlschema11-2#time,"""Saturday from 17:00 to 23:00"""
+"Station House Intake Center Services (SELF, Inc.)",xmlschema11-2#time,"""Tuesday Closed"
+"Station House Intake Center Services (SELF, Inc.)",xmlschema11-2#time,"""Monday from 00:00 to 23:59"""
+"Station House Intake Center Services (SELF, Inc.)",xmlschema11-2#time,"""Monday Closed"
+"Station House Intake Center Services (SELF, Inc.)",xmlschema11-2#time,"""Wednesday from 00:00 to 23:59"""
+"Station House Intake Center Services (SELF, Inc.)",xmlschema11-2#time,"""Tuesday from 00:00 to 23:59"""
+"Station House Intake Center Services (SELF, Inc.)",xmlschema11-2#time,"""Wednesday Closed"
+"Station House Intake Center Services (SELF, Inc.)",xmlschema11-2#time,"""Saturday from 00:00 to 23:59"""
+"Station House Intake Center Services (SELF, Inc.)",xmlschema11-2#time,"""Friday from 00:00 to 23:59"""
+"Station House Intake Center Services (SELF, Inc.)",xmlschema11-2#time,"""Sunday from 17:00 to 23:00"""
+"Station House Intake Center Services (SELF, Inc.)",conditionsOfAccess,"""We serve single men experiencing homelessness."""
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),latitude,40.007932
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),cost,Free
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),category,12Step
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),audience,DualDiagnosis
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),audience,AllMentalHealth
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),category,NavigatingTheSystem
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),category,ShortTermHousing
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),category,Meals
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),audience,Homeless
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),audience,SubstanceDependency
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),category,TemporaryShelter
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),availability,Available
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),language,English
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),audience,Adults18
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),category,PersonalHygiene
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),category,OneOnOneSupport
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),service type,Shelter
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),postalCode,"""19140"""
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),url,"""https://www.facebook.com/kailohaven/"""
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),identifier,"""Kailo Haven (Resources for Human Development RHD - Pennsylvania)_5552002522939392"""
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),name,""""""
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),name,"""Kailo Haven (Resources for Human Development RHD - Pennsylvania)"""
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),hasMap,XMLSchema#anyUri
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),areaServed,"""This program covers residents of the following cities: Philadelphia, PA."""
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),provider,Kailo Haven (Resources for Human Development RHD - Pennsylvania)
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),address,"""2107 West Tioga Street, Philadelphia, PA 19140"""
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),longitude,XMLSchema#decimal
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),availableChannel,AB-Kailo Haven (Resources for Human Development RHD - Pennsylvania)
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),availableChannel,P-Kailo Haven (Resources for Human Development RHD - Pennsylvania)
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),containedInPlace,19140
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),description,Kailo Haven (Resources for Human Development RHD - Pennsylvania)
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),telephone,"""tel:+1-215-225-8645"""
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),text,"""Resources for Human Development's Kailo Haven is a safe haven homeless shelter for individuals experiencing chronic homelessness and identified as suffering from some form of co-occuring disorders, including mental health and addiction challenges.This program provides:- Safe environment to live and sleep- Meals and snacks- Bathroom and laundry facilities- 12-step recovering meetings- Emotional Management Courses- Individualized meetings and support to obtain financial and medical benefits- Referral ServicesPlease call The Homeless Outreach Hotline at 215-225-8645."""
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),xmlschema11-2#time,"""Tuesday from 00:00 to 23:59"""
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),xmlschema11-2#time,"""Saturday from 00:00 to 23:59"""
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),xmlschema11-2#time,"""Sunday from 00:00 to 23:59"""
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),xmlschema11-2#time,"""Friday from 00:00 to 23:59"""
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),xmlschema11-2#time,"""Monday from 00:00 to 23:59"""
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),xmlschema11-2#time,"""Thursday from 00:00 to 23:59"""
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),xmlschema11-2#time,"""Wednesday from 00:00 to 23:59"""
+Kailo Haven (Resources for Human Development RHD - Pennsylvania),conditionsOfAccess,"""This program serves homeless people."""
+"Outley House (SELF, Inc.)",latitude,39.9506585
+"Outley House (SELF, Inc.)",category,SkillsAndTraining
+"Outley House (SELF, Inc.)",category,HelpFindHealthcare
+"Outley House (SELF, Inc.)",category,DailyLifeSkills
+"Outley House (SELF, Inc.)",cost,Free
+"Outley House (SELF, Inc.)",category,NavigatingTheSystem
+"Outley House (SELF, Inc.)",audience,Adults18
+"Outley House (SELF, Inc.)",category,CaseManagement
+"Outley House (SELF, Inc.)",audience,Male
+"Outley House (SELF, Inc.)",category,HelpFindSchool
+"Outley House (SELF, Inc.)",category,NavigatingTheSystem
+"Outley House (SELF, Inc.)",audience,Seniors
+"Outley House (SELF, Inc.)",category,HelpFindHousing
+"Outley House (SELF, Inc.)",audience,Homeless
+"Outley House (SELF, Inc.)",language,English
+"Outley House (SELF, Inc.)",audience,AllMentalHealth
+"Outley House (SELF, Inc.)",availability,Available
+"Outley House (SELF, Inc.)",category,SkillsAndTraining
+"Outley House (SELF, Inc.)",category,TemporaryShelter
+"Outley House (SELF, Inc.)",service type,Shelter
+"Outley House (SELF, Inc.)",postalCode,"""19107"""
+"Outley House (SELF, Inc.)",url,"""https://www.facebook.com/SELFIncorp/"""
+"Outley House (SELF, Inc.)",url,"""https://www.twitter.com/@SelfInc1"""
+"Outley House (SELF, Inc.)",identifier,"""Outley House (SELF, Inc.)_5992920927698944"""
+"Outley House (SELF, Inc.)",name,"""Outley House (SELF, Inc.)"""
+"Outley House (SELF, Inc.)",name,""""""
+"Outley House (SELF, Inc.)",hasMap,XMLSchema#anyUri
+"Outley House (SELF, Inc.)",areaServed,"""This program covers residents of the following counties: Philadelphia County, PA."""
+"Outley House (SELF, Inc.)",provider,"Outley House (SELF, Inc.)"
+"Outley House (SELF, Inc.)",address,"""1211 Chestnut Street, Philadelphia, PA 19107"""
+"Outley House (SELF, Inc.)",longitude,XMLSchema#decimal
+"Outley House (SELF, Inc.)",availableChannel,"AB-Outley House (SELF, Inc.)"
+"Outley House (SELF, Inc.)",availableChannel,"P-Outley House (SELF, Inc.)"
+"Outley House (SELF, Inc.)",containedInPlace,19107
+"Outley House (SELF, Inc.)",description,"Outley House (SELF, Inc.)"
+"Outley House (SELF, Inc.)",telephone,"""tel:+1-215-496-9610"""
+"Outley House (SELF, Inc.)",text,"""Outley House serves single, adult men who are experiencing homelessness and are between the ages of 18 and 70+ years old. Their staff work tirelessly to help clients get back on their feet and start along the path to independence.This program provides:- Help find housing- Temporary shelter- Case managementThey also offer:- Behavioral and physical health services- Education opportunities- Independent living preparation- Access to resources and community contacts"""
+"Outley House (SELF, Inc.)",xmlschema11-2#time,"""Thursday from 08:00 to 17:00"""
+"Outley House (SELF, Inc.)",xmlschema11-2#time,"""Friday from 08:00 to 17:00"""
+"Outley House (SELF, Inc.)",xmlschema11-2#time,"""Wednesday from 08:00 to 17:00"""
+"Outley House (SELF, Inc.)",xmlschema11-2#time,"""Tuesday from 08:00 to 17:00"""
+"Outley House (SELF, Inc.)",xmlschema11-2#time,"""Sunday Closed"
+"Outley House (SELF, Inc.)",xmlschema11-2#time,"""Monday from 08:00 to 17:00"""
+"Outley House (SELF, Inc.)",xmlschema11-2#time,"""Saturday Closed"
+"Outley House (SELF, Inc.)",conditionsOfAccess,"""Must be male and homeless', 'Must have a referral from The Office of Homeless Services (OHS).', 'This program helps people who are older than 17 years old."""
+Code Blue (Project HOME),latitude,39.9540966
+Code Blue (Project HOME),language,English
+Code Blue (Project HOME),category,TemporaryShelter
+Code Blue (Project HOME),category,WeatherRelief
+Code Blue (Project HOME),audience,Homeless
+Code Blue (Project HOME),audience,Individuals
+Code Blue (Project HOME),category,HelpHotlines
+Code Blue (Project HOME),audience,AnyoneInNeed
+Code Blue (Project HOME),availability,Available
+Code Blue (Project HOME),audience,AllAges
+Code Blue (Project HOME),category,Transportation
+Code Blue (Project HOME),cost,Free
+Code Blue (Project HOME),service type,Shelter
+Code Blue (Project HOME),postalCode,"""19102"""
+Code Blue (Project HOME),url,"""None"""
+Code Blue (Project HOME),url,"""https://www.twitter.com/@PHLCityHomeless"""
+Code Blue (Project HOME),identifier,"""Code Blue (Project HOME)_5982309675433984"""
+Code Blue (Project HOME),name,"""Code Blue (Project HOME)"""
+Code Blue (Project HOME),name,""""""
+Code Blue (Project HOME),hasMap,XMLSchema#anyUri
+Code Blue (Project HOME),areaServed,"""This program covers residents of the following cities: Philadelphia, PA."""
+Code Blue (Project HOME),provider,Code Blue (Project HOME)
+Code Blue (Project HOME),address,"""1401 John F Kennedy Boulevard, Philadelphia, PA 19102"""
+Code Blue (Project HOME),longitude,XMLSchema#decimal
+Code Blue (Project HOME),availableChannel,AB-Code Blue (Project HOME)
+Code Blue (Project HOME),availableChannel,P-Code Blue (Project HOME)
+Code Blue (Project HOME),containedInPlace,19102
+Code Blue (Project HOME),description,Code Blue (Project HOME)
+Code Blue (Project HOME),telephone,"""tel:+1-215-232-1984"""
+Code Blue (Project HOME),text,"""Project HOME provides an emergency shelter when it issues an emergency warning Code Blue. Code Blue is when the National Weather Service predicts wind chills of 20 degrees or lower or precipitation with temperatures below 32 degrees to preserve the lives of chronically homeless individuals.This program provides:- Short-term emergency shelterCity officials are urging the public to call Homeless Outreach at any time if they see someone who is homeless and sleeping on the street. Homeless outreach teams are available 24 hours a day, seven days a week."""
+Code Blue (Project HOME),xmlschema11-2#time,"""Monday from 08:00 to 17:00"""
+Code Blue (Project HOME),xmlschema11-2#time,"""Tuesday from 08:00 to 17:00"""
+Code Blue (Project HOME),xmlschema11-2#time,"""Thursday from 08:00 to 17:00"""
+Code Blue (Project HOME),xmlschema11-2#time,"""Wednesday from 08:00 to 17:00"""
+Code Blue (Project HOME),xmlschema11-2#time,"""Sunday Closed"
+Code Blue (Project HOME),xmlschema11-2#time,"""Friday from 08:00 to 17:00"""
+Code Blue (Project HOME),xmlschema11-2#time,"""Saturday Closed"
+Code Blue (Project HOME),conditionsOfAccess,"""This program serves homeless individuals."""
