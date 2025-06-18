@@ -523,7 +523,7 @@ if __name__ == '__main__':
     st.markdown("""
     <style>
         [data-testid=stSidebar] {
-            background-color: #fcb290;
+            background-color: #1C1C1C;
         }
     </style>
     """, unsafe_allow_html=True)
@@ -665,6 +665,34 @@ if __name__ == '__main__':
                                     end_brasket = service[0].find(')', start_brasket + 1)
                                     service_name = service[0]
                                     extract_services.append([service_name[start_brasket+1:end_brasket], service[1]])
+                            
+                            # ! Service Map
+                            service_map = folium.Map(location=[latitude_user, longitude_user], zoom_start=12)
+                            folium.CircleMarker(
+                                location=[latitude_user, longitude_user],
+                                radius=80,
+                                color='blue',
+                                fill=True,
+                                fill_color='blue',
+                                fill_opacity=0.2
+                            ).add_to(service_map)
+
+                            marker_cluster = MarkerCluster().add_to(service_map)
+                            route_points = []
+                            for loc in data:
+                                route_points.append([loc['latitude'], loc['longitude']])
+                                iframe = IFrame(loc['info'], width=300, height=200)
+                                popup = folium.Popup(iframe, max_width=800)
+                                folium.Marker(
+                                    location=[loc['latitude'], loc['longitude']],
+                                    popup=popup,
+                                    icon=folium.Icon(color='red')
+                                ).add_to(marker_cluster)
+
+                            service_map_title = f"{classified_service_type} Services near {zipcode}"
+                            service_map_header = GoogleTranslator(source='auto', target=input_language).translate(str(service_map_title))
+                            st.header(service_map_header)
+                            folium_static(service_map, width=800, height=600)  # Adjust width and height as needed
 
                             # ! Service information
                             # * (1) Cypher search method
@@ -941,7 +969,7 @@ if __name__ == '__main__':
                                 evening_trans = GoogleTranslator(source='auto', target=input_language).translate(str('Evening'))
                                 Evening = st.checkbox(evening_trans, value=False, key='Evening')
 
-                            map = folium.Map(location=[latitude_user, longitude_user], zoom_start=12)
+                            crime_map = folium.Map(location=[latitude_user, longitude_user], zoom_start=12)
                             folium.CircleMarker(
                                 location=[latitude_user, longitude_user],
                                 radius=80,
@@ -949,20 +977,9 @@ if __name__ == '__main__':
                                 fill=True,
                                 fill_color='blue',
                                 fill_opacity=0.2
-                            ).add_to(map)
+                            ).add_to(crime_map)
 
-                            marker_cluster = MarkerCluster().add_to(map)
-                            route_points = []
-                            for loc in data:
-                                route_points.append([loc['latitude'], loc['longitude']])
-                                iframe = IFrame(loc['info'], width=300, height=200)
-                                popup = folium.Popup(iframe, max_width=800)
-                                folium.Marker(
-                                    location=[loc['latitude'], loc['longitude']],
-                                    popup=popup,
-                                    icon=folium.Icon(color='red')
-                                ).add_to(marker_cluster)
-
+                            marker_cluster = MarkerCluster().add_to(crime_map)
                             if Morning:
                                 for loc in morning_crime_data:
                                     iframe = IFrame(loc['info'], width=300, height=200)
@@ -993,10 +1010,10 @@ if __name__ == '__main__':
                                         icon=folium.Icon(color='green', icon="flag")
                                     ).add_to(marker_cluster)
 
-                            service_crime_map_title = f"{classified_service_type} Services & Crime near {zipcode}"
-                            service_crime_map_header = GoogleTranslator(source='auto', target=input_language).translate(str(service_crime_map_title))
-                            st.header(service_crime_map_header)
-                            folium_static(map, width=800, height=600)  # Adjust width and height as needed
+                            crime_map_title = f"{classified_service_type} Crime near {zipcode}"
+                            crime_map_header = GoogleTranslator(source='auto', target=input_language).translate(str(crime_map_title))
+                            st.header(crime_map_header)
+                            folium_static(crime_map, width=800, height=600)  # Adjust width and height as needed
 
                             #! Services contract
                             Options = [None]

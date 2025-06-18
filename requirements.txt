@@ -17,3 +17,8 @@ psycopg2-binary
 smtplib
 streamlit-geolocation
 transformers
+gensim
+torch_geometric
+scikit-learn
+transformers
+pcst_fast

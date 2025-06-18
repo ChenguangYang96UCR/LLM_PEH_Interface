@@ -24,7 +24,7 @@ st.title("📝 User Feedback")
 st.markdown("""
 <style>
     [data-testid=stSidebar] {
-        background-color: #fcb290;
+        background-color: #1C1C1C;
     }
 </style>
 """, unsafe_allow_html=True)
