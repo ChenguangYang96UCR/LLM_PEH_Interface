@@ -630,9 +630,9 @@ if __name__ == '__main__':
                         
                     if classified_service_type != "Other":
                         service_files = {
-                            "Shelter": "./files/Final_FindHelp_extracted_data_philadelphia_temporary_shelter_2025_0402.csv",
-                            "Mental Health": "./files/Final_FindHelp_extracted_data_philadelphia_mental_health_2025_0402.csv",
-                            "Food": "./files/Final_Philadelphia_Emergency_Food_2025_0325.csv"
+                            "Shelter": "./files/New_FindHelp_philadelphia_temporary_shelter_2025_0707.csv",
+                            "Mental Health": "./files/New_FindHelp_philadelphia_mental_health_2025_0707.csv",
+                            "Food": "./files/New_philadelphia_emergency_food_2025_0707.csv"
                         }
                         if classified_service_type != "Shelter" and classified_service_type != "Mental Health" and classified_service_type != "Food":
                             service_type_warning = 'Service type is not recognized. Please try again with a different service type. Such that: "Shelter", "Mental Health", "Food". And there is the example for query: Find me a food pantry near market east && families in Philadelphia.'
