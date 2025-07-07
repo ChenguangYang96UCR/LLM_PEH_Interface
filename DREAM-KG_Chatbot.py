@@ -434,6 +434,17 @@ if __name__ == '__main__':
     if st.session_state.page == "g_retriever" :
         st.markdown("##### 🧾 Search Method : G-Retriever")
 
+    c1, c2 = st.columns([1,5], gap='small')
+    with c1:
+        st.markdown("**Order Method:**")
+    with c2:
+        order_option = st.radio(label='' , options= ["Google Rating", "Distance"], horizontal=True, label_visibility="collapsed")
+    
+    if order_option == 'Google Rating':
+        order_method = utils.GOOGLE_RATING
+    if order_option == 'Distance':
+        order_method = utils.DISTANCE_ORDER
+
     # * Acquire the location of user
     # loc = streamlit_js_eval.get_geolocation()
     # st.write(f"Your coordinates are {loc}")
@@ -753,22 +764,21 @@ if __name__ == '__main__':
                                         service_name = service[0]
                                         extract_duplicate_services.append([service_name[start_brasket+1:end_brasket], service[1]])
 
-                                logger.debug("Final services: \n")
-                                logger.debug(extract_duplicate_services)
+                                logger.debug(f"Final services: {extract_duplicate_services}")
                                 
                                 service_info_spinner = 'Loading service information, please wait ...'
                                 service_info_spinner_trans = GoogleTranslator(source='auto', target=input_language).translate(str(service_info_spinner))
                                 with st.spinner(service_info_spinner_trans):
                                     if len(extract_duplicate_services) == 0:
-                                        logger.debug("knowledge graph query service list: \n")
-                                        logger.debug(type_service_list)
+                                        logger.debug(f"knowledge graph query type service list: {type_service_list}")
+                                        type_service_list = utils.order_service(type_service_list, logger, int(zipcode), order_method)
                                         if len(type_service_list) > 5:
                                             type_service_list = type_service_list[0:5]
                                         option_services = type_service_list
                                         service_information = utils.getQuestion_answer(type_service_list, st, input_language)
                                     else:
-                                        logger.debug("knowledge graph query service list: \n")
-                                        logger.debug(extract_duplicate_services)
+                                        logger.debug(f"knowledge graph query duplicate service list: {extract_duplicate_services}")
+                                        extract_duplicate_services = utils.order_service(extract_duplicate_services, logger, int(zipcode), order_method)
                                         if len(extract_duplicate_services) > 5:
                                             extract_duplicate_services = extract_duplicate_services[0:5]
                                         option_services = extract_duplicate_services
@@ -846,22 +856,21 @@ if __name__ == '__main__':
                                         service_name = service[0]
                                         extract_duplicate_services.append([service_name[start_brasket+1:end_brasket], service[1]])
 
-                                logger.debug("Final services: \n")
-                                logger.debug(extract_duplicate_services)
+                                logger.debug(f"Final services: {extract_duplicate_services}")
                                 
                                 service_info_spinner = 'Loading service information, please wait ...'
                                 service_info_spinner_trans = GoogleTranslator(source='auto', target=input_language).translate(str(service_info_spinner))
                                 with st.spinner(service_info_spinner_trans):
                                     if len(extract_duplicate_services) == 0:
-                                        logger.debug("knowledge graph query service list: \n")
-                                        logger.debug(type_service_list)
+                                        logger.debug(f"knowledge graph query type service list: {type_service_list}")
+                                        type_service_list = utils.order_service(type_service_list, logger, int(zipcode), order_method)
                                         if len(type_service_list) > 5:
                                             type_service_list = type_service_list[0:5]
                                         option_services = type_service_list
                                         service_information = utils.getQuestion_answer(type_service_list, st, input_language)
                                     else:
-                                        logger.debug("knowledge graph query service list: \n")
-                                        logger.debug(extract_duplicate_services)
+                                        logger.debug(f"knowledge graph query duplicate service list: {extract_duplicate_services}")
+                                        extract_duplicate_services = utils.order_service(extract_duplicate_services, logger, int(zipcode), order_method)
                                         if len(extract_duplicate_services) > 5:
                                             extract_duplicate_services = extract_duplicate_services[0:5]
                                         option_services = extract_duplicate_services
@@ -1010,7 +1019,7 @@ if __name__ == '__main__':
                                         icon=folium.Icon(color='green', icon="flag")
                                     ).add_to(marker_cluster)
 
-                            crime_map_title = f"{classified_service_type} Crime near {zipcode}"
+                            crime_map_title = f"Crime near {zipcode}"
                             crime_map_header = GoogleTranslator(source='auto', target=input_language).translate(str(crime_map_title))
                             st.header(crime_map_header)
                             folium_static(crime_map, width=800, height=600)  # Adjust width and height as needed

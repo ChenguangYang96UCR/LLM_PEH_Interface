@@ -23,6 +23,9 @@ from huggingface_hub import login
 
 login(token = "")
 
+# Define Order Method Global Value
+GOOGLE_RATING = 1
+DISTANCE_ORDER = 2
 
 #* Define global value
 google_translator_max_char = 5000
@@ -35,6 +38,11 @@ cached_graph = f'{path}/cached_graphs'
 cached_desc = f'{path}/cached_desc'
 
 def switch_page():
+
+    """
+    switch search method
+    """
+
     if st.session_state.page == "g_retriever":
         st.session_state.page = "cypher"
     else:
@@ -84,6 +92,18 @@ def get_services_time(weekday, relation='xmlschema11-2#time'):
 
 # * wild search from graph
 def wild_search_by_keywords(key_word, relation=''):
+
+    """
+    Cypher wild search graph function 
+
+    Args:
+        key_word (string): key word for search
+        relation (str, optional): triple's relation to search. Defaults to ''.
+
+    Returns:
+        list: search result for triple list
+    """    
+
     triples = []
     if key_word == '':
         print('Error: search_node_by_keyword input \'key_word\' is nothing')
@@ -107,6 +127,16 @@ def wild_search_by_keywords(key_word, relation=''):
 # * Get and combine services' information 
 @st.cache_resource(show_spinner=False)
 def getQuestion_answer(Service_list, st,language = 'en'):
+
+    """
+    Get question's answer from LLM
+
+    Args:
+        Service_list (list): service name list [[service_name, google_rating]]
+        st (class): streamlit class point
+        language (str, optional): language used to show in the interface. Defaults to 'en'.
+    """    
+
     all_triples = []    
     all_information = []
     for Service in Service_list:
@@ -135,7 +165,7 @@ input knowledge graph triples: {slice_triple}
                 all_response.append(response)
                 index = index + 1
         combine_prompt = f"""
-Please combine these response, construct corresponding natural language sentences about introduction and suggestion.
+Please combine these response, construct corresponding natural language sentences about Service Name, Address, Contract Method, Brief Introduction and Recommendations. Show these information as a list and bold these titles.
 response: {all_response}
 """
         response = openai.ChatCompletion.create(
@@ -145,8 +175,8 @@ response: {all_response}
                         ],
                         temperature=0.2
                     )
-
-        st.write(f"**{Service[0]}**")
+        st.markdown('''##### :blue['''+ Service[0] + ''']''')
+        # st.write(f"**{Service[0]}**")
         # google_rating = f"**Google Rating:{Service[1]}**"
         # google_rating_trans = GoogleTranslator(source='auto', target=language).translate(str(google_rating))
         # st.write(google_rating_trans, "\n")
@@ -161,6 +191,17 @@ response: {all_response}
     return all_information
 
 def extract_service_serving_name_from_triple(triple):
+
+    """
+    extract service name from triple
+
+    Args:
+        triple (string): triple string
+
+    Returns:
+        string: extracted service name
+    """    
+
     # start_quotation = triple.find('"')
     target_index = triple.find('\'audience\'', 1)
     extract_service_name = triple[0:target_index - 1]
@@ -173,6 +214,17 @@ def extract_service_serving_name_from_triple(triple):
     return extract_service_name   
 
 def extract_type_service_name_from_triple(triple):
+
+    """
+    extract service name from triple
+
+    Args:
+        triple (string): triple string
+
+    Returns:
+        string: extracted service name
+    """                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+
     # start_quotation = triple.find('"')
     target_index = triple.find('\'service type\'', 1)
     extract_service_name = triple[0:target_index - 1]
@@ -224,8 +276,7 @@ def get_services_time(day_of_week, service_time, logger, relation='xmlschema11-2
                 services_name.append(extract_service_name)
         else:
             continue
-    logger.debug("service list based on time search: \n")
-    logger.debug(services_name)
+    logger.debug(f"service list based on time search: {services_name}")
     return services_name
 
 # * receive four kinds of serving type
@@ -250,8 +301,7 @@ def get_service_serving(*args, logger, relation='audience'):
         extract_service_name =  extract_service_serving_name_from_triple(raw_triple)
         services_name.append(extract_service_name)
     unique_service = list(set(services_name))
-    logger.debug("service list based on serving search: \n")
-    logger.debug(unique_service)
+    logger.debug(f"service list based on serving search: {unique_service}")
     return unique_service
 
 def get_services_type(service_type, logger, relation='service type'):
@@ -268,8 +318,7 @@ def get_services_type(service_type, logger, relation='service type'):
         raw_triple = str(triple).replace('\t', ',')
         extract_service_name =  extract_type_service_name_from_triple(raw_triple)
         services_name.append(extract_service_name)
-    logger.debug("Services list based type: \n")
-    logger.debug(services_name)
+    logger.debug(f"Services list based type: {services_name}")
     return services_name
 
 # * Get duplicate service name from list 
@@ -539,3 +588,164 @@ def ask_model_for_service_extraction(model, question, tokenizer, logger):
         service_list.append(service)
 
     return service_list
+
+def extract_google_rating_from_triple(triple):
+
+    """
+    extract google rating from triple
+
+    Args:
+        triple (string): triple string
+
+    Returns:
+        string: extracted service rating
+    """                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+
+    # start_quotation = triple.find('"')
+    target_index = triple.find('\'ratingValue\'', 1)
+    extract_rating = triple[target_index : -1]
+    print(extract_rating)
+    return extract_rating 
+
+def google_order(service_list : list):
+
+    """
+    Google Rating Order
+
+    Returns:
+        list: reordered service list
+    """    
+
+    sorted_places = sorted(service_list, key=lambda x: x[1], reverse=True)
+    return sorted_places
+
+def get_services_type(service_type, logger, relation='service type'):
+    print('get_services_type')
+    services_name = []
+    graph = Graph(
+            "bolt://localhost:7687", 
+            auth=("neo4j", "123456789")
+        )
+    Query = 'MATCH (m:node)-[r]->(n:node) where type(r)=~\".*(?i){0}.*\" and n.name=~\".*(?i){1}.*\" RETURN m.name,type(r),n.name'.format(relation, service_type)
+    # MATCH (m:node)-[r]-(n:node) where type(r)=~".*(?i)service type.*" and n.name=~".*(?i)Food.*" RETURN m.name,type(r),n.name
+    query_result = graph.run(Query)
+    for triple in query_result:
+        raw_triple = str(triple).replace('\t', ',')
+        extract_service_name =  extract_type_service_name_from_triple(raw_triple)
+        services_name.append(extract_service_name)
+    logger.debug(f"Services list based type: {services_name}")
+    return services_name
+
+def extract_type_service_name_from_triple(triple):
+
+    """
+    extract service name from triple
+
+    Args:
+        triple (string): triple string
+
+    Returns:
+        string: extracted service name
+    """                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+
+    # start_quotation = triple.find('"')
+    target_index = triple.find('\'service type\'', 1)
+    extract_service_name = triple[0:target_index - 1]
+    if extract_service_name[0] == '\'':
+        extract_service_name = extract_service_name.rstrip('\'')
+        extract_service_name = extract_service_name.lstrip('\'')
+    else:
+        extract_service_name = extract_service_name.rstrip('\"')
+        extract_service_name = extract_service_name.lstrip('\"')
+    return extract_service_name  
+
+def extract_zipcode_from_triple(triple):
+    target_index = triple.find('\'postalCode\'', 1)
+    extract_zipcode= triple[target_index + 15 : -1]
+    return extract_zipcode.replace('"', '')
+
+def get_zipcode(service_list : list, logger):
+    relation = 'postalCode'
+    service_zipcode = []
+    graph = Graph(
+            "bolt://localhost:7687", 
+            auth=("neo4j", "123456789")
+        )
+    for service in service_list:
+        Query = 'MATCH (m:node)-[r]->(n:node) where m.name=~\".*(?i){1}.*\" and type(r)=~\".*(?i){0}.*\" RETURN m.name,type(r),n.name'.format(relation, service[0])
+        query_result = graph.run(Query)
+        #! Only need one return result, sometime store two zipcode info or same short name service
+        for triple in query_result:
+            raw_triple = str(triple).replace('\t', ',')
+            extract_zipcode = extract_zipcode_from_triple(raw_triple)
+            service_zipcode.append([service, int(extract_zipcode)])
+            break
+
+    logger.debug(f"Services list based zipcode: {service_zipcode}")
+
+    return service_zipcode
+
+def get_location(service_list : list, logger):
+    longitude = 'longitude'
+    latitude = 'latitude'
+    service_location = []
+    graph = Graph(
+            "bolt://localhost:7687", 
+            auth=("neo4j", "123456789")
+        )
+
+    for service in service_list:
+        latitude_Query = 'MATCH (m:node)-[r]->(n:node) where type(r)=~\".*(?i){0}.*\" and m.name=~\".*(?i){1}.*\" RETURN m.name,type(r),n.name'.format(latitude, service)
+        query_result = graph.run(latitude_Query)
+
+def extract_service_list_from_string(service_list:str):
+    result = []
+    chunks = service_list[2:-2].split("], [")
+    for chunk in chunks:
+        # Find the last comma in the chunk (splits name and rating)
+        idx = chunk.rfind(',')
+        name = chunk[:idx].strip().strip("'")
+        rating = float(chunk[idx+1:].strip())
+        result.append([name, rating])
+    return result
+
+
+def distance_order(service_list : list, zipcode, logger):
+    service_zipcode = get_zipcode(service_list, logger)
+    question_prompt = f'''My location zipcode is {zipcode}, and there are some services and its google rating and zipcode.{service_zipcode}. Please help me reorder these services based on distance from my location to service's location.
+    And only return the reordered list of serive name and google rating. Such as: [['The West Philly Bunny Hop', 0.0], ["St. Barbara's Roman Catholic Church", 4.4]]'''
+    response = openai.ChatCompletion.create(
+                        model="gpt-3.5-turbo",  # Updated to use the latest and more advanced model
+                        messages=[
+                            {"role": "user", "content": question_prompt}
+                        ],
+                        temperature=0.2
+                    )
+    service_list = response.choices[0].message['content']
+    final_list = extract_service_list_from_string(service_list)
+    return final_list
+
+
+def order_service(service_List : list, logger, zipcode, order_method = GOOGLE_RATING):
+
+    """
+    order service list
+
+    Args:
+        service_List (list): service list([service name, google rating])
+        logger (class): log class
+        order_method (int, optional): order method. Defaults to GOOGLE_RATING.
+
+    Returns:
+        list: reordered service list
+    """    
+
+    if order_method == GOOGLE_RATING:
+        sorted_service = google_order(service_List)
+        logger.debug(f"Google Rating Sorted Service List: {sorted_service} ")
+
+    if order_method == DISTANCE_ORDER:
+        sorted_service = distance_order(service_List, zipcode, logger)
+        logger.debug(f"Distance Sorted Service List: {sorted_service} ")
+
+    return sorted_service
