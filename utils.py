@@ -126,7 +126,7 @@ def wild_search_by_keywords(key_word, relation=''):
 
 # * Get and combine services' information 
 @st.cache_resource(show_spinner=False)
-def getQuestion_answer(Service_list, st,language = 'en'):
+def getQuestion_answer(Service_list, loc, st,language = 'en'):
 
     """
     Get question's answer from LLM
@@ -163,13 +163,14 @@ input knowledge graph triples: {slice_triple}
                     temperature=0.2
                 )
                 all_response.append(response)
-                index = index + 1
+                index = index + 1 
+
         combine_prompt = f"""
-Please combine these response, construct corresponding natural language sentences about Service Name, Address, Contract Method, Brief Introduction and Recommendations. Show these information as a list and bold these titles.
+Please combine these response, construct corresponding natural language sentences about Service Name, Address, Contract Method, Opening Hour, Brief Introduction and Transportation (my location is [{loc[0]},{loc[1]}], and service location is [{Service[2]}, {Service[3]}], please tell me the time required for walking). Show these information as a list and bold these titles. 
 response: {all_response}
 """
         response = openai.ChatCompletion.create(
-                        model="gpt-3.5-turbo",  # Updated to use the latest and more advanced model
+                        model="gpt-4o",  # Updated to use the latest and more advanced model
                         messages=[
                             {"role": "user", "content": combine_prompt}
                         ],
@@ -678,7 +679,7 @@ def get_zipcode(service_list : list, logger):
         for triple in query_result:
             raw_triple = str(triple).replace('\t', ',')
             extract_zipcode = extract_zipcode_from_triple(raw_triple)
-            service_zipcode.append([service, int(extract_zipcode)])
+            service_zipcode.append([service[0], service[1], int(extract_zipcode)])
             break
 
     logger.debug(f"Services list based zipcode: {service_zipcode}")

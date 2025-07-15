@@ -242,7 +242,7 @@ def read_data(df):
             'info': info
         })
 
-        service_list.append([row['Service_Name'], row['Google_Rating']])
+        service_list.append([row['Service_Name'], row['Google_Rating'], row['Latitude'], row['Longitude'], info])
 
     return data, service_list
 
@@ -547,7 +547,7 @@ if __name__ == '__main__':
     if st.session_state.mainpageId == "True":
 
         #! User query information extract
-        if user_query is '':
+        if user_query == '':
             st.write('Your input is empty, please check your query!')
             st.stop()
         input_language = detect(user_query)
@@ -562,6 +562,11 @@ if __name__ == '__main__':
             extracted_info = response.choices[0].message['content'].strip()
             # st.write("Extracted Information:", extracted_info)
             service_type, zipcode, weekday, service_time = parse_extracted_info(extracted_info)
+
+            #! If user did not provide location, default zipcode is 19102
+            if not zipcode:
+                zipcode = '19102'
+
             # crime incidents analysis
             crime_data_df = pd.read_csv('./files/Final_Philadelphia_Crime_Data_2023.csv')
             crime_data = crime_data_df.values
@@ -607,12 +612,6 @@ if __name__ == '__main__':
                     st.write(classified_service_type)
                     logger.debug("classified service type: " + classified_service_type)
 
-                    if classified_service_type == 'Shelter':
-                        st.write("**Specific Temporary Housing for Veteran:**", "If you are veteran, please consider Veterans Multi Service Center (Phone: 215-238-8067; Address: 213-217 N 4th St, Philadelphia, PA 19106)")
-                        st.write("**Specific Temporary Housing for Single Woman/Women:**", "If you are single woman/women, please consider House of Passage (Phone: 267-713-7778; Address: 111 N 49th St, Philadelphia, PA 19139)")
-                        st.write("**Specific Temporary Housing for Single Man/Men:**", "If you are single man/men, please consider Mark Hinson Resource Center (Phone: 215-923-2600; Address: 1701 W Lehigh Ave, Philadelphia, PA 19132")
-                        st.write("**Specific Temporary Housing for Families:**", "If you have families, please consider Salvation Army Red Shield Center (Phone: 215-787-2887; Address: 715 N Broad St, Philadelphia, PA 19123")
-                    
                     zipcode_title = "#### Zipcode"
                     service_markdown = GoogleTranslator(source='auto', target=input_language).translate(str(zipcode_title))
                     st.markdown(service_markdown)
@@ -663,47 +662,7 @@ if __name__ == '__main__':
                         if not location_info.empty:
                             latitude_user = location_info['latitude']
                             longitude_user = location_info['longitude']
-                            city_name = location_info['place_name']
-                            # client = Steamship(api_key="25FDC915-9156-4BFB-BA9B-1B213DF1E699")
-
-                            extract_services = []
-                            top_services = ["KITHS Kitchen and Garden (KITHS)", "Social Services -Basic Needs Assistance (Helping Hands Ministry Inc)", "Emergency Housing for Veterans (Fresh Start Foundation)",\
-                                            "Adult Behavioral Health Inpatient Treatment (Friends Hospital)", "Adult Outpatient Services (Hispanic Community Counseling Services)", "Opioid Treatment Program (Achievement Through Counseling and Treatment)",\
-                                            "Church-Based Shelters (Bethesda Project)", "RHD Fernwood Program (Resources for Human Development-Pennsylvania)", "Various Community Events and Programs (Conquerors Community Development Corporation)"]                            
-                            for service in service_list:
-                                if service[0] in top_services:
-                                    start_brasket = service[0].find('(')
-                                    end_brasket = service[0].find(')', start_brasket + 1)
-                                    service_name = service[0]
-                                    extract_services.append([service_name[start_brasket+1:end_brasket], service[1]])
-                            
-                            # ! Service Map
-                            service_map = folium.Map(location=[latitude_user, longitude_user], zoom_start=12)
-                            folium.CircleMarker(
-                                location=[latitude_user, longitude_user],
-                                radius=80,
-                                color='blue',
-                                fill=True,
-                                fill_color='blue',
-                                fill_opacity=0.2
-                            ).add_to(service_map)
-
-                            marker_cluster = MarkerCluster().add_to(service_map)
-                            route_points = []
-                            for loc in data:
-                                route_points.append([loc['latitude'], loc['longitude']])
-                                iframe = IFrame(loc['info'], width=300, height=200)
-                                popup = folium.Popup(iframe, max_width=800)
-                                folium.Marker(
-                                    location=[loc['latitude'], loc['longitude']],
-                                    popup=popup,
-                                    icon=folium.Icon(color='red')
-                                ).add_to(marker_cluster)
-
-                            service_map_title = f"{classified_service_type} Services near {zipcode}"
-                            service_map_header = GoogleTranslator(source='auto', target=input_language).translate(str(service_map_title))
-                            st.header(service_map_header)
-                            folium_static(service_map, width=800, height=600)  # Adjust width and height as needed
+                            city_name = location_info['place_name']                            
 
                             # ! Service information
                             # * (1) Cypher search method
@@ -757,33 +716,73 @@ if __name__ == '__main__':
                                 final_service.extend(audience_services)
                                 duplicate_services = utils.get_duplicate_service_name(final_service)
                                 extract_duplicate_services = []
+                                service_location = []
                                 for service in service_list:
                                     if service[0] in duplicate_services:
                                         start_brasket = service[0].find('(')
                                         end_brasket = service[0].find(')', start_brasket + 1)
                                         service_name = service[0]
-                                        extract_duplicate_services.append([service_name[start_brasket+1:end_brasket], service[1]])
+                                        extract_duplicate_services.append([service_name[start_brasket+1:end_brasket], service[1], service[2], service[3]])
+                                        # extract_duplicate_services.append([service[0], service[1], service[2], service[3]])
+                                        # * service location format: [Latitude, Longitude, Service Info, Service name]
+                                        service_location.append([service[2], service[3], service[4], service_name[start_brasket+1:end_brasket]])
+
+                                if len(extract_duplicate_services) == 0:
+                                        #! If there is no duplicate service, then use type service 
+                                        for service in service_list:
+                                            if service[0] in type_service_list:
+                                                start_brasket = service[0].find('(')
+                                                end_brasket = service[0].find(')', start_brasket + 1)
+                                                service_name = service[0]
+                                                extract_duplicate_services.append([service_name[start_brasket+1:end_brasket], service[1], service[2], service[3]])
+                                                # * service location format: [Latitude, Longitude, Service Info, Service name]
+                                                service_location.append([service[2], service[3], service[4], service_name[start_brasket+1:end_brasket]])
 
                                 logger.debug(f"Final services: {extract_duplicate_services}")
-                                
+                                extract_duplicate_services = utils.order_service(extract_duplicate_services, logger, int(zipcode), order_method)
+                                if len(extract_duplicate_services) > 5:
+                                        extract_duplicate_services = extract_duplicate_services[0:5]
+                                duplicate_names = set([s[0] for s in extract_duplicate_services])
+                                filtered_service_location = [
+                                    loc for loc in service_location if loc[3] in duplicate_names
+                                ]
+                                                         
+                                # ! Service Map
+                                service_map = folium.Map(location=[latitude_user, longitude_user], zoom_start=12)
+                                folium.CircleMarker(
+                                    location=[latitude_user, longitude_user],
+                                    radius=80,
+                                    color='blue',
+                                    fill=True,
+                                    fill_color='blue',
+                                    fill_opacity=0.2
+                                ).add_to(service_map)
+
+                                marker_cluster = MarkerCluster().add_to(service_map)
+                                route_points = []
+                                for index, service in enumerate(filtered_service_location):
+                                    if index >= 5: 
+                                        break
+                                    route_points.append([service[0], service[1]])
+                                    iframe = IFrame(service[2], width=300, height=200)
+                                    popup = folium.Popup(iframe, max_width=800)
+                                    folium.Marker(
+                                        location=[service[0], service[1]],
+                                        popup=popup,
+                                        icon=folium.Icon(color='red')
+                                    ).add_to(marker_cluster)
+
+                                service_map_title = f"{classified_service_type} Services near {zipcode}"
+                                service_map_header = GoogleTranslator(source='auto', target=input_language).translate(str(service_map_title))
+                                st.header(service_map_header)
+                                folium_static(service_map, width=800, height=600)  # Adjust width and height as needed
+
                                 service_info_spinner = 'Loading service information, please wait ...'
                                 service_info_spinner_trans = GoogleTranslator(source='auto', target=input_language).translate(str(service_info_spinner))
                                 with st.spinner(service_info_spinner_trans):
-                                    if len(extract_duplicate_services) == 0:
-                                        logger.debug(f"knowledge graph query type service list: {type_service_list}")
-                                        type_service_list = utils.order_service(type_service_list, logger, int(zipcode), order_method)
-                                        if len(type_service_list) > 5:
-                                            type_service_list = type_service_list[0:5]
-                                        option_services = type_service_list
-                                        service_information = utils.getQuestion_answer(type_service_list, st, input_language)
-                                    else:
-                                        logger.debug(f"knowledge graph query duplicate service list: {extract_duplicate_services}")
-                                        extract_duplicate_services = utils.order_service(extract_duplicate_services, logger, int(zipcode), order_method)
-                                        if len(extract_duplicate_services) > 5:
-                                            extract_duplicate_services = extract_duplicate_services[0:5]
-                                        option_services = extract_duplicate_services
-                                        service_information = utils.getQuestion_answer(extract_duplicate_services, st, input_language)
-
+                                    logger.debug(f"knowledge graph query duplicate service list: {extract_duplicate_services}")
+                                    option_services = extract_duplicate_services
+                                    service_information = utils.getQuestion_answer(extract_duplicate_services, [location_info['latitude'], location_info['longitude']], st, input_language)
                             # * (2) G-Retriever search method
                             if st.session_state.page == "g_retriever" :
                                 service_header = "Services Information"
@@ -854,27 +853,67 @@ if __name__ == '__main__':
                                         start_brasket = service[0].find('(')
                                         end_brasket = service[0].find(')', start_brasket + 1)
                                         service_name = service[0]
-                                        extract_duplicate_services.append([service_name[start_brasket+1:end_brasket], service[1]])
+                                        extract_duplicate_services.append([service_name[start_brasket+1:end_brasket], service[1], service[2], service[3]])
+                                        # * service location format: [Latitude, Longitude, Service Info]
+                                        service_location.append([service[2], service[3], service[4], service_name[start_brasket+1:end_brasket]])
+
+                                if len(extract_duplicate_services) == 0:
+                                        #! If there is no duplicate service, then use type service 
+                                        for service in service_list:
+                                            if service[0] in type_service_list:
+                                                start_brasket = service[0].find('(')
+                                                end_brasket = service[0].find(')', start_brasket + 1)
+                                                service_name = service[0]
+                                                extract_duplicate_services.append([service_name[start_brasket+1:end_brasket], service[1], service[2], service[3]])
+                                                # * service location format: [Latitude, Longitude, Service Info]
+                                                service_location.append([service[2], service[3], service[4], service_name[start_brasket+1:end_brasket]])
 
                                 logger.debug(f"Final services: {extract_duplicate_services}")
-                                
+                                extract_duplicate_services = utils.order_service(extract_duplicate_services, logger, int(zipcode), order_method)
+                                if len(extract_duplicate_services) > 5:
+                                        extract_duplicate_services = extract_duplicate_services[0:5]
+
+                                duplicate_names = set([s[0] for s in extract_duplicate_services])
+                                filtered_service_location = [
+                                    loc for loc in service_location if loc[3] in duplicate_names
+                                ]
+
+                                # ! Service Map
+                                service_map = folium.Map(location=[latitude_user, longitude_user], zoom_start=12)
+                                folium.CircleMarker(
+                                    location=[latitude_user, longitude_user],
+                                    radius=80,
+                                    color='blue',
+                                    fill=True,
+                                    fill_color='blue',
+                                    fill_opacity=0.2
+                                ).add_to(service_map)
+
+                                marker_cluster = MarkerCluster().add_to(service_map)
+                                route_points = []
+                                for index, service in enumerate(filtered_service_location):
+                                    if index >= 5:
+                                        break
+                                    route_points.append([service[0], service[1]])
+                                    iframe = IFrame(service[2], width=300, height=200)
+                                    popup = folium.Popup(iframe, max_width=800)
+                                    folium.Marker(
+                                        location=[service[0], service[1]],
+                                        popup=popup,
+                                        icon=folium.Icon(color='red')
+                                    ).add_to(marker_cluster)
+
+                                service_map_title = f"{classified_service_type} Services near {zipcode}"
+                                service_map_header = GoogleTranslator(source='auto', target=input_language).translate(str(service_map_title))
+                                st.header(service_map_header)
+                                folium_static(service_map, width=800, height=600)  # Adjust width and height as needed
+
                                 service_info_spinner = 'Loading service information, please wait ...'
                                 service_info_spinner_trans = GoogleTranslator(source='auto', target=input_language).translate(str(service_info_spinner))
                                 with st.spinner(service_info_spinner_trans):
-                                    if len(extract_duplicate_services) == 0:
-                                        logger.debug(f"knowledge graph query type service list: {type_service_list}")
-                                        type_service_list = utils.order_service(type_service_list, logger, int(zipcode), order_method)
-                                        if len(type_service_list) > 5:
-                                            type_service_list = type_service_list[0:5]
-                                        option_services = type_service_list
-                                        service_information = utils.getQuestion_answer(type_service_list, st, input_language)
-                                    else:
-                                        logger.debug(f"knowledge graph query duplicate service list: {extract_duplicate_services}")
-                                        extract_duplicate_services = utils.order_service(extract_duplicate_services, logger, int(zipcode), order_method)
-                                        if len(extract_duplicate_services) > 5:
-                                            extract_duplicate_services = extract_duplicate_services[0:5]
-                                        option_services = extract_duplicate_services
-                                        service_information = utils.getQuestion_answer(extract_duplicate_services, st, input_language)
+                                    logger.debug(f"knowledge graph query duplicate service list: {extract_duplicate_services}")
+                                    option_services = extract_duplicate_services
+                                    service_information = utils.getQuestion_answer(extract_duplicate_services, [location_info['latitude'], location_info['longitude']], st, input_language)
 
                             #! Crime prediction
                             crime_information_title = "#### Crimes Information near " + str(zipcode)
