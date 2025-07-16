@@ -113,12 +113,14 @@ def wild_search_by_keywords(key_word, relation=''):
             auth=("neo4j", "123456789")
         )
     if relation == '':
-        Query = 'MATCH (m:node)-[r]-(n:node) where m.name=~\".*(?i){0}.*\" or n.name=~\".*(?i){0}.*\" RETURN m.name,type(r),n.name'.format(key_word)
+        # Query = 'MATCH (m:node)-[r]-(n:node) where m.name=~\".*(?i){0}.*\" or n.name=~\".*(?i){0}.*\" RETURN m.name,type(r),n.name'.format(key_word)
+        Query = 'MATCH (m:node {{name:"{0}"}})-[r]-(n:node) RETURN m.name,type(r),n.name'.format(key_word)
         query_result = graph.run(Query)
         for triple in query_result:
             triples.append(str(triple).replace('\t', ','))
     else:
-        Query = 'MATCH (m:node)-[r]-(n:node) where m.name=~\".*(?i){0}.*\" or n.name=~\".*(?i){0}.*\" RETURN m.name,type(r),n.name'.format(key_word, relation)
+        Query = 'MATCH (m:node {{name:"{0}"}})-[r]-(n:node) RETURN m.name,type(r),n.name'.format(key_word)
+        # Query = 'MATCH (m:node)-[r]-(n:node) where m.name=~\".*(?i){0}.*\" or n.name=~\".*(?i){0}.*\" RETURN m.name,type(r),n.name'.format(key_word, relation)
         query_result = graph.run(Query)
         for triple in query_result:
             triples.append(str(triple).replace('\t', ','))
@@ -605,7 +607,6 @@ def extract_google_rating_from_triple(triple):
     # start_quotation = triple.find('"')
     target_index = triple.find('\'ratingValue\'', 1)
     extract_rating = triple[target_index : -1]
-    print(extract_rating)
     return extract_rating 
 
 def google_order(service_list : list):

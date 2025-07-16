@@ -722,10 +722,10 @@ if __name__ == '__main__':
                                         start_brasket = service[0].find('(')
                                         end_brasket = service[0].find(')', start_brasket + 1)
                                         service_name = service[0]
-                                        extract_duplicate_services.append([service_name[start_brasket+1:end_brasket], service[1], service[2], service[3]])
+                                        extract_duplicate_services.append([service[0], service[1], service[2], service[3]])
                                         # extract_duplicate_services.append([service[0], service[1], service[2], service[3]])
                                         # * service location format: [Latitude, Longitude, Service Info, Service name]
-                                        service_location.append([service[2], service[3], service[4], service_name[start_brasket+1:end_brasket]])
+                                        service_location.append([service[2], service[3], service[4], service[0]])
 
                                 if len(extract_duplicate_services) == 0:
                                         #! If there is no duplicate service, then use type service 
@@ -734,9 +734,9 @@ if __name__ == '__main__':
                                                 start_brasket = service[0].find('(')
                                                 end_brasket = service[0].find(')', start_brasket + 1)
                                                 service_name = service[0]
-                                                extract_duplicate_services.append([service_name[start_brasket+1:end_brasket], service[1], service[2], service[3]])
+                                                extract_duplicate_services.append([service[0], service[1], service[2], service[3]])
                                                 # * service location format: [Latitude, Longitude, Service Info, Service name]
-                                                service_location.append([service[2], service[3], service[4], service_name[start_brasket+1:end_brasket]])
+                                                service_location.append([service[2], service[3], service[4], service[0]])
 
                                 logger.debug(f"Final services: {extract_duplicate_services}")
                                 extract_duplicate_services = utils.order_service(extract_duplicate_services, logger, int(zipcode), order_method)
@@ -853,9 +853,9 @@ if __name__ == '__main__':
                                         start_brasket = service[0].find('(')
                                         end_brasket = service[0].find(')', start_brasket + 1)
                                         service_name = service[0]
-                                        extract_duplicate_services.append([service_name[start_brasket+1:end_brasket], service[1], service[2], service[3]])
+                                        extract_duplicate_services.append([service[0], service[1], service[2], service[3]])
                                         # * service location format: [Latitude, Longitude, Service Info]
-                                        service_location.append([service[2], service[3], service[4], service_name[start_brasket+1:end_brasket]])
+                                        service_location.append([service[2], service[3], service[4], service[0]])
 
                                 if len(extract_duplicate_services) == 0:
                                         #! If there is no duplicate service, then use type service 
@@ -864,9 +864,9 @@ if __name__ == '__main__':
                                                 start_brasket = service[0].find('(')
                                                 end_brasket = service[0].find(')', start_brasket + 1)
                                                 service_name = service[0]
-                                                extract_duplicate_services.append([service_name[start_brasket+1:end_brasket], service[1], service[2], service[3]])
+                                                extract_duplicate_services.append([service[0], service[1], service[2], service[3]])
                                                 # * service location format: [Latitude, Longitude, Service Info]
-                                                service_location.append([service[2], service[3], service[4], service_name[start_brasket+1:end_brasket]])
+                                                service_location.append([service[2], service[3], service[4], service[0]])
 
                                 logger.debug(f"Final services: {extract_duplicate_services}")
                                 extract_duplicate_services = utils.order_service(extract_duplicate_services, logger, int(zipcode), order_method)
