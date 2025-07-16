@@ -168,7 +168,7 @@ input knowledge graph triples: {slice_triple}
                 index = index + 1 
 
         combine_prompt = f"""
-Please combine these response, construct corresponding natural language sentences about Service Name, Address, Contract Method, Opening Hour, Brief Introduction and Transportation (my location is [{loc[0]},{loc[1]}], and service location is [{Service[2]}, {Service[3]}], please tell me the time required for walking). Show these information as a list and bold these titles. 
+Please combine these response, construct corresponding natural language sentences about Service Name, Address, Contract Method, Opening Hour, Brief Introduction and Transportation (my location is [{loc[0]},{loc[1]}], and service location is [{Service[2]}, {Service[3]}], please tell me the time required for walking and bus. And do not shgow the coordinate in the response). Show these information as a list and bold these titles. 
 response: {all_response}
 """
         response = openai.ChatCompletion.create(
@@ -674,7 +674,7 @@ def get_zipcode(service_list : list, logger):
             auth=("neo4j", "123456789")
         )
     for service in service_list:
-        Query = 'MATCH (m:node)-[r]->(n:node) where m.name=~\".*(?i){1}.*\" and type(r)=~\".*(?i){0}.*\" RETURN m.name,type(r),n.name'.format(relation, service[0])
+        Query = 'MATCH (m:node {{name:"{1}"}})-[r]->(n:node) where type(r)=~\".*(?i){0}.*\" RETURN m.name,type(r),n.name'.format(relation, service[0])
         query_result = graph.run(Query)
         #! Only need one return result, sometime store two zipcode info or same short name service
         for triple in query_result:
@@ -700,15 +700,21 @@ def get_location(service_list : list, logger):
         latitude_Query = 'MATCH (m:node)-[r]->(n:node) where type(r)=~\".*(?i){0}.*\" and m.name=~\".*(?i){1}.*\" RETURN m.name,type(r),n.name'.format(latitude, service)
         query_result = graph.run(latitude_Query)
 
-def extract_service_list_from_string(service_list:str):
+def extract_service_list_from_string(response_service_list:str, service_list:list):
     result = []
-    chunks = service_list[2:-2].split("], [")
+    chunks = response_service_list[2:-2].split("], [")
     for chunk in chunks:
         # Find the last comma in the chunk (splits name and rating)
         idx = chunk.rfind(',')
         name = chunk[:idx].strip().strip("'")
         rating = float(chunk[idx+1:].strip())
         result.append([name, rating])
+
+    for response_service in result:
+        for service in service_list:
+            if response_service[0] == service[0]:
+                response_service.append(service[2])
+                response_service.append(service[3])
     return result
 
 
@@ -723,8 +729,8 @@ def distance_order(service_list : list, zipcode, logger):
                         ],
                         temperature=0.2
                     )
-    service_list = response.choices[0].message['content']
-    final_list = extract_service_list_from_string(service_list)
+    response_service_list = response.choices[0].message['content']
+    final_list = extract_service_list_from_string(response_service_list, service_list)
     return final_list
 
 

@@ -915,6 +915,15 @@ if __name__ == '__main__':
                                     option_services = extract_duplicate_services
                                     service_information = utils.getQuestion_answer(extract_duplicate_services, [location_info['latitude'], location_info['longitude']], st, input_language)
 
+                            #! Services contract
+                            Options = [None]
+                            for service in option_services: 
+                                Options.append(str(service[0]))
+                            select_service_title = GoogleTranslator(source='auto', target=input_language).translate(str('Select a service'))
+                            selected_option = st.selectbox(select_service_title, Options)
+                            if not selected_option is None:
+                                send_email(input_language)
+
                             #! Crime prediction
                             crime_information_title = "#### Crimes Information near " + str(zipcode)
                             crime_information_markdown = GoogleTranslator(source='auto', target=input_language).translate(str(crime_information_title))
@@ -1062,15 +1071,6 @@ if __name__ == '__main__':
                             crime_map_header = GoogleTranslator(source='auto', target=input_language).translate(str(crime_map_title))
                             st.header(crime_map_header)
                             folium_static(crime_map, width=800, height=600)  # Adjust width and height as needed
-
-                            #! Services contract
-                            Options = [None]
-                            for service in option_services: 
-                                Options.append(str(service[0]))
-                            select_service_title = GoogleTranslator(source='auto', target=input_language).translate(str('Select a service'))
-                            selected_option = st.selectbox(select_service_title, Options)
-                            if not selected_option is None:
-                                send_email(input_language)
 
                         else:
                             st.sidebar.error(f"Error: Unable to retrieve location information for ZIP code {zipcode}")
