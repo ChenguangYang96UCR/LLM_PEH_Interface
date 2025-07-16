@@ -9,7 +9,6 @@ import openai
 import re
 import requests
 from PIL import Image
-from steamship import Steamship
 from datetime import datetime
 import numpy as np
 from langdetect import detect, DetectorFactory
