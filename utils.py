@@ -10,6 +10,7 @@ import csv
 import pandas as pd
 import numpy as np
 from torch_geometric.data import Data
+from PIL import Image
 from retriever.retrieval import retrieval_via_pcst
 
 import huggingface_hub
@@ -179,6 +180,9 @@ response: {all_response}
                         temperature=0.2
                     )
         st.markdown('''##### :blue['''+ Service[0] + ''']''')
+        if os.path.exists(f"street_images/{Service[0]}.png"):
+            img = Image.open(f"street_images/{Service[0]}.png")
+            st.image(img)
         # st.write(f"**{Service[0]}**")
         # google_rating = f"**Google Rating:{Service[1]}**"
         # google_rating_trans = GoogleTranslator(source='auto', target=language).translate(str(google_rating))
