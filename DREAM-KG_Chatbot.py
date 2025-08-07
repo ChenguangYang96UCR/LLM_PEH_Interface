@@ -311,11 +311,16 @@ def translated_read_data(df):
 
     return data
 
-def parse_extracted_info(extracted_info):
+def parse_extracted_info(user_query, extracted_info):
     # Using regular expressions to find service type and zipcode robustly
     service_match = re.search(r"service(?: type)?:\s*(.+)", extracted_info, re.I)
     zipcode_match = re.search(r"zipcode:\s*(\d+)", extracted_info, re.I)
-    weekday_match = utils.extract_weekday(extracted_info)
+    extract_weekday_match = utils.extract_weekday(extracted_info)
+    query_weekday_match = utils.extract_weekday(user_query)
+    weekday_match = extract_weekday_match
+    if query_weekday_match != None and query_weekday_match != extract_weekday_match:
+        weekday_match = query_weekday_match
+
     # time_match = re.findall(r"\b(\d{2}):\d{2}\b", extracted_info)
     time_match = [int(hour) for hour in re.findall(r"\b(\d{2}):\d{2}\b", extracted_info)]
 
@@ -560,7 +565,7 @@ if __name__ == '__main__':
         if response.choices:
             extracted_info = response.choices[0].message['content'].strip()
             # st.write("Extracted Information:", extracted_info)
-            service_type, zipcode, weekday, service_time = parse_extracted_info(extracted_info)
+            service_type, zipcode, weekday, service_time = parse_extracted_info(translated_user_query, extracted_info)
 
             #! If user did not provide location, default zipcode is 19102
             if not zipcode:
@@ -603,7 +608,10 @@ if __name__ == '__main__':
                     time_title = "#### Current Time in Eastern Standard Time"
                     time_markdown = GoogleTranslator(source='auto', target=input_language).translate(str(time_title))
                     st.markdown(time_markdown)
-                    st.write(weekday_name + ' ' + current_time)
+                    if weekday == "":
+                        st.write(weekday_name + ' ' + current_time)
+                    else:
+                        st.write(weekday + ' ' + current_time)
                     
                     service_title = "#### Type of Service"
                     service_markdown = GoogleTranslator(source='auto', target=input_language).translate(str(service_title))
