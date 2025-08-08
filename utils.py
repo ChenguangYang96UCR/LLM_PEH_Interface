@@ -142,7 +142,7 @@ def getQuestion_answer(Service_list, loc, st,language = 'en'):
 
     all_triples = []    
     all_information = []
-    for Service in Service_list:
+    for service_index,  Service in enumerate(Service_list):
         triples = wild_search_by_keywords(Service[0])
         slice_triples = [triples[i:i+100] for i in range(0, len(triples), 100)]
         all_response = []
@@ -179,7 +179,7 @@ response: {all_response}
                         ],
                         temperature=0.2
                     )
-        st.markdown('''##### :blue['''+ Service[0] + ''']''')
+        st.markdown('''##### :blue[''' + str(f"({service_index + 1})") + ' ' + Service[0] + ''']''')
         if os.path.exists(f"street_images/{Service[0]}.png"):
             img = Image.open(f"street_images/{Service[0]}.png")
             st.image(img)
