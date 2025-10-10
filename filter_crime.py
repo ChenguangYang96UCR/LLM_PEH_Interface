@@ -39,7 +39,26 @@ def sperate_crime_according_time(csv_path):
         evening_filtered_df.to_csv("./files/three_days_philly_incidents_2025_evening.csv", index=False)
 
 if __name__ == '__main__':
+    # 0. Add every indicident's ucr code based on their crime type
     cvs_path = './files/incidents_part1_part2-2.csv'
+    file = pd.read_csv(cvs_path)
+    crime_ucr_map = {"Thefts" : "23D", 'Theft from Vehicle' : '23F', 'Motor Vehicle Theft' : '240', 'Aggravated Assault Firearm' : '13A', 
+                     'Aggravated Assault No Firearm' : '13A', 'Other Assaults' : '13B', 'Robbery Firearm' : '120', 'Robbery No Firearm' : '120',
+                     'Burglary Non-Residential' : '220', 'Burglary Residential' : '220', 'Rape' : '11A', 'Homicide - Criminal' : '09A', 'Vandalism/Criminal Mischief' : '290',
+                     'Fraud' : '26B', 'All Other Offenses' : '90Z', 'Other Sex Offenses (Not Commercialized)': '11C', 'DRIVING UNDER THE INFLUENCE' : '90D', 
+                     'Receiving Stolen Property' : '280', 'Embezzlement' : '270', 'Weapon Violations' : '520', 'Arson' : '200', 'Disorderly Conduct' : '90C',
+                     'Prostitution and Commercialized Vice' : '40A', 'Offenses Against Family and Children' : '90F', 'Forgery and Counterfeiting' : '250', 'Public Drunkenness' : '90E',
+                     'Narcotic / Drug Law Violations' : '35A'}
+    
+    ucr_code_list = []
+    for crime_type in file['text_general_code']:
+        ucr_code = crime_ucr_map[crime_type]
+        ucr_code_list.append(ucr_code)
+
+    file['ucr_code'] = ucr_code_list
+    file.to_csv(cvs_path, index=False)
+
+    # 1. Extract three days philadelphia indcidents
     df = pd.read_csv(cvs_path)
     filtered_df = df.iloc[0:0].copy()
     Index = 0
@@ -53,6 +72,7 @@ if __name__ == '__main__':
 
     filtered_df.to_csv("./files/three_days_philly_incidents_2025.csv", index=False)
 
+    # 2. Get every incident's zipcode based on their geological information
     geolocator = geopy.Nominatim(user_agent='1234')
     lat_array = []
     lon_array = []
@@ -76,4 +96,5 @@ if __name__ == '__main__':
     df['zipcode'] = zipcodes
     df.to_csv('./files/three_days_philly_incidents_with_zipcode_2025.csv', index=False)
 
+    # 3. Seperate incidents to three time terms
     sperate_crime_according_time("./files/three_days_philly_incidents_with_zipcode_2025.csv")
